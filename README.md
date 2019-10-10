@@ -49,7 +49,7 @@ Let `gitlab-ci` deploy the production.
 *Hint* You can use `tr -d '\n'` to remove new lines.
 
 - Create a `.gitlab-ci.yml` file with the content
-```
+```yaml
 image:
   name: "hashicorp/terraform"
   entrypoint:

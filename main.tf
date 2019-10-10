@@ -1,7 +1,3 @@
-variable "application_name" {}
-variable "machine_type" {}
-variable "gcp_project" {}
-
 resource "google_compute_instance" "default" {
   project      = var.gcp_project
   name         = var.application_name
