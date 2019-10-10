@@ -8,7 +8,7 @@ Bundler use `Gemfile` to list all `gems` required by the application.
 [Kitchen](https://kitchen.ci/) and [inspec](https://www.inspec.io/) provides `gems` as installation mode. 
 
 Create a new `Gemfile` with the content : 
-```
+```ruby
 source "https://rubygems.org/" do
   gem 'inspec-bin'
   gem 'inspec'
@@ -28,7 +28,7 @@ Check that `inspec`, `kitchen` is correctly installed using `bundle exec inspec`
 Kitchen require a configuration file named `.kitchen.yml` to describe how to configure the `drivers`, the `provisioners` and the `verifiers`.
 
 For testing purpose, we will use the following configuration file : 
-```
+```yaml
 ---
 driver:
   name: terraform
@@ -68,10 +68,9 @@ You can generate a new inspec profile named `default` for inspec-gcp tests using
 
 Add a new control to check your DNS zone.
 
-
 ### Kitchen and Inspec 
 Update kitchen configuration to use inspec as verifier :
-```
+```yaml
 suites:
 - name: default
   verifier:
@@ -81,7 +80,7 @@ suites:
         attrs_outputs:
           project_id: project_id
 ```
-The project_id output from terraform will be mapped to inspec input.
+The `project_id` output from terraform will be mapped to inspec input.
 
 Clean the previous deployment using `terraform destroy` and run a `bundle exec kitchen test`.
 
