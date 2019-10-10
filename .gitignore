@@ -1,0 +1,17 @@
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
+
+# vim tmp files
+*.swp
+.*tags
+
+.idea/
+.vscode
+**/inspec.lock
