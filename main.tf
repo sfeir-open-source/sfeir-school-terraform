@@ -1,8 +1,3 @@
-variable "gcp_project" {
-  type        = "string"
-  description = "GCP project use to deploy resources."
-}
-
 resource "google_project_service" "dns" {
   project            = "${var.gcp_project}"
   service            = "dns.googleapis.com"
@@ -23,12 +18,4 @@ resource "google_dns_managed_zone" "private-zone" {
   }
 
   depends_on = ["google_project_service.dns"]
-}
-
-output "project_id" {
-  value = "${var.gcp_project}"
-}
-
-output "zone_name" {
-  value = "${google_dns_managed_zone.private-zone.name}"
 }
