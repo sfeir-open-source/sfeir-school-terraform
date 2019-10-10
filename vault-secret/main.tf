@@ -1,11 +1,3 @@
-variable "username" {
-  description = "Username to store on the secret"
-}
-
-variable "secret_path" {
-  description = "The path in vault to store the secret"
-}
-
 resource "random_password" "password" {
   length  = 16
   special = true
