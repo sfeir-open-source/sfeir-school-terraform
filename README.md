@@ -39,7 +39,7 @@ An experimental evolution can be found on [segmentio/terraform-docs/pull/113](ht
 *extra* Compile the pull request above and use `terraform-docs md . > docs.md` to generate documentation.
 
 ## Example 
-Create a new `google_compute_firewall` to allow tcp:53 and udp:53 in ingress
+Create a new `google_compute_firewall` to allow `tcp:53` and `udp:53` in ingress
 
 ### Best practice
 #### Folder convention
