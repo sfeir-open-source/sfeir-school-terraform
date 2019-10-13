@@ -33,9 +33,13 @@ You have now 3 environements : *default*,*staging* and *production*.
 Create a GCE instance and let user define the name and the machine type of the instance.
 Deploy the instance in the default workspace : `terraform workspace select default` and run `terraform apply`.
 
-Verify the deployment using `terraform state show`.
+- Verify the deployment using `terraform state show`.
+- Remove the instance from the state file using `terraform state rm <resource_key>`
+- Do a terraform plan again. What's happened  ?
+- Import the existing instance in the state file use ` terraform import <resource_key> <resource_id>` where `resource_id` is like `{project}/{zone}/{instance_name}`
 
-Do the same with the staging workspace (update the instance name to avoid conflicts).
+
+Deploy the same code in the staging workspace (update the instance name to avoid conflicts if you work on the same project).
 
 ### Pipeline using gitlab-ci
 Let `gitlab-ci` deploy the production.
