@@ -1,8 +1,6 @@
 package hello
 
 import (
-	"os"
-
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
 )
@@ -32,7 +30,8 @@ type identity struct {
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	nickname := d.Get("nickname").(string)
-	hostname, err := os.Hostname()
+
+	// Add a property hostname on the provider attributes
 
 	return &identity{Nickname: nickname, Hostname: hostname}, err
 }

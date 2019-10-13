@@ -1,8 +1,7 @@
 provider "hello" {
-  nickname = "jnu"
+  // Add provider attributes
 }
 
 resource "hello_file" "foo" {
-  path = "/tmp/foo"
-  name = "world"
+  // Add resources attributes
 }
