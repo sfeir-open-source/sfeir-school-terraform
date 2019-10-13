@@ -1,44 +1,45 @@
 # Sfeir Institute Terraform
-This repository help customers to use [HashiCorp Terraform](https://www.terraform.io/) over multiple modules.
+## Extend Terraform by writing new providers
+### Golang
+Terraform is written in [Golang](https://golang.org/) and provides a compiled binary.
+Check more details about how terraform works on [https://www.terraform.io/docs/extend/how-terraform-works.html#discovery](https://www.terraform.io/docs/extend/how-terraform-works.html#discovery)
 
-*Each module can be run independently*
-
-* Module 1 : Introduction of Terraform (no lab)
-* Module 2 : First step with Terraform 
-    * (lab) Installation and Configuration
-* Module 3 : Langages and Interpolations
-    * (lab) My First infrastructure deployment
-    * (lab) Advanced development and Interpolation
-* Module 4 : Integrated Development Environment
-    * (lab) Improve productivity using IDE
-* Module 5 : Testing strategies
-    * (lab) Continuous Integration with Terraform
-* Module 6 : Team Working
-    * (lab) Create you own module registry using [Gitlab](https://about.gitlab.com/)
-* Module 7 : Usage in production
-    * (lab) Continuous Deployment with Terraform
+Golang is already installed on [Cloud SHell](https://cloud.google.com/shell). Refer to [official documentation](https://golang.org/doc/install) if you want to install it locally.
 
 
-## Technical stack requirements
-### Terraform
-All code used are compatible with the [0.12 major version of Terraform](https://releases.hashicorp.com/terraform/).
+### Use-case
+Create a new terraform provider to create a file in `path` with the content `Hello ...` where name is a resource argument.
 
-### GCP
-This set of labs use [Google Cloud Platform](https://cloud.google.com/) resources. An active GCP project is required, and specifics roles like `roles/compute.admin`, `roles/container.admin` may be necessary regarding resources used.
+Usage : 
+```
+provider "hello" {
+  nickname = "jnu"
+}
 
-*Disclaimer : This institute will not cover GCP services usage. Please follow [Google Cloud Platform Sfeir Institute](https://www.sfeir.com/formation/institute/) if you want to learn more about GCP services*
+resource "hello_file" "foo" {
+  path = "/tmp/foo"
+  name = "world"
+}
+```
 
-### Gitlab 
-Module 6 and 7 use [Gitlab](https://about.gitlab.com/) to manage CI and CD pipelines. An active account is required on Gitlab.
+And the result produce a file in `path = /tmp/foo` with the content `Hello <name>, i'm <nickname>@<hostname>`
 
-### Others
-All other components will be part as Open-Source projects and will be deployed on [Kubernetes](https://kubernetes.io/) using [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/)
+### Add provider content
+- Update the `providerConfigure` function in `provider.go` to add the `hostname` value in the provider informations 
+- Update the `resourceHelloFile` function in `resource_file.go` to create the 2 arguments `name` and `path` in the schema configuration.
+- Update the `resourceHelloFile` to add the code for each step functions.
 
-## How to use
-Source code and tutorials are saved in a dedicated branch of this repository.
-You can switch between branches using `git checkout <branch-name>` 
+### How to build
+Update `GOPATH` environment variable to add the skeleton folder for this provider : 
+```
+$ export GOPATH=$GOPATH:$(pwd)
+```
 
-*Notes :if you made changes, don't forget to commit locally using `git commit -m "<msg>"`)*
+Download dependencies and compile the provider.
+```
+$ cd src/terraform-provider-hello/      
+$ go get -v .
+$ go build .
+```
 
-## How to contribute
-Please report issues using Github issue. If you would like to contribute on this repository, please submit a pull request.
+Put the binary generated in the `test` folder and run `terraform init`.
