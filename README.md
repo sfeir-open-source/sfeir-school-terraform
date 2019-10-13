@@ -4,9 +4,9 @@
 [GCS Backend](https://www.terraform.io/docs/backends/types/gcs.html) stores the state in a Google Cloud Storage bucket.
 
 #### Backend configuration
-- Create a GCS bucket
+- Create a GCS bucket (manually)
 - Generate a GCP service account and add the `storage.admin` role on the bucket.
-- Generate a json key
+- Generate a json key (will be used by gitlab)
 
 You can now configure a deployment to use the bucket.
 
