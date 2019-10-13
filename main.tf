@@ -5,17 +5,6 @@ resource "google_project_service" "dns" {
 }
 
 resource "google_dns_managed_zone" "private-zone" {
-  name    = "demo-local"
-  project = "${var.gcp_project}"
-
-  dns_name = "demo.local."
-
-  visibility = "private"
-  private_visibility_config {
-    networks {
-      network_url = "https://www.googleapis.com/compute/v1/projects/${var.gcp_project}/global/networks/default"
-    }
-  }
-
+  project    = "${var.gcp_project}"
   depends_on = ["google_project_service.dns"]
 }
