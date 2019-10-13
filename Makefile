@@ -7,17 +7,9 @@ all: init test
 verify: ## Display revision ID
 	@echo Current revision: $(UUID)
 
-apply:
-	terraform apply -auto-approve
-
-destroy:
-	terraform destroy -auto-approve
-
 test: ## Run all tests
-	terraform validate
 
 init: ## Initialize project
-	terraform init
 
 
 .DEFAULT_GOAL := help
