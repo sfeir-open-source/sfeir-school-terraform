@@ -1,39 +1,14 @@
 resource "google_compute_instance" "tf_instance" {
-  name         = "${var.instance_name}"
-  machine_type = "n1-standard-1"
-  zone         = "europe-west1-b"
-
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-9"
-    }
-  }
-
-  network_interface {
-    network = "default"
-  }
-
-  metadata = {
-    serial-port-enable = 1
-  }
-
-  allow_stopping_for_update = true
+  // Add properties to create a compute engine instance
 }
 
-resource "google_compute_firewall" "allow-iap" {
-  name        = "allow-iap-tcp-all"
-  description = "Allow connections from IAP"
-  network     = "default"
-  direction   = "INGRESS"
-  priority    = 1000
-
-  allow {
-    protocol = "tcp"
-  }
-
-  lifecycle {
-    create_before_destroy = true
-  }
-
-  source_ranges = ["35.235.240.0/20"]
-}
+/* Uncomment when instance is correctly deployed 
+*
+* resource "google_compute_firewall" "allow-iap" {
+*   // Create a firewall rule to allow traffic from "35.235.240.0/20" on all ports
+* 
+*   lifecycle {
+*     create_before_destroy = true
+*   }
+* }
+*/
