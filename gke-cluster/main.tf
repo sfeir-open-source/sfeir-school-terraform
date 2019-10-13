@@ -5,18 +5,6 @@ resource "google_project_service" "container" {
 }
 
 resource "google_container_cluster" "primary" {
-  project            = var.gcp_project
-  name               = var.name
-  location           = var.location
-  initial_node_count = var.initial_node_count
-
-  node_config {
-    machine_type = var.maschine_type
-    oauth_scopes = [
-      "https://www.googleapis.com/auth/logging.write",
-      "https://www.googleapis.com/auth/monitoring",
-    ]
-  }
-
+  // Create a GKE cluster using variables.tf values
   depends_on = ["google_project_service.container"]
 }

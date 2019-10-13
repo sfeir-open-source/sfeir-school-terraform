@@ -1,5 +1,3 @@
 module "my-sql-instance" {
-  source        = "./sql-database"
-  instance_name = "demo-instance"
-  gcp_project   = var.gcp_project
+  // Use the sql-database module with a custom instance_name
 }

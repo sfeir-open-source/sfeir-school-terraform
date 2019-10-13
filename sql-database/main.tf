@@ -1,13 +1,13 @@
 resource "random_password" "password" {
+  // Create a new password with special chars and 16 characters
   length  = 16
   special = true
 }
 
 resource "google_sql_database_instance" "master" {
-  name    = var.instance_name
-  project = var.gcp_project
-  region  = var.region
+  // Create a new sql database with variables.tf content
 
+  // We allow internet access only for lab purpose
   settings {
     tier = "db-f1-micro"
     ip_configuration {
@@ -20,19 +20,10 @@ resource "google_sql_database_instance" "master" {
 }
 
 resource "google_sql_user" "users" {
-  name     = var.username
-  project  = var.gcp_project
-  instance = google_sql_database_instance.master.name
-  password = random_password.password.result
+  // Create the database user
 }
 
 resource "vault_generic_secret" "example" {
+  // Put the password in vault
   path = "secret/demo-user"
-
-  data_json = <<EOT
-{
-  "user":   "${google_sql_user.users.name}",
-  "password": "${random_password.password.result}"
-}
-EOT
 }
