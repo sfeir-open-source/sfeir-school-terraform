@@ -9,19 +9,16 @@ resource "google_storage_bucket" "store" {
   location = "EU"
 }
 
-## Before 0.12
-resource "google_storage_bucket_object" "files_count" {
-  count   = length(keys(var.files))
-  name    = format("%s-count", lower(element(keys(var.files), count.index)))
-  content = var.files[element(keys(var.files), count.index)]
-  bucket  = google_storage_bucket.store.name
-}
-
 ## Since 0.12
 resource "google_storage_bucket_object" "files_for_each" {
+  // Put all files contained in var.files in cloud storage using for_each (add -for suffix in the file name)
   for_each = var.files
-  name     = format("%s-for_each", lower(each.key))
-  content  = each.value
-  bucket   = google_storage_bucket.store.name
 }
 
+/*
+*## Before 0.12
+*resource "google_storage_bucket_object" "files_count" {
+*  // Put all files contained in var.files in cloud storage using count (add -count suffix in the file name)
+*  count   = length(keys(var.files))
+*}
+*/
