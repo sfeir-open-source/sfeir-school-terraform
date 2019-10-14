@@ -1,6 +1,8 @@
 # Sfeir Institute Terraform
 ## Module-3b: Interpolations, looping and conditions
 #### Objective : 
+Create a new workspace using `terraform workspace new module-3b`
+
 As a user, I would like to push 2 configurations files in cloud storage in order to create VMs using *startup-script-url*.
 
 Do it using :
