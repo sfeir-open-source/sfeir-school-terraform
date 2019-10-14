@@ -87,7 +87,7 @@ Clean the previous deployment using `terraform destroy` and run a `bundle exec k
 
 
 ### Extra : Inspec-iggy
-*Disclamer* inspec-iggy is not yet compatible with terraform 0.12 (refer to [inspec-iggy/issues/31](https://github.com/mattray/inspec-iggy/issues/31)
+*Disclamer* inspec-iggy is not yet compatible with terraform 0.12 (refer to [inspec-iggy/issues/31: NoMethodError: undefined method each for nil:NilClass](https://github.com/mattray/inspec-iggy/issues/31)). 
 - Download terraform 0.11 version.
 - Clone inspec-gcp repository to use latest resources definitions
 - Update `main.tf` to work with 0.11 version
