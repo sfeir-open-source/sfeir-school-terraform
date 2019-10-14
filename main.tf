@@ -1,5 +1,5 @@
 resource "null_resource" "check-version" {
-  triggers {
+  triggers = {
     message = "Hello World"
   }
 }

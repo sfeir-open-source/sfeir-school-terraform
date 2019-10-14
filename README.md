@@ -26,7 +26,7 @@ $ curl https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VER
 
 Then unzip & install : 
 ```
-$ sudo unzip /tmp/terraform_0.12.7_linux_amd64.zip -d /usr/local/bin/
+$ sudo unzip /tmp/terraform_${TF_VERSION}_linux_amd64.zip -d /usr/local/bin/
 ```
 Notes : It's recommended to keep old Terraform version because the version is saved in state file you will see later. You can keep multiples versions of terraform using different binaries with the suffix "version". 
 Exemple : 
