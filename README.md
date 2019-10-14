@@ -10,8 +10,8 @@ Bundler use `Gemfile` to list all `gems` required by the application.
 Create a new `Gemfile` with the content : 
 ```ruby
 source "https://rubygems.org/" do
-  gem 'inspec-bin'
-  gem 'inspec'
+  gem 'inspec-bin', '=4.16.0'
+  gem 'inspec', '=4.16.0'
   gem 'kitchen-google'
   gem 'kitchen-terraform'
   gem 'kitchen-ssh'
@@ -19,6 +19,7 @@ source "https://rubygems.org/" do
   gem 'test-kitchen'
 end
 ```
+*Note* : inspec version is forced due to issue [inspec/issues/4562](https://github.com/inspec/inspec/issues/4562) when using inspec-gcp archive.
 
 Then run `bundle install` to install packages.
 
@@ -64,7 +65,7 @@ The command will create a `local-test/inspec.yml` file.
 #### inspec-gcp
 You can generate a new inspec profile named `default` for inspec-gcp tests using `bundle exec inspec init profile --platform gcp default`
 - Update the `default/attributes.yml` to configure the gcp project id
-- Run tests using `bundle exec inspec exec default -t gcp:// --attrs attributes.yml`
+- Run tests using `bundle exec inspec exec default -t gcp:// --input-file attributes.yml --show-progress --color`
 
 Add a new control to check your DNS zone.
 
