@@ -40,7 +40,7 @@ $ export VAULT_ADDR=http://$(kubectl get services -l "app=vault" -o jsonpath="{.
 Installation :
 ```
 $ export VAULT_VERSION=1.2.3
-$ curl https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
+$ wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
 $ sudo unzip vault_$VAULT_VERSION_linux_amd64.zip -d /usr/bin/
 ```
 
