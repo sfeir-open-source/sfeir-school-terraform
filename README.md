@@ -4,9 +4,9 @@
 [GCS Backend](https://www.terraform.io/docs/backends/types/gcs.html) stores the state in a Google Cloud Storage bucket.
 
 #### Backend configuration
-- Create a GCS bucket (manually)
-- Generate a GCP service account and add the `storage.admin` role on the bucket.
-- Generate a json key (will be used by gitlab)
+- Create a GCS bucket
+- Generate a GCP service account and add the `storage.admin, compute.admin` role on the bucket.
+- Generate a json key
 
 You can now configure a deployment to use the bucket.
 
@@ -46,7 +46,7 @@ Let `gitlab-ci` deploy the production.
 
 - Create a new gitlab repository
 - In Settings -> CI/CD, configure 3 environment variables :
-	- `TF_VAR_instance_name` with the desired instance name.
+	- `TF_VAR_application_name` with the desired instance name.
 	- `TF_VAR_machine_type` with the desired machine type.
 	- `GOOGLE_CREDENTIALS` with the service account key content (without new lines)
 
