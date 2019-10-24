@@ -23,3 +23,7 @@ Do it using :
 Once the 4 objects are created (2 with `count`, 2 with `for_each`), add a new config file `"config-pp"   = "env = pp"`.
 
 What's happened when you run again `terraform plan` ?
+
+### Cleanup
+
+Once lab is completed, use `terraform destroy` to remove resources managed by terraform
