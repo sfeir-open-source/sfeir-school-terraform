@@ -69,7 +69,7 @@ In your workspace, create a `test/integration` folder.
 In this folder, run the command `bundle exec inspec init profile local-test` to create a new configuration for inspec.
 The command will create a `local-test/inspec.yml` file.
 
-* Test the sample using `bundle exec inspect test local-test`
+* Test the sample using `bundle exec inspec exec local-test`
 * Observe the code in `local-test/controls/example.rb`
 
 #### inspec-gcp
@@ -77,7 +77,7 @@ The command will create a `local-test/inspec.yml` file.
 You can generate a new inspec profile named `default` for inspec-gcp tests using `bundle exec inspec init profile --platform gcp default`.
 
 * Update the `default/attributes.yml` to configure the gcp project id
-* Run tests using `bundle exec inspec exec default -t gcp:// --input-file attributes.yml --show-progress --color`
+* Run tests using `bundle exec inspec exec default -t gcp:// --input-file default/attributes.yml --show-progress --color`
 
 Add a new control to check your DNS zone.
 
