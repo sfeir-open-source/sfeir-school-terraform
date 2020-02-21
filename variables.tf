@@ -1,6 +1,5 @@
 variable "gcp_project" {
-  type        = "string"
+  type        = string
   description = "GCP project use to deploy resources."
 }
-
 
