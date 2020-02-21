@@ -18,5 +18,6 @@ resource "google_container_cluster" "primary" {
     ]
   }
 
-  depends_on = ["google_project_service.container"]
+  depends_on = [google_project_service.container]
 }
+
