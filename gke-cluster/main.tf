@@ -6,5 +6,6 @@ resource "google_project_service" "container" {
 
 resource "google_container_cluster" "primary" {
   // Create a GKE cluster using variables.tf values
-  depends_on = ["google_project_service.container"]
+  depends_on = [google_project_service.container]
 }
+
