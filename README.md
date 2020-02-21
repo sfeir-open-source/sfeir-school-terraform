@@ -2,6 +2,17 @@
 
 ## Module-3a: First Infrastructure Deployment
 
+### Provider configuration
+
+Take a look on [https://www.terraform.io/docs/providers/google/guides/provider_reference.html](https://www.terraform.io/docs/providers/google/guides/provider_reference.html).
+
+Google provider accepts multiple configuration to set credentials. Because you are in cloud shell, Google Application Default Credentials are already set. 
+If you run on you local machine, it's recommended to do the same using : 
+
+```shell
+gcloud auth application-default login
+```
+
 ### google_compute_instance
 
 Create a new instance GCP instance in the default network using the following setting :
