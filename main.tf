@@ -1,5 +1,5 @@
 resource "google_compute_instance" "tf_instance" {
-  name         = "${var.instance_name}"
+  name         = var.instance_name
   machine_type = "n1-standard-1"
   zone         = "europe-west1-b"
 
@@ -37,3 +37,4 @@ resource "google_compute_firewall" "allow-iap" {
 
   source_ranges = ["35.235.240.0/20"]
 }
+

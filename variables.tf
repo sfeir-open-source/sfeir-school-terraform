@@ -1,6 +1,5 @@
 variable "instance_name" {
-  type        = "string"
+  type        = string
   description = "Name of Google Cloud Instance"
 }
-
 
