@@ -2,13 +2,13 @@
   "name": "sfeirschoolxxx",
   "version": "1.0.0",
   "description": "Sfeir School XXX with revealJS",
-  "main": "index.js",
   "scripts": {
     "sass": "node-sass ./scss/xxx.scss -o ./css/ --source-map=true --watch=\"scss\" --recursive=\"scss\"",
     "sass-once": "node-sass ./scss/xxx.scss -o ./css/ --source-map=true ",
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "live-server --port=4242 --open=\"./index.html\" --watch=\"markdown/\"",
-    "start": "parallelshell \"npm run serve\" \"npm run sass\""
+    "start": "parallelshell \"npm run serve\" \"npm run sass\"",
+    "prepare": "snowpack"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,14 @@
     "node-sass": "^4.12.0",
     "parallelshell": "3.0.1",
     "reveal.js": "^3.8.0",
-    "sfeir-school-theme": "^1.0.0"
+    "sfeir-school-theme": "^2.0.0-rc"
+  },
+  "devDependencies": {
+    "snowpack": "^1.6.0"
+  },
+  "snowpack": {
+    "webDependencies": [
+      "sfeir-school-theme/dist/**/*"
+    ]
   }
 }

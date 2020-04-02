@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "sfeir-school-theme/dist/js/sfeir-theme.js": "./sfeir-school-theme/dist/js/sfeir-theme.js"
+  }
+}
