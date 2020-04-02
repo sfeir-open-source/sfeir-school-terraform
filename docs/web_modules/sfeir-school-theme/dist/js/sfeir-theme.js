@@ -42,10 +42,22 @@ class SfeirTheme {
 	};
 
 	_manageFavIcon(){
+		const resolutions = [
+			'16x16',
+			'32x32',
+			'96x96'];
+		for (let resolution of resolutions){
+			const link = document.createElement('link');
+			link.type = 'image/x-icon';
+			link.rel = 'shortcut icon';
+			link.sizes= resolution;
+			link.href = `${this.path}images/favicon-${resolution}.png`;
+			document.getElementsByTagName('head')[0].appendChild(link);
+		}
 		const link = document.createElement('link');
 		link.type = 'image/x-icon';
 		link.rel = 'shortcut icon';
-		link.href = `${this.path}images/logo_sfeir_burger.png`;
+		link.href = `${this.path}images/favicon.ico`;
 		document.getElementsByTagName('head')[0].appendChild(link);
 
 	}
@@ -58,10 +70,10 @@ class SfeirTheme {
 			'school-presentation': `${this.path}images/bg-school.png`,
 			'speaker-slide': `${this.path}images/bg-grey-axololt.png`,
 			'sfeir-slide': `${this.path}images/bg-grey-axololt.png`,
-			'bg-white': `${this.path}images/bg-grey-8.png`,
-			'bg-pink': `${this.path}images/bg-grey-8.png`,
-			'bg-blue': `${this.path}images/bg-grey-8.png`,
-			'bg-green': `${this.path}images/bg-grey-8.png`,
+			'bg-white': `${this.path}images/bg-grey-axololt.png`,
+			'bg-pink': `${this.path}images/bg-grey-axololt.png`,
+			'bg-blue': `${this.path}images/bg-grey-axololt.png`,
+			'bg-green': `${this.path}images/bg-grey-axololt.png`,
 			'sfeir-bg-axololt': `${this.path}images/bg-grey-axololt.png`,
 			'transition-bg-grey-1': `${this.path}images/bg-grey-1.png`,
 			'transition-bg-grey-2': `${this.path}images/bg-grey-2.png`,
@@ -70,7 +82,6 @@ class SfeirTheme {
 			'transition-bg-grey-5': `${this.path}images/bg-grey-5.jpg`,
 			'transition-bg-grey-6': `${this.path}images/bg-grey-6.jpg`,
 			'transition-bg-grey-7': `${this.path}images/bg-grey-7.jpg`,
-			'transition-bg-grey-8': `${this.path}images/bg-grey-8.png`,
 		};
 
 		for (let key in map){
