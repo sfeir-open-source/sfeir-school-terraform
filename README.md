@@ -1,19 +1,20 @@
 # About
+
 Template repository for Sfeir School, this template could be use to start a school with revealJS and sfeir school theme
 
 Don't forget to replace all xxx by your techno
 
 ## Files to changes
 
-* `docs/scss/xxx.scss` the entry point for your custom styles.
-* `docs/package.json` you should change the tasks `sass` and `sass-once` to reference your scss file
-* `docs/index.html` you should reference your markdown files and the the correct css file
+- `docs/scss/slides.scss` you could put here all your custom styles
+- `docs/scripts/slides.js` you will reference all the markdown here. Don't forget to have 1 function per chapter (module).
+- `docs/index.html` you should reference the correct technology in header
 
 # Content of README
 
 The text below is the template you could use for your readme
 
-# XXX 
+# XXX
 
 A [SFEIR School](https://www.sfeir.com/formation/school/)
 

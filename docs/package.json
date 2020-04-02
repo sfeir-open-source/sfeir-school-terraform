@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "Sfeir School XXX with revealJS",
   "scripts": {
-    "sass": "node-sass ./scss/xxx.scss -o ./css/ --source-map=true --watch=\"scss\" --recursive=\"scss\"",
-    "sass-once": "node-sass ./scss/xxx.scss -o ./css/ --source-map=true ",
+    "sass": "node-sass ./scss/slides.scss -o ./css/ --source-map=true --watch=\"scss\" --recursive=\"scss\"",
+    "sass-once": "node-sass ./scss/slides.scss -o ./css/ --source-map=true ",
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "live-server --port=4242 --open=\"./index.html\" --watch=\"markdown/\"",
     "start": "parallelshell \"npm run serve\" \"npm run sass\"",
-    "prepare": "snowpack"
+    "copy-highlight": "cpx \"node_modules/highlight.js/styles/**/*\" \"web_modules/highlight.js/styles\" ",
+    "copy-reveal": "cpx \"node_modules/reveal.js/**/*\" \"web_modules/reveal.js\" ",
+    "prepare": "parallelshell \"npm run copy-reveal\"  \"npm run copy-highlight\" \"snowpack\""
   },
   "repository": {
     "type": "git",
@@ -25,21 +27,23 @@
   },
   "homepage": "https://github.com/sfeir-open-source/sfeir-school-template",
   "dependencies": {
-    "chokidar-cli": "^1.2.2",
-    "cpx": "^1.5.0",
     "highlight.js": "^9.15.6",
-    "live-server": "^1.2.1",
-    "node-sass": "^4.12.0",
-    "parallelshell": "3.0.1",
+    "lit-html": "^1.2.1",
     "reveal.js": "^3.8.0",
     "sfeir-school-theme": "^2.0.0-rc-2"
   },
   "devDependencies": {
+    "chokidar-cli": "^1.2.2",
+    "cpx": "^1.5.0",
+    "live-server": "^1.2.1",
+    "node-sass": "^4.12.0",
+    "parallelshell": "3.0.1",
     "snowpack": "^1.6.0"
   },
   "snowpack": {
     "webDependencies": [
-      "sfeir-school-theme/dist/**/*"
+      "sfeir-school-theme/dist/**/*",
+      "lit-html"
     ]
   }
 }
