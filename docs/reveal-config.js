@@ -60,11 +60,8 @@ Reveal.initialize({
         }
       },
       {
-        src: 'school-theme/js/reveal-notes.js',
-        async: true,
-        condition: function() {
-          return !!document.body.classList;
-        }
+        src: './libs/revealjs/plugin/notes/notes.js',
+        async: true
       }
       // { src: 'node_modules/reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
       // { src: 'node_modules/reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }

@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "slides.css",
+	"sources": [
+		"../scss/slides.scss"
+	],
+	"names": [],
+	"mappings": ""
+}
