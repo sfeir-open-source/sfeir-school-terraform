@@ -145,12 +145,17 @@ class SfeirTheme {
 				console.log(event);
 				const currentSlide = event.currentSlide;
 				const parentSlide = currentSlide.parentElement;
+				// Have to rewrite block due to override of reveal
 				if (parentSlide.nodeName === 'SECTION' 
-					&& parentSlide.classList.contains('two-column-layout')){
-						const state = Reveal.getState();
-						state.indexv = 2;
-						Reveal.setState(state);
-						parentSlide.style.display='grid';
+				&& parentSlide.classList.contains('two-column-layout')){
+					const state = Reveal.getState();
+					state.indexv = 2;
+					Reveal.setState(state);
+					parentSlide.style.display='grid';
+
+					// Have to rewrite block due to bug 
+					const subSections = [...parentSlide.querySelectorAll('section')];
+					subSections[0].style.display='block';
 				}
 			});
 		}

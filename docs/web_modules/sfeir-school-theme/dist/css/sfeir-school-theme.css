@@ -1122,6 +1122,32 @@ img[alt*=wm-1000], .wm-1000, .wm-1000 + * {
   .reveal .slides section.sfeir-basic-slide[class*="transition"].underline.blue h1:before,
   .reveal .slides section.sfeir-specific-slide[class*="transition"].underline.blue h1:before {
     background: #575eaa; }
+  .reveal .slides section[class*="transition"].left h1, .reveal .slides section[class*="transition"].right h1,
+  .reveal .slides section.sfeir-basic-slide[class*="transition"].left h1,
+  .reveal .slides section.sfeir-basic-slide[class*="transition"].right h1,
+  .reveal .slides section.sfeir-specific-slide[class*="transition"].left h1,
+  .reveal .slides section.sfeir-specific-slide[class*="transition"].right h1 {
+    margin-left: initial; }
+  .reveal .slides section[class*="transition"].left h1,
+  .reveal .slides section.sfeir-basic-slide[class*="transition"].left h1,
+  .reveal .slides section.sfeir-specific-slide[class*="transition"].left h1 {
+    text-align: left; }
+  .reveal .slides section[class*="transition"].right h1,
+  .reveal .slides section.sfeir-basic-slide[class*="transition"].right h1,
+  .reveal .slides section.sfeir-specific-slide[class*="transition"].right h1 {
+    text-align: left; }
+  .reveal .slides section[class*="transition"].top h1,
+  .reveal .slides section.sfeir-basic-slide[class*="transition"].top h1,
+  .reveal .slides section.sfeir-specific-slide[class*="transition"].top h1 {
+    margin-top: 50px; }
+  .reveal .slides section[class*="transition"].bottom h1,
+  .reveal .slides section.sfeir-basic-slide[class*="transition"].bottom h1,
+  .reveal .slides section.sfeir-specific-slide[class*="transition"].bottom h1 {
+    margin-top: 800px; }
+  .reveal .slides section[class*="transition"].bg-white:not(h1),
+  .reveal .slides section.sfeir-basic-slide[class*="transition"].bg-white:not(h1),
+  .reveal .slides section.sfeir-specific-slide[class*="transition"].bg-white:not(h1) {
+    color: #434343; }
 
 .reveal .slides section[class*="transition-left"] h1,
 .reveal .slides section.sfeir-basic-slide[class*="transition-left"] h1,
@@ -1135,13 +1161,11 @@ img[alt*=wm-1000], .wm-1000, .wm-1000 + * {
   text-align: right;
   margin-right: initial; }
 
-.reveal .backgrounds div.slide-background.transition.bg-white, .reveal .backgrounds div.slide-background.transition.bg-blue, .reveal .backgrounds div.slide-background.transition.bg-green, .reveal .backgrounds div.slide-background.transition.bg-pink {
-  position: relative; }
-  .reveal .backgrounds div.slide-background.transition.bg-white:after, .reveal .backgrounds div.slide-background.transition.bg-blue:after, .reveal .backgrounds div.slide-background.transition.bg-green:after, .reveal .backgrounds div.slide-background.transition.bg-pink:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%; }
+.reveal .backgrounds div.slide-background.transition.bg-white:after, .reveal .backgrounds div.slide-background.transition.bg-blue:after, .reveal .backgrounds div.slide-background.transition.bg-green:after, .reveal .backgrounds div.slide-background.transition.bg-pink:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%; }
 
 .reveal .backgrounds div.slide-background.transition.bg-white:after {
   background: rgba(255, 255, 255, 0.7); }
@@ -1214,7 +1238,7 @@ Darcula color scheme from the JetBrains family of IDEs
 .reveal .backgrounds div.slide-background.with-code-dark {
   background-color: #3f3f3f; }
 
-.reveal .slides section.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h2 {
+.reveal .slides section.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h1, .reveal .slides section.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h2 {
   color: white; }
 
 .reveal .slides section.with-code pre,
@@ -1243,12 +1267,16 @@ Darcula color scheme from the JetBrains family of IDEs
 
 .reveal .slides section.with-code pre.big-code:not(.literal),
 .reveal .slides section.with-code-dark pre.big-code:not(.literal) {
-  position: absolute;
-  top: 20vh; }
+  position: relative;
+  top: 0; }
   .reveal .slides section.with-code pre.big-code:not(.literal) code,
   .reveal .slides section.with-code-dark pre.big-code:not(.literal) code {
     font-size: 1.5em;
     line-height: 2.1em; }
+  .reveal .slides section.with-code pre.big-code:not(.literal).alone,
+  .reveal .slides section.with-code-dark pre.big-code:not(.literal).alone {
+    position: absolute;
+    top: 20vh; }
 
 .reveal .slides section.with-code.consolas pre, .reveal .slides section.with-code.consolas pre code,
 .reveal .slides section.with-code-dark.consolas pre,
@@ -1309,7 +1337,7 @@ Darcula color scheme from the JetBrains family of IDEs
   .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) ol,
   .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) p {
     text-align: left;
-    font-size: 1.5em; }
+    font-size: 1.2em; }
 
 .reveal .slides section.school-presentation .wifi {
   font-weight: 800;
