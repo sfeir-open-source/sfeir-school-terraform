@@ -8,9 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "live-server --port=4242 --open=\"./index.html\" --watch=\"markdown/\"",
     "start": "parallelshell \"npm run serve\" \"npm run sass\"",
-    "copy-highlight": "cpx \"node_modules/highlight.js/styles/**/*\" \"web_modules/highlight.js/styles\" ",
-    "copy-reveal": "cpx \"node_modules/reveal.js/**/*\" \"web_modules/reveal.js\" ",
-    "prepare": "parallelshell \"npm run copy-reveal\"  \"npm run copy-highlight\" \"snowpack\""
+    "prepare": "snowpack"
   },
   "repository": {
     "type": "git",
@@ -34,7 +32,6 @@
   },
   "devDependencies": {
     "chokidar-cli": "^1.2.2",
-    "cpx": "^1.5.0",
     "live-server": "^1.2.1",
     "node-sass": "^4.12.0",
     "parallelshell": "3.0.1",
@@ -43,7 +40,9 @@
   "snowpack": {
     "webDependencies": [
       "sfeir-school-theme/dist/**/*",
-      "lit-html"
+      "lit-html",
+      "reveal.js/**/^(?!LICENSE)(.*)",
+      "highlight.js/style/**/*"
     ]
   }
 }
