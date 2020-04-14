@@ -1,0 +1,155 @@
+<!-- .slide: class="transition"-->
+
+# Configuration de l’environnement de développement
+
+##==##
+<!-- .slide: -->
+
+# Configuration de l’environnement de développement
+
+## Aides au développement
+
+![float-right](./assets/images/ide.png)
+
+* Mise en forme
+* Auto-completion
+* Validation de syntaxe
+
+<br/><br/>
+
+https://marketplace.visualstudio.com/items?itemName=mauve.terraform
+https://github.com/hashivim/vim-terraform
+https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support
+
+##==##
+<!-- .slide: class="two-column-layout" -->
+# Configuration de l’environnement de développement
+
+## Génération de documentation
+
+##==##
+<!-- .slide: class="with-code"-->
+<br/><br/>
+
+https://github.com/segmentio/terraform-docs
+
+<br/>
+
+```bash
+terraform-docs md . > README.md
+```
+
+##==##
+<!-- .slide: -->
+
+![float-right w-700](./assets/images/g418fd663c2_0_746.png)
+
+##==##
+<!-- .slide: -->
+# Configuration de l’environnement de développement
+
+## Gestion des fichiers et bonnes pratiques
+Il n’y a pas de normes imposées par l’outil mais un ensemble de bonnes pratiques : 
+* Tous les fichiers *.tf sont automatiquement analysés lors de l'exécution de terraform
+* Il est possible de dissocier les variables et outputs du code
+* Chaque “feature” peut faire l’objet d’un nouveau fichier .tf
+* Les tests sont regroupés dans un dossier test
+* Les modules peuvent être stockés localement
+
+```
+.
+├── main.tf
+├── Makefile
+├── project.tf
+├── README.md
+├── outputs.tf
+├── test
+│   ├── fixtures
+│   │   └── unit_tests_variables.tfvars
+└── variables.tf
+```
+
+##==##
+<!-- .slide:-->
+
+# Configuration de l’environnement de développement
+
+## Gestion des fichiers et bonnes pratiques
+
+* La communauté utilise le snake_case
+* Il est important d’utiliser l’attribut description des variables
+* L’utilisation du HCL permet de créer des scripts/programmes permettant de générer automatiquement la déclaration des variables
+
+```bash
+alias terraform-genvar='(for i in $(egrep -oh '\''var\.\w+'\'' *.tf | sed -nr '\''s/var\.//p'\''); do echo "variable \"$i\" {}"; done;)'
+```
+
+* L’utilisation d’un .editorconfig permet aux développeurs d’utiliser un même format
+
+##==##
+<!-- .slide:-->
+
+# QUIZZ
+
+<br/>
+
+*Question* : Est-il possible d’utiliser 2 ressources de même type et nom dans 2 fichiers différents ? 
+
+<br/>
+
+1. Oui
+2. Non
+
+##==##
+<!-- .slide:-->
+
+# QUIZZ
+
+<br/>
+
+*Question* : Est-il possible d’utiliser 2 ressources de même type et nom dans 2 fichiers différents ? 
+
+<br/>
+
+1. Oui
+2. **Non**
+
+
+##==##
+<!-- .slide:-->
+
+# QUIZZ
+
+<br/>
+
+*Question* : Comment déployer, mettre à jour ou supprimer une ressource parmis plusieurs sans impacter les autres ?
+
+<br/>
+
+1. Utilisation du paramètre -target
+2. En commentant les autres
+3. En créant un nouveau dossier contenant la déclaration de la ressource
+4. Ce n’est pas possible
+
+##==##
+<!-- .slide:-->
+
+# QUIZZ
+
+<br/>
+
+*Question* : Comment déployer, mettre à jour ou supprimer une ressource parmis plusieurs sans impacter les autres ?
+
+<br/>
+
+1. **Utilisation du paramètre -target**
+2. En commentant les autres
+3. En créant un nouveau dossier contenant la déclaration de la ressource
+4. Ce n’est pas possible
+
+##==##
+<!-- .slide: class="exercice" -->
+
+# Configuration de l’environnement de développement
+ 
+## Atelier

@@ -1,0 +1,44 @@
+.reveal .slides section {
+  &.center, .center {
+    text-align: center;
+  }
+  .big-text {
+    font-size: 3em;
+  }
+
+  code {
+    padding: 40px 0;
+    max-height: unset !important;
+  }
+
+  &.sfeir-basic-slide {
+    .center-big {
+      text-align: center;
+      font-size: 2.5em;
+      color: black;
+    }
+    h1.center-big {
+      font-size: 3em;
+    }
+  }
+
+  &.with-code,
+  &.with-code-dark {
+    pre.big-code:not(.literal) {
+      position: relative;
+      top: 0;
+    }
+  }
+
+  img[alt*='full-width-screen'] {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  img[alt*='bottom'] {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
