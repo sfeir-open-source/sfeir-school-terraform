@@ -38,7 +38,7 @@ Hashicorp met à disposition un ensemble de modules officiels sur sa propre regi
 
 
 ##==##
-<!-- .slide: class="with-code" -->
+<!-- .slide: class="with-code-bg-dark" -->
 
 # Modules
 
@@ -46,8 +46,7 @@ Hashicorp met à disposition un ensemble de modules officiels sur sa propre regi
 
 => *cat gke.tf*
 
-
-```hcl-terraform
+```hcl
 module "gke-regional" {
  source  = "woernfl/gke-regional/gcp"
  version = "2.0.1"
@@ -111,7 +110,7 @@ Il est conseillé de ne pas le stocker localement mais sur :
 * De restreindre les accès (principe du least privilege) car ce fichier peut contenir des informations sensibles (IP, clef SSH, password, ...)
 
 ##==##
-<!-- .slide: class="with-code"-->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # Gestion de la concurrence et de la persistance
 
@@ -123,7 +122,7 @@ La configuration et le choix du backend se fait en déclarant un fichier *.tf (e
 
 <br/>
 
-```hcl-terraform
+```hcl
 terraform {
  backend "gcs" {
    project  = "foo"
@@ -132,6 +131,7 @@ terraform {
  }
 }
 ```
+<!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide:-->
@@ -195,13 +195,17 @@ Exemple : 
 * ...
 
 ##==##
-<!-- .slide: class="with-code"-->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # Gestion des credentials 
 
 # Utilisation de Vault
 
-```hcl-terraform
+<img style="position:fixed;top:10px;right:30px" src="./assets/images/g419a1b557d_2_152.png">
+
+<br/>
+
+```hcl
 data "vault_generic_secret" "rundeck_auth" {
  path = "secret/rundeck_auth"
 }
@@ -211,13 +215,9 @@ provider "rundeck" {
  auth_token = "${data.vault_generic_secret.rundeck_auth.data["auth_token"]}"
 }
 ```
-
-<br/>
+<!-- .element: class="big-code" -->
 
 _Attention, les attributs retournés par un data source apparaissent dans le fichier d’état (terraform.tfstate)_
-
-![float-center](./assets/images/g419a1b557d_2_152.png)
-
 
 ##==##
 <!-- .slide:-->

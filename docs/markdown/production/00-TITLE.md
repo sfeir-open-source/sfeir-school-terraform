@@ -27,7 +27,7 @@
 * terraform import google_compute_project_metadata_item.default ssh-keys 
 
 ##==##
-<!-- .slide: class="with-code"-->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # null_resource et provisioners
 
@@ -35,13 +35,14 @@
 
 Littéralement une ressource qui ne fait rien mais elle permet de manipuler des attributs, convertir des formats, lancer des scripts via les provisioners, ....
 
-```hcl-terraform
+```hcl
 resource "null_resource" "upper" {
  triggers {
    name = "${var.name == "" ? local.default_name : var.name}"
  }
 }
 ```
+<!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide:-->
@@ -58,13 +59,13 @@ Les provisioners permettent d’executer des scripts durant les phases de créat
 * https://www.terraform.io/docs/provisioners/index.html 
 
 ##==##
-<!-- .slide: class="big-code"-->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # null_resource et provisioners 
 
 ## provisioners
 
-```hcl-terraform
+```hcl
 resource "null_resource" "register" {
  depends_on       = ["google_compute_instance.inst"]
  provisioner "local-exec" {
@@ -72,6 +73,7 @@ resource "null_resource" "register" {
  }
 }
 ```
+<!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide:-->
@@ -114,8 +116,8 @@ Cas d’utilisations : 
 
 # Déploiement continu 
 
-##==##
-<!-- .slide: class="big-code" -->
+##--##
+<!-- .slide: class="with-code-bg-dark" -->
 ```yaml
 plan_production:
  stage: plan
@@ -130,9 +132,10 @@ plan_production:
    - terraform workspace select prod
    - terraform plan -input=false -out=prod.tfplan
 ```
+<!-- .element: class="big-code" -->
 
-##==##
-<!-- .slide: class="big-code" -->
+##--##
+<!-- .slide: class="with-code-bg-dark" -->
 ```yaml
 apply_production:
  stage: deploy
@@ -144,6 +147,7 @@ apply_production:
    - terraform workspace select prod
    - terraform apply -auto-approve -input=false prod.tfplan
 ```
+<!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide:-->

@@ -11,7 +11,7 @@ export function renderSlides(element, slides) {
           <section
             data-markdown="./markdown/${slide.path}"
             data-separator="##==##"
-            data-separator-vertical="##==##"
+            data-separator-vertical="##--##"
             data-separator-notes="^Notes:"
           ></section>
         `
