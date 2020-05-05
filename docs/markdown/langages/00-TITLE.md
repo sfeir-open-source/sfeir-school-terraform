@@ -44,7 +44,6 @@ La version 0.12 de terraform introduit de nouveaux types d’objets comme :
 * Nombre
 * Booléen
 * Structure anonyme (object)
-* Type complexe (list de map, map de list, map de map de map, …)
 
 
 ##==##
