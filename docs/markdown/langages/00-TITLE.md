@@ -374,8 +374,6 @@ Values passed within definition files or with -var will take precedence over TF_
 <!-- .slide: class="with-code-bg-dark"-->
 
 # HashiCorp Interpolation Language (HIL)
-
-<br/>
  
 https://github.com/hashicorp/hil
 

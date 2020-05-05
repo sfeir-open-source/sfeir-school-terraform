@@ -7,7 +7,7 @@
 
 # Introduction à Terraform
 
-![h-900](./assets/images/g418fd663c2_0_148.png)
+![h-800](./assets/images/g418fd663c2_0_148.png)
 
 Notes:
 (vault)

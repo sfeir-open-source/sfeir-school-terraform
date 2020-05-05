@@ -84,8 +84,6 @@ module "gke-regional" {
 
 # Gestion de la concurrence et de la persistance
 
-<br/>
-
 *Le fichier d’état “terraform.tfstate”*
 
 <br/>
@@ -100,8 +98,6 @@ module "gke-regional" {
 
 # Gestion de la concurrence et de la persistance
 
-<br/>
-
 *Le fichier d’état “terraform.tfstate”*
  
 Ce fichier est critique, en cas de perte, Terraform “oubliera” l’ensemble des ressources qu’il a créé.<br/>
@@ -113,8 +109,6 @@ Il est conseillé de ne pas le stocker localement mais sur :
 <!-- .slide: class="with-code-bg-dark"-->
 
 # Gestion de la concurrence et de la persistance
-
-<br/>
 
 *Le fichier d’état “terraform.tfstate”*
 
@@ -138,8 +132,6 @@ terraform {
 
  # Gestion de la concurrence et de la persistance
 
-<br/>
-
 *Le fichier d’état “terraform.tfstate”*
 
 
@@ -153,8 +145,6 @@ Terraform propose la commande **terraform force-unlock** si mon déploiement res
 <!-- .slide:-->
 
 # Manipulation du fichier d’état
-
-<br/>
 
 *“terraform.tfstate”*
 
@@ -183,8 +173,6 @@ on veut spliter un workspace devenu trop gros en plusieurs petit workspaces
 
 # Gestion des credentials
 
-<br/>
-
 Il est possible d’utiliser les variables d’environnement pour fournir aux provider des identifiants. Chaque provider défini ses variables d’environnement.
  
 Exemple : 
@@ -199,7 +187,7 @@ Exemple : 
 
 # Gestion des credentials 
 
-# Utilisation de Vault
+## Utilisation de Vault
 
 <img style="position:fixed;top:10px;right:30px" src="./assets/images/g419a1b557d_2_152.png">
 

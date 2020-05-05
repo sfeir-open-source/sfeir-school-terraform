@@ -172,7 +172,7 @@ https://www.hashicorp.com/products/terraform/offerings
 
 # Présentation de l’offre pour les entreprises Terraform Cloud 
 
-<iframe src="https://drive.google.com/file/d/1EJYtycVmeLKITPD1y2oGp2pQX2TItfVH/preview" width="90%" height="90%"></iframe>
+<iframe src="https://drive.google.com/file/d/1EJYtycVmeLKITPD1y2oGp2pQX2TItfVH/preview" width="80%" height="80%"></iframe>
 
 Notes:
 liste des features sur : 
@@ -212,7 +212,7 @@ https://www.terraform.io/docs/extend/writing-custom-providers.html
 
 # Développement et utilisation de providers communautaires 
 
-# DeepDive du provider Google
+## DeepDive du provider Google
 Magic-modules de Google est un projet qui consiste à générer automatiquement les ressources Terraform, inspec et ansible depuis le contrat d’API des ressources Google Cloud
 
 <br/>
