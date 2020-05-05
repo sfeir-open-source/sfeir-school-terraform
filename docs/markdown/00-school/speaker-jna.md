@@ -3,7 +3,7 @@
 # Presentation
 
 ![speaker](./assets/images/speakers/JNA.png)
-![company](./assets/images/logo_sfeir_bleu_orange.png)
+![company](./assets/images/logo-sfeir-blanc.png)
 
 
 <h2> Jérôme <span>NAHELOU</span></h2>

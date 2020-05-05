@@ -48,7 +48,7 @@ La version 0.12 de terraform introduit de nouveaux types d’objets comme :
 
 
 ##==##
-<!-- .slide: class="with-code" -->
+<!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -56,7 +56,8 @@ La version 0.12 de terraform introduit de nouveaux types d’objets comme :
 
 ## Exemple
 
-```hcl-terraform
+
+```hcl
 provider "google" {
  region = "europe-west1"
 }
@@ -73,9 +74,10 @@ resource "google_compute_instance" "instance" {
  }
 }
 ```
+<!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: class="with-code" -->
+<!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -87,21 +89,23 @@ Les variables permettent d’adapter les attributs en fonction de différents cr
 
 Déclaration : 
 
-```hcl-terraform
+```hcl
 variable "num_cpu" {
  type = "string"
  description = "This variable define the number of CPU"
  default = "2"
 }
 ```
+<!-- .element: class="big-code" -->
 
 Utilisation : 
-```hcl-terraform
+```hcl
 num_cpu = "${var.num_cpu}"
 ```
+<!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: class="with-code" -->
+<!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -110,20 +114,21 @@ num_cpu = "${var.num_cpu}"
 ## Variables locales 
 
 Déclaration : 
-```hcl-terraform
+```hcl
 locals {
  instance_names = ["inst-a", "inst-b"]
 }
 ```
+<!-- .element: class="big-code" -->
 
 Utilisation : 
-```hcl-terraform
+```hcl
 instance_names = ["${local.instance_names}"]
 ```
-
+<!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: class="with-code" -->
+<!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -136,16 +141,17 @@ Le provider fournit un ensemble de primitives permettant de lire, créer, modifi
 * Il est possible d’utiliser plusieurs déclarations d’un même provider en utilisant l’attribut spécial “alias” (appelé meta-parameter)
 * Il est possible de forcer une version du provider via l’attribut “version”. Par défaut, terraform utilise la dernière version.
 
-```hcl-terraform
+```hcl
 provider "google" {
  credentials = "${file("account.json")}"
  project     = "my-project-id"
  region      = "us-central1"
 }
 ```
+<!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: class="with-code" -->
+<!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -156,7 +162,7 @@ Les ressources sont les composantes de l’infrastructure.
 Elles peuvent être une instance, un loadbalancer, une règle firewall, etc, …<br/>
 Elles doivent respecter la syntaxe : resource "TYPE" "NAME”
 
-```hcl-terraform
+```hcl
 resource "google_compute_firewall" "default" {
  name    = "test-firewall"
  network = "${google_compute_network.default.name}"
@@ -166,6 +172,7 @@ resource "google_compute_firewall" "default" {
  }
 }
 ```
+<!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide:-->
@@ -194,7 +201,7 @@ depends_on : Forcer une dépendance. Par défaut toute “variable interpolée�
 provider : Permet de surcharger le provider de la ressource par exemple lors de l’utilisation d’alias sur plusieurs providers.
 
 ##==##
-<!-- .slide: class="with-code" -->
+<!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -205,14 +212,15 @@ provider : Permet de surcharger le provider de la ressource par exemple lors de 
 Les outputs sont affichées en surbrillance à la fin du déploiement Terraform. 
 Elles permettent aux utilisateurs d’afficher des attributs calculés ou retournés par le provider.
 
-```hcl-terraform
+```hcl
 output "addresses" {
  value = ["${aws_instance.web.*.public_dns}"]
 }
 ```
+<!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: class="with-code"-->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -222,7 +230,7 @@ output "addresses" {
 
 Le data source permet de récupérer des attributs non gérés par Terraform.
 
-```hcl-terraform
+```hcl
 data "google_compute_image" "my_image" {
  family  = "debian-9"
  project = "debian-cloud"
@@ -231,6 +239,7 @@ data "google_compute_image" "my_image" {
 [...]
 image = "${data.google_compute_image.my_image.self_link}"
 ```
+<!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide:-->
@@ -362,17 +371,15 @@ Values passed within definition files or with -var will take precedence over TF_
 ## Atelier
 
 ##==##
-<!-- .slide: class="with-code"-->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # HashiCorp Interpolation Language (HIL)
-
-<br/>
  
 https://github.com/hashicorp/hil
 
 Le Langage permet de manipuler des variables ou récupérer des attributs d’autres ressources.L’interpolation doit être déclaré entre “${ ... }” 
 
-```hcl-terraform
+```hcl
 data "template_file" "example" {
  template = "${file("templates/greeting.tpl")}"
  vars {
@@ -381,6 +388,7 @@ data "template_file" "example" {
  }
 }
 ```
+<!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide:-->
@@ -401,7 +409,7 @@ Cas d’une liste de resource (version < 0.12) : `resource_type.resource_name.*.
 
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # HashiCorp Interpolation Language (HIL)
 
@@ -409,11 +417,12 @@ Cas d’une liste de resource (version < 0.12) : `resource_type.resource_name.*.
 
 Exemple d’utilisation des fonctions :
 
-```hcl-terraform
+```hcl
   count     = "${length(var.shortnames)}"
   upper-foo = "${upper(var.foo)}"
   lower-foo = "${lower(var.foo)}"
 ```  
+<!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide:-->
@@ -430,7 +439,7 @@ Attention, les boucles ne sont disponibles que pour les ressources et data sourc
 ![h-400 center](./assets/images/hil_boucle.png)
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # HashiCorp Interpolation Language (HIL)
 
@@ -440,7 +449,7 @@ Attention, les boucles ne sont disponibles que pour les ressources et data sourc
 
 Depuis la version 0.12, Terraform a introduit deux nouvelles manière d’itérer **For and For-Each**
 
-```hcl-terraform
+```hcl
 resource "vault_ldap_auth_backend_group" "group-users" {                                                                
   for_each  = local.bindings                                                                                            
   groupname = each.key                                                                                                  
@@ -448,13 +457,14 @@ resource "vault_ldap_auth_backend_group" "group-users" {
   backend   = vault_ldap_auth_backend.ldap.path                                                                          
 }
 ```
+<!-- .element: class="big-code" -->
 
 <br/>
 
 https://hashicorp.com/blog/hashicorp-terraform-0-12-preview-for-and-for-each
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # HashiCorp Interpolation Language (HIL)
 
@@ -464,20 +474,22 @@ https://hashicorp.com/blog/hashicorp-terraform-0-12-preview-for-and-for-each
 
 Les conditions permettent de définir des valeurs différentes en fonction des variables ou d’autres attributs
 
-```hcl-terraform
+```hcl
 resource "google_compute_instance" "web" {
    machine_type = "${var.env == "production" ? var.prod_size : var.dev_size}"
 }
 ```
+<!-- .element: class="big-code" -->
 
 **Avant Terraform 0.12, seul le type string était supporté comme valeur de retour.** 
 
-```hcl-terraform
+```hcl
 inputs = {
    v011 = "${element(split(",", "foo"=="foo" ? join(",", list("")) : join(",", list(""))), 0)}"
    v012 = "${element("foo"=="foo" ? list("") : list(""), 0)}"
  }
 ```
+<!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide:-->

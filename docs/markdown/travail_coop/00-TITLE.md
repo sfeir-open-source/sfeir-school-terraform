@@ -38,7 +38,7 @@ Hashicorp met à disposition un ensemble de modules officiels sur sa propre regi
 
 
 ##==##
-<!-- .slide: class="with-code" -->
+<!-- .slide: class="with-code-bg-dark" -->
 
 # Modules
 
@@ -46,8 +46,7 @@ Hashicorp met à disposition un ensemble de modules officiels sur sa propre regi
 
 => *cat gke.tf*
 
-
-```hcl-terraform
+```hcl
 module "gke-regional" {
  source  = "woernfl/gke-regional/gcp"
  version = "2.0.1"
@@ -85,8 +84,6 @@ module "gke-regional" {
 
 # Gestion de la concurrence et de la persistance
 
-<br/>
-
 *Le fichier d’état “terraform.tfstate”*
 
 <br/>
@@ -101,8 +98,6 @@ module "gke-regional" {
 
 # Gestion de la concurrence et de la persistance
 
-<br/>
-
 *Le fichier d’état “terraform.tfstate”*
  
 Ce fichier est critique, en cas de perte, Terraform “oubliera” l’ensemble des ressources qu’il a créé.<br/>
@@ -111,11 +106,9 @@ Il est conseillé de ne pas le stocker localement mais sur :
 * De restreindre les accès (principe du least privilege) car ce fichier peut contenir des informations sensibles (IP, clef SSH, password, ...)
 
 ##==##
-<!-- .slide: class="with-code"-->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # Gestion de la concurrence et de la persistance
-
-<br/>
 
 *Le fichier d’état “terraform.tfstate”*
 
@@ -123,7 +116,7 @@ La configuration et le choix du backend se fait en déclarant un fichier *.tf (e
 
 <br/>
 
-```hcl-terraform
+```hcl
 terraform {
  backend "gcs" {
    project  = "foo"
@@ -132,13 +125,12 @@ terraform {
  }
 }
 ```
+<!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide:-->
 
  # Gestion de la concurrence et de la persistance
-
-<br/>
 
 *Le fichier d’état “terraform.tfstate”*
 
@@ -153,8 +145,6 @@ Terraform propose la commande **terraform force-unlock** si mon déploiement res
 <!-- .slide:-->
 
 # Manipulation du fichier d’état
-
-<br/>
 
 *“terraform.tfstate”*
 
@@ -183,8 +173,6 @@ on veut spliter un workspace devenu trop gros en plusieurs petit workspaces
 
 # Gestion des credentials
 
-<br/>
-
 Il est possible d’utiliser les variables d’environnement pour fournir aux provider des identifiants. Chaque provider défini ses variables d’environnement.
  
 Exemple : 
@@ -195,13 +183,17 @@ Exemple : 
 * ...
 
 ##==##
-<!-- .slide: class="with-code"-->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # Gestion des credentials 
 
-# Utilisation de Vault
+## Utilisation de Vault
 
-```hcl-terraform
+<img style="position:fixed;top:10px;right:30px" src="./assets/images/g419a1b557d_2_152.png">
+
+<br/>
+
+```hcl
 data "vault_generic_secret" "rundeck_auth" {
  path = "secret/rundeck_auth"
 }
@@ -211,13 +203,9 @@ provider "rundeck" {
  auth_token = "${data.vault_generic_secret.rundeck_auth.data["auth_token"]}"
 }
 ```
-
-<br/>
+<!-- .element: class="big-code" -->
 
 _Attention, les attributs retournés par un data source apparaissent dans le fichier d’état (terraform.tfstate)_
-
-![float-center](./assets/images/g419a1b557d_2_152.png)
-
 
 ##==##
 <!-- .slide:-->

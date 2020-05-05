@@ -17,7 +17,7 @@
 ![](./assets/images/tests.png)
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # Overview des différents outils de tests
 
@@ -26,7 +26,7 @@
 * Utilisation de la commande “terraform validate”
 * Permet de valider la syntaxe, la déclaration des modules, providers, variables, …
 
-```
+```plaintext
 terraform validate
 
 Error: data.null_data_source.foo: 2 error(s) occurred:
@@ -36,16 +36,23 @@ Error: data.null_data_source.foo: 2 error(s) occurred:
 ${element("haha"=="haha" ? list("") : list(""), 0)}
 * data.null_data_source.foo[1]: At column 11, line 1: conditional operator cannot be used with list values in:
 ```
+<!-- .element class="big-code" -->
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # Overview des différents outils de tests
 
 ## Tests intégration
 
+<img style="position:fixed;top:10px;right:30px" src="./assets/images/g418fd663c2_0_891.png">
+
 * Consiste à déployer l’infrastructure dans une sandbox
-* Utilisation de https://kitchen.ci/ et https://github.com/newcontext-oss/kitchen-terraform ou https://github.com/gruntwork-io/terratest pour automatiser la création et suppression
+* Utilisation 
+  * https://kitchen.ci
+  * https://github.com/newcontext-oss/kitchen-terraform
+  * https://github.com/gruntwork-io/terratest 
+    <span style="color:green">pour automatiser la création et suppression</span>
 
 ```bash
 $ kitchen test
@@ -59,8 +66,6 @@ $ kitchen test
 -----> Kitchen is finished. (0m10.13s)
 ```
 
-![float-center](./assets/images/g418fd663c2_0_891.png)
-
 ##==##
 <!-- .slide: class="two-column-layout"-->
 
@@ -68,8 +73,8 @@ $ kitchen test
 
 ## Tests fonctionnels
 
-##==##
-<!-- .slide: class="with-code"-->
+##--##
+<!-- .slide: -->
 
 <br/><br/>
 
@@ -81,8 +86,8 @@ $ kitchen test
 
 ![float-center](./assets/images/g418fd663c2_0_890.png)
 
-##==##
-<!-- .slide: class="with-code"-->
+##--##
+<!-- .slide: class="with-code-bg-dark"-->
 
 ```ruby
 control "projects" do

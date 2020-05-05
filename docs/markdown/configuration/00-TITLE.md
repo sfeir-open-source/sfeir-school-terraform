@@ -9,40 +9,43 @@
 
 ## Aides au développement
 
-![float-right](./assets/images/ide.png)
+<img style="position:fixed;top:15px;right:3px;height:700px" src="./assets/images/ide.png">
+
 
 * Mise en forme
 * Auto-completion
 * Validation de syntaxe
 
-<br/><br/>
+<br/><br/><br/>
 
-https://marketplace.visualstudio.com/items?itemName=mauve.terraform
-https://github.com/hashivim/vim-terraform
-https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support
+* https://marketplace.visualstudio.com/items?itemName=mauve.terraform
+* https://github.com/hashivim/vim-terraform
+* https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support
 
 ##==##
-<!-- .slide: class="two-column-layout" -->
+<!--.slide: class="two-column-layout"-->
+
 # Configuration de l’environnement de développement
 
-## Génération de documentation
+##--##
+<!-- .slide: class="with-code-bg-dark" -->
 
-##==##
-<!-- .slide: class="with-code"-->
-<br/><br/>
+<br/>
 
 https://github.com/segmentio/terraform-docs
 
-<br/>
+<br/> 
 
 ```bash
 terraform-docs md . > README.md
 ```
+<!-- .element: class="big-code" -->
 
-##==##
-<!-- .slide: -->
 
-![float-right w-700](./assets/images/g418fd663c2_0_746.png)
+##--##
+<!-- .slide: class="center" -->
+
+![float-center w-700](./assets/images/g418fd663c2_0_746.png)
 
 ##==##
 <!-- .slide: -->
@@ -70,7 +73,7 @@ Il n’y a pas de normes imposées par l’outil mais un ensemble de bonnes prat
 ```
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # Configuration de l’environnement de développement
 
@@ -83,6 +86,7 @@ Il n’y a pas de normes imposées par l’outil mais un ensemble de bonnes prat
 ```bash
 alias terraform-genvar='(for i in $(egrep -oh '\''var\.\w+'\'' *.tf | sed -nr '\''s/var\.//p'\''); do echo "variable \"$i\" {}"; done;)'
 ```
+<!-- .element: class="big-code" -->
 
 * L’utilisation d’un .editorconfig permet aux développeurs d’utiliser un même format
 
