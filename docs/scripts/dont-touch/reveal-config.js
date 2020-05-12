@@ -54,7 +54,7 @@ import { usedSlides } from '../slides.js';
           },
           {
             src: './web_modules/reveal.js/plugin/highlight/highlight.js',
-            // async: true,
+            async: true,
             callback: function() {
               hljs.registerLanguage('terraform', window.hljsDefineTerraform);
               hljs.initHighlightingOnLoad();
