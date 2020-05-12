@@ -1,48 +1,49 @@
 {
-  "name": "sfeirschoolxxx",
+  "name": "sfeirschoolterraform",
   "version": "1.0.0",
-  "description": "Sfeir School XXX with revealJS",
+  "description": "Sfeir School Terraform with revealJS",
   "scripts": {
     "sass": "node-sass ./scss/slides.scss -o ./css/ --source-map=true --watch=\"scss\" --recursive=\"scss\"",
     "sass-once": "node-sass ./scss/slides.scss -o ./css/ --source-map=true ",
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "live-server --port=4242 --open=\"./index.html\" --watch=\"markdown,scripts/\"",
     "start": "parallelshell \"npm run serve\" \"npm run sass\"",
-    "prepare": "snowpack"
+    "copy-reveal": "cpx \"node_modules/reveal.js/**/*\" \"web_modules/reveal.js\" ",
+    "prepare": "rm -rf web_modules && parallelshell \"npm run copy-reveal\"   \"snowpack --optimize\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sfeir-open-source/sfeir-school-template.git"
+    "url": "git+https://github.com/sfeir-open-source/sfeir-school-terraform.git"
   },
   "keywords": [
-    "xxx",
+    "terraform",
     "sfeir"
   ],
-  "author": "jefbinomed",
+  "author": "jnahelou",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sfeir-open-source/sfeir-school-template/issues"
+    "url": "https://github.com/sfeir-open-source/sfeir-school-terraform/issues"
   },
-  "homepage": "https://github.com/sfeir-open-source/sfeir-school-template",
+  "homepage": "https://github.com/sfeir-open-source/sfeir-school-terraform",
   "dependencies": {
-    "highlight.js": "^9.15.6",
+    "highlight.js": "^10.0.3",
     "lit-html": "^1.2.1",
     "reveal.js": "^3.9.2",
-    "sfeir-school-theme": "^2.0.1"
+    "sfeir-school-theme": "^2.1.0"
   },
   "devDependencies": {
-    "chokidar-cli": "^1.2.2",
+    "chokidar-cli": "^2.1.0",
+    "cpx": "^1.5.0",
     "live-server": "^1.2.1",
-    "node-sass": "^4.12.0",
-    "parallelshell": "3.0.1",
-    "snowpack": "^1.6.0"
+    "node-sass": "^4.14.1",
+    "parallelshell": "3.0.2",
+    "snowpack": "^1.7.1"
   },
   "snowpack": {
     "webDependencies": [
       "sfeir-school-theme/dist/**/*",
       "lit-html",
-      "reveal.js/**/^(?!LICENSE)(.*)",
-      "highlight.js/style/**/*"
+      "highlight.js/styles/**/*"
     ]
   }
 }
