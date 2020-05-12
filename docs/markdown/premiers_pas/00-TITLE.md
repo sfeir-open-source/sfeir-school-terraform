@@ -34,7 +34,7 @@ Le logiciel est sous la forme d’un binaire (pré-compilé pour différents OS)
 ![w-1000 center](./assets/images/workflow.png)
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Utilisation
 
@@ -53,7 +53,7 @@ Cette commande est nécessaire d’être joué dans chaque nouveau dossier mais 
 Elle permet également la migration d’un fichier d’état d’un support vers un autre (cf module gestion du fichier d’état).
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Utilisation
 
@@ -67,7 +67,7 @@ Cette commande est utilisée pour télécharger les modules hébergés hors du r
 Les modules ainsi téléchargés seront stocké dans le dossier “.terraform” du répertoire courant (appelé root module).
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Utilisation
 
@@ -88,7 +88,7 @@ Le résultat peut être exporté en utilisant l’argument “-out” pour une a
 Terraform ne modifie/crée que les ressources qui nécessitent une modification.
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Utilisation
 
@@ -97,7 +97,7 @@ Terraform ne modifie/crée que les ressources qui nécessitent une modification.
 Lors de l'exécution de cette commande, terraform effectue les appels APIs sur le provider pour créer/modifier/supprimer les ressources
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Utilisation
 
@@ -106,7 +106,7 @@ Lors de l'exécution de cette commande, terraform effectue les appels APIs sur l
 Terraform destroy décommissionne les ressources présentes (et uniquement) dans le fichier d’état. Il ne modifie pas les ressources dont il n’a pas connaissance.
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -122,7 +122,7 @@ Terraform destroy décommissionne les ressources présentes (et uniquement) dans
 4. PHP
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -139,7 +139,7 @@ Terraform destroy décommissionne les ressources présentes (et uniquement) dans
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -152,7 +152,7 @@ Terraform destroy décommissionne les ressources présentes (et uniquement) dans
 4. terraform output -graph > graph.png
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 

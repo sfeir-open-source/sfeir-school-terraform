@@ -115,7 +115,7 @@ https://sfeir-open-source.github.io/sfeir-school-terraform
 
 https://console.cloud.google.com
 
-<div >
+<div class="flex-row">
 <img class="h-400" src="./assets/images/g418fd663c2_0_70.png">
 <img class="h-400" src="./assets/images/g418fd663c2_0_72.png">
 </div>

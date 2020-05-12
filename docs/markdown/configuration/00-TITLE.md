@@ -3,7 +3,7 @@
 # Configuration de l’environnement de développement
 
 ##==##
-<!--.slide: -->
+<!-- .slide: -->
 
 # Configuration de l’environnement de développement
 
@@ -23,9 +23,12 @@
 * https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support
 
 ##==##
-<!--.slide: -->
+<!--.slide: class="two-column-layout"-->
 
 # Configuration de l’environnement de développement
+
+##--##
+<!-- .slide: class="with-code-bg-dark" -->
 
 <br/>
 
@@ -39,7 +42,7 @@ terraform-docs md . > README.md
 <!-- .element: class="big-code" -->
 
 
-##==##
+##--##
 <!-- .slide: class="center" -->
 
 ![float-center w-700](./assets/images/g418fd663c2_0_746.png)
@@ -70,7 +73,7 @@ Il n’y a pas de normes imposées par l’outil mais un ensemble de bonnes prat
 ```
 
 ##==##
-<!-- .slide: -->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # Configuration de l’environnement de développement
 
@@ -88,7 +91,7 @@ alias terraform-genvar='(for i in $(egrep -oh '\''var\.\w+'\'' *.tf | sed -nr '\
 * L’utilisation d’un .editorconfig permet aux développeurs d’utiliser un même format
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -102,7 +105,7 @@ alias terraform-genvar='(for i in $(egrep -oh '\''var\.\w+'\'' *.tf | sed -nr '\
 2. Non
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -117,7 +120,7 @@ alias terraform-genvar='(for i in $(egrep -oh '\''var\.\w+'\'' *.tf | sed -nr '\
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -133,7 +136,7 @@ alias terraform-genvar='(for i in $(egrep -oh '\''var\.\w+'\'' *.tf | sed -nr '\
 4. Ce n’est pas possible
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 

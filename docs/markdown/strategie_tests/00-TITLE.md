@@ -3,21 +3,21 @@
 # Stratégie de tests
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
-# Overview des différents outils de tests
+# Overview des différents outils de test
 
 ![h-850](./assets/images/g418fd663c2_0_825.png)
 
 ##==##
-<!-- .slide: -->
+<!-- .slide: class="full-center" -->
 
 # Overview des différents outils de tests
 
 ![](./assets/images/tests.png)
 
 ##==##
-<!-- .slide: -->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # Overview des différents outils de tests
 
@@ -36,9 +36,10 @@ Error: data.null_data_source.foo: 2 error(s) occurred:
 ${element("haha"=="haha" ? list("") : list(""), 0)}
 * data.null_data_source.foo[1]: At column 11, line 1: conditional operator cannot be used with list values in:
 ```
+<!-- .element class="big-code" -->
 
 ##==##
-<!-- .slide: -->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # Overview des différents outils de tests
 
@@ -66,11 +67,16 @@ $ kitchen test
 ```
 
 ##==##
-<!-- .slide: -->
+<!-- .slide: class="two-column-layout"-->
 
 # Overview des différents outils de tests
 
 ## Tests fonctionnels
+
+##--##
+<!-- .slide: -->
+
+<br/><br/>
 
 * Eyeballing game VS Automated tests
 * L’objectif est de valider que le déploiement effectué correspond bien au besoin exprimé
@@ -80,12 +86,8 @@ $ kitchen test
 
 ![float-center](./assets/images/g418fd663c2_0_890.png)
 
-##==##
-<!-- .slide: -->
-
-# Overview des différents outils de tests
-
-## Tests fonctionnels
+##--##
+<!-- .slide: class="with-code-bg-dark"-->
 
 ```ruby
 control "projects" do
@@ -108,7 +110,7 @@ end
 ![float-center](./assets/images/g418fd663c2_0_934.png)
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # L’exemple de inspec, inspec-iggy et kitchen-terraform
 
@@ -116,7 +118,7 @@ end
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -132,7 +134,7 @@ end
 4. La ressource existe déjà
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 

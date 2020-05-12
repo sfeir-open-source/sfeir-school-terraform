@@ -3,7 +3,7 @@
 # Utilisation en production
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Force re-create
 
@@ -17,7 +17,7 @@
 <span style="color:green"># Une ressource dans une boucle dans un module</span>
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Force re-create
 
@@ -27,7 +27,7 @@
 * terraform import google_compute_project_metadata_item.default ssh-keys 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # null_resource et provisioners
 
@@ -45,7 +45,7 @@ resource "null_resource" "upper" {
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # null_resource et provisioners 
 
@@ -59,7 +59,7 @@ Les provisioners permettent d’executer des scripts durant les phases de créat
 * https://www.terraform.io/docs/provisioners/index.html 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # null_resource et provisioners 
 
@@ -76,7 +76,7 @@ resource "null_resource" "register" {
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Déploiement continu
 
@@ -90,7 +90,7 @@ Cas d’utilisations : 
 * Plusieurs régions
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Déploiement continu 
 
@@ -116,8 +116,8 @@ Cas d’utilisations : 
 
 # Déploiement continu 
 
-##==##
-<!-- .slide:  -->
+##--##
+<!-- .slide: class="with-code-bg-dark" -->
 ```yaml
 plan_production:
  stage: plan
@@ -134,8 +134,8 @@ plan_production:
 ```
 <!-- .element: class="big-code" -->
 
-##==##
-<!-- .slide:  -->
+##--##
+<!-- .slide: class="with-code-bg-dark" -->
 ```yaml
 apply_production:
  stage: deploy
@@ -150,7 +150,7 @@ apply_production:
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Déploiement continu
 
@@ -168,7 +168,7 @@ liste des features sur :
 https://www.hashicorp.com/products/terraform/offerings
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Présentation de l’offre pour les entreprises Terraform Cloud 
 
@@ -180,7 +180,7 @@ https://www.hashicorp.com/products/terraform/offerings
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Développement et utilisation de providers communautaires 
 
@@ -191,7 +191,7 @@ Il est possible de développer ses propres providers en Golang
 * Aider la communauté à supporter d’avantage de produit
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Développement et utilisation de providers communautaires 
 
@@ -208,7 +208,7 @@ https://www.terraform.io/docs/extend/writing-custom-providers.html
 * data_source_name.go : Un data source est une ressource qui n’implémente qu’une fonction READ
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Développement et utilisation de providers communautaires 
 
@@ -224,7 +224,7 @@ Magic-modules de Google est un projet qui consiste à générer automatiquement 
 => https://github.com/terraform-providers/terraform-provider-google
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -241,7 +241,7 @@ Magic-modules de Google est un projet qui consiste à générer automatiquement 
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -257,7 +257,7 @@ Magic-modules de Google est un projet qui consiste à générer automatiquement 
 4. Rien
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -274,7 +274,7 @@ Magic-modules de Google est un projet qui consiste à générer automatiquement 
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -293,7 +293,7 @@ Magic-modules de Google est un projet qui consiste à générer automatiquement 
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -309,7 +309,7 @@ Magic-modules de Google est un projet qui consiste à générer automatiquement 
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -333,7 +333,7 @@ Magic-modules de Google est un projet qui consiste à générer automatiquement 
 ## Atelier
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # Ressources
 

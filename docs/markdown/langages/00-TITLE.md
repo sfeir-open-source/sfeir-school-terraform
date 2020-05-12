@@ -3,7 +3,7 @@
 # Les langages
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -32,7 +32,7 @@ Langage de configuration développé par HashiCorp et ré-utilisé dans ses diff
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -48,7 +48,7 @@ La version 0.12 de terraform introduit de nouveaux types d’objets comme :
 
 
 ##==##
-<!-- .slide:  -->
+<!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -77,7 +77,7 @@ resource "google_compute_instance" "instance" {
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: -->
+<!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -87,7 +87,7 @@ resource "google_compute_instance" "instance" {
 
 Les variables permettent d’adapter les attributs en fonction de différents critères comme l’environnement, le type d’application, etc…
 
-Déclaration :
+Déclaration : 
 
 ```hcl
 variable "num_cpu" {
@@ -105,7 +105,7 @@ num_cpu = "${var.num_cpu}"
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide:  -->
+<!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -128,7 +128,7 @@ instance_names = ["${local.instance_names}"]
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide:  -->
+<!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -151,7 +151,7 @@ provider "google" {
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide:  -->
+<!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -175,7 +175,7 @@ resource "google_compute_firewall" "default" {
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -201,7 +201,7 @@ depends_on : Forcer une dépendance. Par défaut toute “variable interpolée�
 provider : Permet de surcharger le provider de la ressource par exemple lors de l’utilisation d’alias sur plusieurs providers.
 
 ##==##
-<!-- .slide:  -->
+<!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -220,7 +220,7 @@ output "addresses" {
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: -->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -242,7 +242,7 @@ image = "${data.google_compute_image.my_image.self_link}"
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # HashiCorp Configuration Language (HCL)
 
@@ -257,7 +257,7 @@ Il permet d’abstraire un déploiement plus complexe et agit comme une boîte n
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -275,7 +275,7 @@ Il permet d’abstraire un déploiement plus complexe et agit comme une boîte n
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -298,7 +298,7 @@ Notes:
 Values passed within definition files or with -var will take precedence over TF_VAR_ environment variables, as environment variables are considered defaults.
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -314,7 +314,7 @@ Values passed within definition files or with -var will take precedence over TF_
 4. à remplacer l’UID de la ressources si elle est définie
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -331,7 +331,7 @@ Values passed within definition files or with -var will take precedence over TF_
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -348,7 +348,7 @@ Values passed within definition files or with -var will take precedence over TF_
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -371,7 +371,7 @@ Values passed within definition files or with -var will take precedence over TF_
 ## Atelier
 
 ##==##
-<!-- .slide: -->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # HashiCorp Interpolation Language (HIL)
  
@@ -391,7 +391,7 @@ data "template_file" "example" {
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # HashiCorp Interpolation Language (HIL)
 
@@ -409,7 +409,7 @@ Cas d’une liste de resource (version < 0.12) : `resource_type.resource_name.*.
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # HashiCorp Interpolation Language (HIL)
 
@@ -425,7 +425,7 @@ Exemple d’utilisation des fonctions :
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # HashiCorp Interpolation Language (HIL)
 
@@ -439,7 +439,7 @@ Attention, les boucles ne sont disponibles que pour les ressources et data sourc
 ![h-400 center](./assets/images/hil_boucle.png)
 
 ##==##
-<!-- .slide: -->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # HashiCorp Interpolation Language (HIL)
 
@@ -464,7 +464,7 @@ resource "vault_ldap_auth_backend_group" "group-users" {
 https://hashicorp.com/blog/hashicorp-terraform-0-12-preview-for-and-for-each
 
 ##==##
-<!-- .slide: -->
+<!-- .slide: class="with-code-bg-dark"-->
 
 # HashiCorp Interpolation Language (HIL)
 
@@ -492,7 +492,7 @@ inputs = {
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -506,7 +506,7 @@ inputs = {
 2. Faux
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -521,7 +521,7 @@ inputs = {
 
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
@@ -537,7 +537,7 @@ inputs = {
 4. lookup(var.list, position)
 
 ##==##
-<!-- .slide: -->
+<!-- .slide:-->
 
 # QUIZZ
 
