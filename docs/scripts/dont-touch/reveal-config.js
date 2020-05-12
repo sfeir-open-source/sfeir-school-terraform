@@ -56,6 +56,7 @@ import { usedSlides } from '../slides.js';
             src: './web_modules/reveal.js/plugin/highlight/highlight.js',
             async: true,
             callback: function() {
+              hljs.registerLanguage('terraform', window.hljsDefineTerraform);
               hljs.initHighlightingOnLoad();
             }
           },
@@ -72,6 +73,10 @@ import { usedSlides } from '../slides.js';
             condition: function() {
               return !!document.body.classList;
             }
+          },
+          {
+            src: './scripts/dont-touch/override-highlight.js',
+            async: true
           }
           // { src: 'node_modules/reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
           // { src: 'node_modules/reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
