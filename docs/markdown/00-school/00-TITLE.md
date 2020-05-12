@@ -1,12 +1,12 @@
 <!-- .slide: class="first-slide" sfeir-level="2" sfeir-techno="Terraform" -->
 
-# **Welcome to SFEIR School**
+# Welcome to SFEIR School
 
-## **Terraform 200**
+## Terraform 200
 
 ##==##
-
 <!-- .slide: class="school-presentation" -->
+
 
 <div class="wifi">
     <span class="key">wifi:</span><span>SSID</span><br>
@@ -14,7 +14,8 @@
 </div>
 
 ##==##
-<!-- .slide:  -->
+<!-- .slide: -->
+
 # Déroulement de la formation
 
 <br/>
@@ -25,5 +26,3 @@ Tour de table ...
 <br><br>
 
 **Feuille de présence (obligatoire)**
-
-...

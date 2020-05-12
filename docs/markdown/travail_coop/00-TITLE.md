@@ -3,7 +3,7 @@
 # Travail coopératif
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
 # Modules
 
@@ -18,7 +18,7 @@
 
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
 # Modules
 
@@ -38,7 +38,7 @@ Hashicorp met à disposition un ensemble de modules officiels sur sa propre regi
 
 
 ##==##
-<!-- .slide: class="with-code-bg-dark" -->
+<!-- .slide:  -->
 
 # Modules
 
@@ -65,7 +65,7 @@ module "gke-regional" {
 ```
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
 # Modules
 
@@ -80,7 +80,7 @@ module "gke-regional" {
 
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
 # Gestion de la concurrence et de la persistance
 
@@ -94,7 +94,7 @@ module "gke-regional" {
 * Automatiquement généré
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
 # Gestion de la concurrence et de la persistance
 
@@ -106,7 +106,7 @@ Il est conseillé de ne pas le stocker localement mais sur :
 * De restreindre les accès (principe du least privilege) car ce fichier peut contenir des informations sensibles (IP, clef SSH, password, ...)
 
 ##==##
-<!-- .slide: class="with-code-bg-dark"-->
+<!-- .slide: -->
 
 # Gestion de la concurrence et de la persistance
 
@@ -128,7 +128,7 @@ terraform {
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
  # Gestion de la concurrence et de la persistance
 
@@ -142,7 +142,7 @@ Il est possible de verrouiller le fichier pour éviter les appels concurrents de
 Terraform propose la commande **terraform force-unlock** si mon déploiement reste verrouillé.
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
 # Manipulation du fichier d’état
 
@@ -169,7 +169,7 @@ on veut renommer une ressource sans devoir la re-créer (base de donnée par exe
 on veut spliter un workspace devenu trop gros en plusieurs petit workspaces
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
 # Gestion des credentials
 
@@ -183,7 +183,7 @@ Exemple : 
 * ...
 
 ##==##
-<!-- .slide: class="with-code-bg-dark"-->
+<!-- .slide: -->
 
 # Gestion des credentials 
 
@@ -208,7 +208,7 @@ provider "rundeck" {
 _Attention, les attributs retournés par un data source apparaissent dans le fichier d’état (terraform.tfstate)_
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
 # QUIZZ
 
@@ -224,7 +224,7 @@ _Attention, les attributs retournés par un data source apparaissent dans le fic
 
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
 # QUIZZ
 
@@ -240,7 +240,7 @@ _Attention, les attributs retournés par un data source apparaissent dans le fic
 
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
 # QUIZZ
 
@@ -257,7 +257,7 @@ _Attention, les attributs retournés par un data source apparaissent dans le fic
 
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
 # QUIZZ
 
@@ -274,7 +274,7 @@ _Attention, les attributs retournés par un data source apparaissent dans le fic
 
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
 # QUIZZ
 
@@ -289,7 +289,7 @@ _Attention, les attributs retournés par un data source apparaissent dans le fic
 
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
 # QUIZZ
 

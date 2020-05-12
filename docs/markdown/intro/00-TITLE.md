@@ -3,7 +3,7 @@
 # Introduction à Terraform
 
 ##==##
-<!-- .slide: class="flex-row"-->
+<!-- .slide: -->
 
 # Introduction à Terraform
 
@@ -32,6 +32,7 @@ Learn to build automated machine images with Packer
 <!-- .slide: -->
 
 # Introduction à Terraform
+
 <br/>
 
 * Enjeux de l’infrastructure
@@ -124,7 +125,7 @@ Testing : chaque ressource est testée et correspond au besoin fonctionnel
   * les templates ont été validés et respectent bien l’urbanisation de l’entreprise
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: -->
 
 # Introduction à Terraform
 
@@ -152,14 +153,14 @@ Notes:
 Produit OpenSouce développé en Go
 
 ##==##
-<!-- .slide: class="flex-row"-->
+<!-- .slide: -->
 
 # Terraform
-<br>
-Workflow agnostique != Cloud agnostique
+
+Workflow agnostique != Cloud agnostique 
 
 
-![](./assets/images/g418fd663c2_0_213.png)
+![](./assets/images/g418fd663c2_0_213.png) 
 
 Notes:
 Attention, on entend beaucoup dire que Terraform est “Cloud agnostique”. C’est faux ! Le code nécessaire aux déploiements sera différent en fonction de la plateforme sur laquelle le développeur souhaite déployer son infra.
@@ -169,7 +170,7 @@ Le Workflow de déploiement quand à lui restera identique c’est pour cela qu�
 Terraform est multi provider, il peut créer des ressources autant sur des plateformes cloud (AWS, GCP, Azure, …) que sur des plateformes PAAS (Github, Heroku, …)
 
 ##==##
-<!-- .slide: class="flex-row"-->
+<!-- .slide: -->
 
 # La théorie des graphes
 
