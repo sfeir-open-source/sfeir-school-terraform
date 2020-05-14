@@ -74,7 +74,7 @@ resource "google_compute_instance" "instance" {
  }
 }
 ```
-<!-- .element: class="big-code" -->
+
 
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
@@ -96,13 +96,11 @@ variable "num_cpu" {
  default = "2"
 }
 ```
-<!-- .element: class="big-code" -->
 
 Utilisation : 
 ```hcl
 num_cpu = "${var.num_cpu}"
 ```
-<!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
@@ -119,13 +117,13 @@ locals {
  instance_names = ["inst-a", "inst-b"]
 }
 ```
-<!-- .element: class="big-code" -->
+
 
 Utilisation : 
 ```hcl
 instance_names = ["${local.instance_names}"]
 ```
-<!-- .element: class="big-code" -->
+
 
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
@@ -148,7 +146,7 @@ provider "google" {
  region      = "us-central1"
 }
 ```
-<!-- .element: class="big-code" -->
+
 
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
@@ -172,7 +170,7 @@ resource "google_compute_firewall" "default" {
  }
 }
 ```
-<!-- .element: class="big-code" -->
+
 
 ##==##
 <!-- .slide:-->
@@ -217,7 +215,7 @@ output "addresses" {
  value = ["${aws_instance.web.*.public_dns}"]
 }
 ```
-<!-- .element: class="big-code" -->
+
 
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
@@ -239,7 +237,7 @@ data "google_compute_image" "my_image" {
 [...]
 image = "${data.google_compute_image.my_image.self_link}"
 ```
-<!-- .element: class="big-code" -->
+
 
 ##==##
 <!-- .slide:-->
@@ -388,7 +386,7 @@ data "template_file" "example" {
  }
 }
 ```
-<!-- .element: class="big-code" -->
+
 
 ##==##
 <!-- .slide:-->
@@ -421,8 +419,8 @@ Exemple d’utilisation des fonctions :
   count     = "${length(var.shortnames)}"
   upper-foo = "${upper(var.foo)}"
   lower-foo = "${lower(var.foo)}"
-```  
-<!-- .element: class="big-code" -->
+```
+
 
 ##==##
 <!-- .slide:-->
@@ -457,7 +455,7 @@ resource "vault_ldap_auth_backend_group" "group-users" {
   backend   = vault_ldap_auth_backend.ldap.path                                                                          
 }
 ```
-<!-- .element: class="big-code" -->
+
 
 <br/>
 
@@ -479,7 +477,7 @@ resource "google_compute_instance" "web" {
    machine_type = "${var.env == "production" ? var.prod_size : var.dev_size}"
 }
 ```
-<!-- .element: class="big-code" -->
+
 
 **Avant Terraform 0.12, seul le type string était supporté comme valeur de retour.** 
 
@@ -489,7 +487,7 @@ inputs = {
    v012 = "${element("foo"=="foo" ? list("") : list(""), 0)}"
  }
 ```
-<!-- .element: class="big-code" -->
+
 
 ##==##
 <!-- .slide:-->

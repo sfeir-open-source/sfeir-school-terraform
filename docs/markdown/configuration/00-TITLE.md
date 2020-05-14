@@ -39,7 +39,7 @@ https://github.com/segmentio/terraform-docs
 ```bash
 terraform-docs md . > README.md
 ```
-<!-- .element: class="big-code" -->
+
 
 
 ##--##
@@ -86,7 +86,7 @@ Il n’y a pas de normes imposées par l’outil mais un ensemble de bonnes prat
 ```bash
 alias terraform-genvar='(for i in $(egrep -oh '\''var\.\w+'\'' *.tf | sed -nr '\''s/var\.//p'\''); do echo "variable \"$i\" {}"; done;)'
 ```
-<!-- .element: class="big-code" -->
+
 
 * L’utilisation d’un .editorconfig permet aux développeurs d’utiliser un même format
 

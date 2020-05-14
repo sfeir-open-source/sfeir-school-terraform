@@ -9,7 +9,8 @@
     "serve": "live-server --port=4242 --open=\"./index.html\" --watch=\"markdown,scripts/\"",
     "start": "parallelshell \"npm run serve\" \"npm run sass\"",
     "copy-reveal": "cpx \"node_modules/reveal.js/**/*\" \"web_modules/reveal.js\" ",
-    "prepare": "rm -rf web_modules && parallelshell \"npm run copy-reveal\"   \"snowpack --optimize\""
+    "copy-prismjs": "cpx \"node_modules/prismjs/**/*\" \"web_modules/prismjs\" ",
+    "prepare": "rm -rf web_modules && parallelshell \"npm run copy-reveal\"  \"npm run copy-prismjs\"  \"snowpack --optimize\""
   },
   "repository": {
     "type": "git",
@@ -26,8 +27,8 @@
   },
   "homepage": "https://github.com/sfeir-open-source/sfeir-school-terraform",
   "dependencies": {
-    "highlight.js": "^10.0.3",
     "lit-html": "^1.2.1",
+    "prismjs": "^1.20.0",
     "reveal.js": "^3.9.2",
     "sfeir-school-theme": "^2.1.0"
   },

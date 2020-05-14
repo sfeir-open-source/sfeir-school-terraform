@@ -42,7 +42,7 @@ resource "null_resource" "upper" {
  }
 }
 ```
-<!-- .element: class="big-code" -->
+
 
 ##==##
 <!-- .slide:-->
@@ -73,7 +73,7 @@ resource "null_resource" "register" {
  }
 }
 ```
-<!-- .element: class="big-code" -->
+
 
 ##==##
 <!-- .slide:-->
@@ -132,7 +132,7 @@ plan_production:
    - terraform workspace select prod
    - terraform plan -input=false -out=prod.tfplan
 ```
-<!-- .element: class="big-code" -->
+
 
 ##--##
 <!-- .slide: class="with-code-bg-dark" -->
@@ -147,7 +147,7 @@ apply_production:
    - terraform workspace select prod
    - terraform apply -auto-approve -input=false prod.tfplan
 ```
-<!-- .element: class="big-code" -->
+
 
 ##==##
 <!-- .slide:-->

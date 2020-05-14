@@ -1,5 +1,5 @@
-import { renderSlides } from './import-slides.js';
-import { usedSlides } from '../slides.js';
+import {renderSlides} from './import-slides.js';
+import {usedSlides} from '../slides.js';
 
 (() => {
   const importSlideElement = document.querySelector('.slides');
@@ -19,7 +19,7 @@ import { usedSlides } from '../slides.js';
         transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
 
         keyboard: {
-          32: function() {
+          32: function () {
             var video = document.querySelector('.present video');
             if (video.paused == true) {
               video.play();
@@ -36,48 +36,57 @@ import { usedSlides } from '../slides.js';
         dependencies: [
           {
             src: './web_modules/reveal.js/js/classList.js',
-            condition: function() {
+            condition: function () {
               return !document.body.classList;
             }
           },
           {
             src: './web_modules/reveal.js/plugin/markdown/marked.js',
-            condition: function() {
+            condition: function () {
               return !!document.querySelector('[data-markdown]');
             }
           },
           {
             src: './web_modules/reveal.js/plugin/markdown/markdown.js',
-            condition: function() {
+            condition: function () {
               return !!document.querySelector('[data-markdown]');
             }
           },
-          {
-            src: './web_modules/reveal.js/plugin/highlight/highlight.js',
-            async: true,
-            callback: function() {
-              hljs.registerLanguage('terraform', window.hljsDefineTerraform);
-              hljs.initHighlightingOnLoad();
-            }
-          },
+          // {
+          //   src: './web_modules/reveal.js/plugin/highlight/highlight.js',
+          //   // async: true,
+          //   callback: function () {
+          //     hljs.registerLanguage('terraform', window.hljsDefineTerraform);
+          //     hljs.initHighlightingOnLoad();
+          //   }
+          // },
           {
             src: './web_modules/reveal.js/plugin/zoom-js/zoom.js',
             async: true,
-            condition: function() {
+            condition: function () {
               return !!document.body.classList;
             }
           },
           {
             src: './web_modules/reveal.js/plugin/notes/notes.js',
             async: true,
-            condition: function() {
+            condition: function () {
               return !!document.body.classList;
             }
           },
+          // {
+          //   src: './scripts/dont-touch/override-highlight.js',
+          //   async: true
+          // }
+          {src: './web_modules/prismjs/prism.js', async: true},
           {
-            src: './scripts/dont-touch/override-highlight.js',
-            async: true
-          }
+            src: './web_modules/prismjs/plugins/autoloader/prism-autoloader.js',
+            async: true,
+            callback: function () {
+              Prism.plugins.autoloader.languages_path = 'web_modules/prismjs/components/';
+              Prism.plugins.autoloader.use_minified = false;
+            }
+          },
           // { src: 'node_modules/reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
           // { src: 'node_modules/reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]

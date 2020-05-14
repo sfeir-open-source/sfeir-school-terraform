@@ -42,8 +42,6 @@ Hashicorp met à disposition un ensemble de modules officiels sur sa propre regi
 
 # Modules
 
-<br/>
-
 => *cat gke.tf*
 
 ```hcl
@@ -125,7 +123,7 @@ terraform {
  }
 }
 ```
-<!-- .element: class="big-code" -->
+
 
 ##==##
 <!-- .slide:-->
@@ -203,7 +201,7 @@ provider "rundeck" {
  auth_token = "${data.vault_generic_secret.rundeck_auth.data["auth_token"]}"
 }
 ```
-<!-- .element: class="big-code" -->
+
 
 _Attention, les attributs retournés par un data source apparaissent dans le fichier d’état (terraform.tfstate)_
 

@@ -26,7 +26,7 @@
 * Utilisation de la commande “terraform validate”
 * Permet de valider la syntaxe, la déclaration des modules, providers, variables, …
 
-```plaintext
+```text
 terraform validate
 
 Error: data.null_data_source.foo: 2 error(s) occurred:
@@ -36,7 +36,6 @@ Error: data.null_data_source.foo: 2 error(s) occurred:
 ${element("haha"=="haha" ? list("") : list(""), 0)}
 * data.null_data_source.foo[1]: At column 11, line 1: conditional operator cannot be used with list values in:
 ```
-<!-- .element class="big-code" -->
 
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->

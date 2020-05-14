@@ -1,2 +1,6 @@
+.reveal .slides section.with-code pre,
+.reveal .slides section.with-code-dark pre,
+.reveal .slides section.with-code-bg-dark pre {
+  width: 90%; }
 
 /*# sourceMappingURL=slides.css.map */
