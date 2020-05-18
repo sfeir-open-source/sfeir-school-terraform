@@ -210,6 +210,117 @@ _Attention, les attributs retournés par un data source apparaissent dans le fic
 ##==##
 <!-- .slide:-->
 
+# Templating
+
+* Les templates favorisent la mise en forme du code en utilisant des fichiers de variables .tfvars qui seront chargés par Terraform au runtime (plan ou apply).
+* Le fichier .tfvars peut contenir:
+  * des variables simples
+  * des listes
+  * des maps
+  * des listes de map ou des listes de listes
+* La variable doit être définie "vide" dans le fichier de variable.
+
+Notes:
+Il y a plusieurs types de templating utilisable avec Terraform : Terragrunt ou Handlebars.  
+Terraform propose également son propre modèle de templating (c'est sur celui-ci que nous nous concentrerons)
+
+##==##
+<!-- .slide: -->
+
+# Templating
+Bien que de nombreux modules soient disponibles dans le registry Terraform, certains peuvent ne pas être compatible avec ce que vous souhaitez déployer.  
+Dans ce cas, il est recommandé de créer vos propres modules.  
+De plus, cela peut convenir a certaines bonnes pratiques telles que :
+- Le templating
+- Les dépendances implicites
+- Les **child-resources**
+
+Notes: 
+Les child resources sont des resources ayant besoin d'une autre ressource pour être déployées.
+
+##==##
+<!-- .slide: -->
+
+# Templating
+Voici deux manières de créer un template de ressource : 
+
+A l'aide de **count**
+```hcl
+resource "google_sql_database" "database" {
+  count     = length(var.database)
+  provider  = "google-beta"
+  instance  = element(var.instance_name, lookup(var.database[count.index], "instance_id"))
+  name      = lookup(var.database[count.index], "name")
+  charset   = lookup(var.database[count.index], "charset", null)
+  collation = lookup(var.database[count.index], "collation", null)
+  project   = var.project
+}
+```
+
+##==##
+<!-- .slide:-->
+
+# Templates
+
+=> *cat cloud_sql/vars.tf*
+```hcl
+variable "database" {
+  type = list
+}
+variable "instance_name" {}
+variable "project" {}
+```
+
+##==##
+<!-- .slide:-->
+
+# Templates
+
+=> *cat cloud_sql/vars.tfvars*
+```json
+database = [
+    {
+        id          = "0"
+        instance_id = "0"
+        name        = "db_1"
+        charset     = "utf8"
+        location    = "xxxx"
+    }
+]
+```
+
+##==##
+<!-- .slide: -->
+
+# Templating
+A l'aide de **for_each**
+```hcl
+resource "google_sql_database" "database" {
+  for_each = {
+    name    = "db_"
+    project = "project_"    
+  }
+  instance  = "xxx"
+  name      = each.key
+  project   = each.value
+  charset   = "xxx"
+  collation = "xxx"
+  provider  = "xxx"
+}
+```
+
+##==##
+<!-- .slide: -->
+
+# Templating
+
+## TIPS 
+
+* Ce type de template est utilisable depuis la version 0.11, la version 0.12 a introduit quelques nouveautés telles que les blocs dynamiques, les variables conditionnelles, for_each.
+* Vous pouvez enchainer les *objets* dans une seule variable sans pour autant créer des objets absoluments identiques.
+* Vous pouvez lier la création de modules à l'aide des dépendances implicites et des ID des objets.
+* Les variables sont surchargeables.
+
 # QUIZZ
 
 <br/>

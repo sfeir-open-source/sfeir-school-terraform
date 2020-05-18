@@ -90,6 +90,7 @@ Jour 2 : Collaboration et production
 * Re-utilisation du code, découverte des modules
 * Gestion de la concurrence et de la persistance
 * Gestion des credentials
+* Templating
 * Ateliers: Création d’un registre de modules dans gitlab
 
 ##==##
