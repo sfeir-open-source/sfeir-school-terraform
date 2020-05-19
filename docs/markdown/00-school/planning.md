@@ -102,7 +102,9 @@ Jour 2 : Collaboration et production
 * Manipulation du fichier d’état
 * Déploiement continu via Gitlab-ci
 * Présentation de l’offre pour les entreprises Terraform Cloud
+* Présentation de l'offre Terraform Enterprise
 * Développement et utilisation de providers communautaires
+* Best Practices
 * Atelier: Déploiement continu via Terraform
 
 ##==##
