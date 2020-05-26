@@ -28,7 +28,7 @@
   "dependencies": {
     "highlight.js": "^10.0.3",
     "lit-html": "^1.2.1",
-    "reveal.js": "^3.9.2",
+    "reveal.js": "^4.0.1",
     "sfeir-school-theme": "^2.1.0"
   },
   "devDependencies": {
