@@ -37,7 +37,7 @@
     "live-server": "^1.2.1",
     "node-sass": "^4.14.1",
     "parallelshell": "3.0.2",
-    "snowpack": "^1.7.1"
+    "snowpack": "^2.2.3"
   },
   "snowpack": {
     "webDependencies": [
