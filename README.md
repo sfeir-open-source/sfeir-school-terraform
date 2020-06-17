@@ -8,6 +8,8 @@ For this lab, we will use a GKE Cluster to host a [vault application](https://ww
 
 * In a `gke-cluster` folder, deploy a new GKE cluster using Terraform.
 
+* Run `gcloud container clusters get-credentials demo-cluster --zone=europe-west1` to configure kubectl (and helm) credentials
+
 ### Credentials using Vault
 
 #### Vault installation on GKE
@@ -29,9 +31,11 @@ Or do it yourself :
 * Deploy consul and vault using helm :
 
   ```shell
-  helm install --name consul-cluster stable/consul
-  helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/ # Add incubator repository
-  helm install incubator/vault --name vault-cluster --set vault.dev=true --set vault.config.storage.consul.address="consul-cluster:8500",vault.config.storage.consul.path="vault" --set service.type="NodePort" --set replicaCount=1
+  helm repo add stable https://kubernetes-charts.storage.googleapis.com
+  helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+  helm repo update
+  helm install consul-cluster stable/consul
+  helm install vault-cluster incubator/vault  --set vault.dev=true --set vault.config.storage.consul.address="consul-cluster:8500",vault.config.storage.consul.path="vault" --set service.type="LoadBalancer" --set replicaCount=1
   ```
 
 ##### Vault configuration
@@ -55,7 +59,7 @@ Installation :
 ```shell
 export VAULT_VERSION=1.2.3
 wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
-sudo unzip vault_$VAULT_VERSION_linux_amd64.zip -d /usr/bin/
+sudo unzip vault_${VAULT_VERSION}_linux_amd64.zip -d /usr/bin/
 ```
 
 Usage :
