@@ -321,6 +321,9 @@ resource "google_sql_database" "database" {
 * Vous pouvez lier la création de modules à l'aide des dépendances implicites et des ID des objets.
 * Les variables sont surchargeables.
 
+##==##
+<!-- .slide:-->
+
 # QUIZZ
 
 <br/>
