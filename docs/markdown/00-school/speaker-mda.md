@@ -2,7 +2,7 @@
 
 # Presentation
 
-![speaker](./assets/images/speakers/md.png)
+![speaker](./assets/images/speakers/md.jpg)
 ![company](./assets/images/logo-sfeir-blanc.png)
 ![badge](./assets/images/Terraform-Associate-Badge.png)
 
