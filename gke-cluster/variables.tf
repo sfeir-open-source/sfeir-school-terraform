@@ -4,9 +4,9 @@ variable "gcp_project" {
 }
 
 variable "initial_node_count" {
-  type        = string
+  type        = number
   description = "Number of GKE node to deploy"
-  default     = "1"
+  default     = 1
 }
 
 variable "location" {

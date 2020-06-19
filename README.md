@@ -7,8 +7,12 @@
 For this lab, we will use a GKE Cluster to host a [vault application](https://www.hashicorp.com/products/vault/).
 
 * In a `gke-cluster` folder, deploy a new GKE cluster using Terraform.
+  * Go in `gke-cluster`.
+  * In `variables.tf`, adapt cluster name `name` to add trigram.
+  * Add GCP Project Id, in `gcp_project` variable also.
+  * Then run `terraform apply`, to create GKE cluster
 
-* Run `gcloud container clusters get-credentials demo-cluster --zone=europe-west1` to configure kubectl (and helm) credentials
+* Run `gcloud container clusters get-credentials ${name of your cluster you specified above} --zone=europe-west1` to configure kubectl (and helm) credentials
 
 ### Credentials using Vault
 
