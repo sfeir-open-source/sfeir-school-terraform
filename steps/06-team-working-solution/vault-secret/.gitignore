@@ -1,0 +1,14 @@
+#  Local .terraform directories
+**/.terraform/*
+**/.terraform.d/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
+
+# vim tmp files
+*.swp
+.*tags

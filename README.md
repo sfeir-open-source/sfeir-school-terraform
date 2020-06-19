@@ -22,7 +22,6 @@ Each module can be run independently
   * (lab) Continuous Deployment with Terraform
 * Module 8 : Custom Providers
   * (lab) : Create your own Terraform provider
-* Module 9 : Templating
 
 ## Technical stack requirements
 
@@ -53,8 +52,7 @@ Slides are available here : https://sfeir-open-source.github.io/sfeir-school-ter
 
 ## How to use
 
-Source code and tutorials are saved in a dedicated branch of this repository.
-You can switch between branches using `git checkout <branch-name>`.
+Source code and tutorials are saved in directory `steps`, with one directory labs, and another one suffixed with `-solution` with solutions...
 
 *Notes : if you made changes, don't forget to commit locally using `git commit -m "<msg>"`*
 
