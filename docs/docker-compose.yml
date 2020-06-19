@@ -1,0 +1,10 @@
+version: "3"
+services:
+  npx:
+    image: node:12.18
+    command: npx serve
+    volumes:
+    - .:/sources
+    working_dir: /sources
+    ports:
+    - 5000:5000
