@@ -47,6 +47,10 @@ An active account is required on Gitlab.
 
 All other components will be part as Open-Source projects and will be deployed on [Kubernetes](https://kubernetes.io/) using [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/)
 
+## Slides
+
+Slides are available here : https://sfeir-open-source.github.io/sfeir-school-terraform
+
 ## How to use
 
 Source code and tutorials are saved in a dedicated branch of this repository.
