@@ -15,12 +15,15 @@
 * Mise en forme
 * Auto-completion
 * Validation de syntaxe
+* Analyse statique de code
 
 <br/><br/><br/>
 
 * https://marketplace.visualstudio.com/items?itemName=mauve.terraform
 * https://github.com/hashivim/vim-terraform
 * https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support
+* https://atom.io/packages/search?utf8=%E2%9C%93&q=keyword:terraform
+* https://packagecontrol.io/packages/Terraform
 
 ##==##
 <!--.slide: class="two-column-layout"-->

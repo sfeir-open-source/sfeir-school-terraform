@@ -442,7 +442,7 @@ Values passed within definition files or with -var will take precedence over TF_
  
 https://github.com/hashicorp/hil
 
-Le Langage permet de manipuler des variables ou récupérer des attributs d’autres ressources.L’interpolation doit être déclarée entre “${ ... }” 
+Le Langage permet de manipuler des variables ou récupérer des attributs d’autres ressources.L’interpolation doit être déclarée entre *“${var.myvar}”* (version 0.11) ou *var.myvar* (version 0.12). 
 
 ```hcl
 data "template_file" "example" {
@@ -480,7 +480,7 @@ Cas d’une liste de resource (version < 0.12) : `resource_type.resource_name.*.
 
 <br/>
 
-Exemple d’utilisation des fonctions :
+Exemple d’utilisation des fonctions relatives aux *strings*:
 
 ```hcl
   count     = "${length(var.shortnames)}"
@@ -490,7 +490,30 @@ Exemple d’utilisation des fonctions :
 <!-- .element: class="big-code" -->
 
 ##==##
-<!-- .slide:-->
+<!-- .slide: class="with-code-bg-dark"-->
+
+# HashiCorp Interpolation Language (HIL)
+
+<br/>
+
+Exemple d'utilisation des fonctions relatives aux *listes*:
+
+```hcl
+variable "mylist" {
+  type = list
+}
+
+element(var.mylist, x)
+var.mylist[0]
+slice(var.mylist, x, y)
+```
+
+Notes:
+* element : permet d'afficher l'élément de la list à l'emplacement x
+* slice : à partir de l'élément x, permet d'afficher y elements
+
+##==##
+<!-- .slide: -->
 
 # HashiCorp Interpolation Language (HIL)
 
@@ -502,6 +525,29 @@ Terraform permet de déployer plusieurs ressources de même type via une unique 
 Attention, les boucles ne sont disponibles que pour les ressources et data sources
 
 ![h-400 center](./assets/images/hil_boucle.png)
+
+##==##
+<!-- .slide: class="with-code-bg-dark"-->
+
+# HashiCorp Interpolation Language (HIL)
+
+<br/>
+
+## Boucles
+
+Boucles utilisables antérieuement à la version 0.12 :  
+
+```hcl
+resource "vault_ldap_auth_backend_group" "group-users" {
+  count = length(var.group-users)
+  groupname = lookup(var.group-users[count.index], "groupname")
+  ...
+}
+```
+<!-- .element: class="big-code" -->
+
+Notes:
+Attention à l'utilisation de ce type de notation. la gestion des targets lors de la suppression peut poser quelques problèmes.
 
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->

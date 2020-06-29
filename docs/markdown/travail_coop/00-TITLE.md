@@ -141,6 +141,10 @@ Il est possible de verrouiller le fichier pour éviter les appels concurrents de
 
 Terraform propose la commande **terraform force-unlock** si mon déploiement reste verrouillé.
 
+Notes:
+Attention, la gestion du locking des ressources est différentes selon les providers.
+Seul AWS ne propose pas de locking automatique, GCP, Azure et Openstack proposent la fonctionnalité de locking automatique.
+
 ##==##
 <!-- .slide:-->
 
