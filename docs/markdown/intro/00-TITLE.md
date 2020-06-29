@@ -37,20 +37,20 @@ Learn to build automated machine images with Packer
 * Enjeux de l’infrastructure
 * Automatisation de l’infrastructure
 * Documentation à jour
-* Multiples plateformes d’hébergements
+* Multiples plateformes d’hébergements et middlewares
 * Augmenter l’agilité et l’autonomie (concept de “PizzaTeam”)
 * Réduire les coûts
 
 Notes:
-Automatisation de l’infrastructure => Réduire les actions sans valeurs ajoutées
+Automatisation de l’infrastructure => Réduire les actions sans valeurs ajoutées en mettant en place un template d'architecture
 
 Documentation => Maintenir une documentation des infrastructures déployées
 
-Multiples plateformes d’hébergements => Utiliser le meilleur de chaque cloud providers (prix, features, régions, …)
+Multiples plateformes d’hébergements => Utiliser le meilleur de chaque cloud providers (prix, features, régions, …), optimiser au maximum l'utilisation des ressources proposées par chaque provider
 
 “PizzaTeam” (augmenter l’agilité et l’autonomie) => Avoir l’autonomie de déployer des templates validées par des outils de sécurités au lieu de passer par un ticket/change order
 
-Réduire les coûts => Dé-allouer sans risques les ressources inutiles, créer des environnements éphémères (build CI), ...
+Réduire les coûts => Dé-allouer sans risques les ressources inutiles, créer des environnements éphémères (build CI), réduire au maximum les interventions humaines durant le processus de déploiement et de suppression
 
 ##==##
 <!-- .slide: -->
@@ -84,6 +84,12 @@ Terraform va convertir le texte en nombreux appels APIs vers la plateforme d’h
   * imposer une configuration identique quelque soit l’environnement
   * mettre à jour massivement
 
+Notes:
+L'automatisation de déploiement permet de réduire au maximum les risques inhérent à l'activité humaine sur une infrastructure, qu'elle soit complexe ou non.
+Si une erreur existe, elle sera dans le code et rapidement corrigeable une fois identifiée.
+Via une configuration identique dans le code de déploiement, on peut également déployer plusieurs environnements rapidement.
+Le système de template permet également de mettre à jour massivement et ceci peu importe le nombre et la nature des ressources.
+
 ##==##
 <!-- .slide: -->
 
@@ -105,8 +111,6 @@ Version control : See the diff !
 Traceability : Who did this modification ?!
 
 Backup : OMG I lost all of my changes...
-
-
 
 Documentation : Le code est lisible et commenté
 
@@ -132,7 +136,7 @@ Testing : chaque ressource est testée et correspond au besoin fonctionnel
 ![](./assets/images/g418fd663c2_0_203.png)
 
 Notes:
-Le développer a à sa disposition un ensemble de modules développés par les équipes d’infrastructure pour déployer ses environnements/applications tout en respectant les règles de sécurité et d’urbanisation
+Le développeur a à sa disposition un ensemble de modules développés par les équipes d’infrastructure pour déployer ses environnements/applications tout en respectant les règles de sécurité et d’urbanisation
 
 ##==##
 <!-- .slide: -->
@@ -145,8 +149,8 @@ Le développer a à sa disposition un ensemble de modules développés par les �
 
 * https://github.com/hashicorp/terraform
 
-  * 18k+ stars
-  * 1300+ contributeurs
+  * 22k+ stars
+  * 5800+ contributeurs
 
 Notes:
 Produit OpenSouce développé en Go
@@ -166,7 +170,7 @@ Attention, on entend beaucoup dire que Terraform est “Cloud agnostique”. C�
 
 Le Workflow de déploiement quand à lui restera identique c’est pour cela qu’on parle de “Workflow agnostique”.
 
-Terraform est multi provider, il peut créer des ressources autant sur des plateformes cloud (AWS, GCP, Azure, …) que sur des plateformes PAAS (Github, Heroku, …)
+Terraform est multi provider, il peut créer des ressources autant sur des plateformes cloud (AWS, GCP, Azure, …) que sur des plateformes PAAS (Github, Heroku, …), ainsi que certains middleware tels que PostgreSQL, Grafana, Docker, Artifactory, etc ...
 
 ##==##
 <!-- .slide: class="flex-row"-->

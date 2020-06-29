@@ -13,6 +13,10 @@ https://github.com/hashicorp/hcl
 
 Langage de configuration développé par HashiCorp et ré-utilisé dans ses différents produits. Uniquement déclaratif, il est associé au HIL (HashiCorp Interpolation Language) lorsqu’il faut calculer des valeurs.
 
+Notes:
+Nomad, Packer, Consul et Serf utilisent également le HCL, contrairement à Vagrant.
+Le HCL est une combinaison entre la syntaxe déclarative et l'interpolation de variables.
+
 
 ##==##
 <!-- .slide: -->  
@@ -30,6 +34,9 @@ Langage de configuration développé par HashiCorp et ré-utilisé dans ses diff
    * **List** via [ … ]
    * **Map** via { ... }
 
+Notes:
+* Ce sont évidemment des mots clefs spécifique à Terraform
+* Multi-line : Utilisable dans les ressources de type "policy"
 
 ##==##
 <!-- .slide:-->
@@ -46,6 +53,24 @@ La version 0.12 de terraform introduit de nouveaux types d’objets comme :
 * Structure anonyme (object)
 * Type complexe (list de map, map de list, map de map de map, …)
 
+Notes:
+Les objets de type "list of map" sont utilisable depuis la version 0.11 mais leur utilisation a été rendue plus simple grâce à l'introduction des blocs dynamique.
+
+##==##
+<!-- .slide: -->
+
+# Hashicorp Configuration Language (HCL)
+
+<br/>
+
+## Depuis la version 0.12
+La version 0.12 de Terraform a également introduit de nouvelles instructions, telles que : 
+* Les blocs dynamique
+* Les instructions conditionnelles
+* for et for_each
+
+Notes:
+Nous verrons en détail chacune de ces instructions plus tard.
 
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
@@ -76,6 +101,11 @@ resource "google_compute_instance" "instance" {
 ```
 <!-- .element: class="big-code" -->
 
+Notes:
+Ici nous déclarons le provider, en l'occurence Google, mais ça aurait pu être Azure, AWS, Openstack ou n'importe quel autre.
+Ensuite nous créons un objet manipulable de type Instance, dont l'image de démarrage est une Debian 9, ayant pour identifiant demo, se trouvant dans la zone europe-west1-a, de type n1-standard-1 contenant le tag "web". 
+Le processus de création d'objet de même type chez d'autre Provider Cloud est identique, seul les mots clés diffèrent. 
+
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
 
@@ -100,9 +130,17 @@ variable "num_cpu" {
 
 Utilisation : 
 ```hcl
-num_cpu = "${var.num_cpu}"
+num_cpu = var.num_cpu
 ```
 <!-- .element: class="big-code" -->
+
+Notes:
+Selon les cas, l'utilisation et la gestion des variables sera différent.
+Vous pouvez valoriser directement les variables dès leur déclaration et les overrider par la suite (en passant l'option -var de la commande terraform)
+Ou les déclarer "à vide" et utiliser un autre fichier (.tfvars) afin de les valoriser (en passant l'option -var-file de la commande terraform)
+Ou bien utiliser la fonctionnalité Workspace de terraform, y définir les valeurs spécifique des variables et les réutiliser à la volée par la suite. 
+
+
 
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
@@ -192,13 +230,10 @@ resource "google_compute_firewall" "default" {
 
 
 Notes:
-Example :
-
 lifecycle : Permet de modifier le cycle de vie de la ressource (créer la nouvelle avant de supprimer l’ancienne, ignorer les changements d’un attributs, ...)
-
 depends_on : Forcer une dépendance. Par défaut toute “variable interpolée” crée une dépendance implicite. Dans certains cas, il est necessaire d’expliciter la dépendance (exemple, créer une base de donnée avant le serveur d’application).
-
-provider : Permet de surcharger le provider de la ressource par exemple lors de l’utilisation d’alias sur plusieurs providers.
+provider : Permet de surcharger le provider de la ressource par exemple lors de l’utilisation d’alias sur plusieurs providers ou bien lorsque certaines ressources ne sont pas disponible sur le driver principal (dans le cas de Google et Google-beta, par exemple).
+timeouts : Permet de remplacer les timeouts par défaut
 
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
@@ -237,9 +272,36 @@ data "google_compute_image" "my_image" {
 }
 
 [...]
-image = "${data.google_compute_image.my_image.self_link}"
+image = data.google_compute_image.my_image.self_link
 ```
 <!-- .element: class="big-code" -->
+
+Notes:
+Il est également possible de récupérer des attributs de ressources générés par Terraform et stockée dans un state localement ou sur un backend différent.
+
+##==##
+<!-- .slide: -->
+
+# HashiCorp Configuration Language (HCL)
+
+<br/>
+
+```hcl
+data "terraform_remote_state" "network" {
+  backend = "s3"
+  
+  config {
+    bucket = "networking-terraform"
+    key = "vpc-prod01.terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+[...]
+network = data.terraform_remote_state.network.outputs.name
+```
+
+Notes:
+
 
 ##==##
 <!-- .slide:-->
@@ -253,8 +315,11 @@ image = "${data.google_compute_image.my_image.self_link}"
 **Un module est un ensemble de ressources.**    
 Il permet d’abstraire un déploiement plus complexe et agit comme une boîte noire pour laquelle on utilisera des **variables** en entrée et des **outputs** en sortie.
 
-**Le module permet une réutilisation du code et peut être stocké dans un repository distant (privé ou publique).**
+**Le module permet une réutilisation du code et peut être stocké localement ou dans un repository distant (privé ou publique).**
 
+Notes:
+Les modules stockés dans une repository distant sont des remote modules.
+Ils peuvent être dans le terraform registry ou dans un repository github privé non reférencé dans le terraform registry.
 
 ##==##
 <!-- .slide:-->
@@ -377,11 +442,11 @@ Values passed within definition files or with -var will take precedence over TF_
  
 https://github.com/hashicorp/hil
 
-Le Langage permet de manipuler des variables ou récupérer des attributs d’autres ressources.L’interpolation doit être déclaré entre “${ ... }” 
+Le Langage permet de manipuler des variables ou récupérer des attributs d’autres ressources.L’interpolation doit être déclarée entre “${ ... }” 
 
 ```hcl
 data "template_file" "example" {
- template = "${file("templates/greeting.tpl")}"
+ template = file("templates/greeting.tpl")
  vars {
    hello = "goodnight"
    world = "moon"

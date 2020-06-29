@@ -23,7 +23,10 @@
 ![w-1000 center](./assets/images/g418fd663c2_0_272.png)
 
 Notes:
+Plusieurs manières d'installer Terraform.
+En le téléchargeant depuis le site officiel ou via l'utilisation de tf_env.
 Le logiciel est sous la forme d’un binaire (pré-compilé pour différents OS).
+Sur GCP, la toute dernière version est disponible sur le Cloud Shell, sur Azure et AWS, il n'est pas installé.
 
 ##==##
 
@@ -45,11 +48,10 @@ Cette commande permet d’initialiser le répertoire de travail courant.
 * Lit le fichier configuration personnel ~/.terraformrc si existant 
 * Télécharge les providers et provisioners nécessaires (officiels) sur https://releases.hashicorp.com/
 * Instancie le fichier d’état (local ou distant)
-* Effectue un “terraform get“ si nécessaire.
+* instancie ou télécharge les modules déclarés (Effectue un “terraform get“ si nécessaire.)
 
 Notes:
-Cette commande est nécessaire d’être joué dans chaque nouveau dossier mais également lors de l’ajout d’une ressource provenant d’un nouveau provider.
-
+Cette commande est nécessaire d’être jouée dans chaque nouveau dossier mais également lors de l’ajout d’une ressource provenant d’un nouveau provider.
 Elle permet également la migration d’un fichier d’état d’un support vers un autre (cf module gestion du fichier d’état).
 
 ##==##
@@ -86,6 +88,9 @@ Le résultat peut être exporté en utilisant l’argument “-out” pour une a
 <br/>
 
 Terraform ne modifie/crée que les ressources qui nécessitent une modification.
+
+Notes:
+Terraform plan juge principalement la syntaxe ainsi que certaines variables et retournera une erreur si tout ne semble pas conforme.
 
 ##==##
 <!-- .slide:-->

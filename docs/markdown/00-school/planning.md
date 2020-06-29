@@ -10,6 +10,13 @@
 * Déploiement automatisé de l’infrastructure
 * Développement de providers communautaires
 
+Notes:
+* Comprenant la syntaxe et l'interpolation de variable, les différentes commandes ainsi que leur effets.
+* A l'aide d'outils tiers que j'aborderai par la suite.
+* A l'aide des outils standard de versionning ainsi que des registry privés ou publics
+* A l'aide d'outils de CICD
+* Cette dernière partie est un bonus si vous êtes à l'aise sur du Go afin de contribuer au développement des drivers de providers
+
 ##==##
 <!-- .slide:  -->
 # Déroulement de la formation
