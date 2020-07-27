@@ -37,9 +37,9 @@ Jour 2 : Collaboration et production
 ## MODULE 2 : Premiers pas avec Terraform
 
 * Installation
-* Configuration
-* Découverte du logiciel
-* Atelier: Installation et configuration
+* Choix de l'IDE
+* Découverte du HCL
+* Atelier: Installation et découverte du HCL
 
 ##==##
 <!-- .slide:  -->

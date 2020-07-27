@@ -38,18 +38,170 @@ Plusieurs IDE disponibles :
 
 * Sublime Text
 
+* VIM
+
 Notes:
 - Le choix de l'IDE est primordial avant même de se lancer dans l'utilisation de Terraform car il offre un confort d'utilisation supérieur par rapport à un éditeur de texte classique.
 - Les fonctionnalités proposées vont de la coloration syntaxique à la complétion automatique.
-- Intellij (en version payante) propose le plus haut niveau de fonctionnalité, cependant il est aussi possible d'utiliser VIM.
+- Intellij (en version payante) propose des fonctionnalités très avancées.
 
 ##==##
 <!-- .slide: -->
 
-# Les variables
+# Le Hashicorp Configuration Language
 <br/>
 
-Plusieurs types de variables : 
+Le HCL est un langage déclaratif décrivant un état désiré (DSL) plutôt que les étapes de cet objectif.  
+Le **Terraform HCL** introduit les concepts suivants : 
+
+| Concept | Explication |
+| ------- | ----------- |
+| Provider | Regroupe toute les informations relative au provider |
+| Resource | Décrit la ressource à déployer à l'aide de mots clés optionels ou non|
+| Datasource | Afin de récupérer diverses informations depuis la platforme cloud cible |
+| Output | Représente les valeurs de retour d'un module |
+| Backend | Permet de sauvegarder le fichier d'état autre part que localement | 
+| Modules | Appels d'une resource ou d'un groupe de ressource réutilisable |
+| Locales | Désigne un nom ou une expression destinée à être utilisée plusieurs fois |
+| Inputs | Il s'agit des variables servant de paramètres aux modules Terraform |
+
+Notes:
+- Un provider est en fait un driver développé par la communauté et en lien avec l'API d'un Cloud Provider.
+Potentiellement, tout Cloud Provider proposant une API peut être utilisé comme Provider terraform.
+- N'importe quel attribut d'une resource déployée peut être intérrogé et sorti en tant qu'output.
+Ainsi il est possible d'interpoler une addresse IP d'une instance dans une autre ressource.
+- Les modules permettent de donner au code terraform un look plus organisé. Ces modules peuvent provenir de votre propre repository github, du terraform registry ou être stocké localement.
+Les modules peuvent échanger des données en interpolant des données provenant d'un module déclaré au préalable. 
+
+##==##
+<!-- .slide: -->
+
+# Les provider
+Un provider correspond a un ensemble de ressources, chacune de ces ressources est défini par un ou plusieurs arguments et attributs.  
+Chaque provider fait appel à l'API correspondant à un service *cloud* ou *on-premise*.  
+Chaque bloc **Provider** défini dans une configuration **Terraform** nécessite une configuration particulière tels que : 
+* Endpoints URLs
+* Région
+* Paramètres d'authentification
+* ID de projet
+* Version du driver
+* Alias
+
+Certains providers ne sont pas officiellement supportés par **Hashicorp** mais sont tout de même utilisable avec **Terraformm**.
+
+Notes:
+Les arguments du bloc provider diffèrent d'un provider à l'autre, certains sont similaire (AWS et AliCloud - par exemple).
+Parmis les provider non supportés officiellement par hashicorp, on peut retrouver kubectl et Artifactory 
+
+##==##
+<!-- .slide: -->
+
+# Les Resources
+Les ressources sont l'élément de base de **Terraform** car elles décriver un ou plusieurs objets de l'infrastructure tels que des réseau virtuels, des instances ou d'autres composants de haut niveau tels que des enregistrements DNS.  
+Dans le cas de **Kubernetes**, il s'agit surtout de **Deployment**, **Services**, **Pods**, **DaemonSets**, etc...
+Les *resources* dépendent du provider sur lequel nous souhaitons travailler.
+
+La déclaration d'un objet *resource* peut inclure des options très avancées mais seul un ensemble d'option est obligatoire pour usage basique, par exemple : 
+```hcl-terraform
+resource "aws_instance" "web"{
+  ami           = "ama1b2c3d4"
+  instance_type = "t2.micro"
+}
+```
+
+**Attention** : Certaines ressources ont des relations particulières et nécessite le déploiement d'une ou plusieurs ressources. Dans ce cas, nous avons recours au *meta-argument* **depends_on**
+
+Notes:
+* Les dépendances entre ressources peuvent être établies de deux manières différentes : implicites ou explicites.
+* Il n'y a pas de recommandation particulière pour chacune des méthodes, chaque provider propose ses propres best practices.
+
+##==##
+<!-- .slide: -->
+
+# Les Datasources
+Les *datasources* sont des données que **Terraform** va récupérer sur la plateforme du provider afin de les injecter dans la configuration afin d'éviter de coder en dur les informations qui pourraient : 
+- être confidentielles (dans le cas de mot de passe ou certificats)  
+- être dynamiques (dans le cas d'adresses IP ou de noms provenant d'un serveur DNS)
+
+Chaque provider propose ses propres *datasources* liées aux *resources* qui'il permet de déployer.
+```hcl-terraform
+data "aws_ami" "web" {
+  provider = "aws.west"
+  owners = []
+}
+```
+
+Notes:
+Les datasources sont des données qui ne figurent pas dans le fichier d'état sur le backend mais dans les métadonnées du provider.
+
+##==##
+<!-- .slide: -->
+
+# Les Outputs
+
+Les Outputs sont des valeurs de retour d'argument d'un module ou d'une ressource définie dans la configuration et ont plusieurs usages : 
+* Un module enfants peut utiliser un output pour exposer un ou plusieurs attributs d'une resource d'un module parent  
+* Un module racine peut utiliser des outputs pour afficher certaines valeurs via la commande `terraform apply`  
+* En utilisant la commande `terraform state`, d'autres configurations peuvent accéder a des outputs d'un autre module racine à l'aide de `terraform_remote_state` (voir ci-dessous) :  
+```hcl-terraform
+data "terraform_remote_state" "network" {
+    backend = "s3"
+    config {
+      bucket  = "tf_state/networking"
+      key     = "networking.tfstate"
+    }
+}
+```
+
+Notes:
+Sans outputs, un module enfant ne pourra pas utiliser de données provenant d'un module parent.
+
+##==##
+<!-- .slide: -->
+
+# Les Locales  
+
+Une *locale* assigne un nom à une expression, ce qui permet de l'utiliser à de nombreuses reprises dans un module sans avoir à la répéter.  
+Par analogie avec un langage de programmation dit *traditionnel*, une *locale* est comparable avec les fonctions.
+
+```hcl-terraform
+locals {
+  instance_ids = concat(aws_instance.blue.*.id, aws_instance.green.*.id)
+}
+locals {
+  common_tags = {
+    Service = local.service_name
+    Owner   = local.owner
+  }
+}
+```
+
+##==##
+<!-- .slide: -->
+
+# Les Modules
+
+Un module est un *conteneur* de ressources (une ou plusieurs) pouvant être utilisé ensemble.  
+Chaque configuration **terraform** contient au moins un module, le module racine et contient au moins les trois fichiers suivants :  
+
+| Nom | Explications |  
+| --- | ------------ |  
+| main.tf | Contient la ou les ressource(s) du module |  
+| variables.tf | Contient les variables qui serviront à paramétrer le module lorsqu'il sera appelé dans le module racine |  
+| outputs.tf | Contient les valeurs de retour qui serviront à exposer les attributs du module | 
+
+Lors de l'appel d'un module dans le module racine, l'argument **source** est obligatoire pour définir l'origine du module.  
+Deux autres arguments sont disponibles (mais non obligatoire) :  
+* **version** : dans le cas ou le module en question aurait plusieurs version utilisable  
+* **provider** : dans le cas ou plusieurs comptes sur la plateform cloud seraient utilisable
+
+##==##
+<!-- .slide: -->
+
+# Les Inputs
+<br/>
+
+Plusieurs types d'inputs : 
 * String
 * Number
 * Bool
@@ -69,7 +221,7 @@ Notes:
 ##==##
 <!-- .slide: -->
 
-# Les variables
+# Les Inputs
 <br/>
 
 **List**, **Set**, **Object**, **Tuple** et **Map** :
@@ -84,33 +236,6 @@ Notes:
 - Une variable de type Object resemble plus ou moins à une variable de type Map mais peut contenir des éléments de type différents
 - Une variable de type Tuple ressemble plus ou moins à une variable de type List, mais peut contenir des éléments de type différents.
 - Les types de variables que l'on peut rencontrer le plus souvent sont string, number, bool, list et map.
-
-##==##
-<!-- .slide: -->
-
-# Le HCL
-<br/>
-
-Le HCL est un langage déclaratif décrivant un état désiré (DSL) plutôt que les étapes de cet objectif.  
-Le **Terraform HCL** introduit les concepts suivants : 
-
-| Concept | Explication |
-| ------- | ----------- |
-| Provider | Regroupe toute les informations relative au provider |
-| Resource | Décrit la ressource à déployer à l'aide de mots clés optionels ou non|
-| Datasource | Afin de récupérer diverses informations depuis la platforme cloud cible |
-| Output | Représente les valeurs de retour d'un module |
-| Backend | Permet de sauvegarder le fichier d'état autre part que localement | 
-| Modules | Appels d'une resource ou d'un groupe de ressource réutilisable |
-| Locales | Désigne un nom ou une expression destinée à être utilisée plusieurs fois |
-
-Notes:
-- Un provider est en fait un driver développé par la communauté et en lien avec l'API d'un Cloud Provider.
-Potentiellement, tout Cloud Provider proposant une API peut être utilisé comme Provider terraform.
-- N'importe quel attribut d'une resource déployée peut être intérrogé et sorti en tant qu'output.
-Ainsi il est possible d'interpoler une addresse IP d'une instance dans une autre ressource.
-- Les modules permettent de donner au code terraform un look plus organisé. Ces modules peuvent provenir de votre propre repository github, du terraform registry ou être stocké localement.
-Les modules peuvent échanger des données en interpolant des données provenant d'un module déclaré au préalable. 
 
 ##==##
 <!-- .slide: -->
@@ -352,6 +477,66 @@ Les modules peuvent échanger des données en interpolant des données provenant
 1. Localement, en mémoire
 2. **Localement, dans le dossier courant**
 3. Sur un espace de stockage distant
+
+##==##
+<!-- .slide: -->
+
+# QUIZZ
+
+<br/>
+
+*Question* : A quel endroit exécute-t-on la commande terraform apply ?
+
+<br/>
+
+1. N'importe où ?
+2. Au niveau du module racine
+3. Dans chaque module
+
+##==##
+<!-- .slide: -->
+
+# QUIZZ
+
+<br/>
+
+*Question* : A quel endroit exécute-t-on la commande terraform apply ?
+
+<br/>
+
+1. N'importe où ?
+2. **Au niveau du module racine**
+3. Dans chaque module
+
+##==##
+<!-- .slide: -->
+
+# QUIZZ
+
+<br/>
+
+*Question* : A quoi sert la commande *taint* ?
+
+<br/>
+
+1. A gérer le fichier d'état
+2. A configurer un backend
+3. A marquer une ressource
+
+##==##
+<!-- .slide: -->
+
+# QUIZZ
+
+<br/>
+
+*Question* : A quoi sert la commande *taint* ?
+
+<br/>
+
+1. A gérer le fichier d'état
+2. A configurer un backend
+3. **A marquer une ressource**
 
 ##==##
 <!-- .slide: class="exercice" -->
