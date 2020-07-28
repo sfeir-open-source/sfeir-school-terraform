@@ -66,6 +66,7 @@ Le **Terraform HCL** introduit les concepts suivants :
 | Inputs | Il s'agit des variables servant de paramètres aux modules Terraform |
 
 Notes:
+- Langage de configuration développé par HashiCorp et ré-utilisé dans ses différents produits. Uniquement déclaratif, il est associé au HIL (HashiCorp Interpolation Language) lorsqu’il faut calculer des valeurs.
 - Un provider est en fait un driver développé par la communauté et en lien avec l'API d'un Cloud Provider.
 Potentiellement, tout Cloud Provider proposant une API peut être utilisé comme Provider terraform.
 - N'importe quel attribut d'une resource déployée peut être intérrogé et sorti en tant qu'output.
@@ -77,6 +78,9 @@ Les modules peuvent échanger des données en interpolant des données provenant
 <!-- .slide: -->
 
 # Les provider
+
+<br/>
+
 Un provider correspond a un ensemble de ressources, chacune de ces ressources est défini par un ou plusieurs arguments et attributs.  
 Chaque provider fait appel à l'API correspondant à un service *cloud* ou *on-premise*.  
 Chaque bloc **Provider** défini dans une configuration **Terraform** nécessite une configuration particulière tels que : 
@@ -87,31 +91,33 @@ Chaque bloc **Provider** défini dans une configuration **Terraform** nécessite
 * Version du driver
 * Alias
 
-Certains providers ne sont pas officiellement supportés par **Hashicorp** mais sont tout de même utilisable avec **Terraformm**.
-
 Notes:
-Les arguments du bloc provider diffèrent d'un provider à l'autre, certains sont similaire (AWS et AliCloud - par exemple).
-Parmis les provider non supportés officiellement par hashicorp, on peut retrouver kubectl et Artifactory 
+* Certains providers ne sont pas officiellement supportés par **Hashicorp** mais sont tout de même utilisable avec **Terraformm**.
+* Les arguments du bloc provider diffèrent d'un provider à l'autre, certains sont similaire (AWS et AliCloud - par exemple).
+* Parmis les provider non supportés officiellement par hashicorp, on peut retrouver kubectl et Artifactory 
 
 ##==##
 <!-- .slide: -->
 
 # Les Resources
-Les ressources sont l'élément de base de **Terraform** car elles décriver un ou plusieurs objets de l'infrastructure tels que des réseau virtuels, des instances ou d'autres composants de haut niveau tels que des enregistrements DNS.  
-Dans le cas de **Kubernetes**, il s'agit surtout de **Deployment**, **Services**, **Pods**, **DaemonSets**, etc...
+
+<br/>
+
+Les ressources sont l'élément de base de **Terraform** car elles décrivent un ou plusieurs objets de l'infrastructure tels que des réseau virtuels, des instances ou d'autres composants de haut niveau tels que des enregistrements DNS.  
+
 Les *resources* dépendent du provider sur lequel nous souhaitons travailler.
 
 La déclaration d'un objet *resource* peut inclure des options très avancées mais seul un ensemble d'option est obligatoire pour usage basique, par exemple : 
 ```hcl-terraform
 resource "aws_instance" "web"{
-  ami           = "ama1b2c3d4"
+  ami           = "ama-1b2c3d4"
   instance_type = "t2.micro"
 }
 ```
 
-**Attention** : Certaines ressources ont des relations particulières et nécessite le déploiement d'une ou plusieurs ressources. Dans ce cas, nous avons recours au *meta-argument* **depends_on**
-
 Notes:
+* **Attention** : Certaines ressources ont des relations particulières et nécessite le déploiement d'une ou plusieurs ressources. Dans ce cas, nous avons recours au *meta-argument* **depends_on**
+* Dans le cas de **Kubernetes**, il s'agit surtout de **Deployment**, **Services**, **Pods**, **DaemonSets**, etc...
 * Les dépendances entre ressources peuvent être établies de deux manières différentes : implicites ou explicites.
 * Il n'y a pas de recommandation particulière pour chacune des méthodes, chaque provider propose ses propres best practices.
 
@@ -119,6 +125,9 @@ Notes:
 <!-- .slide: -->
 
 # Les Datasources
+
+<br/>
+
 Les *datasources* sont des données que **Terraform** va récupérer sur la plateforme du provider afin de les injecter dans la configuration afin d'éviter de coder en dur les informations qui pourraient : 
 - être confidentielles (dans le cas de mot de passe ou certificats)  
 - être dynamiques (dans le cas d'adresses IP ou de noms provenant d'un serveur DNS)
@@ -139,8 +148,10 @@ Les datasources sont des données qui ne figurent pas dans le fichier d'état su
 
 # Les Outputs
 
+<br/>
+
 Les Outputs sont des valeurs de retour d'argument d'un module ou d'une ressource définie dans la configuration et ont plusieurs usages : 
-* Un module enfants peut utiliser un output pour exposer un ou plusieurs attributs d'une resource d'un module parent  
+* Un module enfant peut utiliser un output pour exposer un ou plusieurs attributs d'une resource d'un module parent  
 * Un module racine peut utiliser des outputs pour afficher certaines valeurs via la commande `terraform apply`  
 * En utilisant la commande `terraform state`, d'autres configurations peuvent accéder a des outputs d'un autre module racine à l'aide de `terraform_remote_state` (voir ci-dessous) :  
 ```hcl-terraform
@@ -160,6 +171,8 @@ Sans outputs, un module enfant ne pourra pas utiliser de données provenant d'un
 <!-- .slide: -->
 
 # Les Locales  
+
+<br/>
 
 Une *locale* assigne un nom à une expression, ce qui permet de l'utiliser à de nombreuses reprises dans un module sans avoir à la répéter.  
 Par analogie avec un langage de programmation dit *traditionnel*, une *locale* est comparable avec les fonctions.
@@ -181,6 +194,8 @@ locals {
 
 # Les Modules
 
+<br/>
+
 Un module est un *conteneur* de ressources (une ou plusieurs) pouvant être utilisé ensemble.  
 Chaque configuration **terraform** contient au moins un module, le module racine et contient au moins les trois fichiers suivants :  
 
@@ -191,6 +206,8 @@ Chaque configuration **terraform** contient au moins un module, le module racine
 | outputs.tf | Contient les valeurs de retour qui serviront à exposer les attributs du module | 
 
 Lors de l'appel d'un module dans le module racine, l'argument **source** est obligatoire pour définir l'origine du module.  
+
+Notes:
 Deux autres arguments sont disponibles (mais non obligatoire) :  
 * **version** : dans le cas ou le module en question aurait plusieurs version utilisable  
 * **provider** : dans le cas ou plusieurs comptes sur la plateform cloud seraient utilisable
@@ -539,6 +556,37 @@ Notes:
 3. **A marquer une ressource**
 
 ##==##
+<!-- .slide: -->
+
+# QUIZZ
+
+<br/>
+
+*Question* : A quoi servent les outputs ?
+
+<br/>
+
+1. A échanger des données entre un module parent et un module enfant
+2. A échanger des données entre plusieurs comptes d'un provider cloud
+3. A rien
+
+##==##
+<!-- .slide: -->
+
+# QUIZZ
+
+<br/>
+
+*Question* : A quoi servent les outputs ?
+
+<br/>
+
+1. **A échanger des données entre un module parent et un module enfant**
+2. **A échanger des données entre plusieurs comptes d'un provider cloud**
+3. A rien
+
+##==##
+
 <!-- .slide: class="exercice" -->
 
 # Installation et configuration

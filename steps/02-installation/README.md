@@ -3,18 +3,15 @@
 ## Module 2 First steps
 
 ### Installation
-
-Download the latest version using :
+Install Terraform by any means you want.
+Download the latest version, unzip and install :
 
 ```shell
 curl https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip -o /tmp/terraform_${TF_VERSION}_linux_amd64.zip
-```
-
-Then unzip & install :
-
-```shell
 sudo unzip /tmp/terraform_${TF_VERSION}_linux_amd64.zip -d /usr/local/bin/
 ```
+
+Or install tfenv
 
 ### Commands discovery
 Clone this repository on the Cloud Shell.
@@ -46,8 +43,6 @@ Outputs:
 
 message = Hello World
 
-archlinux
-
 reverse(var.image)
 [
   "macos",
@@ -60,4 +55,6 @@ reverse(var.image)
 image archlinux
 ```
 
+### Root module
 
+Create a root module with four different resources for the Cloud Provider of your choice (among AWS, Azure, GCP, DigitalOcean).
