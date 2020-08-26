@@ -11,7 +11,7 @@
 
 https://github.com/hashicorp/hcl
 
-Langage de configuration développé par HashiCorp et ré-utilisé dans ses différents produits. Uniquement déclaratif, il est associé au HIL (HashiCorp Interpolation Language) lorsqu’il faut calculer des valeurs.
+Langage de configuration développé par HashiCorp et ré-utilisé dans ses différents produits. Uniquement déclaratif, il est associé au HIL (HashiCorp Interpolation Language) lorsqu’il faut calculer des valeurs.
 
 
 ##==##
@@ -23,12 +23,9 @@ Langage de configuration développé par HashiCorp et ré-utilisé dans ses diff
 
 ## Mots clefs pour Terraform : 
 * **provider, variable, resource, module, output, data**
-* commentaires via # ou /* … */ 
-* Multi-line via <<EOF … EOF
-* 3 types de variables (terraform 0.11 ou moins) : 
-   * **String** via “...”
-   * **List** via [ … ]
-   * **Map** via { ... }
+* Commentaires via # ou /* … */ 
+* Multi-line via <<EOF … EOF
+* Les variables
 
 
 ##==##
@@ -40,12 +37,14 @@ Langage de configuration développé par HashiCorp et ré-utilisé dans ses diff
 
 ## Depuis la version 0.12
 
-La version 0.12 de terraform introduit de nouveaux types d’objets comme : 
+La version 0.12 (HCL2) de terraform introduit de nouveaux types d’objets comme : 
+* String via “...”
 * Nombre
 * Booléen
+* List via [ … ]
+* Map via { ... }
 * Structure anonyme (object)
 * Type complexe (list de map, map de list, map de map de map, …)
-
 
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
@@ -55,7 +54,6 @@ La version 0.12 de terraform introduit de nouveaux types d’objets comme :
 <br/>
 
 ## Exemple
-
 
 ```hcl
 provider "google" {
@@ -87,7 +85,7 @@ resource "google_compute_instance" "instance" {
 
 Les variables permettent d’adapter les attributs en fonction de différents critères comme l’environnement, le type d’application, etc…
 
-Déclaration : 
+Déclaration : 
 
 ```hcl
 variable "num_cpu" {
@@ -98,9 +96,11 @@ variable "num_cpu" {
 ```
 <!-- .element: class="big-code" -->
 
-Utilisation : 
+Utilisation : 
 ```hcl
-num_cpu = "${var.num_cpu}"
+num_cpu = "${var.num_cpu}" // 0.11
+num_cpu = var.num_cpu      // 0.12
+tags    = "tag:${var.tag}" // 0.12 with expansion
 ```
 <!-- .element: class="big-code" -->
 
@@ -113,7 +113,7 @@ num_cpu = "${var.num_cpu}"
 
 ## Variables locales 
 
-Déclaration : 
+Déclaration : 
 ```hcl
 locals {
  instance_names = ["inst-a", "inst-b"]
@@ -121,7 +121,7 @@ locals {
 ```
 <!-- .element: class="big-code" -->
 
-Utilisation : 
+Utilisation :
 ```hcl
 instance_names = ["${local.instance_names}"]
 ```
@@ -181,15 +181,15 @@ resource "google_compute_firewall" "default" {
 
 <br/>
 
-## Resource - Meta parameters (v0.11)
+## Resource - Meta parameters
 
 * **count** : Permet de créer plusieurs fois la ressource. count.index permet de récupérer l’index courant
+* **for_each** : Pour créer plusieurs fois une ressource en utilisant une map ou une liste de strings (depuis 0.12 à privilégier par rapport à count)
 * **lifecycle** : Permet de modifier le cycle de vie de la ressource 
 * **depends_on** : Forcer une dépendance. 
 * **provider** : Permet de surcharger le provider de la ressource
 * **timeouts** : Configurer les timeouts des opération de création, modification et suppression
 * **provisioner** : Permet d'exécuter des scripts en local ou à distance
-
 
 Notes:
 Example :
@@ -273,7 +273,6 @@ Il permet d’abstraire un déploiement plus complexe et agit comme une boîte n
 4. export TF_VAR_key=value; terraform <action>
 5. en ajoutant un fichier *.auto.tfvars dans le répertoir courant
 
-
 ##==##
 <!-- .slide:-->
 
@@ -291,7 +290,7 @@ Il permet d’abstraire un déploiement plus complexe et agit comme une boîte n
 4. **export TF_VAR_key=value; terraform <action>**
 5. **en ajoutant un fichier *.auto.tfvars dans le répertoir courant**
 
-Attention, l’ordre des variables à une importance. Les CLI sont toujours prioritaires. En cas de conflit, le dernier argument prévaut (sauf dans le cas d’une map où les clefs différentes sont fusionnées)
+Attention, l’ordre des variables à une importance. Les CLI sont toujours prioritaires. En cas de conflit, le dernier argument prévaut (sauf dans le cas d’une map où les clefs différentes sont fusionnées)
 
 
 Notes:
@@ -337,7 +336,7 @@ Values passed within definition files or with -var will take precedence over TF_
 
 <br/>
 
-*Question* : Quel est le comportement de Terraform lors du prochain apply si une ressource à été commenté depuis le dernier apply ?
+*Question* : Quel est le comportement de Terraform lors du prochain apply si une ressource a été commentée depuis le dernier apply ?
 
 <br/>
 
@@ -346,7 +345,6 @@ Values passed within definition files or with -var will take precedence over TF_
 3. Terraform va ignorer la ressource
 4. Une erreur à la compilation
 
-
 ##==##
 <!-- .slide:-->
 
@@ -354,7 +352,7 @@ Values passed within definition files or with -var will take precedence over TF_
 
 <br/>
 
-*Question* : Quel est le comportement de Terraform lors du prochain apply si une ressource à été commenté depuis le dernier apply ?
+*Question* : Quel est le comportement de Terraform lors du prochain apply si une ressource a été commentée depuis le dernier apply ?
 
 <br/>
 
@@ -377,7 +375,7 @@ Values passed within definition files or with -var will take precedence over TF_
  
 https://github.com/hashicorp/hil
 
-Le Langage permet de manipuler des variables ou récupérer des attributs d’autres ressources.L’interpolation doit être déclaré entre “${ ... }” 
+Le Langage permet de manipuler des variables ou récupérer des attributs d’autres ressources.L’interpolation doit être déclaré entre “${ ... }” 
 
 ```hcl
 data "template_file" "example" {
@@ -455,7 +453,7 @@ resource "vault_ldap_auth_backend_group" "group-users" {
   groupname = each.key                                                                                                  
   policies  = tolist(keys(each.value))                                                                                  
   backend   = vault_ldap_auth_backend.ldap.path                                                                          
-}
+}
 ```
 <!-- .element: class="big-code" -->
 
@@ -479,17 +477,6 @@ resource "google_compute_instance" "web" {
    machine_type = "${var.env == "production" ? var.prod_size : var.dev_size}"
 }
 ```
-<!-- .element: class="big-code" -->
-
-**Avant Terraform 0.12, seul le type string était supporté comme valeur de retour.** 
-
-```hcl
-inputs = {
-   v011 = "${element(split(",", "foo"=="foo" ? join(",", list("")) : join(",", list(""))), 0)}"
-   v012 = "${element("foo"=="foo" ? list("") : list(""), 0)}"
- }
-```
-<!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide:-->
@@ -498,7 +485,7 @@ inputs = {
 
 <br/>
 
-*Question* : Il est possible d’utiliser le meta parameter “count” sur les modules.
+*Question* : Il est possible d’utiliser le meta parameter “for_each” sur les modules.
 
 <br/>
 
@@ -512,13 +499,12 @@ inputs = {
 
 <br/>
 
-*Question* : Il est possible d’utiliser le meta parameter “count” sur les modules.
+*Question* : Il est possible d’utiliser le meta parameter “for_each” sur les modules.
 
 <br/>
 
-1. Vrai
-2. **Faux**
-
+1. **Vrai** (depuis Terraform 0.13 depuis le 10 août)
+2. ~~**Faux**~~
 
 ##==##
 <!-- .slide:-->

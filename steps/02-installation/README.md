@@ -31,11 +31,6 @@ And download the latest version using :
 
 ```shell
 curl https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip -o /tmp/terraform_${TF_VERSION}_linux_amd64.zip
-```
-
-Then unzip & install :
-
-```shell
 sudo unzip /tmp/terraform_${TF_VERSION}_linux_amd64.zip -d /usr/local/bin/
 ```
 
@@ -95,6 +90,8 @@ All configurations can be found on : [https://www.terraform.io/docs/commands/cli
 ### Verification
 
 Clone this repository on the Cloud Shell.
+
+Go in `steps/02-installation-solution/`
 
 Initialize a new terraform workspace and deploy the infrastructure :
 

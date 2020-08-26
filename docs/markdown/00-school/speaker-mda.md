@@ -4,7 +4,6 @@
 
 ![speaker](./assets/images/speakers/md.jpg)
 ![company](./assets/images/logo-sfeir-blanc.png)
-![badge](./assets/images/Terraform-Associate-Badge.png)
 
 
 <h2> Mickaël <span>DANGLETERRE</span></h2>
