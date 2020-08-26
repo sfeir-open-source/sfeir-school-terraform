@@ -4,31 +4,31 @@ function schoolSlides() {
 }
 
 function introSlides() {
-  return ['intro/00-TITLE.md'];
+  return ['01_intro/00-TITLE.md'];
 }
 
 function premiersPasSlides() {
-  return ['premiers_pas/00-TITLE.md'];
+  return ['02_premiers_pas/00-TITLE.md'];
 }
 
 function langagesSlides() {
-  return ['langages/00-TITLE.md'];
+  return ['03_langages/00-TITLE.md'];
 }
 
 function configurationSlides() {
-  return ['configuration/00-TITLE.md'];
+  return ['04_configuration/00-TITLE.md'];
 }
 
 function strategieTestsSlides() {
-  return ['strategie_tests/00-TITLE.md'];
+  return ['05_strategie_tests/00-TITLE.md'];
 }
 
 function travailCoopSlides() {
-  return ['travail_coop/00-TITLE.md'];
+  return ['06_travail_coop/00-TITLE.md'];
 }
 
 function productionSlides() {
-  return ['production/00-TITLE.md'];
+  return ['07_production/00-TITLE.md'];
 }
 
 function formation() {
