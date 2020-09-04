@@ -1,1 +1,1 @@
-gcp_project = "gcp-onboard-jnu"
+project_id = "sfeir-school-terraform"

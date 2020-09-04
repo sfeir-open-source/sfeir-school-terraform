@@ -4,7 +4,7 @@
 
 ### Install tools using Bundler
 
-[Bundler](https://bundler.io/) provides a virtual environement for a project to install application dependancies without conflicts with operating system libs.
+[Bundler](https://bundler.io/) provides a virtual environement for a project to install application dependencies without conflicts with operating system libs.
 
 Bundler use `Gemfile` to list all `gems` required by the application.
 
@@ -57,7 +57,7 @@ suites:
 ```
 
 * Create a `.kitchen.yml` file with the content above.
-* Create a new private DNS zone in [Cloud DNS](https://www.terraform.io/docs/providers/google/r/dns_managed_zone.html) using terraform.
+* **Using Terraform**, create a new private DNS zone in [Cloud DNS](https://www.terraform.io/docs/providers/google/r/dns_managed_zone.html).
 * Verify kitchen is able to deploy your terraform configuration using `bundle exec kitchen test`.
 * Deploy your zone using `terraform apply`.
 
@@ -66,15 +66,16 @@ suites:
 [inspec-gcp](https://github.com/inspec/inspec-gcp) is a inspec plugin to verify gcp configurations using inspec.
 
 In your workspace, create a `test/integration` folder.
-In this folder, run the command `bundle exec inspec init profile local-test` to create a new configuration for inspec.
-The command will create a `local-test/inspec.yml` file.
 
-* Test the sample using `bundle exec inspec exec local-test`
-* Observe the code in `local-test/controls/example.rb`
+**In this folder**(`test/integration`), run the command `bundle exec inspec init profile local-test` to create a new generated configuration for inspec.
+This command will create a `local-test/inspec.yml` file.
+
+* Observe the code in `test/integration/local-test/controls/example.rb`
+* Still in `test/integration` directory, test the sample using `bundle exec inspec exec local-test`
 
 #### inspec-gcp
 
-You can generate a new inspec profile named `default` for inspec-gcp tests using `bundle exec inspec init profile --platform gcp default`.
+You can generate a new inspec profile named `default` for **inspec-gcp** tests using `bundle exec inspec init profile --platform gcp default`.
 
 * Update the `default/attributes.yml` to configure the gcp project id
 * Run tests using `bundle exec inspec exec default -t gcp:// --input-file default/attributes.yml --show-progress --color`
@@ -102,8 +103,13 @@ Clean the previous deployment using `terraform destroy` and run a `bundle exec k
 
 ### Extra : Inspec-iggy
 
+> Inspec-iggy is a plugin to generate inspec test directly from terraform state file. 
+
+* In workspace directory
 * Clone inspec-gcp repository to use latest resources definitions
-* Deploy the DNS zone
+  * `git clone git@github.com:inspec/inspec-gcp.git`
+* Deploy the DNS zone with Terraform
+  * `terraform apply`
 * Install `inspec-iggy` using `bundle exec inspec plugin install inspec-iggy`
-* Run it `bundle exec inspec terraform generate --tfstate terraform.tfstate --name iggy-profile --platform gcp --resourcepath ~/path-to/inspec-gcp`
-* Enjoy the control file automatically generated using terraform state file
+* Run it `bundle exec inspec terraform generate --tfstate terraform.tfstate --name test/integration/iggy-profile --platform gcp --overwrite --resourcepath ./inspec-gcp`
+* Enjoy the control file automatically generated using terraform state file in `./test/integration/iggy-profile/controls/`

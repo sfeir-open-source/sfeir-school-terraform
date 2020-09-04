@@ -46,7 +46,7 @@ Hashicorp met à disposition un ensemble de modules officiels sur sa propre regi
 
 => *cat gke.tf*
 
-```hcl
+```hcl-terraform
 module "gke-regional" {
  source  = "woernfl/gke-regional/gcp"
  version = "2.0.1"
@@ -116,7 +116,7 @@ La configuration et le choix du backend se fait en déclarant un fichier *.tf (e
 
 <br/>
 
-```hcl
+```hcl-terraform
 terraform {
  backend "gcs" {
    project  = "foo"
@@ -193,7 +193,7 @@ Exemple : 
 
 <br/>
 
-```hcl
+```hcl-terraform
 data "vault_generic_secret" "rundeck_auth" {
  path = "secret/rundeck_auth"
 }
@@ -245,7 +245,7 @@ Les child resources sont des resources ayant besoin d'une autre ressource pour �
 Voici deux manières de créer un template de ressource : 
 
 A l'aide de **count**
-```hcl
+```hcl-terraform
 resource "google_sql_database" "database" {
   count     = length(var.database)
   provider  = "google-beta"
@@ -263,7 +263,7 @@ resource "google_sql_database" "database" {
 # Templates
 
 => *cat cloud_sql/vars.tf*
-```hcl
+```hcl-terraform
 variable "database" {
   type = list
 }
@@ -294,7 +294,7 @@ database = [
 
 # Templating
 A l'aide de **for_each**
-```hcl
+```hcl-terraform
 resource "google_sql_database" "database" {
   for_each = {
     name    = "db_"
