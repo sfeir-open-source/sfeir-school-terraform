@@ -50,6 +50,8 @@ All other components will be part as Open-Source projects and will be deployed o
 
 Slides are available here : https://sfeir-open-source.github.io/sfeir-school-terraform
 
+> Press 's' for shortcuts help
+
 ## How to use
 
 Source code and tutorials are saved in directory `steps`, with one directory labs, and another one suffixed with `-solution` with solutions...

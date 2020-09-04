@@ -68,3 +68,6 @@ typings/
 
 #Dev
 docs/test.html
+.terraform/
+terraform.tfstate.d/
+terraform.tfstate

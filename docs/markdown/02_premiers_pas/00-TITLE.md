@@ -78,7 +78,7 @@ Notes:
 
 <br/>
 
-Un provider correspond a un ensemble de ressources, chacune de ces ressources est défini par un ou plusieurs arguments et attributs.  
+Un provider correspond à un ensemble de ressources, chacune de ces ressources est défini par un ou plusieurs arguments et attributs.  
 Chaque provider fait appel à l'API correspondant à un service *cloud* ou *on-premise*.  
 
 Notes:
@@ -155,7 +155,7 @@ Terraform ne modifie/crée que les ressources qui nécessitent une modification.
 
 ## Terraform apply
 
-Lors de l'exécution de cette commande, terraform effectue les appels APIs sur le provider pour créer/modifier/supprimer les ressources
+Lors de l'exécution de cette commande, terraform effectue les appels APIs sur le provider pour créer/modifier/supprimer les ressources.
 
 ##==##
 <!-- .slide:-->
@@ -297,7 +297,7 @@ Terraform destroy décommissionne les ressources présentes (et uniquement) dans
 
 <br/>
 
-*Question* : Où est stocké le fichier d'état de Terraform ?
+*Question* : (Par défaut)Où est stocké le fichier d'état de Terraform ?
 
 <br/>
 
