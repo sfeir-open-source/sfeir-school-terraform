@@ -1,5 +1,5 @@
 output "project_id" {
-  value = var.gcp_project
+  value = var.project_id
 }
 
 output "zone_name" {

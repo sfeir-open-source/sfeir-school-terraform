@@ -124,7 +124,7 @@ end
 
 <br/>
 
-*Question* : Dans quels cas un “terraform plan” fonctionne mais pas un “terraform apply” ?
+*Question* : Dans quel cas un `terraform plan` fonctionne mais pas un `terraform apply` ?
 
 <br/>
 
@@ -140,7 +140,7 @@ end
 
 <br/>
 
-*Question* : Dans quels cas un “terraform plan” fonctionne mais pas un “terraform apply” ?
+*Question* : Dans quel cas un `terraform plan` fonctionne mais pas un `terraform apply` ?
 
 <br/>
 

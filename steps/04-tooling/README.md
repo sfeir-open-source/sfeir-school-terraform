@@ -38,11 +38,7 @@ Add Terraform extension for VScode
 
 ### Generate Documentation
 
-You can use [terraform-docs](https://github.com/segmentio/terraform-docs) to parse your code and generate the documentation.
-For the moment, *terraform-docs* do not support HCL2 [segmentio/terraform-docs/issues/62](https://github.com/segmentio/terraform-docs/issues/62).
-An experimental evolution can be found on [segmentio/terraform-docs/pull/113](https://github.com/segmentio/terraform-docs/pull/113)
-
-*extra* Compile the pull request above and use `terraform-docs md . > docs.md` to generate documentation.
+You can use [terraform-docs](https://github.com/terraform-docs/terraform-docs) to parse your code and generate the documentation.
 
 ## Example
 

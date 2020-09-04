@@ -35,7 +35,7 @@
 
 Littéralement une ressource qui ne fait rien mais elle permet de manipuler des attributs, convertir des formats, lancer des scripts via les provisioners, ....
 
-```hcl
+```hcl-terraform
 resource "null_resource" "upper" {
  triggers {
    name = "${var.name == "" ? local.default_name : var.name}"
@@ -67,7 +67,7 @@ Les provisioners permettent d’executer des scripts durant les phases de créat
 
 ## provisioners
 
-```hcl
+```hcl-terraform
 resource "null_resource" "register" {
  depends_on       = ["google_compute_instance.inst"]
  provisioner "local-exec" {

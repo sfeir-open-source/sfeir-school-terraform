@@ -32,7 +32,7 @@
 
 <br/>
 
-https://github.com/segmentio/terraform-docs
+https://github.com/terraform-docs/terraform-docs
 
 <br/> 
 
