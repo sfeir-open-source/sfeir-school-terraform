@@ -18,8 +18,8 @@
 
 <br/><br/><br/>
 
-* https://marketplace.visualstudio.com/items?itemName=mauve.terraform
-* https://github.com/hashivim/vim-terraform
+* https://marketplace.visualstudio.com/items?itemName=mauve.terraform 
+* https://github.com/hashivim/vim-terraform 
 * https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support
 
 ##==##
@@ -81,7 +81,7 @@ Il n’y a pas de normes imposées par l’outil mais un ensemble de bonnes prat
 
 * La communauté utilise le snake_case
 * Il est important d’utiliser l’attribut description des variables
-* L’utilisation du HCL permet de créer des scripts/programmes permettant de générer automatiquement la déclaration des variables
+* L’utilisation du HCL permet de créer des scripts/programmes permettant de générer automatiquement la déclaration des variables 
 
 ```bash
 alias terraform-genvar='(for i in $(egrep -oh '\''var\.\w+'\'' *.tf | sed -nr '\''s/var\.//p'\''); do echo "variable \"$i\" {}"; done;)'

@@ -24,7 +24,7 @@
 
 ## Module Registry
 
-Il existe par défaut plusieurs plateformes permettant de publier des modules tel que github, gitlab, bitbucket, etc… 
+Il existe par défaut plusieurs plateformes permettant de publier des modules tel que github, gitlab, bitbucket, etc…
 <br/>
 https://www.terraform.io/docs/modules/sources.html
 <br/>
@@ -72,12 +72,10 @@ module "gke-regional" {
 ## TIPS
 
 * La version d’un module peut être défini par un tag sur le repository
-* Bien que la version soit facultatif, son utilisation permet de fiabiliser l’utilisation d’un module dans les déploiements (sans version, le dernier commit est utilisé)
-* Il est possible d’inclure des sous-modules
-* Il est important d’utiliser les outputs pour obtenir des informations sur les ressources créées
-* Les modules héritent des providers par défaut mais il est possible de les surcharger
-* Il n’est pas possible d’utiliser le “count” sur les modules
-
+* Bien que la version soit facultatif, son utilisation permet de fiabiliser l’utilisation d’un module dans les déploiements (sans version, le dernier commit est utilisé).
+* Il est possible d’inclure des sous-modules.
+* Il est important d’utiliser les outputs pour obtenir des informations sur les ressources créées.
+* Les modules héritent des providers par défaut mais il est possible de les surcharger.
 
 ##==##
 <!-- .slide:-->
@@ -102,7 +100,7 @@ module "gke-regional" {
  
 Ce fichier est critique, en cas de perte, Terraform “oubliera” l’ensemble des ressources qu’il a créé.<br/>
 Il est conseillé de ne pas le stocker localement mais sur : 
-* Un stockage de fichier type Google Cloud Storage, AWS S3, … et activer les options de versioning
+* Un stockage de fichier type Google Cloud Storage, AWS S3, … et **d'activer les options de versioning**
 * De restreindre les accès (principe du least privilege) car ce fichier peut contenir des informations sensibles (IP, clef SSH, password, ...)
 
 ##==##
@@ -175,7 +173,7 @@ on veut spliter un workspace devenu trop gros en plusieurs petit workspaces
 
 Il est possible d’utiliser les variables d’environnement pour fournir aux provider des identifiants. Chaque provider défini ses variables d’environnement.
  
-Exemple : 
+Exemple :
 * GOOGLE_CREDENTIALS 
 * GOOGLE_APPLICATION_CREDENTIALS
 * VAULT_TOKEN
@@ -228,7 +226,7 @@ Terraform propose également son propre modèle de templating (c'est sur celui-c
 <!-- .slide: -->
 
 # Templating
-Bien que de nombreux modules soient disponibles dans le registry Terraform, certains peuvent ne pas être compatible avec ce que vous souhaitez déployer.  
+Bien que de nombreux modules soient disponibles dans le registry Terraform, certains peuvent ne pas être compatible avec ce que vous souhaitez déployer (ou trop générique).  
 Dans ce cas, il est recommandé de créer vos propres modules.  
 De plus, cela peut convenir a certaines bonnes pratiques telles que :
 - Le templating
@@ -360,7 +358,7 @@ resource "google_sql_database" "database" {
 
 <br/>
 
-*Question* : Que fait la commande :	terraform state rm <resource-path>
+*Question* : Que fait la commande : ```terraform state rm <resource-path>```
 
 <br/>
 
@@ -377,7 +375,7 @@ resource "google_sql_database" "database" {
 
 <br/>
 
-*Question* : Que fait la commande :	terraform state rm <resource-path>
+*Question* : Que fait la commande : ```terraform state rm <resource-path>```
 
 <br/>
 
@@ -398,8 +396,8 @@ resource "google_sql_database" "database" {
 
 <br/>
 
-1. En utilisant “${module.<name>.<output-name>}”
-2. En utilisant “${module.<name>.<resource-type>.<name>.<attribut>}”
+1. En utilisant module.\<name\>.\<output-name\>
+2. En utilisant module.\<name\>.\<resource-type\>.\<name\>.\<attribut\>
 
 
 ##==##
@@ -409,12 +407,12 @@ resource "google_sql_database" "database" {
 
 <br/>
 
-*Question* : Comment obtenir la valeur d’un attribut d’un ressource créée dans un module ?
+*Question* : Comment obtenir la valeur d’un attribut d’une ressource créée dans un module ?
 
 <br/>
 
-1. **En utilisant “${module.<name>.<output-name>}”**
-2. En utilisant “${module.<name>.<resource-type>.<name>.<attribut>}”
+1. **En utilisant module.\<name\>.\<output-name\>**
+2. En utilisant module.\<name\>.\<resource-type\>.\<name\>.\<attribut\>
 
 ##==##
 <!-- .slide: class="exercice" -->

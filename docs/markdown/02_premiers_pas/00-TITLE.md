@@ -46,7 +46,7 @@ Notes:
 Le HCL est un langage déclaratif décrivant un état désiré (DSL) plutôt que les étapes de cet objectif.  
 
 Notes:
-- Langage de configuration développé par HashiCorp et ré-utilisé dans ses différents produits. Uniquement déclaratif, il est associé au HIL (HashiCorp Interpolation Language) lorsqu’il faut calculer des valeurs. 
+- Langage de configuration développé par HashiCorp et ré-utilisé dans ses différents produits. Uniquement déclaratif, il est associé au HIL (HashiCorp Interpolation Language) lorsqu’il faut calculer des valeurs.  
 
 ##==##
 <!-- .slide: -->
@@ -138,7 +138,7 @@ Terraform plan va scanner l’ensemble des fichiers *.tf du répertoire courant 
 
 <br/>
 
-Il s’agit d’un dry-run. Aucune modification/lecture ne sera effectuée sur le provider lors du 1er “plan”. Une relecture est fait par la suite pour comparer les états.
+Il s’agit d’un dry-run.  Aucune modification/lecture ne sera effectuée sur le provider lors du 1er “plan”. Une relecture est fait par la suite pour comparer les états.
 
 <br/>
 

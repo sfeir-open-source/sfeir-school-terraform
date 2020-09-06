@@ -87,8 +87,8 @@ resource "null_resource" "register" {
 L’état d’un déploiement est sauvegardé dans un fichier terraform.tfstate qu’il est possible d’exporter sur un stockage distant ou local (appelé backend).<br/>
 Si l’utilisateur souhaite instancier plusieurs déploiements depuis un même backend, il peut utiliser la fonctionnalité de workspace.<br/>
 
-Cas d’utilisations : 
-* Dev/QA/Production
+Cas d’utilisations :
+* Dev/QA/Production
 * Plusieurs régions
 
 ##==##
@@ -217,7 +217,7 @@ https://www.terraform.io/docs/extend/writing-custom-providers.html
 * resource_name.go : Implément _func resourceName() *schema.Resource_<br/>
     Définit la structure et les appels APIs à effectuer pour créer l’objet sur le provider
     
-* data_source_name.go : Un data source est une ressource qui n’implémente qu’une fonction READ
+* data_source_name.go :  Un data source est une ressource qui n’implémente qu’une fonction READ
 
 ##==##
 <!-- .slide:-->
