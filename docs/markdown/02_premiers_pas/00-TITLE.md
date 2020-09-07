@@ -14,6 +14,8 @@
 
 * Déjà pré-installé dans le Google Cloud Shell
 
+* Ou avec docker `alias tf="docker run --rm -it --env-file <(env | grep TF_) -w /source -v "$(pwd):/source" -v ${HOME}:/root/ hashicorp/terraform:0.13.2"` 
+
 ![w-1000 center](./assets/images/g418fd663c2_0_272.png)
 
 Notes:
