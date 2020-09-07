@@ -23,7 +23,7 @@ terraform version
 Compare Cloud Shell version with the latest version available :
 
 ```shell
-TF_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')
+export TF_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')
 echo $TF_VERSION
 ```
 
