@@ -145,8 +145,8 @@ Le développer a à sa disposition un ensemble de modules développés par les �
 
 * https://github.com/hashicorp/terraform
 
-  * 18k+ stars
-  * 1300+ contributeurs
+  * 24k+ stars
+  * 1500+ contributeurs
 
 Notes:
 Produit OpenSouce développé en Go

@@ -88,9 +88,9 @@ Déclaration :
 
 ```hcl-terraform
 variable "num_cpu" {
- type = "string"
+ type = number
  description = "This variable define the number of CPU"
- default = "2"
+ default = 2
 }
 ```
 <!-- .element: class="big-code" -->
