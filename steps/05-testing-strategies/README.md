@@ -14,8 +14,8 @@ Create a new `Gemfile` with the content :
 
 ```ruby
 source "https://rubygems.org/" do
-  gem 'inspec-bin', '=4.16.0'
-  gem 'inspec', '=4.16.0'
+  gem 'inspec-bin'
+  gem 'inspec'
   gem 'kitchen-google'
   gem 'kitchen-terraform'
   gem 'kitchen-ssh'
