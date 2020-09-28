@@ -22,6 +22,8 @@ Each module can be run independently
   * (lab) Continuous Deployment with Terraform
 * Module 8 : Custom Providers
   * (lab) : Create your own Terraform provider
+* Module 9 : Terraform Cloud
+  * (lab) : Getting Started with Terraform Cloud
 
 ## Technical stack requirements
 
