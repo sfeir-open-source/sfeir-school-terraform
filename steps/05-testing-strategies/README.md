@@ -94,7 +94,7 @@ suites:
       - name: local
         backend: gcp
         attrs_outputs:
-          project_id: project_id
+          gcp_project_id: project_id
 ```
 
 The `project_id` output from terraform will be mapped to inspec input.
