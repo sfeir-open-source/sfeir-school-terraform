@@ -15,18 +15,17 @@ gcloud auth application-default login
 
 ### google_compute_instance
 
-Create a new instance GCP instance in the default network using the following setting :
+Create a new GCP instance in the default network using the following setting :
 
 | Property | Value |
 | - | - |
 | zone | europe-west1-b |
 | machine | n1-standard-1 |
 | image | debian-cloud/debian-9 |
-| serial port | true |
 | network | default |
-| external ip | false |
+| serial port (bonus) | true |
 
-Instance name should be prompted to user using variable
+Instance name should be prompted to user using variable (see variables.tf)
 
 *Note : add `allow_stopping_for_update` attribute if you plan to update machine type using Terraform*
 
@@ -40,6 +39,8 @@ Run a `terraform plan` to view changes.
 If changes are correct, use `terraform apply` to deploy resources.
 
 ### google_compute_firewall
+
+Please refer to the documentation [https://www.terraform.io/docs/providers/google/r/compute_firewall.html](https://www.terraform.io/docs/providers/google/r/compute_firewall.html).
 
 Create the new following firewall rule to use [Cloud Identity-Aware Proxy TCP forwarding](https://cloud.google.com/iap/docs/tcp-forwarding-overview)
 
