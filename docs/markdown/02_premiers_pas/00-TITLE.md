@@ -57,7 +57,7 @@ Notes:
 
 <br/>
 
-Les ressources sont l'élément de base de **Terraform** car elles décrivent un ou plusieurs ressources cloud comme par exemple des réseau virtuels, des instances ou d'autres composants de haut niveau tels que des enregistrements DNS.
+Les ressources sont l'élément de base de **Terraform** car elles décrivent une ou plusieurs ressources cloud comme par exemple des réseaux virtuels, des instances ou d'autres composants de haut niveau tels que des enregistrements DNS.
 
 Les *resources* dépendent du provider sur lequel nous souhaitons travailler.
 
@@ -80,7 +80,7 @@ Notes:
 
 <br/>
 
-Un provider correspond à un ensemble de ressources, chacune de ces ressources est défini par un ou plusieurs arguments et attributs.  
+Un provider correspond à un ensemble de ressources, chacune de ces ressources est définie par un ou plusieurs arguments et attributs.  
 Chaque provider fait appel à l'API correspondant à un service *cloud* ou *on-premise*.  
 
 Notes:
@@ -127,7 +127,7 @@ Cette commande est utilisée pour télécharger les modules hébergés hors du r
 
 <br/>
 
-Les modules ainsi téléchargés seront stocké dans le dossier “.terraform” du répertoire courant (appelé root module).
+Les modules ainsi téléchargés seront stockés dans le dossier “.terraform” du répertoire courant (appelé root module).
 
 ##==##
 <!-- .slide:-->
@@ -140,7 +140,7 @@ Terraform plan va scanner l’ensemble des fichiers *.tf du répertoire courant 
 
 <br/>
 
-Il s’agit d’un dry-run.  Aucune modification/ériture ne sera effectuée sur le provider lors du 1er “plan”. Une relecture est fait par la suite pour comparer les états.
+Il s’agit d’un dry-run. Aucune modification/écriture ne sera effectuée sur le provider lors du 1er “plan”. Une relecture est faite par la suite pour comparer les états.
 
 <br/>
 

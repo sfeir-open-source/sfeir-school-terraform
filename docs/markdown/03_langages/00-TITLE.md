@@ -41,7 +41,7 @@ HCL a de nombreux types de variable comme :
 * Nombre
 * Booléen
 * List via `[ … ]`
-* Map via `{ ... }
+* Map via `{ ... }`
 * Structure anonyme (object)
 * Type complexe (list de map, map de list, map de map de map, …)
 
@@ -111,7 +111,7 @@ tags    = "tag:${var.tag}" // avec expansion
 
 ## Variables locales 
 
-Une local est l'association d'une expression à une variable, afin d'être réutilisé plusieurs fois dans un module. 
+Une `local` est l'association d'une expression à une variable, afin d'être réutilisée plusieurs fois dans un module. 
 
 Déclaration : 
 ```hcl-terraform
@@ -192,10 +192,10 @@ resource "google_compute_firewall" "default" {
 
 * **count** : Permet de créer plusieurs fois la ressource. count.index permet de récupérer l’index courant
 * **for_each** : Pour créer plusieurs fois une ressource en utilisant une map ou une liste de strings (depuis 0.12 à privilégier par rapport à count)
-* **lifecycle** : Permet de modifier le cycle de vie de la ressource 
-* **depends_on** : Forcer une dépendance. 
+* **lifecycle** : Permet de modifier le cycle de vie de la ressource
+* **depends_on** : Forcer une dépendance
 * **provider** : Permet de surcharger le provider de la ressource
-* **timeouts** : Configurer les timeouts des opération de création, modification et suppression
+* **timeouts** : Configurer les timeouts des opérations de création, modification et suppression
 * **provisioner** : Permet d'exécuter des scripts en local ou à distance
 
 Notes:
@@ -216,8 +216,8 @@ provider : Permet de surcharger le provider de la ressource par exemple lors de 
 
 ## Output
 
-Les outputs sont affichées en surbrillance à la fin du déploiement Terraform. 
-Elles permettent aux utilisateurs d’afficher des attributs calculés ou retournés par le provider.
+Les outputs sont affichés en surbrillance à la fin du déploiement Terraform. 
+Ils permettent aux utilisateurs d’afficher des attributs calculés ou retournés par le provider.
 
 ```hcl-terraform
 output "addresses" {
@@ -257,7 +257,7 @@ image = "${data.google_compute_image.my_image.self_link}"
 
 ## Module
 
-**Un module est un ensemble de ressources.**    
+**Un module est un ensemble de ressources.**  
 Il permet d’abstraire un déploiement plus complexe et agit comme une boîte noire pour laquelle on utilisera des **variables** en entrée et des **outputs** en sortie.
 
 **Le module permet une réutilisation du code et peut être stocké dans un repository distant (ex: git)(privé ou publique).**
@@ -276,9 +276,9 @@ Il permet d’abstraire un déploiement plus complexe et agit comme une boîte n
 
 1. terraform <action> -var ‘key=value’
 2. terraform <action> -var-file ‘path_to_file’
-3. export KEY=value; terraform <action>
-4. export TF_VAR_key=value; terraform <action>
-5. en ajoutant un fichier *.auto.tfvars dans le répertoir courant
+3. export KEY=value; terraform \<action>
+4. export TF_VAR_key=value; terraform \<action>
+5. en ajoutant un fichier *.auto.tfvars dans le répertoire courant
 
 ##==##
 <!-- .slide:-->
@@ -293,9 +293,9 @@ Il permet d’abstraire un déploiement plus complexe et agit comme une boîte n
 
 1. **terraform <action> -var ‘key=value’**
 2. **terraform <action> -var-file ‘path_to_file’**
-3. **export KEY=value; terraform <action>**
-4. **export TF_VAR_key=value; terraform <action>**
-5. **en ajoutant un fichier *.auto.tfvars dans le répertoir courant**
+3. **export KEY=value; terraform \<action>**
+4. **export TF_VAR_key=value; terraform \<action>**
+5. **en ajoutant un fichier *.auto.tfvars dans le répertoire courant**
 
 Attention, l’ordre des variables à une importance. Les CLI sont toujours prioritaires. En cas de conflit, le dernier argument prévaut (sauf dans le cas d’une map où les clefs différentes sont fusionnées)
 

@@ -82,6 +82,8 @@ Create a `.terraformrc` in your home directory with the following content :
 plugin_cache_dir   = "$HOME/.terraform.d/plugin-cache"
 ```
 
+Don't forget to create the plugin-cache dir if necessary : `mkdir $HOME/.terraform.d/plugin-cache`
+
 Terraform will cache providers in a central directory instead of in each workspace.
 If Terraform can hit the plugin, it will copy it instead of download it.
 
@@ -116,7 +118,7 @@ Outputs:
 message = Hello World
 ```
 
-Display dependency graph :
+Generate the dependency graph :
 
 ```shell
 terraform graph -draw-cycles | dot -Tpng > graph.png

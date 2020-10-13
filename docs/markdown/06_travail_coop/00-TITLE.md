@@ -72,7 +72,7 @@ module "gke-regional" {
 ## TIPS
 
 * La version d’un module peut être défini par un tag sur le repository
-* Bien que la version soit facultatif, son utilisation permet de fiabiliser l’utilisation d’un module dans les déploiements (sans version, le dernier commit est utilisé).
+* Bien que la version soit facultative, son utilisation permet de fiabiliser l’utilisation d’un module dans les déploiements (sans version, le dernier commit est utilisé).
 * Il est possible d’inclure des sous-modules.
 * Il est important d’utiliser les outputs pour obtenir des informations sur les ressources créées.
 * Les modules héritent des providers par défaut mais il est possible de les surcharger.
@@ -164,14 +164,14 @@ on ne veut plus manager une ressource via Terraform
 
 on veut renommer une ressource sans devoir la re-créer (base de donnée par exemple)
 
-on veut spliter un workspace devenu trop gros en plusieurs petit workspaces
+on veut spliter un workspace devenu trop gros en plusieurs petits workspaces
 
 ##==##
 <!-- .slide:-->
 
 # Gestion des credentials
 
-Il est possible d’utiliser les variables d’environnement pour fournir aux provider des identifiants. Chaque provider défini ses variables d’environnement.
+Il est possible d’utiliser les variables d’environnement pour fournir aux provider des identifiants. Chaque provider définit ses variables d’environnement.
  
 Exemple :
 * GOOGLE_CREDENTIALS 

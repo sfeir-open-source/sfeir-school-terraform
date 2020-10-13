@@ -8,8 +8,8 @@ For this lab, we will use a GKE Cluster to host a [vault application](https://ww
 
 * In a `gke-cluster` folder, deploy a new GKE cluster using Terraform.
   * Go in `gke-cluster`.
-  * In `variables.tf`, adapt cluster name `name` to add trigram.
-  * Add GCP Project Id, in `gcp_project` variable also.
+  * In `variables.tf`, adapt cluster name `name` to add your trigram.
+  * Add GCP Project Id, in `gcp_project` variable as well.
   * Then run `terraform apply`, to create GKE cluster
 
 * Run `gcloud container clusters get-credentials ${name of your cluster you specified above} --zone=europe-west1` to configure kubectl (and helm) credentials
@@ -56,7 +56,7 @@ Get vault address using :
 export VAULT_ADDR=http://$(kubectl get services -l "app=vault" -o jsonpath="{.items[0].status.loadBalancer['ingress'][0]['ip']}"):8200
 ```
 
-##### Play wth vault client
+##### Play with vault client
 
 Installation :
 
@@ -66,11 +66,16 @@ wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION
 sudo unzip vault_${VAULT_VERSION}_linux_amd64.zip -d /usr/bin/
 ```
 
-Usage :
+On MacOS, you can use : `brew install vault`
+
+Usage example :
 
 ```shell
+# Login to the vault server
 echo $VAULT_TOKEN | vault login -
-vault kv put secret/demo-secret user=demo password=password
+
+# Create a key-value secret
+vault kv put secret/my-demo-secret user=demo password=password
 ```
 
 ##### Manage vault credentials using Terraform
@@ -91,10 +96,10 @@ A module is a collection of resources defined by inputs (variable) and results (
 
 * Go to the `sql-database` folder
 * Deploy a Second-generation database using [google_sql_database_instance](https://www.terraform.io/docs/providers/google/r/sql_database_instance.html) resource
-* Create a SQL user using [google_sql_user](https://www.terraform.io/docs/providers/google/r/sql_user.html)
+* Create an SQL user using [google_sql_user](https://www.terraform.io/docs/providers/google/r/sql_user.html)
 * Create a `random_password` and save it on vault
 
-Use this module to deploy your customized cloud sql database.
+Your cloud sql database module is now ready to be used in the parent resource ! Let's do this now :
 
 * Back to git root folder
 * Update `main.tf` as bellow :
@@ -116,7 +121,7 @@ Use this module to deploy your customized cloud sql database.
   ```
 
 * Use `terraform init` to get module content and to download terraform providers
-* Run `terraform plan`
+* Run `terraform plan` (Do not do an `apply` because the creation of cloud sql resource is too long)
 
 #### On gitlab
 
@@ -129,4 +134,10 @@ Local modules can't be shared or re-used between teams
     source = "git::https://example.com/sql-database.git"
   # or
     source = "git::ssh://username@example.com/sql-database.git"
+  
+  # See more examples here : https://www.terraform.io/docs/modules/sources.html
   ```
+
+### Cleanup
+
+Once lab is completed, use `terraform destroy` to remove resources managed by terraform !
