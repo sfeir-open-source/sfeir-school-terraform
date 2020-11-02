@@ -33,7 +33,7 @@
   "devDependencies": {
     "chokidar-cli": "^1.2.2",
     "live-server": "^1.2.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^5.0.0",
     "parallelshell": "3.0.1",
     "snowpack": "^1.6.0"
   },
