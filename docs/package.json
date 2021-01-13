@@ -28,7 +28,7 @@
     "highlight.js": "^9.15.6",
     "lit-html": "^1.2.1",
     "reveal.js": "^3.9.2",
-    "sfeir-school-theme": "^2.0.1"
+    "sfeir-school-theme": "^2.2.0"
   },
   "devDependencies": {
     "chokidar-cli": "^1.2.2",
