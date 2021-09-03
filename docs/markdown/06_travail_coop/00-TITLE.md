@@ -305,33 +305,20 @@ Notes:
 Les child resources sont des resources ayant besoin d'une autre ressource pour être déployées.
 
 ##==##
-<!-- .slide: -->
-
-# Templating
-Voici deux manières de créer un template de ressource : 
-
-A l'aide de **count**
-```hcl-terraform
-resource "google_sql_database" "database" {
-  count     = length(var.database)
-  provider  = "google-beta"
-  instance  = element(var.instance_name, lookup(var.database[count.index], "instance_id"))
-  name      = lookup(var.database[count.index], "name")
-  charset   = lookup(var.database[count.index], "charset", null)
-  collation = lookup(var.database[count.index], "collation", null)
-  project   = var.project
-}
-```
-
-##==##
 <!-- .slide:-->
 
 # Templates
 
 => *cat cloud_sql/vars.tf*
 ```hcl-terraform
-variable "database" {
-  type = list
+variable "databases" {
+  type = list(
+    object({
+      name      = string
+      charset   = string
+      collation = string
+    })
+  )
 }
 variable "instance_name" {}
 variable "project" {}
@@ -344,13 +331,11 @@ variable "project" {}
 
 => *cat cloud_sql/vars.tfvars*
 ```json
-database = [
+databases = [
     {
-        id          = "0"
-        instance_id = "0"
         name        = "db_1"
         charset     = "utf8"
-        location    = "xxxx"
+        collation    = "utf8_unicode_ci"
     }
 ]
 ```
@@ -359,19 +344,18 @@ database = [
 <!-- .slide: -->
 
 # Templating
-A l'aide de **for_each**
+
+=> *cat cloud_sql/main.tf*
 ```hcl-terraform
 resource "google_sql_database" "database" {
-  for_each = {
-    name    = "db_"
-    project = "project_"    
-  }
-  instance  = "xxx"
-  name      = each.key
-  project   = each.value
-  charset   = "xxx"
-  collation = "xxx"
-  provider  = "xxx"
+  provider  = "google-beta"
+  for_each = var.databases
+
+  name      = each.value.name
+  instance  = var.instance_name
+  project   = var.project
+  charset   = each.value.charset
+  collation = each.value.collation
 }
 ```
 
