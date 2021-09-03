@@ -335,7 +335,7 @@ Tagger les ressources afin de les identifiers le plus facilement possible, dans 
 
 <br/>
 
-*Question* : Une nouvelle fonctionnalité est disponible chez mon Cloud Provider mais pas dans mon provider Terraform, quels sont mes solutions ?
+*Question* : Une nouvelle fonctionnalité est disponible chez mon Cloud Provider mais pas dans mon provider Terraform, quelles sont mes solutions ?
 
 <br/>
 
@@ -351,7 +351,7 @@ Tagger les ressources afin de les identifiers le plus facilement possible, dans 
 
 <br/>
 
-*Question* : Une nouvelle fonctionnalité est disponible chez mon Cloud Provider mais pas dans mon provider Terraform, quels sont mes solutions ?
+*Question* : Une nouvelle fonctionnalité est disponible chez mon Cloud Provider mais pas dans mon provider Terraform, quelles sont mes solutions ?
 
 <br/>
 
