@@ -114,14 +114,14 @@ end
 
 # L’exemple de terraform test
 
-![h-850](./assets/images/terratest_sample.png)
+![h-850](./assets/images/terraform_test_sample.png)
 
 ##==##
 <!-- .slide:-->
 
 # L’exemple de kitchen-inspec
 
-![h-850](./assets/images/terratest_sample.png)
+![h-850](./assets/images/kitchen-inspec-sample.png)
 
 ##==##
 <!-- .slide:-->
