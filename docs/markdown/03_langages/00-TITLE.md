@@ -521,7 +521,7 @@ Par exemple : `"${data.template_file.example.rendered}"`
 ##==##
 <!-- .slide:-->
 
-# HashiCorp Interpolation Language (HIL)
+# HCL extended (also known as HIL)
 
 <br/>
 
@@ -533,13 +533,13 @@ Il est possible de lire la valeur d’un attribut d’une ressource, d’une sou
 * module : `module.module_name.output_name`
 * data source : `data.data_type.data_name.attribut`
 
-Cas d’une liste de resource (version >= 0.12) : `resource_type.resource_name.*.attribut[<index>]`
+Cas d’une liste de resource : `resource_type.resource_name[<index>].attribut`
 
 
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HashiCorp Interpolation Language (HIL)
+# HCL extended (also known as HIL)
 
 <br/>
 
@@ -555,7 +555,7 @@ Exemple d’utilisation des fonctions :
 ##==##
 <!-- .slide:-->
 
-# HashiCorp Interpolation Language (HIL)
+# HCL extended (also known as HIL)
 
 <br/>
 
@@ -568,13 +568,13 @@ Terraform permet de déployer plusieurs ressources de même type via une unique 
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HashiCorp Interpolation Language (HIL)
+# HCL extended (also known as HIL)
 
 <br/>
 
 ## Boucles
 
-Depuis la version 0.12, Terraform a introduit deux nouvelles manière d’itérer **For and For-Each** (à privilégier par rapport à count).
+Depuis la version 0.12, Terraform a introduit une nouvelle manière d’itérer **For-Each** (à privilégier par rapport à count).
 
 ```hcl-terraform
 resource "vault_ldap_auth_backend_group" "group-users" {
@@ -589,7 +589,7 @@ resource "vault_ldap_auth_backend_group" "group-users" {
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HashiCorp Interpolation Language (HIL)
+# HCL extended (also known as HIL)
 
 <br/>
 
