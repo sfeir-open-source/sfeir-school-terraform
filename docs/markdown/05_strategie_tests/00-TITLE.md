@@ -112,10 +112,23 @@ end
 ##==##
 <!-- .slide:-->
 
-# L’exemple de inspec, inspec-iggy et kitchen-terraform
+# L’exemple de terraform test
 
-![float-center](./assets/images/inspec-exemple.png)
+![h-850](./assets/images/terratest_sample.png)
 
+##==##
+<!-- .slide:-->
+
+# L’exemple de kitchen-inspec
+
+![h-850](./assets/images/terratest_sample.png)
+
+##==##
+<!-- .slide:-->
+
+# L’exemple de terratest
+
+![h-850](./assets/images/terratest_sample.png)
 
 ##==##
 <!-- .slide:-->
