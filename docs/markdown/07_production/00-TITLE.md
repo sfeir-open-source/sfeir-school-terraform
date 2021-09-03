@@ -16,6 +16,14 @@
 * terraform taint -var-file=file -module=module1.module2 aws_volume.data_ebs.1<br/>
 <span style="color:green"># Une ressource dans une boucle dans un module</span>
 
+
+Raccourcis disponible pour taint lors du plan/apply avec l'option `-replace`
+
+* terraform plan -var-file=file -replace=aws_volume.data_ebs
+<br/> <span style="color:green"># Recréation lors d'un plan</span>
+* terraform apply -var-file=file -replace=aws_volume.data_ebs
+<br/> <span style="color:green"># Recréation lors d'un apply</span>
+
 ##==##
 <!-- .slide:-->
 
