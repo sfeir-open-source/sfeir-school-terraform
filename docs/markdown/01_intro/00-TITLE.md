@@ -145,7 +145,7 @@ Le développer a à sa disposition un ensemble de modules développés par les �
 
 * https://github.com/hashicorp/terraform
 
-  * 24k+ stars
+  * 28k+ stars
   * 1500+ contributeurs
 
 Notes:
@@ -177,3 +177,23 @@ Terraform est multi provider, il peut créer des ressources autant sur des plate
     
 Notes:
 Terraform analyse les ressources et dépendances puis construit un graphe puis provisionne les noeux des feuilles vers le sommet. Si l’arbre ne peut pas être construit, terraform retournera une erreur lors de l’analyse.
+
+##==##
+<!-- .slide -->
+
+# Les versions
+<br>
+
+Pour nommer ses versions, Terraform utilise du semantic versioning (`x.y.z`)
+- x est le numéro de la version majeure
+- y est l'incrément de la version mineure
+- z est le niveau de correctif
+
+Il existe de nombreuses incompatibilités entre les versions (dans le code mais aussi dans le fonctionnement interne).
+
+Exemples :
+* une infrastructure déployée en Terraform 0.11 necessitera d'être raffraichi sur chaque version mineure pour pouvoir évoluer en Terraform 1.0.0<>
+* des évolutions sont ajoutées régulièrement dans le langage (types, boucles, ...), il n'est pas possible d'utiliser du code développé en 0.12 en 0.11
+
+Notes:
+Expliquer l'historique des versions
