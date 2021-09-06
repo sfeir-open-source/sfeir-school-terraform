@@ -109,9 +109,37 @@ tags    = "tag:${var.tag}" // avec expansion
 
 <br/>
 
+## Variables : Custom validation rules
+
+Le developpeur peut imposer aux utilisateurs des contraintes sur la valeur des variables, tel que :
+* Un élément présent dans une liste prédéfinie
+* Des expressions régulières
+* Des formats (date, lowercase, taille d'une chaine de caractères)
+
+Exemple : un identifiant en minuscule de plus de 4 lettres
+```
+variable "id" {
+  type        = string
+  description = "Primaty ID used for the user"
+
+  validation {
+    condition     = length(var.id) > 4 && lower(var.id) == var.id
+    error_message = "Require at least 4 characters in lower case."
+  }
+}
+```
+
+
+##==##
+<!-- .slide: class="with-code-bg-dark" -->
+
+# HashiCorp Configuration Language (HCL)
+
+<br/>
+
 ## Variables locales 
 
-Une `local` est l'association d'une expression à une variable, afin d'être réutilisée plusieurs fois dans un module. 
+Une `local` est l'association d'une expression à une variable, afin d'être réutilisée plusieurs fois dans un module.
 
 Déclaration : 
 ```hcl-terraform
@@ -143,7 +171,7 @@ resource "..." "..." {
 
 ## Provider
 
-Le provider fournit un ensemble de primitives permettant de lire, créer, modifier ou supprimer des ressources sur la plateforme distante. 
+Le provider fournit un ensemble de primitives permettant de lire, créer, modifier ou supprimer des ressources sur la plateforme distante.
 * Chaque provider possède ses propres attributs
 * Il est possible d’utiliser plusieurs déclarations d’un même provider en utilisant l’attribut spécial “alias” (appelé meta-parameter).
 * Il est possible de forcer une version du provider via l’attribut “version”. Par défaut, terraform utilise la dernière version.
@@ -261,6 +289,35 @@ image = "${data.google_compute_image.my_image.self_link}"
 Il permet d’abstraire un déploiement plus complexe et agit comme une boîte noire pour laquelle on utilisera des **variables** en entrée et des **outputs** en sortie.
 
 **Le module permet une réutilisation du code et peut être stocké dans un repository distant (ex: git)(privé ou publique).**
+
+##==##
+<!-- .slide:-->
+
+# Terraform settings
+
+Il existe block hors de toute ressource pour définir le comportement du déploiement :
+* Forcer les versions à utiliser
+* Configurer le backend
+* Activer des fonctionnalitées expérimentales
+
+```
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      version = ">= 2.7.0"
+      source = "hashicorp/aws"
+    }
+  }
+  backend "remote" {
+    organization = "example_corp"
+    workspaces {
+      name = "my-app-prod"
+    }
+  }
+  experiments = [something]
+}
+```
 
 
 ##==##
