@@ -100,7 +100,6 @@ Utilisation :
 num_cpu = var.num_cpu      // préconisé
 tags    = "tag:${var.tag}" // avec expansion
 ```
-<!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
@@ -129,6 +128,21 @@ variable "id" {
 }
 ```
 
+
+##==##
+<!-- .slide: class="with-code-bg-dark" -->
+# HashiCorp Configuration Language (HCL)
+
+<br/>
+
+## Variables : le récap
+
+Les variables supportent les attributs suivant :
+* **default** : assigne une valeur par défaut qui peut être surchargée
+* **type** : définit le type de la variables (par défaut string mais il est possible d'utiliser des variables de type bool, map, list, ...)
+* **description** : aide l'utilisateur à définir le contenu de la variable
+* **validation** : permet de rejeter une valeur si elle ne respecte pas les conditions
+* **sensitive** : interdit l'affichage de la valeur au travers d'outputs et masque son contenu dans la console
 
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
