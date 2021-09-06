@@ -157,7 +157,7 @@ locals {
 Utilisation :
 ```hcl-terraform
 resource "..." "..." {
-  instance_names = ["${local.instance_names}"]
+  instance_names = [local.instance_names]
 }
 ```
 <!-- .element: class="big-code" -->
@@ -174,7 +174,22 @@ resource "..." "..." {
 Le provider fournit un ensemble de primitives permettant de lire, créer, modifier ou supprimer des ressources sur la plateforme distante.
 * Chaque provider possède ses propres attributs
 * Il est possible d’utiliser plusieurs déclarations d’un même provider en utilisant l’attribut spécial “alias” (appelé meta-parameter).
-* Il est possible de forcer une version du provider via l’attribut “version”. Par défaut, terraform utilise la dernière version.
+* Il est fortement conseillé d'utiliser des variables d'environnement pour configurer les providers
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+# HashiCorp Configuration Language (HCL)
+
+<br/>
+
+## Provider
+
+* Exemple :
+
+Il est possible de configurer le provider Google Cloud en utilisant du HCL ou des variables d'environnement :
+
 
 ```hcl-terraform
 provider "google" {
@@ -183,6 +198,15 @@ provider "google" {
  region      = "us-central1"
 }
 ```
+
+équivaut à :
+
+```
+export GOOGLE_APPLICATION_CREDENTIALS="account.json"
+export GOOGLE_PROJECT="my-project-id"
+export GOOGLE_REGION="us-central1"
+```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -200,7 +224,7 @@ Elles doivent respecter la syntaxe : resource "TYPE" "NAME”
 ```hcl-terraform
 resource "google_compute_firewall" "default" {
  name    = "test-firewall"
- network = "${google_compute_network.default.name}"
+ network = google_compute_network.default.name
 
  allow {
    protocol = "icmp"
@@ -245,11 +269,13 @@ provider : Permet de surcharger le provider de la ressource par exemple lors de 
 ## Output
 
 Les outputs sont affichés en surbrillance à la fin du déploiement Terraform. 
-Ils permettent aux utilisateurs d’afficher des attributs calculés ou retournés par le provider.
 
+Ils permettent aux utilisateurs d’afficher des attributs calculés ou retournés par le provider.
+<br/>
+<br/>
 ```hcl-terraform
 output "addresses" {
- value = ["${aws_instance.web.*.public_dns}"]
+ value = [aws_instance.web.*.public_dns]
 }
 ```
 <!-- .element: class="big-code" -->
@@ -435,15 +461,27 @@ Values passed within definition files or with -var will take precedence over TF_
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HashiCorp Interpolation Language (HIL)
- 
-https://github.com/hashicorp/hil
+# HCL-extended
 
-Le Langage permet de manipuler des variables ou récupérer des attributs d’autres ressources. L’interpolation doit être déclaré entre “${ ... }” 
+Avant le version 0.12, Terraform était composé de deux langages :
+* le **HCL** (HashiCorp Configuration Language) pour la déclaration des resources, les inputs, les outputs, ...
+* le **HIL** (HashiCorp Interpolation Language) pour permettre aux utilisateurs de manipuler la donnée (utilisation de variable, modification de la casse, création de liste, ..).
+
+
+Depuis la version 0.12, HCL et HIL ont fusionné.
+
+
+##==##
+<!-- .slide: class="with-code-bg-dark"-->
+
+# HCL-extended
+
+
+Il est donc possible de manipuler des variables, récupérer des attributs d’autres ressources ou utiliser des fonctions native directement dans notre code :
 
 ```hcl-terraform
 data "template_file" "example" {
- template = "${file("templates/greeting.tpl")}"
+ template = file("templates/greeting.tpl")
  vars {
    hello = "goodnight"
    world = "moon"
@@ -456,9 +494,13 @@ Usage
 resource "aws_instance" "web" {
   ami              = "ami-d05e75b8"
   instance_type    = "t2.micro"
-  user_data_base64 = "${data.template_file.example.rendered}"
+  user_data_base64 = data.template_file.example.rendered
 }
 ``` 
+
+Il reste néanmoins possible (mais déprécié) d'utiliser l'ancien format via l'utilisation de `"${ ... }"`
+
+Par exemple : `"${data.template_file.example.rendered}"`
 
 <!-- .element: class="big-code" -->
 
@@ -490,9 +532,9 @@ Cas d’une liste de resource (version >= 0.12) : `resource_type.resource_name.*
 Exemple d’utilisation des fonctions :
 
 ```hcl-terraform
-  count     = "${length(var.shortnames)}"
-  upper-foo = "${upper(var.foo)}"
-  lower-foo = "${lower(var.foo)}"
+  count     = length(var.shortnames)
+  upper-foo = upper(var.foo)
+  lower-foo = lower(var.foo)
 ```  
 <!-- .element: class="big-code" -->
 
