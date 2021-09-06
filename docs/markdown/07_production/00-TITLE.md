@@ -184,12 +184,62 @@ https://www.hashicorp.com/products/terraform/offerings
 ##==##
 <!-- .slide:-->
 
-# Présentation de l'offre Terraform Enterprise
-**Terraform Enterprise** fournit les fonctionnalités avancées suivantes : 
+# Présentation des offres
+
+<br/>
+
+**Terraform Cloud** (Business tiers) fournit les fonctionnalités avancées suivantes :
+* plateforme multi-tenant SAAS
 * Gestion des Workspace, logs d'audit et des variables de manière sécurisée,
 * Intégration native avec les mécanismes MFA d'AWS (sans avoir besoin de passer par des outils tiers, tels OKTA)
 * Intégration native avec **Hashicorp Sentinel** (Policy as Code)
+* Cost Estimation
+<br/><br/>
+
+**Terraform Enterprise** :
+* **Terraform Cloud**
+* Private installation
 * Clustering et Haute Disponibilité
+
+##==##
+<!-- .slide: -->
+
+# Sentinel
+
+<br/>
+
+Sentinel est une fonctionalité disponible à partir de **Terraform Cloud** (Team & Governance) qui permet d'imposer des containtes d'urbanisation (appelées **policies**).
+
+Exemple : interdire toute création d'un security group AWS permettant la sortie du traffic réseau vers internet
+```
+import "tfplan/v2" as tfplan
+
+security_groups = filter tfplan.resource_changes as _, rc {
+	rc.mode is "managed" and
+		rc.type is "aws_security_group" and
+		rc.actions is not ["delete"]
+}
+
+main = rule {
+	all security_groups as _, sg {
+		all sg.change.after.egress as egress {
+			egress.cidr_blocks not contains "0.0.0.0/0"
+		}
+	}
+}
+```
+
+
+##==##
+
+# Cost Estimation
+<br/>
+
+Dans une approche FinOps, il est interessant lors de chaque déploiement d'estimer l'impact de l'opération avant son déploiement.
+
+Cette fonctionalité est disponible dans le package **Terraform Cloud Team & Governance** (AWS, GCP, Azure uniquement)
+
+![center](https://www.terraform.io/docs/cloud/cost-estimation/images/cost-estimation-run-98718ef7.png?style=center)
 
 ##==##
 <!-- .slide: --> 
@@ -367,6 +417,24 @@ Tagger les ressources afin de les identifiers le plus facilement possible, dans 
 # Continuous Deployment via Terraform
  
 ## Atelier
+
+##==##
+<!-- .slide:-->
+
+# HashiCorp Certified: Terraform Associate
+
+<br/>
+
+* Examen en ligne
+* Uniquement disponible en anglais
+* Durée de validité de 2 ans
+* Environ 75€
+
+<br/>
+<br/>
+
+[https://www.hashicorp.com/certification/terraform-associate]()
+
 
 ##==##
 <!-- .slide:-->
