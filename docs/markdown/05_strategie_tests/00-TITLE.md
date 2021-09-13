@@ -114,21 +114,32 @@ end
 
 # L’exemple de terraform test
 
-![h-850](./assets/images/terraform_test_sample.png)
+![h-850 float-left](./assets/images/terraform_test_sample.png)
+
+![float-left](./assets/images/g418fd663c2_0_187.png)
 
 ##==##
 <!-- .slide:-->
 
 # L’exemple de kitchen-inspec
 
-![h-850](./assets/images/kitchen-inspec-sample.png)
+
+<img style="position:fixed;top:5em;left:30px;height:50%" src="./assets/images/kitchen-sample.png">
+
+<img style="position:fixed;top:20em;left:30px:height:40%" src="./assets/images/inspec-sample.png">
+
+<img style="position:fixed;top:8em;left:15em" src="./assets/images/g418fd663c2_0_891.png">
+
+<img style="position:fixed;top:21em;left:20em" src="./assets/images/g418fd663c2_0_890.png">
 
 ##==##
 <!-- .slide:-->
 
 # L’exemple de terratest
 
-![h-850](./assets/images/terratest_sample.png)
+![h-650 float-left](./assets/images/terratest_sample.png)
+
+![float-left](./assets/images/terratest_logo.png)
 
 ##==##
 <!-- .slide:-->
