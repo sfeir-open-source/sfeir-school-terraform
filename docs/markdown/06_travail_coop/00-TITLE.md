@@ -78,6 +78,21 @@ module "gke-regional" {
 * Les modules héritent des providers par défaut mais il est possible de les surcharger.
 * N'hésitez pas à passer les resources de vos providers
 
+
+##==##
+<!-- .slide:-->
+
+# Modules
+
+## TIPS
+
+Les modules peuvent être gérés comme des packages.
+
+- [semantic-release](https://semantic-release.gitbook.io/semantic-release/) : automatiser la gestion des versions (CHANGELOG, incréments, ...) et la publication des packages
+- [Dependabot](https://dependabot.com/terraform/) : gestion de l'obsolescence
+- terraform-docs (module-4) : générer la documentation
+- CODEOWNERS : identifier, notifier et autoriser uniquement les changements via les code owners
+
 ##==##
 <!-- .slide:-->
 
