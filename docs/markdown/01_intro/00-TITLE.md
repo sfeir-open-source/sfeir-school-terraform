@@ -197,3 +197,17 @@ Exemples :
 
 Notes:
 Expliquer l'historique des versions
+
+##==##
+<!-- .slide -->
+
+# Pourquoi une 1.0.0 ?
+<br>
+
+Ce qu'il faut retenir de la version 1.0 :
+[Terraform 1.0 general availability](https://www.hashicorp.com/blog/announcing-hashicorp-terraform-1-0-general-availability)
+
+* Utilisation massive (de 100,000,000 de téléchargement)
+* Les cas d'utilisation sont compris (1,500 contributions, 11,000 pull requests)
+* Une expérience utilisateur complète (documentation, formations, ...)
+* Architecture stable

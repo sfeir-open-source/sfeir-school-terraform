@@ -50,17 +50,17 @@ Hashicorp met à disposition un ensemble de modules officiels sur sa propre regi
 module "gke-regional" {
  source  = "woernfl/gke-regional/gcp"
  version = "2.0.1"
- cluster_name                        = "${var.cluster_name}"
- logging_service                     = "${var.logging_service}"
- monitoring_service                  = "${var.monitoring_service}"
- region                              = "${var.region}"
- kube_version                        = "${var.kube_version}"
- daily_maintenance_window_start_time = "${var.daily_maintenance_window_start_time}"
- http_load_balancing                 = "${var.http_load_balancing}"
- horizontal_pod_autoscaling          = "${var.horizontal_pod_autoscaling}"
- kubernetes_dashboard                = "${var.kubernetes_dashboard}"
- network_policy_config               = "${var.network_policy_config}"
- node_pools                          = "${var.node_pools}"
+
+ cluster_name                        = var.cluster_name
+ logging_service                     = var.logging_service
+ monitoring_service                  = var.monitoring_service
+ region                              = var.region
+ kube_version                        = var.kube_version
+ daily_maintenance_window_start_time = var.daily_maintenance_window_start_time
+ http_load_balancing                 = var.http_load_balancing
+ horizontal_pod_autoscaling          = var.horizontal_pod_autoscaling
+ kubernetes_dashboard                = var.kubernetes_dashboard
+ node_pools                          = var.node_pools
 }
 ```
 
@@ -172,6 +172,17 @@ Il est conseillé de ne pas le stocker localement mais sur :
 * De restreindre les accès (principe du least privilege) car ce fichier peut contenir des informations sensibles (IP, clef SSH, password, ...)
 
 ##==##
+<!-- .slide:-->
+# Gestion de la concurrence et de la persistance
+
+*Le fichier d’état “terraform.tfstate”*
+
+Il existe de nombreux backend : 
+- local (par défaut)
+- remote (nécessite Terraform Cloud)
+- s3, gcs, azurerm, http, consul, etcd, ...
+
+##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
 # Gestion de la concurrence et de la persistance
@@ -192,6 +203,7 @@ terraform {
 }
 ```
 <!-- .element: class="big-code" -->
+
 
 ##==##
 <!-- .slide:-->

@@ -335,7 +335,7 @@ Il permet d’abstraire un déploiement plus complexe et agit comme une boîte n
 
 # Terraform settings
 
-Il existe block hors de toute ressource pour définir le comportement du déploiement :
+Il existe un block hors de toute ressource pour définir le comportement du déploiement :
 * Forcer les versions à utiliser
 * Configurer le backend
 * Activer des fonctionnalitées expérimentales

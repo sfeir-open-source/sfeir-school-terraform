@@ -46,7 +46,7 @@ Littéralement une ressource qui ne fait rien mais elle permet de manipuler des 
 ```hcl-terraform
 resource "null_resource" "upper" {
  triggers {
-   name = "${var.name == "" ? local.default_name : var.name}"
+   name = var.name == "" ? local.default_name : upper(var.name)
  }
 }
 ```
@@ -77,7 +77,8 @@ Les provisioners permettent d’executer des scripts durant les phases de créat
 
 ```hcl-terraform
 resource "null_resource" "register" {
- depends_on       = ["google_compute_instance.inst"]
+ depends_on       = [google_compute_instance.inst]
+
  provisioner "local-exec" {
    command = "register.sh ${google_compute_instance.inst.self_link}"   
  }
@@ -165,6 +166,20 @@ apply_production:
 # Déploiement continu
 
 ![](./assets/images/deploiement_continu.png)
+
+
+##==##
+<!-- .slide:-->
+# Debugging
+
+<br/>
+
+Terraform propose un ensemble de variables d'environnements pour configurer le comportement des logs générés : 
+
+- `TF_LOG` : permet de définir la verbosité *TRACE, DEBUG, INFO, WARN, ERROR*
+- `TF_LOG_PATH` : permet de définir le fichier de sortie
+- `TF_LOG_CORE` et `TF_LOG_PROVIDER` sont une alternative à `TF_LOG` pour différencier les logs Terraform des logs des providers
+
 
 ##==##
 <!-- .slide: class="full-center"-->
@@ -269,7 +284,7 @@ https://www.terraform.io/docs/extend/writing-custom-providers.html
 
 <br/>
 
-* provider.go : Implémente *func Provider() terraform.ResourceProvider*<br/>
+* provider.go : Implémente *func Provider(version string) func() *schema.Provider*<br/>
     Définit les attributs du provider, initialise les connections si nécessaire, vérifie les identifiants.
 
 * resource_name.go : Implément _func resourceName() *schema.Resource_<br/>
@@ -307,6 +322,7 @@ Les *Best Pratices* relative à **Terraform** sont plus un condensé provenant d
 * Extraire les métadatas
 * Préférer les chemins de fichiers au bloc *Inline*
 * Tagger les ressources 
+* Limiter le nombre de ressources par déploiment
 
 Notes:
 Structurer la configuration à l'aide des fichiers main.tf (pour les appels de modules), variables.tf et outputs.tf.  
