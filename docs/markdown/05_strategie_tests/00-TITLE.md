@@ -49,9 +49,9 @@ ${element("haha"=="haha" ? list("") : list(""), 0)}
 
 * Consiste à déployer l’infrastructure dans une sandbox
 * Utilisation 
-  * https://kitchen.ci
-  * https://github.com/newcontext-oss/kitchen-terraform
-  * https://github.com/gruntwork-io/terratest 
+  * [Module Testing Experiment (experimental features)](https://www.terraform.io/docs/language/modules/testing-experiment.html)
+  * [kitchen-ci](https://kitchen.ci) et [kitchen-terraform](https://github.com/newcontext-oss/kitchen-terraform)
+  * [terratest](https://github.com/gruntwork-io/terratest) 
     <span style="color:green">pour automatiser la création et suppression</span>
 
 ```bash
