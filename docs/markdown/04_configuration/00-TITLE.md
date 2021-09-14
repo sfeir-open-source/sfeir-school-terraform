@@ -58,6 +58,7 @@ Il n’y a pas de normes imposées par l’outil mais un ensemble de bonnes prat
 * Chaque “feature” peut faire l’objet d’un nouveau fichier .tf
 * Les tests sont regroupés dans un dossier test
 * Les modules peuvent être stockés localement
+* Les valeurs par défaut pour les variables doivent être évitées
 
 ```
 .
