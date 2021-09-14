@@ -52,11 +52,11 @@ Jour 2 : Collaboration et production
 * Variables, ressources, providers et outputs
 * Cycle de vie des ressources
 * Atelier: Premier déploiement d’infrastructure
-*'HIL': HashiCorp Interpolation Language
-*Expressions
-*Fonctions
-*Boucle et conditions
-*Atelier: Utilisation avancée des interpolations
+* 'HIL': HashiCorp Interpolation Language
+* Expressions
+* Fonctions
+* Boucle et conditions
+* Atelier: Utilisation avancée des interpolations
 
 ##==##
 <!-- .slide:  -->
@@ -68,6 +68,7 @@ Jour 2 : Collaboration et production
 * Mise en place d’aide au développement
 * Génération automatique de la documentation
 * Gestion des fichiers et bonnes pratiques
+* Configuration locale
 * Atelier: Configuration de l’environnement de développement
 
 ##==##
@@ -89,6 +90,7 @@ Jour 2 : Collaboration et production
 ## MODULE 6 : Travail coopératif
 * Re-utilisation du code, découverte des modules
 * Gestion de la concurrence et de la persistance
+* Manipulation du fichier d’état
 * Gestion des credentials
 * Templating
 * Ateliers: Création d’un registre de modules dans gitlab
@@ -99,8 +101,10 @@ Jour 2 : Collaboration et production
 <br>
 
 ## MODULE 7 : Utilisation en production
-* Manipulation du fichier d’état
+* Remplacement de resources existantes
+* Utilisation des provisioners
 * Déploiement continu via Gitlab-ci
+* Debugging
 * Présentation de l’offre pour les entreprises Terraform Cloud
 * Présentation de l'offre Terraform Enterprise
 * Développement et utilisation de providers communautaires
