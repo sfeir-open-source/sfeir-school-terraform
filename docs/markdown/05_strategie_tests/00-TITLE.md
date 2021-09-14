@@ -5,7 +5,7 @@
 ##==##
 <!-- .slide:-->
 
-# Overview des différents outils de test
+# Overview des différents outils de tests
 
 ![h-850](./assets/images/g418fd663c2_0_825.png)
 

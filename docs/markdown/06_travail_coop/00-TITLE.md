@@ -334,7 +334,7 @@ Les child resources sont des resources ayant besoin d'une autre ressource pour �
 ##==##
 <!-- .slide:-->
 
-# Templates
+# Templating
 
 => *cat cloud_sql/vars.tf*
 ```hcl-terraform
@@ -354,7 +354,7 @@ variable "project" {}
 ##==##
 <!-- .slide:-->
 
-# Templates
+# Templating
 
 => *cat cloud_sql/vars.tfvars*
 ```json
@@ -362,7 +362,7 @@ databases = [
     {
         name        = "db_1"
         charset     = "utf8"
-        collation    = "utf8_unicode_ci"
+        collation   = "utf8_unicode_ci"
     }
 ]
 ```
@@ -471,7 +471,7 @@ resource "google_sql_database" "database" {
 
 <br/>
 
-*Question* : Comment obtenir la valeur d’un attribut d’un ressource créée dans un module ?
+*Question* : Comment obtenir la valeur d’un attribut d’une ressource créée dans un module ?
 
 <br/>
 

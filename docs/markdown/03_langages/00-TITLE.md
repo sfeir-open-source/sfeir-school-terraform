@@ -632,7 +632,7 @@ resource "google_compute_instance" "web" {
 
 <br/>
 
-1. **Vrai** (avec Terraform 0.13 disponible depuis le 10 août)
+1. **Vrai** (avec Terraform 0.13 disponible depuis le 10 août 2020)
 2. ~~**Faux**~~
 
 ##==##
