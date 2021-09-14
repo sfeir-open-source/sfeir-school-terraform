@@ -188,7 +188,7 @@ resource "..." "..." {
 Le provider fournit un ensemble de primitives permettant de lire, créer, modifier ou supprimer des ressources sur la plateforme distante.
 * Chaque provider possède ses propres attributs
 * Il est possible d’utiliser plusieurs déclarations d’un même provider en utilisant l’attribut spécial “alias” (appelé meta-parameter).
-* Les variables utilisées pour configurer les providers doivent être calculable avant un plan
+* Les variables utilisées pour configurer les providers doivent être calculables avant un plan
 * Il est fortement conseillé d'utiliser des variables d'environnement pour configurer les providers
 
 <!-- .element: class="big-code" -->
