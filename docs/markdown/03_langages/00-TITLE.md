@@ -45,6 +45,9 @@ HCL a de nombreux types de variable comme :
 * Structure anonyme (object)
 * Type complexe (list de map, map de list, map de map de map, …)
 
+Notes:
+Contrairement à la map, tous les champs d'un object sont de même type
+
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
 
