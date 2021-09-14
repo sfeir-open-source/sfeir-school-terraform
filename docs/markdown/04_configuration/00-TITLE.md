@@ -18,9 +18,9 @@
 
 <br/><br/><br/>
 
-* https://marketplace.visualstudio.com/items?itemName=mauve.terraform 
+* https://marketplace.visualstudio.com/items?itemName=hashicorp.terraform 
 * https://github.com/hashivim/vim-terraform 
-* https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support
+* https://plugins.jetbrains.com/plugin/7808-terraform-and-hcl
 
 ##==##
 <!--.slide: class="two-column-layout"-->
