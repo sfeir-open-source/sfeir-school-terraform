@@ -141,7 +141,7 @@ Terraform plan va scanner l’ensemble des fichiers *.tf du répertoire courant 
 
 <br/>
 
-Il s’agit d’un dry-run. Aucune modification/écriture ne sera effectuée sur le provider lors du 1er “plan”. Une relecture est faite par la suite pour comparer les états.
+Il s’agit d’un dry-run. Aucune modification/écriture ne sera effectuée sur le provider lors du 1er “plan”. Une relecture est faite par la suite pour comparer les états. Terraform vous signalera en cas de modification manuelle des objets référencés dans le fichier d'état.
 
 <br/>
 
