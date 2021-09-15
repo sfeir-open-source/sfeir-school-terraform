@@ -24,8 +24,6 @@ source "https://rubygems.org/" do
 end
 ```
 
-*Note* : inspec version is forced due to issue [inspec/issues/4562](https://github.com/inspec/inspec/issues/4562) when using inspec-gcp archive.
-
 Then run `bundle install` to install packages.
 
 ### KitchenCI
@@ -77,10 +75,11 @@ This command will create a `local-test/inspec.yml` file.
 
 You can generate a new inspec profile named `default` for **inspec-gcp** tests using `bundle exec inspec init profile --platform gcp default`.
 
-* Update the `default/attributes.yml` to configure the gcp project id
-* Run tests using `bundle exec inspec exec default -t gcp:// --input-file default/attributes.yml --show-progress --color`
+* Update the `default/inputs.yml` to configure the gcp project id
+* Run tests using `bundle exec inspec exec default -t gcp:// --input-file default/inputs.yml --show-progress --color`
 
-Add a new control to check your DNS zone.
+
+Now we will verify our zone configuration. Take a look on [inspec-gcp resources](https://github.com/inspec/inspec-gcp/tree/main/docs/resources) and replace the default control with a new control to check your DNS zone.
 
 ### Kitchen and Inspec
 

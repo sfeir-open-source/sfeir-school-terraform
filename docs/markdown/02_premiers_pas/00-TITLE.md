@@ -14,7 +14,7 @@
 
 * Déjà pré-installé dans le Google Cloud Shell
 
-* Ou avec docker `alias tf="docker run --rm -it --env-file <(env | grep TF_) -w /source -v "$(pwd):/source" -v ${HOME}:/root/ hashicorp/terraform:0.13.2"` 
+* Ou avec docker `alias tf="docker run --rm -it --env-file <(env | grep TF_) -w /source -v "$(pwd):/source" -v ${HOME}:/root/ hashicorp/terraform:1.0.5"`
 
 ![w-1000 center](./assets/images/g418fd663c2_0_272.png)
 
@@ -109,6 +109,7 @@ Cette commande permet d’initialiser le répertoire de travail courant.
 * Télécharge les providers et provisioners nécessaires (officiels) sur https://releases.hashicorp.com/
 * Instancie le fichier d’état (local ou distant)
 * Effectue un “terraform get“ si nécessaire.
+* Un fichier *.terraform.lock.hcl* sera automatiquement créé pour garantir l'intégrité des dépendances
 
 Notes:
 Cette commande est nécessaire d’être joué dans chaque nouveau dossier mais également lors de l’ajout d’une ressource provenant d’un nouveau provider.
@@ -140,7 +141,7 @@ Terraform plan va scanner l’ensemble des fichiers *.tf du répertoire courant 
 
 <br/>
 
-Il s’agit d’un dry-run. Aucune modification/écriture ne sera effectuée sur le provider lors du 1er “plan”. Une relecture est faite par la suite pour comparer les états.
+Il s’agit d’un dry-run. Aucune modification/écriture ne sera effectuée sur le provider lors du 1er “plan”. Une relecture est faite par la suite pour comparer les états. Terraform vous signalera en cas de modification manuelle des objets référencés dans le fichier d'état.
 
 <br/>
 

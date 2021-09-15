@@ -5,7 +5,7 @@
 ##==##
 <!-- .slide:-->
 
-# Overview des différents outils de test
+# Overview des différents outils de tests
 
 ![h-850](./assets/images/g418fd663c2_0_825.png)
 
@@ -49,9 +49,9 @@ ${element("haha"=="haha" ? list("") : list(""), 0)}
 
 * Consiste à déployer l’infrastructure dans une sandbox
 * Utilisation 
-  * https://kitchen.ci
-  * https://github.com/newcontext-oss/kitchen-terraform
-  * https://github.com/gruntwork-io/terratest 
+  * [Module Testing Experiment (experimental features)](https://www.terraform.io/docs/language/modules/testing-experiment.html)
+  * [kitchen-ci](https://kitchen.ci) et [kitchen-terraform](https://github.com/newcontext-oss/kitchen-terraform)
+  * [terratest](https://github.com/gruntwork-io/terratest) 
     <span style="color:green">pour automatiser la création et suppression</span>
 
 ```bash
@@ -112,10 +112,34 @@ end
 ##==##
 <!-- .slide:-->
 
-# L’exemple de inspec, inspec-iggy et kitchen-terraform
+# L’exemple de terraform test
 
-![float-center](./assets/images/inspec-exemple.png)
+![h-850 float-left](./assets/images/terraform_test_sample.png)
 
+![float-left](./assets/images/g418fd663c2_0_187.png)
+
+##==##
+<!-- .slide:-->
+
+# L’exemple de kitchen-inspec
+
+
+<img style="position:fixed;top:5em;left:30px;height:50%" src="./assets/images/kitchen-sample.png">
+
+<img style="position:fixed;top:20em;left:30px:height:40%" src="./assets/images/inspec-sample.png">
+
+<img style="position:fixed;top:8em;left:15em" src="./assets/images/g418fd663c2_0_891.png">
+
+<img style="position:fixed;top:21em;left:20em" src="./assets/images/g418fd663c2_0_890.png">
+
+##==##
+<!-- .slide:-->
+
+# L’exemple de terratest
+
+![h-650 float-left](./assets/images/terratest_sample.png)
+
+![float-left](./assets/images/terratest_logo.png)
 
 ##==##
 <!-- .slide:-->

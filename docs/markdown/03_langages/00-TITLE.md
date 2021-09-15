@@ -45,6 +45,9 @@ HCL a de nombreux types de variable comme :
 * Structure anonyme (object)
 * Type complexe (list de map, map de list, map de map de map, …)
 
+Notes:
+Contrairement à la map, tous les champs d'un object sont de même type
+
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
 
@@ -100,7 +103,49 @@ Utilisation :
 num_cpu = var.num_cpu      // préconisé
 tags    = "tag:${var.tag}" // avec expansion
 ```
-<!-- .element: class="big-code" -->
+
+##==##
+<!-- .slide: class="with-code-bg-dark" -->
+
+# HashiCorp Configuration Language (HCL)
+
+<br/>
+
+## Variables : Custom validation rules
+
+Le developpeur peut imposer aux utilisateurs des contraintes sur la valeur des variables, telles que :
+* Un élément présent dans une liste prédéfinie
+* Des expressions régulières
+* Des formats (date, lowercase, taille d'une chaine de caractères)
+
+Exemple : un identifiant en minuscule de plus de 4 lettres
+```
+variable "id" {
+  type        = string
+  description = "Primaty ID used for the user"
+
+  validation {
+    condition     = length(var.id) > 4 && lower(var.id) == var.id
+    error_message = "Require at least 4 characters in lower case."
+  }
+}
+```
+
+
+##==##
+<!-- .slide: class="with-code-bg-dark" -->
+# HashiCorp Configuration Language (HCL)
+
+<br/>
+
+## Variables : le récap
+
+Les variables supportent les attributs suivant :
+* **default** : assigne une valeur par défaut qui peut être surchargée
+* **type** : définit le type de la variables (par défaut string mais il est possible d'utiliser des variables de type bool, map, list, ...)
+* **description** : aide l'utilisateur à définir le contenu de la variable
+* **validation** : permet de rejeter une valeur si elle ne respecte pas les conditions
+* **sensitive** : interdit l'affichage de la valeur au travers d'outputs et masque son contenu dans la console
 
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
@@ -111,7 +156,7 @@ tags    = "tag:${var.tag}" // avec expansion
 
 ## Variables locales 
 
-Une `local` est l'association d'une expression à une variable, afin d'être réutilisée plusieurs fois dans un module. 
+Une `local` est l'association d'une expression à une variable, afin d'être réutilisée plusieurs fois dans un module.
 
 Déclaration : 
 ```hcl-terraform
@@ -129,7 +174,7 @@ locals {
 Utilisation :
 ```hcl-terraform
 resource "..." "..." {
-  instance_names = ["${local.instance_names}"]
+  instance_names = [local.instance_names]
 }
 ```
 <!-- .element: class="big-code" -->
@@ -143,10 +188,26 @@ resource "..." "..." {
 
 ## Provider
 
-Le provider fournit un ensemble de primitives permettant de lire, créer, modifier ou supprimer des ressources sur la plateforme distante. 
+Le provider fournit un ensemble de primitives permettant de lire, créer, modifier ou supprimer des ressources sur la plateforme distante.
 * Chaque provider possède ses propres attributs
 * Il est possible d’utiliser plusieurs déclarations d’un même provider en utilisant l’attribut spécial “alias” (appelé meta-parameter).
-* Il est possible de forcer une version du provider via l’attribut “version”. Par défaut, terraform utilise la dernière version.
+* Les variables utilisées pour configurer les providers doivent être calculables avant un plan
+* Il est fortement conseillé d'utiliser des variables d'environnement pour configurer les providers
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+# HashiCorp Configuration Language (HCL)
+
+<br/>
+
+## Provider
+
+* Exemple :
+
+Il est possible de configurer le provider Google Cloud en utilisant du HCL ou des variables d'environnement :
+
 
 ```hcl-terraform
 provider "google" {
@@ -155,6 +216,15 @@ provider "google" {
  region      = "us-central1"
 }
 ```
+
+équivaut à :
+
+```
+export GOOGLE_APPLICATION_CREDENTIALS="account.json"
+export GOOGLE_PROJECT="my-project-id"
+export GOOGLE_REGION="us-central1"
+```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -172,7 +242,7 @@ Elles doivent respecter la syntaxe : resource "TYPE" "NAME”
 ```hcl-terraform
 resource "google_compute_firewall" "default" {
  name    = "test-firewall"
- network = "${google_compute_network.default.name}"
+ network = google_compute_network.default.name
 
  allow {
    protocol = "icmp"
@@ -217,11 +287,13 @@ provider : Permet de surcharger le provider de la ressource par exemple lors de 
 ## Output
 
 Les outputs sont affichés en surbrillance à la fin du déploiement Terraform. 
-Ils permettent aux utilisateurs d’afficher des attributs calculés ou retournés par le provider.
 
+Ils permettent aux utilisateurs d’afficher des attributs calculés ou retournés par le provider.
+<br/>
+<br/>
 ```hcl-terraform
 output "addresses" {
- value = ["${aws_instance.web.*.public_dns}"]
+ value = [aws_instance.web.*.public_dns]
 }
 ```
 <!-- .element: class="big-code" -->
@@ -261,6 +333,35 @@ image = "${data.google_compute_image.my_image.self_link}"
 Il permet d’abstraire un déploiement plus complexe et agit comme une boîte noire pour laquelle on utilisera des **variables** en entrée et des **outputs** en sortie.
 
 **Le module permet une réutilisation du code et peut être stocké dans un repository distant (ex: git)(privé ou publique).**
+
+##==##
+<!-- .slide:-->
+
+# Terraform settings
+
+Il existe un "block" hors de toute ressource pour définir le comportement du déploiement :
+* Forcer les versions à utiliser
+* Configurer le backend
+* Activer des fonctionnalitées expérimentales
+
+```
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      version = ">= 2.7.0"
+      source = "hashicorp/aws"
+    }
+  }
+  backend "remote" {
+    organization = "example_corp"
+    workspaces {
+      name = "my-app-prod"
+    }
+  }
+  experiments = [something]
+}
+```
 
 
 ##==##
@@ -378,15 +479,27 @@ Values passed within definition files or with -var will take precedence over TF_
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HashiCorp Interpolation Language (HIL)
- 
-https://github.com/hashicorp/hil
+# HCL-extended
 
-Le Langage permet de manipuler des variables ou récupérer des attributs d’autres ressources. L’interpolation doit être déclaré entre “${ ... }” 
+Avant le version 0.12, Terraform était composé de deux langages :
+* le **HCL** (HashiCorp Configuration Language) pour la déclaration des resources, les inputs, les outputs, ...
+* le **HIL** (HashiCorp Interpolation Language) pour permettre aux utilisateurs de manipuler la donnée (utilisation de variable, modification de la casse, création de liste, ..).
+
+
+Depuis la version 0.12, HCL et HIL ont fusionné.
+
+
+##==##
+<!-- .slide: class="with-code-bg-dark"-->
+
+# HCL-extended
+
+
+Il est possible de manipuler des variables, récupérer des attributs d’autres ressources ou utiliser des fonctions native directement dans notre code :
 
 ```hcl-terraform
 data "template_file" "example" {
- template = "${file("templates/greeting.tpl")}"
+ template = file("templates/greeting.tpl")
  vars {
    hello = "goodnight"
    world = "moon"
@@ -399,16 +512,20 @@ Usage
 resource "aws_instance" "web" {
   ami              = "ami-d05e75b8"
   instance_type    = "t2.micro"
-  user_data_base64 = "${data.template_file.example.rendered}"
+  user_data_base64 = data.template_file.example.rendered
 }
 ``` 
+
+Il reste néanmoins possible (mais déprécié) d'utiliser l'ancien format via l'utilisation de `"${ ... }"`
+
+Par exemple : `"${data.template_file.example.rendered}"`
 
 <!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide:-->
 
-# HashiCorp Interpolation Language (HIL)
+# HCL extended (also known as HIL)
 
 <br/>
 
@@ -420,29 +537,29 @@ Il est possible de lire la valeur d’un attribut d’une ressource, d’une sou
 * module : `module.module_name.output_name`
 * data source : `data.data_type.data_name.attribut`
 
-Cas d’une liste de resource (version >= 0.12) : `resource_type.resource_name.*.attribut[<index>]`
+Cas d’une liste de resource : `resource_type.resource_name[<index>].attribut`
 
 
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HashiCorp Interpolation Language (HIL)
+# HCL extended (also known as HIL)
 
 <br/>
 
 Exemple d’utilisation des fonctions :
 
 ```hcl-terraform
-  count     = "${length(var.shortnames)}"
-  upper-foo = "${upper(var.foo)}"
-  lower-foo = "${lower(var.foo)}"
+  count     = length(var.shortnames)
+  upper-foo = upper(var.foo)
+  lower-foo = lower(var.foo)
 ```  
 <!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide:-->
 
-# HashiCorp Interpolation Language (HIL)
+# HCL extended (also known as HIL)
 
 <br/>
 
@@ -455,13 +572,13 @@ Terraform permet de déployer plusieurs ressources de même type via une unique 
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HashiCorp Interpolation Language (HIL)
+# HCL extended (also known as HIL)
 
 <br/>
 
 ## Boucles
 
-Depuis la version 0.12, Terraform a introduit deux nouvelles manière d’itérer **For and For-Each** (à privilégier par rapport à count).
+Depuis la version 0.12, Terraform a introduit une nouvelle manière d’itérer **For-Each** (à privilégier par rapport à count).
 
 ```hcl-terraform
 resource "vault_ldap_auth_backend_group" "group-users" {
@@ -476,7 +593,7 @@ resource "vault_ldap_auth_backend_group" "group-users" {
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HashiCorp Interpolation Language (HIL)
+# HCL extended (also known as HIL)
 
 <br/>
 
@@ -515,7 +632,7 @@ resource "google_compute_instance" "web" {
 
 <br/>
 
-1. **Vrai** (avec Terraform 0.13 disponible depuis le 10 août)
+1. **Vrai** (avec Terraform 0.13 disponible depuis le 10 août 2020)
 2. ~~**Faux**~~
 
 ##==##

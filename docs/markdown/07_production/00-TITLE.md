@@ -16,6 +16,14 @@
 * terraform taint -var-file=file -module=module1.module2 aws_volume.data_ebs.1<br/>
 <span style="color:green"># Une ressource dans une boucle dans un module</span>
 
+
+Raccourcis disponible pour taint lors du plan/apply avec l'option `-replace`
+
+* terraform plan -var-file=file -replace=aws_volume.data_ebs
+<br/> <span style="color:green"># Recréation lors d'un plan</span>
+* terraform apply -var-file=file -replace=aws_volume.data_ebs
+<br/> <span style="color:green"># Recréation lors d'un apply</span>
+
 ##==##
 <!-- .slide:-->
 
@@ -38,7 +46,7 @@ Littéralement une ressource qui ne fait rien mais elle permet de manipuler des 
 ```hcl-terraform
 resource "null_resource" "upper" {
  triggers {
-   name = "${var.name == "" ? local.default_name : var.name}"
+   name = var.name == "" ? local.default_name : upper(var.name)
  }
 }
 ```
@@ -69,7 +77,8 @@ Les provisioners permettent d’executer des scripts durant les phases de créat
 
 ```hcl-terraform
 resource "null_resource" "register" {
- depends_on       = ["google_compute_instance.inst"]
+ depends_on       = [google_compute_instance.inst]
+
  provisioner "local-exec" {
    command = "register.sh ${google_compute_instance.inst.self_link}"   
  }
@@ -158,6 +167,20 @@ apply_production:
 
 ![](./assets/images/deploiement_continu.png)
 
+
+##==##
+<!-- .slide:-->
+# Debugging
+
+<br/>
+
+Terraform propose un ensemble de variables d'environnements pour configurer le comportement des logs générés : 
+
+- `TF_LOG` : permet de définir la verbosité *TRACE, DEBUG, INFO, WARN, ERROR*
+- `TF_LOG_PATH` : permet de définir le fichier de sortie
+- `TF_LOG_CORE` et `TF_LOG_PROVIDER` sont des alternatives à `TF_LOG` pour différencier les logs Terraform et les logs des providers
+
+
 ##==##
 <!-- .slide: class="full-center"-->
 
@@ -184,12 +207,62 @@ https://www.hashicorp.com/products/terraform/offerings
 ##==##
 <!-- .slide:-->
 
-# Présentation de l'offre Terraform Enterprise
-**Terraform Enterprise** fournit les fonctionnalités avancées suivantes : 
+# Présentation des offres
+
+<br/>
+
+**Terraform Cloud** (Business tiers) fournit les fonctionnalités avancées suivantes :
+* plateforme multi-tenant SAAS
 * Gestion des Workspace, logs d'audit et des variables de manière sécurisée,
 * Intégration native avec les mécanismes MFA d'AWS (sans avoir besoin de passer par des outils tiers, tels OKTA)
 * Intégration native avec **Hashicorp Sentinel** (Policy as Code)
+* Cost Estimation
+<br/><br/>
+
+**Terraform Enterprise** :
+* **Terraform Cloud**
+* Private installation
 * Clustering et Haute Disponibilité
+
+##==##
+<!-- .slide: -->
+
+# Sentinel
+
+<br/>
+
+Sentinel est une fonctionalité disponible à partir de **Terraform Cloud** (Team & Governance) qui permet d'imposer des containtes d'urbanisation (appelées **policies**).
+
+Exemple : interdire toute création d'un security group AWS permettant la sortie du traffic réseau vers internet
+```
+import "tfplan/v2" as tfplan
+
+security_groups = filter tfplan.resource_changes as _, rc {
+	rc.mode is "managed" and
+		rc.type is "aws_security_group" and
+		rc.actions is not ["delete"]
+}
+
+main = rule {
+	all security_groups as _, sg {
+		all sg.change.after.egress as egress {
+			egress.cidr_blocks not contains "0.0.0.0/0"
+		}
+	}
+}
+```
+
+
+##==##
+
+# Cost Estimation
+<br/>
+
+Dans une approche FinOps, il est interessant lors de chaque déploiement d'estimer l'impact de l'opération avant son déploiement.
+
+Cette fonctionalité est disponible dans le package **Terraform Cloud Team & Governance** (AWS, GCP, Azure uniquement)
+
+![center](https://www.terraform.io/docs/cloud/cost-estimation/images/cost-estimation-run-98718ef7.png?style=center)
 
 ##==##
 <!-- .slide: --> 
@@ -211,7 +284,7 @@ https://www.terraform.io/docs/extend/writing-custom-providers.html
 
 <br/>
 
-* provider.go : Implémente *func Provider() terraform.ResourceProvider*<br/>
+* provider.go : Implémente *func Provider(version string) func() *schema.Provider*<br/>
     Définit les attributs du provider, initialise les connections si nécessaire, vérifie les identifiants.
 
 * resource_name.go : Implément _func resourceName() *schema.Resource_<br/>
@@ -249,6 +322,7 @@ Les *Best Pratices* relative à **Terraform** sont plus un condensé provenant d
 * Extraire les métadatas
 * Préférer les chemins de fichiers au bloc *Inline*
 * Tagger les ressources 
+* Limiter le nombre de ressources par déploiment
 
 Notes:
 Structurer la configuration à l'aide des fichiers main.tf (pour les appels de modules), variables.tf et outputs.tf.  
@@ -367,6 +441,24 @@ Tagger les ressources afin de les identifiers le plus facilement possible, dans 
 # Continuous Deployment via Terraform
  
 ## Atelier
+
+##==##
+<!-- .slide:-->
+
+# HashiCorp Certified: Terraform Associate
+
+<br/>
+
+* Examen en ligne
+* Uniquement disponible en anglais
+* Durée de validité de 2 ans
+* Environ 75€
+
+<br/>
+<br/>
+
+[https://www.hashicorp.com/certification/terraform-associate]()
+
 
 ##==##
 <!-- .slide:-->

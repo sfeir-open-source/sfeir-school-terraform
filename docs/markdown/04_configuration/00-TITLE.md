@@ -17,10 +17,10 @@
 * Validation de syntaxe
 
 <br/><br/><br/>
-
-* https://marketplace.visualstudio.com/items?itemName=mauve.terraform 
-* https://github.com/hashivim/vim-terraform 
-* https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support
+Liens : 
+* [VScode : hashicorp.terraform](https://marketplace.visualstudio.com/items?itemName=hashicorp.terraform)
+* [Hashivim](https://github.com/hashivim/vim-terraform) 
+* [Intellij : Terraform](https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support)
 
 ##==##
 <!--.slide: class="two-column-layout"-->
@@ -58,6 +58,7 @@ Il n’y a pas de normes imposées par l’outil mais un ensemble de bonnes prat
 * Chaque “feature” peut faire l’objet d’un nouveau fichier .tf
 * Les tests sont regroupés dans un dossier test
 * Les modules peuvent être stockés localement
+* Les valeurs par défaut pour les variables doivent être évitées
 
 ```
 .
@@ -89,6 +90,22 @@ alias terraform-genvar='(for i in $(egrep -oh '\''var\.\w+'\'' *.tf | sed -nr '\
 <!-- .element: class="big-code" -->
 
 * L’utilisation d’un .editorconfig permet aux développeurs d’utiliser un même format
+
+##==##
+<!-- .slide:-->
+
+# Configuration de l’environnement de développement
+
+## Configuration locale (CLI Configuration File)
+
+Il est possible de configurer certains comportements de Terraform de manière globale à l'aide d'un fichier *.terraformrc* ou *terraform.rc*.
+
+[*=> Documentation pour trouver la localisation du fichier par OS*](https://www.terraform.io/docs/cli/config/config-file.html) ou via la variable d'environnement *TF_CLI_CONFIG_FILE*
+
+Cela permet par exemple de : 
+- Mettre en cache les providers pour ne pas les télécharger dans chaque workspaces
+- Configurer ses identifiants pour les registre de modules privés
+- Surcharger des providers avec une version locale
 
 ##==##
 <!-- .slide:-->
