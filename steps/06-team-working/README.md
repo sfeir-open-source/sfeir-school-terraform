@@ -2,7 +2,22 @@
 
 ## Module 6 : Team working
 
-### Prerequisites
+### Prerequisites (using trainer cluster, the easy way)
+
+For this lab, we will use an existing Vault cluster to save a random password (generated using terraform).
+Ask your trainer the URL and the authentication token.
+
+If you play this lab alone, feel free to create your own cluster (you can use [Vault cloud](https://www.vaultproject.io/) by example).
+
+* Configure environment variables to use the cluser using vault CLI
+```
+export VAULT_ADDR=https://vault-cluster.vault.xxxx.aws.hashicorp.cloud:8200
+export VAULT_NAMESPACE=admin
+```
+
+You can now jump to *Play with vault client* section.
+
+### Prerequisites (using private cluster)
 
 For this lab, we will use a GKE Cluster to host a [vault application](https://www.hashicorp.com/products/vault/).
 
@@ -56,12 +71,14 @@ Get vault address using :
 export VAULT_ADDR=http://$(kubectl get services -l "app=vault" -o jsonpath="{.items[0].status.loadBalancer['ingress'][0]['ip']}"):8200
 ```
 
-##### Play with vault client
+### Play with vault client
 
 Installation :
 
+Follow [Vault installation methods](https://www.vaultproject.io/downloads) or using curl install :
+
 ```shell
-export VAULT_VERSION=1.2.3
+export VAULT_VERSION=1.8.2
 wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
 sudo unzip vault_${VAULT_VERSION}_linux_amd64.zip -d /usr/bin/
 ```
