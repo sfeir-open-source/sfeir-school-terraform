@@ -113,7 +113,7 @@ tags    = "tag:${var.tag}" // avec expansion
 
 ## Variables : Custom validation rules
 
-Le developpeur peut imposer aux utilisateurs des contraintes sur la valeur des variables, tel que :
+Le developpeur peut imposer aux utilisateurs des contraintes sur la valeur des variables, telles que :
 * Un élément présent dans une liste prédéfinie
 * Des expressions régulières
 * Des formats (date, lowercase, taille d'une chaine de caractères)
@@ -339,7 +339,7 @@ Il permet d’abstraire un déploiement plus complexe et agit comme une boîte n
 
 # Terraform settings
 
-Il existe un block hors de toute ressource pour définir le comportement du déploiement :
+Il existe un "block" hors de toute ressource pour définir le comportement du déploiement :
 * Forcer les versions à utiliser
 * Configurer le backend
 * Activer des fonctionnalitées expérimentales
@@ -495,7 +495,7 @@ Depuis la version 0.12, HCL et HIL ont fusionné.
 # HCL-extended
 
 
-Il est donc possible de manipuler des variables, récupérer des attributs d’autres ressources ou utiliser des fonctions native directement dans notre code :
+Il est possible de manipuler des variables, récupérer des attributs d’autres ressources ou utiliser des fonctions native directement dans notre code :
 
 ```hcl-terraform
 data "template_file" "example" {

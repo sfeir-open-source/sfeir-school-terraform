@@ -178,7 +178,7 @@ Terraform propose un ensemble de variables d'environnements pour configurer le c
 
 - `TF_LOG` : permet de définir la verbosité *TRACE, DEBUG, INFO, WARN, ERROR*
 - `TF_LOG_PATH` : permet de définir le fichier de sortie
-- `TF_LOG_CORE` et `TF_LOG_PROVIDER` sont une alternative à `TF_LOG` pour différencier les logs Terraform des logs des providers
+- `TF_LOG_CORE` et `TF_LOG_PROVIDER` sont des alternatives à `TF_LOG` pour différencier les logs Terraform et les logs des providers
 
 
 ##==##

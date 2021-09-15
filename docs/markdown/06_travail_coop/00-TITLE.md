@@ -192,7 +192,7 @@ Il est conseillé de ne pas le stocker localement mais sur :
 
 *Le fichier d’état “terraform.tfstate”*
 
-Il existe de nombreux backend : 
+Il existe de plusieurs types de backends : 
 - local (par défaut)
 - remote (nécessite Terraform Cloud)
 - s3, gcs, azurerm, http, consul, etcd, ...
