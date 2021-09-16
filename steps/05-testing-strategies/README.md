@@ -94,10 +94,10 @@ suites:
       - name: local
         backend: gcp
         attrs_outputs:
-          gcp_project_id: project_id
+          gcp_project_id: gcp_project
 ```
 
-The `project_id` output from terraform will be mapped to inspec input.
+The `gcp_project` output from terraform will be mapped to inspec input.
 
 Clean the previous deployment using `terraform destroy` and run a `bundle exec kitchen test`.
 
