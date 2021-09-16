@@ -31,7 +31,7 @@ And download the latest version using :
 
 ```shell
 curl https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip -o /tmp/terraform_${TF_VERSION}_linux_amd64.zip
-sudo unzip /tmp/terraform_${TF_VERSION}_linux_amd64.zip -d /usr/local/bin/
+sudo unzip /tmp/terraform_${TF_VERSION}_linux_amd64.zip -d /usr/bin/
 ```
 
 Notes : It's recommended to keep old Terraform version because the version is saved in state file you will see later.
