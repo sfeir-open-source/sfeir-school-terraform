@@ -6,7 +6,7 @@
 
 #### Cloud Shell Integration
 
-Open [Google Cloud Console](console.cloud.google.com), select the good Google project created for the lab and click to open a new [Google Cloud Shell](https://cloud.google.com/shell/).
+Open [Google Cloud Console](https://console.cloud.google.com), select the good Google project created for the lab and click to open a new [Google Cloud Shell](https://cloud.google.com/shell/).
 
 ![cloud shell wizard](https://cloud.google.com/shell/docs/images/shellstart-update.gif)
 
