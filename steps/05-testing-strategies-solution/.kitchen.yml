@@ -20,4 +20,4 @@ suites:
       - name: local
         backend: gcp
         attrs_outputs:
-          project_id: project_id
+          project_id: gcp_project

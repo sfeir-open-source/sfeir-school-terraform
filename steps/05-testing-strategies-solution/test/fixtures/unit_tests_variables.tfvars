@@ -1,1 +1,1 @@
-project_id = "sfeir-school-terraform"
+gcp_project = "sfeir-school-terraform"
