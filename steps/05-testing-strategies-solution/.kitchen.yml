@@ -21,3 +21,4 @@ suites:
         backend: gcp
         attrs_outputs:
           project_id: gcp_project
+          dns: zone_name
