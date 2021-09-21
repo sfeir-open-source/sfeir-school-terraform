@@ -470,6 +470,36 @@ Values passed within definition files or with -var will take precedence over TF_
 4. Une erreur à la compilation
 
 ##==##
+<!-- .slide:-->
+
+# QUIZZ
+
+<br/>
+
+*Question* : Quelle est la particularité d'une variable de type *object* ?
+
+<br/>
+
+1. Le résultat est toujours ordonné
+2. Ce n'est pas la plus utilisée
+3. Peut contenir de nombreux types différents
+
+##==##
+<!-- .slide: -->
+
+# QUIZZ
+
+<br/>
+
+*Question* : Quelle est la particularité d'une variable de type *object* ?
+
+<br/>
+
+1. Le résultat est toujours ordonné
+2. Ce n'est pas la plus utilisée
+3. **Peut contenir de nombreux types différents**
+
+##==##
 <!-- .slide: class="exercice" -->
 
 # Premier déploiement d’infrastructure
