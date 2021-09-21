@@ -577,12 +577,14 @@ Cas d’une liste de resource : `resource_type.resource_name[<index>].attribut`
 
 <br/>
 
-Exemple d’utilisation des fonctions :
+Il existe de nombreuses fonctions [documentées en ligne](https://www.terraform.io/docs/language/functions/index.html).
+
+Exemple d’utilisation :
 
 ```hcl-terraform
   count     = length(var.shortnames)
   upper-foo = upper(var.foo)
-  lower-foo = lower(var.foo)
+  encoded   = base64encode(var.sensitive_content)
 ```  
 <!-- .element: class="big-code" -->
 
