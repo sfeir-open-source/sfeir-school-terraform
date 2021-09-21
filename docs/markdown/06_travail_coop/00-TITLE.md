@@ -363,6 +363,13 @@ databases = [
         name        = "db_1"
         charset     = "utf8"
         collation   = "utf8_unicode_ci"
+        user        = "root"
+    },
+    {
+        name        = "db_2"
+        charset     = "latin1"
+        collation   = "latin1_swedish_ci"
+        user        = "my_app"
     }
 ]
 ```
@@ -375,9 +382,7 @@ databases = [
 => *cat cloud_sql/main.tf*
 ```hcl-terraform
 resource "google_sql_database" "database" {
-  provider  = "google-beta"
   for_each = var.databases
-
   name      = each.value.name
   instance  = var.instance_name
   project   = var.project
