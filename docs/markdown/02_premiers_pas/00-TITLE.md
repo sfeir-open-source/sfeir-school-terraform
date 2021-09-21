@@ -106,7 +106,7 @@ Notes:
 Cette commande permet d’initialiser le répertoire de travail courant.
 
 * Lit le fichier configuration personnel ~/.terraformrc si existant 
-* Télécharge les providers et provisioners nécessaires (officiels) sur https://releases.hashicorp.com/
+* Télécharge les providers et provisioners nécessaires (officiels) sur https://registry.hashicorp.com/
 * Instancie le fichier d’état (local ou distant)
 * Effectue un “terraform get“ si nécessaire.
 * Un fichier *.terraform.lock.hcl* sera automatiquement créé pour garantir l'intégrité des dépendances
