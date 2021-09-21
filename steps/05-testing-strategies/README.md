@@ -55,7 +55,7 @@ suites:
 ```
 
 * Create a `.kitchen.yml` file with the content above.
-* Create a `test/fixtures/unit_tests_variables.tfvars` file with `gcp_project = sfeir-scholl-terraform` as content.
+* Create a `test/fixtures/unit_tests_variables.tfvars` file with `gcp_project = "sfeir-school-terraform"` as content.
 * **Using Terraform**, create a new private DNS zone in [Cloud DNS](https://www.terraform.io/docs/providers/google/r/dns_managed_zone.html).
 * Verify kitchen is able to deploy your terraform configuration using `bundle exec kitchen test`.
 * Deploy your zone using `terraform apply`.
