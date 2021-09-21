@@ -55,6 +55,7 @@ suites:
 ```
 
 * Create a `.kitchen.yml` file with the content above.
+* Create a `test/fixtures/unit_tests_variables.tfvars` file with `gcp_project = sfeir-scholl-terraform` as content.
 * **Using Terraform**, create a new private DNS zone in [Cloud DNS](https://www.terraform.io/docs/providers/google/r/dns_managed_zone.html).
 * Verify kitchen is able to deploy your terraform configuration using `bundle exec kitchen test`.
 * Deploy your zone using `terraform apply`.
@@ -93,10 +94,10 @@ suites:
       - name: local
         backend: gcp
         attrs_outputs:
-          gcp_project_id: project_id
+          gcp_project_id: gcp_project
 ```
 
-The `project_id` output from terraform will be mapped to inspec input.
+The `gcp_project` output from terraform will be mapped to inspec input.
 
 Clean the previous deployment using `terraform destroy` and run a `bundle exec kitchen test`.
 

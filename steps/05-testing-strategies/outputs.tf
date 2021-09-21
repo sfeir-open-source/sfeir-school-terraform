@@ -1,4 +1,4 @@
-output "project_id" {
+output "gcp_project" {
   value = var.gcp_project
 }
 

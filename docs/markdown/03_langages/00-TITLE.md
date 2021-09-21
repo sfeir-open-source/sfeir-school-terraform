@@ -394,7 +394,7 @@ terraform {
 
 1. **terraform <action> -var ‘key=value’**
 2. **terraform <action> -var-file ‘path_to_file’**
-3. **export KEY=value; terraform \<action>**
+3. export KEY=value; terraform \<action>
 4. **export TF_VAR_key=value; terraform \<action>**
 5. **en ajoutant un fichier *.auto.tfvars dans le répertoire courant**
 
