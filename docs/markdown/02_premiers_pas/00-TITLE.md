@@ -106,7 +106,7 @@ Notes:
 Cette commande permet d’initialiser le répertoire de travail courant.
 
 * Lit le fichier configuration personnel ~/.terraformrc si existant 
-* Télécharge les providers et provisioners nécessaires (officiels) sur https://releases.hashicorp.com/
+* Télécharge les providers et provisioners nécessaires (officiels) sur https://registry.hashicorp.com/
 * Instancie le fichier d’état (local ou distant)
 * Effectue un “terraform get“ si nécessaire.
 * Un fichier *.terraform.lock.hcl* sera automatiquement créé pour garantir l'intégrité des dépendances
@@ -200,36 +200,6 @@ Terraform destroy décommissionne les ressources présentes (et uniquement) dans
 2. Java
 3. **Golang**
 4. PHP
-
-##==##
-<!-- .slide:-->
-
-# QUIZZ
-
-<br/>
-
-*Question* : Quelle est la particularité d'une variable de type *object* ?
-
-<br/>
-
-1. Le résultat est toujours ordonné
-2. Ce n'est pas la plus utilisée
-3. Peut contenir de nombreux types différents
-
-##==##
-<!-- .slide: -->
-
-# QUIZZ
-
-<br/>
-
-*Question* : Quelle est la particularité d'une variable de type *object* ?
-
-<br/>
-
-1. Le résultat est toujours ordonné
-2. Ce n'est pas la plus utilisée
-3. **Peut contenir de nombreux types différents**
 
 ##==##
 <!-- .slide: -->

@@ -470,6 +470,36 @@ Values passed within definition files or with -var will take precedence over TF_
 4. Une erreur à la compilation
 
 ##==##
+<!-- .slide:-->
+
+# QUIZZ
+
+<br/>
+
+*Question* : Quelle est la particularité d'une variable de type *object* ?
+
+<br/>
+
+1. Le résultat est toujours ordonné
+2. Ce n'est pas la plus utilisée
+3. Peut contenir de nombreux types différents
+
+##==##
+<!-- .slide: -->
+
+# QUIZZ
+
+<br/>
+
+*Question* : Quelle est la particularité d'une variable de type *object* ?
+
+<br/>
+
+1. Le résultat est toujours ordonné
+2. Ce n'est pas la plus utilisée
+3. **Peut contenir de nombreux types différents**
+
+##==##
 <!-- .slide: class="exercice" -->
 
 # Premier déploiement d’infrastructure
@@ -547,12 +577,14 @@ Cas d’une liste de resource : `resource_type.resource_name[<index>].attribut`
 
 <br/>
 
-Exemple d’utilisation des fonctions :
+Il existe de nombreuses fonctions [documentées en ligne](https://www.terraform.io/docs/language/functions/index.html).
+
+Exemple d’utilisation :
 
 ```hcl-terraform
   count     = length(var.shortnames)
   upper-foo = upper(var.foo)
-  lower-foo = lower(var.foo)
+  encoded   = base64encode(var.sensitive_content)
 ```  
 <!-- .element: class="big-code" -->
 
