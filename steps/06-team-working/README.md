@@ -2,108 +2,11 @@
 
 ## Module 6 : Team working
 
-### Prerequisites (using trainer cluster, the easy way)
+### Manage vault credentials using Terraform
 
-For this lab, we will use an existing Vault cluster to save a random password (generated using terraform).
-Ask your trainer the URL and the authentication token.
+In `secret-manager` folder, create a new [google_secret_manager_secret](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/secret_manager_secret) and set a new [google_secret_manager_secret_version](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/secret_manager_secret_version) using [random provider](https://www.terraform.io/docs/providers/random/r/password.html)
 
-If you play this lab alone, feel free to create your own cluster (you can use [Vault cloud](https://www.vaultproject.io/) by example).
-
-* Configure environment variables to use the cluser using vault CLI
-```
-export VAULT_ADDR=https://vault-cluster.vault.xxxx.aws.hashicorp.cloud:8200
-export VAULT_NAMESPACE=admin
-```
-
-You can now jump to *Play with vault client* section.
-
-### Prerequisites (using private cluster)
-
-For this lab, we will use a GKE Cluster to host a [vault application](https://www.hashicorp.com/products/vault/).
-
-* In a `gke-cluster` folder, deploy a new GKE cluster using Terraform.
-  * Go in `gke-cluster`.
-  * In `variables.tf`, adapt cluster name `name` to add your trigram.
-  * Add GCP Project Id, in `gcp_project` variable as well.
-  * Then run `terraform apply`, to create GKE cluster
-
-* Run `gcloud container clusters get-credentials ${name of your cluster you specified above} --zone=europe-west1` to configure kubectl (and helm) credentials
-
-### Credentials using Vault
-
-#### Vault installation on GKE
-
-##### Vault and Consul installation using helm
-
-[Helm](https://helm.sh) is a charts manager for Kubernetes.
-Helm provides `consul` and `vault` charts to deploy vault in an existing k8s cluster.
-
-*Disclamer Do not use this installation method in production.*
-
-##### Installation
-
-* Configure kubectl to use your GKE cluster and run the script `install_vault.sh`
-
-Or do it yourself :
-
-* Install helm in cloud shell using [this good medium article](https://medium.com/google-cloud/installing-helm-in-google-kubernetes-engine-7f07f43c536e)
-* Deploy consul and vault using helm :
-
-  ```shell
-  helm repo add stable https://kubernetes-charts.storage.googleapis.com
-  helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
-  helm repo update
-  helm install consul-cluster stable/consul
-  helm install vault-cluster incubator/vault  --set vault.dev=true --set vault.config.storage.consul.address="consul-cluster:8500",vault.config.storage.consul.path="vault" --set service.type="LoadBalancer" --set replicaCount=1
-  ```
-
-##### Vault configuration
-
-Get vault credentials using :
-
-```shell
-VAULT_POD=$(kubectl get pods --namespace default -l "app=vault" -o jsonpath="{.items[0].metadata.name}") ; export VAULT_TOKEN=$(kubectl logs $VAULT_POD | grep 'Root Token' | cut -d' ' -f3)
-```
-
-Get vault address using :
-
-```shell
-export VAULT_ADDR=http://$(kubectl get services -l "app=vault" -o jsonpath="{.items[0].status.loadBalancer['ingress'][0]['ip']}"):8200
-```
-
-### Play with vault client
-
-Installation :
-
-Follow [Vault installation methods](https://www.vaultproject.io/downloads) or using curl install :
-
-```shell
-export VAULT_VERSION=1.8.2
-wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
-sudo unzip vault_${VAULT_VERSION}_linux_amd64.zip -d /usr/bin/
-```
-
-On MacOS, you can use : `brew install vault`
-
-Usage example :
-
-```shell
-# Login to the vault server
-echo $VAULT_TOKEN | vault login -
-
-# Create a key-value secret
-vault kv put secret/my-demo-secret user=demo password=password
-```
-
-##### Manage vault credentials using Terraform
-
-In `vault-secret` folder, create a new [vault generic secret](https://www.terraform.io/docs/providers/vault/r/generic_secret.html) using [random provider](https://www.terraform.io/docs/providers/random/r/password.html)
-
-Verify the secret content using the following command (update demo-secret-tf with the key used during generic secret creation) :
-
-```shell
-vault kv get secret/demo-secret-tf
-```
+Verify the secret content in the GCP console in Security/Secret manager.
 
 ### Terraform Modules
 
@@ -114,7 +17,7 @@ A module is a collection of resources defined by inputs (variable) and results (
 * Go to the `sql-database` folder
 * Deploy a Second-generation database using [google_sql_database_instance](https://www.terraform.io/docs/providers/google/r/sql_database_instance.html) resource
 * Create an SQL user using [google_sql_user](https://www.terraform.io/docs/providers/google/r/sql_user.html)
-* Create a `random_password` and save it on vault
+* Create a `random_password` and save it in secret manager
 
 Your cloud sql database module is now ready to be used in the parent resource ! Let's do this now :
 

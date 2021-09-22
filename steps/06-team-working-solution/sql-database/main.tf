@@ -27,15 +27,20 @@ resource "google_sql_user" "users" {
   password = random_password.password.result
 }
 
-resource "vault_generic_secret" "example" {
-  path = "secret/demo-user"
+resource "google_secret_manager_secret" "example" {
+  project   = var.gcp_project
+  secret_id = "demo-user"
+  replication {
+    automatic = true
+  }
+}
 
-  data_json = <<EOT
+resource "google_secret_manager_secret_version" "example" {
+  secret      = google_secret_manager_secret.example.id
+  secret_data = <<EOT
 {
-  "user":   "${google_sql_user.users.name}",
+  "user":     "${var.username}",
   "password": "${random_password.password.result}"
 }
 EOT
-
 }
-

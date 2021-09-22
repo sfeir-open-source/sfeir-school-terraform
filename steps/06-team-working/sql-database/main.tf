@@ -24,8 +24,10 @@ resource "google_sql_user" "users" {
   // Create the database user
 }
 
-resource "vault_generic_secret" "example" {
-  // Put the password in vault
-  path = "secret/demo-user"
+resource "google_secret_manager_secret" "example" {
+  // Create a secret in secret manager
 }
 
+resource "google_secret_manager_secret_version" "example" {
+  // Put the password in a new version in the secret created above
+}
