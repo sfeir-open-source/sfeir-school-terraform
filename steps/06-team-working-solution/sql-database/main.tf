@@ -7,6 +7,8 @@ resource "google_sql_database_instance" "master" {
   name    = var.instance_name
   project = var.gcp_project
   region  = var.region
+  database_version = "POSTGRES_11"
+  deletion_protection = false
 
   settings {
     tier = "db-f1-micro"
