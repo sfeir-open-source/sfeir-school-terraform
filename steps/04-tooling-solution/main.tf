@@ -4,7 +4,7 @@ resource "google_compute_firewall" "dns-ingress" {
   network     = "default"
   description = "Allow Ingress DNS from all networks"
   target_tags = ["dns-server"]
-
+  source_ranges = ["0.0.0.0/0"]
 
   dynamic "allow" {
     for_each = [for config in var.allowed_config : {

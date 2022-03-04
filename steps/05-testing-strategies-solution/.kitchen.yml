@@ -1,6 +1,7 @@
 ---
 driver:
   name: terraform
+  verify_version: false
   variable_files:
   - test/fixtures/unit_tests_variables.tfvars
 
