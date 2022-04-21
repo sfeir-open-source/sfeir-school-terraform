@@ -16,7 +16,7 @@ Create a new terraform provider to create a file in `path` with the content `Hel
 
 Usage :
 
-```text
+```hcl
 provider "hello" {
   nickname = "jnu"
 }

@@ -17,7 +17,7 @@ You can now configure a deployment to use the bucket.
 - Edit the `main.tf` file and add a GCE instance (let the user define the name and the machine type of the instance. Tips : You concatenate the value of `${terraform.workspace}`)
 - Edit the `remote.tf` file and add the backend configuration :
 
-```text
+```hcl
 terraform {
   backend "gcs" {
     bucket  = "<bucket_name>"
