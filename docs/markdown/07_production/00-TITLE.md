@@ -231,7 +231,7 @@ https://www.hashicorp.com/products/terraform/offerings
 
 <br/>
 
-Sentinel est une fonctionalité disponible à partir de **Terraform Cloud** (Team & Governance) qui permet d'imposer des containtes d'urbanisation (appelées **policies**).
+Sentinel est une fonctionalité disponible à partir de **Terraform Cloud** (Team & Governance) qui permet d'imposer des contraintes d'urbanisation (appelées **policies**).
 
 Exemple : interdire toute création d'un security group AWS permettant la sortie du traffic réseau vers internet
 ```
@@ -262,7 +262,7 @@ Dans une approche FinOps, il est interessant lors de chaque déploiement d'estim
 
 Cette fonctionalité est disponible dans le package **Terraform Cloud Team & Governance** (AWS, GCP, Azure uniquement)
 
-![center](https://www.terraform.io/docs/cloud/cost-estimation/images/cost-estimation-run-98718ef7.png?style=center)
+![center](./assets/images/cost-estimation-run.png)
 
 ##==##
 <!-- .slide: --> 

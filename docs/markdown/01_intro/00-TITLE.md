@@ -145,8 +145,8 @@ Le développer a à sa disposition un ensemble de modules développés par les �
 
 * https://github.com/hashicorp/terraform
 
-  * 28k+ stars
-  * 1500+ contributeurs
+  * 32k+ stars
+  * 1600+ contributeurs
 
 Notes:
 Produit OpenSouce développé en Go
@@ -156,15 +156,15 @@ Produit OpenSouce développé en Go
 
 # Terraform
 <br>
-Workflow agnostique != Cloud agnostique
+Workflow agnostic != Cloud agnostic
 
 
 ![](./assets/images/g418fd663c2_0_213.png)
 
 Notes:
-Attention, on entend beaucoup dire que Terraform est “Cloud agnostique”. C’est faux ! Le code nécessaire aux déploiements sera différent en fonction de la plateforme sur laquelle le développeur souhaite déployer son infra.
+Attention, on entend beaucoup dire que Terraform est “Cloud agnostic”. C’est faux ! Le code nécessaire aux déploiements sera différent en fonction de la plateforme sur laquelle le développeur souhaite déployer son infra.
 
-Le Workflow de déploiement quand à lui restera identique c’est pour cela qu’on parle de “Workflow agnostique”.
+Le Workflow de déploiement quand à lui restera identique c’est pour cela qu’on parle de “Workflow agnostic”.
 
 Terraform est multi provider, il peut créer des ressources autant sur des plateformes cloud (AWS, GCP, Azure, …) que sur des plateformes PAAS (Github, Heroku, …)
 
