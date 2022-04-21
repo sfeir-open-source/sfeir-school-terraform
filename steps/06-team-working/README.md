@@ -121,7 +121,7 @@ Your cloud sql database module is now ready to be used in the parent resource ! 
 * Back to git root folder
 * Update `main.tf` as bellow :
 
-  ```text
+  ```hcl
   module "my-sql-instance" {
     source        = "./sql-database"
     instance_name = "demo-instance"
@@ -131,7 +131,7 @@ Your cloud sql database module is now ready to be used in the parent resource ! 
 
 * Update `variables.tf` as bellow :
 
-  ```text
+  ```hcl
   variable "gcp_project" {
     default = "CHANGEME"
   }
@@ -147,7 +147,7 @@ Local modules can't be shared or re-used between teams
 * Create a new repository on [gitlab](https://gitlab.com) and push your `sql-database` on it.
 * Update the root `main.tf` to use the remote module.
 
-  ```text
+  ```hcl
     source = "git::https://example.com/sql-database.git"
   # or
     source = "git::ssh://username@example.com/sql-database.git"
