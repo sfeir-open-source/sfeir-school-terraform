@@ -122,7 +122,7 @@ Exemple : un identifiant en minuscule de plus de 4 lettres
 ```
 variable "id" {
   type        = string
-  description = "Primaty ID used for the user"
+  description = "Primary ID used for the user"
 
   validation {
     condition     = length(var.id) > 4 && lower(var.id) == var.id

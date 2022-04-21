@@ -192,7 +192,7 @@ Il est conseillé de ne pas le stocker localement mais sur :
 
 *Le fichier d’état “terraform.tfstate”*
 
-Il existe de plusieurs types de backends : 
+Il existe plusieurs types de backends : 
 - local (par défaut)
 - remote (nécessite Terraform Cloud)
 - s3, gcs, azurerm, http, consul, etcd, ...
@@ -204,7 +204,7 @@ Il existe de plusieurs types de backends :
 
 *Le fichier d’état “terraform.tfstate”*
 
-La configuration et le choix du backend se fait en déclarant un fichier *.tf (exemple backend.tf).
+La configuration et le choix du backend se fait en le déclarant dans un fichier *.tf (exemple backend.tf).
 
 <br/>
 
@@ -241,7 +241,7 @@ Terraform propose la commande **terraform force-unlock** si mon déploiement res
 
 *“terraform.tfstate”*
 
-Dans certains cas, il sera nécessaire de le modifier. Pour cela on utilisera la commande : **terraform state verbe resource-path**
+Dans certains cas, il sera nécessaire de le modifier. Pour cela on utilisera la commande : **terraform state *verb* *resource-path***
 
 <br/>
 
