@@ -666,7 +666,7 @@ resource "google_storage_bucket" "auto-expire" {
 }
 ```
 
-Ce "lifecycle_rule" n'est pas pas un simple attribut qui accepte un map, mais c'est un "bloc".
+Ce "lifecycle_rule" n'est pas pas un simple attribut qui accepte un map, mais c'est un "block".
 
 Généralement, ces blocs peuvent être présent plusieurs fois dans une même resource (pour définir plusieurs life_cycle_rule dans l'example).
 
