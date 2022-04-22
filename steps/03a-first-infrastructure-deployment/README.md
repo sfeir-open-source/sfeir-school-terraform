@@ -4,7 +4,7 @@
 
 ### Provider configuration
 
-Take a look on [https://registry.terraform.io/providers/hashicorp/google/latest/docs](https://registry.terraform.io/providers/hashicorp/google/latest/docs).
+Take a look on [https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference).
 
 Google provider accepts multiple configuration to set credentials. Because you are in cloud shell, Google Application Default Credentials are already set. 
 If you run on you local machine, it's recommended to do the same using : 
