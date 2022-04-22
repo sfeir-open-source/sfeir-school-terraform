@@ -712,6 +712,8 @@ resource "google_storage_bucket" "auto-expire" {
 }
 ```
 
+Contrairement à un *for_each* sur une resource, ici, la variable permettant d'accéder aux éléments est le nom du "dynamic block" par défaut (ici: *lifecycle_rule*). Vous pouvez spécifier un autre nom pour cette variable avec "iterator = *name*"
+
 ##==##
 <!-- .slide:-->
 
