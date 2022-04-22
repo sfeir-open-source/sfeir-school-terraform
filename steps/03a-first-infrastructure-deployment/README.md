@@ -4,7 +4,7 @@
 
 ### Provider configuration
 
-Take a look on [https://www.terraform.io/docs/providers/google/guides/provider_reference.html](https://www.terraform.io/docs/providers/google/guides/provider_reference.html).
+Take a look on [https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference).
 
 Google provider accepts multiple configuration to set credentials. Because you are in cloud shell, Google Application Default Credentials are already set. 
 If you run on you local machine, it's recommended to do the same using : 
@@ -29,7 +29,7 @@ Instance name should be prompted to user using variable (see variables.tf)
 
 *Note : add `allow_stopping_for_update` attribute if you plan to update machine type using Terraform*
 
-To find all resource attributes, please refer to official provider documentation [https://www.terraform.io/docs/providers/google/r/compute_instance.html](https://www.terraform.io/docs/providers/google/r/compute_instance.html).
+To find all resource attributes, please refer to official provider documentation [https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance).
 
 Using `terraform init`, terraform will automatically download the [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google) require to deploy the infrastructure on Google Cloud Platform.
 
@@ -40,7 +40,7 @@ If changes are correct, use `terraform apply` to deploy resources.
 
 ### google_compute_firewall
 
-Please refer to the documentation [https://www.terraform.io/docs/providers/google/r/compute_firewall.html](https://www.terraform.io/docs/providers/google/r/compute_firewall.html).
+Please refer to the documentation [https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall).
 
 Create the new following firewall rule to use [Cloud Identity-Aware Proxy TCP forwarding](https://cloud.google.com/iap/docs/tcp-forwarding-overview)
 

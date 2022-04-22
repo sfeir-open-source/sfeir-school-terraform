@@ -97,7 +97,7 @@ vault kv put secret/my-demo-secret user=demo password=password
 
 ##### Manage vault credentials using Terraform
 
-In `vault-secret` folder, create a new [vault generic secret](https://www.terraform.io/docs/providers/vault/r/generic_secret.html) using [random provider](https://www.terraform.io/docs/providers/random/r/password.html)
+In `vault-secret` folder, create a new [vault generic secret](https://registry.terraform.io/providers/hashicorp/vault/latest/docs) using [random provider](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password)
 
 Verify the secret content using the following command (update demo-secret-tf with the key used during generic secret creation) :
 
@@ -112,8 +112,8 @@ A module is a collection of resources defined by inputs (variable) and results (
 #### Create a new module to deploy a [Cloud SQL](https://cloud.google.com/sql) instance using Terraform
 
 * Go to the `sql-database` folder
-* Deploy a Second-generation database (PostgreSQL 11) using [google_sql_database_instance](https://www.terraform.io/docs/providers/google/r/sql_database_instance.html) resource
-* Create an SQL user using [google_sql_user](https://www.terraform.io/docs/providers/google/r/sql_user.html)
+* Deploy a Second-generation database (PostgreSQL 11) using [google_sql_database_instance](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance) resource
+* Create an SQL user using [google_sql_user](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_user)
 * Create a `random_password` and save it on vault
 
 Your cloud sql database module is now ready to be used in the parent resource ! Let's do this now :
