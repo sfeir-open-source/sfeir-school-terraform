@@ -190,7 +190,7 @@ resource "..." "..." {
 
 Le provider fournit un ensemble de primitives permettant de lire, créer, modifier ou supprimer des ressources sur la plateforme distante.
 * Chaque provider possède ses propres attributs
-* Il est possible d’utiliser plusieurs déclarations d’un même provider en utilisant l’attribut spécial “alias” (appelé meta-parameter).
+* Il est possible d’utiliser plusieurs déclarations d’un même provider en utilisant l’attribut spécial “alias” (appelé meta-argument).
 * Les variables utilisées pour configurer les providers doivent être calculables avant un plan
 * Il est fortement conseillé d'utiliser des variables d'environnement pour configurer les providers
 
@@ -258,7 +258,7 @@ resource "google_compute_firewall" "default" {
 
 <br/>
 
-## Resource - Meta parameters
+## Resource - Meta-arguments 
 
 * **count** : Permet de créer plusieurs fois la ressource. count.index permet de récupérer l’index courant
 * **for_each** : Pour créer plusieurs fois une ressource en utilisant une map ou une liste de strings (depuis 0.12 à privilégier par rapport à count)
@@ -597,7 +597,7 @@ Exemple d’utilisation :
 
 ## Boucles
 
-Terraform permet de déployer plusieurs ressources de même type via une unique déclaration en utilisant le “meta parameter" for_each(ou count).<br/>
+Terraform permet de déployer plusieurs ressources de même type via une unique déclaration en utilisant le “meta-argument" for_each(ou count).<br/>
 
 ![h-400 center](./assets/images/hil_boucle.png)
 
@@ -721,7 +721,7 @@ Contrairement à un *for_each* sur une resource, ici, la variable permettant d'a
 
 <br/>
 
-*Question* : Il est possible d’utiliser le meta parameter “for_each” sur les modules.
+*Question* : Il est possible d’utiliser le meta-argument “for_each” sur les modules.
 
 <br/>
 
@@ -735,7 +735,7 @@ Contrairement à un *for_each* sur une resource, ici, la variable permettant d'a
 
 <br/>
 
-*Question* : Il est possible d’utiliser le meta parameter “for_each” sur les modules.
+*Question* : Il est possible d’utiliser le meta argment “for_each” sur les modules.
 
 <br/>
 
