@@ -9,11 +9,11 @@
 
 ## Terraform taint
 
-* terraform taint -var-file=file aws_volume.data_ebs
+* terraform taint aws_volume.data_ebs
 <br/> <span style="color:green"># Une ressource</span>
-* terraform taint -var-file=file aws_volume.data_ebs.1
+* terraform taint aws_volume.data_ebs.1
 <br/> <span style="color:green"># Une ressource dans une boucle</span>
-* terraform taint -var-file=file -module=module1.module2 aws_volume.data_ebs.1<br/>
+* terraform taint -module=module1.module2.aws_volume.data_ebs.1<br/>
 <span style="color:green"># Une ressource dans une boucle dans un module</span>
 
 
@@ -457,7 +457,7 @@ Tagger les ressources afin de les identifiers le plus facilement possible, dans 
 <br/>
 <br/>
 
-[https://www.hashicorp.com/certification/terraform-associate]()
+[https://www.hashicorp.com/certification/terraform-associate](https://www.hashicorp.com/certification/terraform-associate)
 
 
 ##==##
