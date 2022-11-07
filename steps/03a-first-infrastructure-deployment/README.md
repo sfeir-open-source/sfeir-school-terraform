@@ -25,7 +25,7 @@ Create a new GCP instance in the default network using the following setting :
 | network | default |
 | serial port (bonus) | true |
 
-Instance name should be prompted to user using variable (see variables.tf)
+Instance name should be prompted to user using variable (see variables.tf). Please use your name as instance name to avoid name clash with other participants.
 
 *Note : add `allow_stopping_for_update` attribute if you plan to update machine type using Terraform*
 
@@ -46,11 +46,13 @@ Create the new following firewall rule to use [Cloud Identity-Aware Proxy TCP fo
 
 | Property | Value |
 | - | - |
-| name | allow-iap-tcp-all |
+| name | allow-iap-tcp-all-* |
 | description | Allow connections from IAP |
 | direction | INGRESS |
 | protocol | tcp |
 | source_ranges | 35.235.240.0/20 |
+
+\* Add your name to avoid name clash with other participants.
 
 Update the deployment and verify SSH access can be done from cloud shell using
 
