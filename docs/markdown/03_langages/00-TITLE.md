@@ -69,7 +69,7 @@ resource "google_compute_instance" "instance" {
  tags = ["web"]
  boot_disk {
    initialize_params {
-     image = "debian-cloud/debian-9"
+     image = "debian-cloud/debian-11"
    }
  }
 }
@@ -311,7 +311,7 @@ Le data source permet de récupérer des attributs non gérés par Terraform, et
 
 ```hcl-terraform
 data "google_compute_image" "my_image" {
- family  = "debian-9"
+ family  = "debian-11"
  project = "debian-cloud"
 }
 
