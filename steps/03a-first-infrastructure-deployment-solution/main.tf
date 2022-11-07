@@ -21,7 +21,7 @@ resource "google_compute_instance" "tf_instance" {
 }
 
 resource "google_compute_firewall" "allow-iap" {
-  name        = "allow-iap-tcp-all"
+  name        = "allow-iap-tcp-all-${var.instance_name}" # We add instance_name to avoid name clash in GCP traning project
   description = "Allow connections from IAP"
   network     = "default"
   direction   = "INGRESS"
