@@ -211,7 +211,7 @@ Il est possible de configurer le provider Google Cloud en utilisant du HCL ou de
 
 ```hcl-terraform
 provider "google" {
- credentials = "${file("account.json")}"
+ credentials = file("account.json")
  project     = "my-project-id"
  region      = "us-central1"
 }
@@ -316,7 +316,7 @@ data "google_compute_image" "my_image" {
 }
 
 [...]
-image = "${data.google_compute_image.my_image.self_link}"
+image = data.google_compute_image.my_image.self_link
 ```
 <!-- .element: class="big-code" -->
 
