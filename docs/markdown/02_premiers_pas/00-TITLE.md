@@ -76,7 +76,7 @@ Notes:
 ##==##
 <!-- .slide: -->
 
-# Les provider
+# Les providers
 
 <br/>
 
