@@ -11,7 +11,7 @@
 ### Cloud Architect
 <!-- .element: class="icon-rule icon-first" -->
 
-### @alexikse
+### @ikse
 <!-- .element: class="icon-twitter icon-second" -->
 
 ### dath.a@sfeir.com
