@@ -4,7 +4,7 @@ variable "gcp_project" {
 }
 
 variable "allowed_config" {
-  type = list
+  type = list(map)
   default = [
     {
       ports    = ["53"]
