@@ -9,7 +9,7 @@
 #### Backend configuration
 
 - Create a GCS bucket
-- Generate a GCP service account and add the `storage.admin`, and `compute.admin` roles.
+- Generate a GCP service account and add the `storage.admin`, `compute.admin`, `iam.serviceAccountUser` roles.
 - Generate a json key
 
 You can now configure a deployment to use the bucket.
