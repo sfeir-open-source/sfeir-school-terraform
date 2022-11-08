@@ -15,10 +15,14 @@ destroy:
 
 test: ## Run all tests
 	terraform validate
+	terraform apply -auto-approve -var-file=test/fixtures/test_variables.tfvars
+	terraform destroy -auto-approve -var-file=test/fixtures/test_variables.tfvars
 
 init: ## Initialize project
 	terraform init
 
+docs: ## Generate docs
+	terraform-docs md . > README.md
 
 .DEFAULT_GOAL := help
 .PHONY: test init help
