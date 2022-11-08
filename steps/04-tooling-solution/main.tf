@@ -7,10 +7,7 @@ resource "google_compute_firewall" "dns-ingress" {
   source_ranges = ["0.0.0.0/0"]
 
   dynamic "allow" {
-    for_each = [for config in var.allowed_config : {
-      ports    = config.ports
-      protocol = config.protocol
-    }]
+    for_each = var.allowed_config
 
     content {
       ports    = allow.value.ports
