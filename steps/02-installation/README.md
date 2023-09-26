@@ -87,13 +87,14 @@ terraform apply
 Result should be
 
 ```text
-null_resource.check-version: Creation complete after 0s (ID: 2069855020914050742)
+null_resource.check-version: Creating...
+null_resource.check-version: Creation complete after 0s [id=3277091548522954865]
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-message = Hello World
+message = "Hello World"
 ```
 
 Generate the dependency graph :
@@ -101,3 +102,5 @@ Generate the dependency graph :
 ```shell
 terraform graph -draw-cycles | dot -Tpng > graph.png
 ```
+
+You can view the result with the "Editor" (Click on "Open Editor" of the Cloud Shell).
