@@ -51,27 +51,6 @@ lrwxrwxrwx 1 root     root           17 mai   10 14:52 /usr/local/bin/terraform 
 -rwxr-xr-x 1 jnahelou jnahelou 49007328 août  22 22:00 /usr/local/bin/terraform_0.12.7
 ```
 
-#### (extra) Compile the latest version
-
-It's usefull to compile Terraform or Terraform-providers by yourself to have access to latest features.
-Terraform is an open-source project, you can find sources on Github [https://github.com/hashicorp/terraform](https://github.com/hashicorp/terraform)
-
-To compile Terraform, you need a Golang environment installed.
-Please refer to [https://golang.org/doc/install](https://golang.org/doc/install) if Golang is not installed.
-
-Clone the source using :
-
-- `git clone https://github.com/hashicorp/terraform.git`
-- or `go get github.com/hashicorp/terraform`
-
-Compile using `go install`
-
-Go to `$GOPATH/bin` folder and verify Terraform version using
-
-```shell
-./terraform version
-```
-
 ### Configuration
 
 #### Cache Terraform providers
@@ -101,7 +80,6 @@ Go in `steps/02-installation-solution/`
 Initialize a new terraform workspace and deploy the infrastructure :
 
 ```shell
-terraform workspace new module-2
 terraform init
 terraform apply
 ```
