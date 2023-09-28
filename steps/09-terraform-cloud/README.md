@@ -11,7 +11,7 @@ Follow the wizard to configure the gitlab environment you used previously.
 
 #### Create a new gitlab repository
 
-Use this folder, and push content to gitlab. 
+Use this directory, and push content to gitlab. 
 First create a new gitlab repository, then push this content using : 
 
 ```

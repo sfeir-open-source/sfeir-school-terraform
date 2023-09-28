@@ -4,7 +4,7 @@ resource "google_project_service" "dns" {
 }
 
 resource "google_dns_managed_zone" "private-zone" {
-  name    = "demo-local"
+  name = "demo-local"
 
   dns_name = "demo.local."
 

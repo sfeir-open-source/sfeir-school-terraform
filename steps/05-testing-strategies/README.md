@@ -64,9 +64,9 @@ suites:
 
 [inspec-gcp](https://github.com/inspec/inspec-gcp) is a inspec plugin to verify gcp configurations using inspec.
 
-In your workspace, create a `test/integration` folder.
+In your workspace, create a `test/integration` directory.
 
-**In this folder**(`test/integration`), run the command `bundle exec inspec init profile local-test` to create a new generated configuration for inspec.
+**In this directory**(`test/integration`), run the command `bundle exec inspec init profile local-test` to create a new generated configuration for inspec.
 This command will create a `local-test/inspec.yml` file.
 
 * Observe the code in `test/integration/local-test/controls/example.rb`
