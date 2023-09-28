@@ -1,9 +1,8 @@
 variable "username" {
   description = "Username to store on the secret"
-  default = "user"
+  default     = "demo-user"
 }
 
 variable "secret_path" {
-  description = "The path in vault to store the secret"
-  default = "secret/demo-secret-tf"
+  description = "The path in vault to store the secret (must start with 'secret/')"
 }

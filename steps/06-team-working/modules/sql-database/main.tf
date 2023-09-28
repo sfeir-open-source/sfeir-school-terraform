@@ -1,10 +1,8 @@
 resource "random_password" "password" {
   // Create a new password with special chars and 16 characters
-  length  = 16
-  special = true
 }
 
-resource "google_sql_database_instance" "master" {
+resource "google_sql_database_instance" "main" {
   // Create a new sql database with variables.tf content
 
   // We allow internet access only for lab purpose
@@ -26,6 +24,6 @@ resource "google_sql_user" "users" {
 
 resource "vault_generic_secret" "example" {
   // Put the password in vault
-  path = "secret/demo-user"
+  path = "secret/${var.instance_name}"
 }
 
