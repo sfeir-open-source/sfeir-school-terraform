@@ -19,7 +19,7 @@ Create a new GCP instance in the default network using the following setting :
 
 | Property | Value |
 | - | - |
-| Zone | europe-west1-b |
+| Zone | europe-west1-c |
 | Machine | n1-standard-1 |
 | Image | debian-cloud/debian-12 |
 | Network | default |
@@ -45,7 +45,7 @@ Create the new following firewall rule to use [Cloud Identity-Aware Proxy TCP fo
 
 | Property | Value |
 | - | - |
-| name | allow-iap-tcp-all-* |
+| name | allow-iap-tcp-all-<your_name> |
 | description | Allow connections from IAP |
 | direction | INGRESS |
 | protocol | tcp |
@@ -56,9 +56,9 @@ Create the new following firewall rule to use [Cloud Identity-Aware Proxy TCP fo
 Update the deployment and verify SSH access can be done from cloud shell using
 
 ```shell
-gcloud compute ssh <terraform-instance-name> --tunnel-through-iap --zone=europe-west1-b
+gcloud compute ssh <instance-name> --tunnel-through-iap --zone=europe-west1-c
 ```
 
 ### Cleanup
 
-Once lab is completed, use `terraform destroy` to remove resources managed by terraform
+Once lab is completed, use `terraform destroy` to remove resources managed by Terraform

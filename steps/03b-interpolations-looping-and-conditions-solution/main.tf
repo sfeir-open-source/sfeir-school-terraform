@@ -5,7 +5,6 @@ terraform {
 
 resource "google_storage_bucket" "store" {
   name     = var.bucket_name
-  project  = var.gcp_project
   location = "EU"
 }
 
