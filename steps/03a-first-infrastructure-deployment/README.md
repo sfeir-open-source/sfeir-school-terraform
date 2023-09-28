@@ -21,7 +21,7 @@ Create a new GCP instance in the default network using the following setting :
 | - | - |
 | Zone | europe-west1-b |
 | Machine | n1-standard-1 |
-| Image | debian-cloud/debian-11 |
+| Image | debian-cloud/debian-12 |
 | Network | default |
 | Serial port (bonus) | true |
 | Public IP | ensure that the instance is not accessible from the Internet |
