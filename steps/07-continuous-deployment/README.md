@@ -71,8 +71,8 @@ If you are in a training session with a SFEIR trainer :
 
 Else, if you do the lab autonomously, create a new Gitlab.com repository. 
  - In Settings -> CI/CD, configure these variables :
-  - `TF_VAR_application_name` with the desired instance name.
-  - `TF_VAR_machine_type` with the desired machine type.
+  - `TF_VAR_application_name` with the desired application name (used to build the instance name, ex: `sfeir-mega-app`).
+  - `TF_VAR_machine_type` with the desired machine type (ex: `f1-micro`).
   - `GOOGLE_CREDENTIALS` with the service account key content.
   - `GOOGLE_CLOUD_PROJECT` with the name of your Google Cloud project.
 
@@ -125,7 +125,7 @@ apply:
     - plan
 ```
 
-Push all `*.tf` files and `.gitlab-ci.yml` on your own branch or your own repository.
+Push all `*.tf` files and `.gitlab-ci.yml` on your own branch (or your own repository).
 
 ```shell
 git add *.tf .gitlab-ci.yml
@@ -135,9 +135,16 @@ git push --set-upstream origin <your_name>
 
 Observe the pipeline.
 
-Switch to `production` workspace (`terraform workspace select production`) and run `terraform state list`.
+On your Cloud Shell, switch to `production` workspace (`terraform workspace select production`) and run `terraform state list`.
 
 ### Cleanup
 
-Run a `terraform destroy` for each workspaces.
-Remove the service account and the cloud storage bucket.
+On your Cloud Shell, run a "destroy" for each workspaces:
+
+```shell
+TF_WORKSPACE=default terraform destroy -var=application_name=sfeir-mega-app -var=machine_type=f1-micro
+TF_WORKSPACE=staging terraform destroy -var=application_name=sfeir-mega-app -var=machine_type=f1-micro
+TF_WORKSPACE=production terraform destroy -var=application_name=sfeir-mega-app -var=machine_type=f1-micro
+```
+
+If you are not in a SFEIR training session: emove the service account and the cloud storage bucket.
