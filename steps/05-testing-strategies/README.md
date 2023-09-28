@@ -6,7 +6,7 @@
 
 [Bundler](https://bundler.io/) provides a virtual environement for a project to install application dependencies without conflicts with operating system libs.
 
-Bundler use `Gemfile` to list all `gems` required by the application.
+Bundler use `Gemfile` to list all gems required by the application.
 
 [Kitchen](https://kitchen.ci/) and [inspec](https://www.inspec.io/) provides `gems` as installation mode.
 
@@ -107,7 +107,7 @@ Clean the previous deployment using `terraform destroy` and run a `bundle exec k
 
 * In workspace directory
 * Clone inspec-gcp repository to use latest resources definitions
-  * `git clone git@github.com:inspec/inspec-gcp.git`
+  * `git clone https://github.com/inspec/inspec-gcp.git`
 * Deploy the DNS zone with Terraform
   * `terraform apply`
 * Install `inspec-iggy` using `bundle exec inspec plugin install inspec-iggy`

@@ -63,8 +63,8 @@ plugin_cache_dir   = "$HOME/.terraform.d/plugin-cache"
 
 Don't forget to create the plugin-cache dir if necessary : `mkdir -p $HOME/.terraform.d/plugin-cache`
 
-Terraform will cache providers in a central directory instead of in each workspace.
-If Terraform can hit the plugin, it will copy it instead of download it.
+Terraform will cache providers in a global directory instead of in each workspace.
+If Terraform can hit the plugin, it will link it instead of downloading it.
 
 All configurations can be found on : [https://www.terraform.io/docs/commands/cli-config.html](https://www.terraform.io/docs/commands/cli-config.html)
 
@@ -77,7 +77,7 @@ git clone https://github.com/sfeir-open-source/sfeir-school-terraform.git
 
 Go in `steps/02-installation-solution/`
 
-Initialize a new terraform workspace and deploy the infrastructure :
+Initialize a new terraform environment and deploy the infrastructure :
 
 ```shell
 terraform init

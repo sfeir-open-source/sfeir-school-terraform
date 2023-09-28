@@ -1,1 +1,1 @@
-gcp_project = "sfeir-training-terraform"
+gcp_project = "sfeir-school-terraform"

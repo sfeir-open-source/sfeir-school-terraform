@@ -92,17 +92,20 @@ Usage example :
 echo $VAULT_TOKEN | vault login -
 
 # Create a key-value secret
-vault kv put secret/my-demo-secret user=demo password=password
+vault kv put secret/<your_name> user=demo password=password
+
+# Verify the written secret
+vault kv get secret/<your_name>
 ```
 
 ##### Manage vault credentials using Terraform
 
 In `vault-secret` folder, create a new [vault generic secret](https://registry.terraform.io/providers/hashicorp/vault/latest/docs) using [random provider](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password)
 
-Verify the secret content using the following command (update demo-secret-tf with the key used during generic secret creation) :
+Verify the secret content using the following command (update <your_name> with the key used during generic secret creation) :
 
 ```shell
-vault kv get secret/demo-secret-tf
+vault kv get secret/<your_name>
 ```
 
 ### Terraform Modules
@@ -148,9 +151,7 @@ Local modules can't be shared or re-used between teams
 * Update the root `main.tf` to use the remote module.
 
   ```hcl
-    source = "git::https://example.com/sql-database.git"
-  # or
-    source = "git::ssh://username@example.com/sql-database.git"
+    source = "git::https://gitlab.com/.../sql-database.git"
   
   # See more examples here : https://www.terraform.io/docs/modules/sources.html
   ```

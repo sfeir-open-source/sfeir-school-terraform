@@ -1,8 +1,3 @@
-variable "gcp_project" {
-  type        = string
-  description = "GCP project used to deploy resources"
-}
-
 variable "bucket_name" {
   type        = string
   description = "Name of the GCS bucket"

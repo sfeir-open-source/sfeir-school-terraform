@@ -1,5 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "<bucket_name>"
+    bucket = "sfeir-school-terraform-backends"
+    prefix = "trainer"
   }
 }

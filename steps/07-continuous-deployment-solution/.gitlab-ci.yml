@@ -11,13 +11,13 @@ stages:
 
 cache:
   paths:
-    - .terraform
+    - .terraform/providers
 
 before_script:
   - terraform --version
   - terraform init
 
-validate: 
+validate:
   stage: validate
   script:
     - terraform validate
@@ -26,11 +26,11 @@ plan:
   stage: plan
   artifacts:
     paths:
-      - prod.tfplan
+      - production.tfplan
     expire_in: 1 week
-  script: 
+  script:
     - terraform workspace select production
-    - terraform plan -input=false -out=prod.tfplan
+    - terraform plan -input=false -out=production.tfplan
   dependencies:
     - validate
 
@@ -39,6 +39,6 @@ apply:
   when: manual
   script:
     - terraform workspace select production
-    - terraform apply -auto-approve -input=false prod.tfplan
+    - terraform apply -auto-approve -input=false production.tfplan
   dependencies:
     - plan
