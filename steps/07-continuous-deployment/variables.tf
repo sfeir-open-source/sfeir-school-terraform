@@ -1,3 +1,6 @@
-variable "application_name" {}
-variable "machine_type" {}
-variable "gcp_project" {}
+variable "application_name" {
+    // To complete
+}
+variable "machine_type" {
+    // To complete
+}

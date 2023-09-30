@@ -1,10 +1,5 @@
-variable "gcp_project" {
-  description = "The GCP project ID."
-}
-
 variable "instance_name" {
   description = "The name of the instance."
-  default     = "demo-user"
 }
 
 variable "username" {

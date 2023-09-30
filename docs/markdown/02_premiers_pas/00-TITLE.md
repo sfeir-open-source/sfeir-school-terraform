@@ -247,7 +247,7 @@ Terraform destroy décommissionne les ressources présentes (et uniquement) dans
 <br/>
 
 1. Un outil de provisionning d'infrastructure
-2. Un outils de gestion de configuration 
+2. Un outil de gestion de configuration 
 
 ##==##
 <!-- .slide: -->
@@ -261,7 +261,7 @@ Terraform destroy décommissionne les ressources présentes (et uniquement) dans
 <br/>
 
 1. Un outil de provisionning d'infrastructure
-2. **Un outils de gestion de configuration** 
+2. **Un outil de gestion de configuration** 
 
 ##==##
 <!-- .slide: -->

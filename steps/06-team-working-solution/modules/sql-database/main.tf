@@ -1,13 +1,12 @@
 resource "random_password" "password" {
-  length  = 22
+  length  = 16
   special = true
 }
 
-resource "google_sql_database_instance" "master" {
-  name    = var.instance_name
-  project = var.gcp_project
-  region  = var.region
-  database_version = "POSTGRES_11"
+resource "google_sql_database_instance" "main" {
+  name                = var.instance_name
+  region              = var.region
+  database_version    = var.database_version
   deletion_protection = false
 
   settings {
@@ -24,20 +23,16 @@ resource "google_sql_database_instance" "master" {
 
 resource "google_sql_user" "users" {
   name     = var.username
-  project  = var.gcp_project
-  instance = google_sql_database_instance.master.name
+  instance = google_sql_database_instance.main.name
   password = random_password.password.result
 }
 
 resource "vault_generic_secret" "example" {
-  path = "secret/demo-user"
+  path = "secret/${var.instance_name}"
 
-  data_json = <<EOT
-{
-  "user":   "${google_sql_user.users.name}",
-  "password": "${random_password.password.result}"
-}
-EOT
-
+  data_json = jsonencode({
+    user     = google_sql_user.users.name
+    password = random_password.password.result
+  })
 }
 

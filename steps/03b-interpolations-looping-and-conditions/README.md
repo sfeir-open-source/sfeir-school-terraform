@@ -4,8 +4,6 @@
 
 ### Objective
 
-Create a new workspace using `terraform workspace new module-3b`
-
 As a user, I would like to push 2 configurations files in cloud storage in order to create VMs using *startup-script-url*.
 
 Do it using :
@@ -17,9 +15,8 @@ Do it using :
 
 | Property | Value |
 | - | - |
-| gcp\_project | `user_defined` |
 | bucket\_name | `user_defined` |
 
-Once the 4 objects are created (2 with `count`, 2 with `for_each`), add a new config file `"config-pp"   = "env = pp"`.
+Once the 4 objects are created using example configurations (2 with `count`, 2 with `for_each`), add a new config file `"config-pp"   = "env = pp"` in `variables.tf`.
 
-What's happened when you run again `terraform plan` ?
+What's happened when you run `terraform plan` again ?

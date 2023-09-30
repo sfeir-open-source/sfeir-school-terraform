@@ -6,7 +6,7 @@
 
 [Bundler](https://bundler.io/) provides a virtual environement for a project to install application dependencies without conflicts with operating system libs.
 
-Bundler use `Gemfile` to list all `gems` required by the application.
+Bundler use `Gemfile` to list all gems required by the application.
 
 [Kitchen](https://kitchen.ci/) and [inspec](https://www.inspec.io/) provides `gems` as installation mode.
 
@@ -64,9 +64,9 @@ suites:
 
 [inspec-gcp](https://github.com/inspec/inspec-gcp) is a inspec plugin to verify gcp configurations using inspec.
 
-In your workspace, create a `test/integration` folder.
+In your workspace, create a `test/integration` directory.
 
-**In this folder**(`test/integration`), run the command `bundle exec inspec init profile local-test` to create a new generated configuration for inspec.
+**In this directory**(`test/integration`), run the command `bundle exec inspec init profile local-test` to create a new generated configuration for inspec.
 This command will create a `local-test/inspec.yml` file.
 
 * Observe the code in `test/integration/local-test/controls/example.rb`
@@ -107,7 +107,7 @@ Clean the previous deployment using `terraform destroy` and run a `bundle exec k
 
 * In workspace directory
 * Clone inspec-gcp repository to use latest resources definitions
-  * `git clone git@github.com:inspec/inspec-gcp.git`
+  * `git clone https://github.com/inspec/inspec-gcp.git`
 * Deploy the DNS zone with Terraform
   * `terraform apply`
 * Install `inspec-iggy` using `bundle exec inspec plugin install inspec-iggy`

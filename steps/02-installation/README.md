@@ -51,27 +51,6 @@ lrwxrwxrwx 1 root     root           17 mai   10 14:52 /usr/local/bin/terraform 
 -rwxr-xr-x 1 jnahelou jnahelou 49007328 août  22 22:00 /usr/local/bin/terraform_0.12.7
 ```
 
-#### (extra) Compile the latest version
-
-It's usefull to compile Terraform or Terraform-providers by yourself to have access to latest features.
-Terraform is an open-source project, you can find sources on Github [https://github.com/hashicorp/terraform](https://github.com/hashicorp/terraform)
-
-To compile Terraform, you need a Golang environment installed.
-Please refer to [https://golang.org/doc/install](https://golang.org/doc/install) if Golang is not installed.
-
-Clone the source using :
-
-- `git clone https://github.com/hashicorp/terraform.git`
-- or `go get github.com/hashicorp/terraform`
-
-Compile using `go install`
-
-Go to `$GOPATH/bin` folder and verify Terraform version using
-
-```shell
-./terraform version
-```
-
 ### Configuration
 
 #### Cache Terraform providers
@@ -82,10 +61,10 @@ Create a `.terraformrc` in your home directory with the following content :
 plugin_cache_dir   = "$HOME/.terraform.d/plugin-cache"
 ```
 
-Don't forget to create the plugin-cache dir if necessary : `mkdir $HOME/.terraform.d/plugin-cache`
+Don't forget to create the plugin-cache dir if necessary : `mkdir -p $HOME/.terraform.d/plugin-cache`
 
-Terraform will cache providers in a central directory instead of in each workspace.
-If Terraform can hit the plugin, it will copy it instead of download it.
+Terraform will cache providers in a global directory instead of in each workspace.
+If Terraform can hit the plugin, it will link it instead of downloading it.
 
 All configurations can be found on : [https://www.terraform.io/docs/commands/cli-config.html](https://www.terraform.io/docs/commands/cli-config.html)
 
@@ -98,10 +77,9 @@ git clone https://github.com/sfeir-open-source/sfeir-school-terraform.git
 
 Go in `steps/02-installation-solution/`
 
-Initialize a new terraform workspace and deploy the infrastructure :
+Initialize a new terraform environment and deploy the infrastructure :
 
 ```shell
-terraform workspace new module-2
 terraform init
 terraform apply
 ```
@@ -109,13 +87,14 @@ terraform apply
 Result should be
 
 ```text
-null_resource.check-version: Creation complete after 0s (ID: 2069855020914050742)
+null_resource.check-version: Creating...
+null_resource.check-version: Creation complete after 0s [id=3277091548522954865]
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-message = Hello World
+message = "Hello World"
 ```
 
 Generate the dependency graph :
@@ -123,3 +102,5 @@ Generate the dependency graph :
 ```shell
 terraform graph -draw-cycles | dot -Tpng > graph.png
 ```
+
+You can view the result with the "Editor" (Click on "Open Editor" of the Cloud Shell).

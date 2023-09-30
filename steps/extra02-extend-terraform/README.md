@@ -52,4 +52,4 @@ And the result produce a file in `path = /tmp/foo` with the content `Hello <name
   go build
   ```
 
-Put the binary generated in the `test` folder and run `terraform init`.
+Put the binary generated in the `test` directory and run `terraform init`.

@@ -1,19 +1,12 @@
-COMMIT_REF := $(shell git rev-parse --short HEAD)
-BRANCH_REF := $(shell git rev-parse --abbrev-ref HEAD)
-UUID:= $(if $(CI_COMMIT_REF_SLUG),$(CI_COMMIT_REF_SLUG)-$(COMMIT_REF),$(BRANCH_REF)-$(COMMIT_REF))
+all: init test docs
 
-all: init test
-
-verify: ## Display revision ID
-	@echo Current revision: $(UUID)
-
-apply:
+apply: ## Apply Terraform with default/no configuration
 	terraform apply -auto-approve
 
-destroy:
+destroy: ## Destroy Terraform configuration with default/no configuration
 	terraform destroy -auto-approve
 
-test: ## Run all tests
+test: ## Run tests (validate code, apply/destroy with "test" configuration files)
 	terraform validate
 	terraform apply -auto-approve -var-file=test/fixtures/test_variables.tfvars
 	terraform destroy -auto-approve -var-file=test/fixtures/test_variables.tfvars
@@ -21,8 +14,9 @@ test: ## Run all tests
 init: ## Initialize project
 	terraform init
 
-docs: ## Generate docs
-	terraform-docs md . > README.md
+docs: ## Generate documentation
+	terraform-docs .
+
 
 .DEFAULT_GOAL := help
 .PHONY: test init help
