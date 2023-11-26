@@ -230,10 +230,10 @@ Terraform destroy décommissionne les ressources présentes (et uniquement) dans
 <br/>
 
 1. Impossible
-2. terraform fmt
-3. terraform init
+2. terraform fmt (to format the terraform code)
+3. terraform init (to initialize a terraform environment)
 4. **terraform plan**
-5. terraform show
+5. terraform show (to show the state as terraform code)
 
 ##==##
 <!-- .slide: -->
