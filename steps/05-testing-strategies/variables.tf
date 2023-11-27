@@ -14,7 +14,7 @@ variable "bucket_name" {
 variable "bucket_prefix" {
   type        = string
   description = "Prefix of the GCS bucket name"
-  
+
   validation {
     # ...
   }

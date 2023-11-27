@@ -26,4 +26,3 @@ resource "vault_generic_secret" "example" {
   // Put the password in vault
   path = "secret/${var.instance_name}"
 }
-

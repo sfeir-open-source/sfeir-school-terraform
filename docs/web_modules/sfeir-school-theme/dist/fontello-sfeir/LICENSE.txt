@@ -97,7 +97,7 @@ Font license info
 
    Author:    Crowdsourced, for Fontello project
    License:   SIL (http://scripts.sil.org/OFL)
-   Homepage:  
+   Homepage:
 
 
 ## Elusive
@@ -125,5 +125,3 @@ Font license info
    Author:    Just Be Nice studio
    License:   SIL (http://scripts.sil.org/OFL)
    Homepage:  http://www.justbenicestudio.com/
-
-

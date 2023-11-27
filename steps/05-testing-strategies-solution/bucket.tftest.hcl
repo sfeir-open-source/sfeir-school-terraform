@@ -18,7 +18,7 @@ run "invalid_prefix_with_number" {
   variables {
     bucket_prefix = "sfeir42"
     bucket_name = "test"
-  } 
+  }
   expect_failures = [
     var.bucket_prefix,
   ]
@@ -29,7 +29,7 @@ run "invalid_prefix_too_short" {
   variables {
     bucket_prefix = "xx"
     bucket_name = "test"
-  } 
+  }
   expect_failures = [
     var.bucket_prefix,
   ]
@@ -42,7 +42,7 @@ run "invalid_prefix_too_long" {
   variables {
     bucket_prefix = "toolongforaprefix"
     bucket_name = "test"
-  } 
+  }
   expect_failures = [
     var.bucket_prefix,
   ]
@@ -54,7 +54,7 @@ run "invalid_name_with_numbers" {
   variables {
     bucket_prefix = "sfeir"
     bucket_name = "test42"
-  } 
+  }
   expect_failures = [
     var.bucket_name
   ]

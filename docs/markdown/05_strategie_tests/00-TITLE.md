@@ -48,9 +48,9 @@ ${element("haha"=="haha" ? list("") : list(""), 0)}
 <img style="position:fixed;top:10px;right:30px" src="./assets/images/g418fd663c2_0_891.png">
 
 * Consiste à déployer l’infrastructure dans une sandbox
-* Outils existants : 
+* Outils existants :
   * [kitchen-ci](https://kitchen.ci) associé à [kitchen-terraform](https://github.com/newcontext-oss/kitchen-terraform)
-  * [terratest](https://github.com/gruntwork-io/terratest) 
+  * [terratest](https://github.com/gruntwork-io/terratest)
     <span style="color:green">pour automatiser la création et suppression</span>
   * [Terraform Testing Framework](https://developer.hashicorp.com/terraform/language/tests)
 
@@ -147,7 +147,7 @@ output "bucket_name" {
 }
 ```
 
-Exemple de code de test: 
+Exemple de code de test:
 ```(hcl-terraform)
 variables {
   bucket_prefix = "test"
@@ -201,5 +201,5 @@ Disponible depuis la v1.6.0 de Terraform.
 <!-- .slide: class="exercice" -->
 
 # Intégration continue avec Terraform
- 
+
 ## Atelier

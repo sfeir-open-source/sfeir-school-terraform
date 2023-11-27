@@ -103,7 +103,7 @@ Clean the previous deployment using `terraform destroy` and run a `bundle exec k
 
 ### Extra : Inspec-iggy
 
-> Inspec-iggy is a plugin to generate inspec test directly from terraform state file. 
+> Inspec-iggy is a plugin to generate inspec test directly from terraform state file.
 
 * In workspace directory
 * Clone inspec-gcp repository to use latest resources definitions

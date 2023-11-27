@@ -11,4 +11,3 @@ variable "allowed_config" {
     }
   ]
 }
-

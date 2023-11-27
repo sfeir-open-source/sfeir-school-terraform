@@ -34,7 +34,7 @@ Lorsque ceux-ci seront déclarés dans un fichier de configuration, Terraform le
 L’utilisation de **terraform init --upgrade** permet la mise à jours des modules existants.
 <br/>
 
-Hashicorp met à disposition un ensemble de modules officiels sur sa propre registry : https://registry.terraform.io/ 
+Hashicorp met à disposition un ensemble de modules officiels sur sa propre registry : https://registry.terraform.io/
 
 
 ##==##
@@ -180,9 +180,9 @@ module "database" {
 # Gestion de la concurrence et de la persistance
 
 *Le fichier d’état “terraform.tfstate”*
- 
+
 Ce fichier est critique, en cas de perte, Terraform “oubliera” l’ensemble des ressources qu’il a créé.<br/>
-Il est conseillé de ne pas le stocker localement mais sur : 
+Il est conseillé de ne pas le stocker localement mais sur :
 * Un stockage de fichier type Google Cloud Storage, AWS S3, … et **d'activer les options de versioning**
 * De restreindre les accès (principe du least privilege) car ce fichier peut contenir des informations sensibles (IP, clef SSH, password, ...)
 
@@ -192,7 +192,7 @@ Il est conseillé de ne pas le stocker localement mais sur :
 
 *Le fichier d’état “terraform.tfstate”*
 
-Il existe plusieurs types de backends : 
+Il existe plusieurs types de backends :
 - local (par défaut)
 - remote (nécessite Terraform Cloud)
 - s3, gcs, azurerm, http, consul, etcd, ...
@@ -253,7 +253,7 @@ Dans certains cas, il sera nécessaire de le modifier. Pour cela on utilisera la
 * terraform import resource-path ID
 
 Notes:
-Les cas où on modifie le tfstate : 
+Les cas où on modifie le tfstate :
 
 on ne veut plus manager une ressource via Terraform
 
@@ -267,9 +267,9 @@ on veut spliter un workspace devenu trop gros en plusieurs petits workspaces
 # Gestion des credentials
 
 Il est possible d’utiliser les variables d’environnement pour fournir aux provider des identifiants. Chaque provider définit ses variables d’environnement.
- 
+
 Exemple :
-* GOOGLE_CREDENTIALS 
+* GOOGLE_CREDENTIALS
 * GOOGLE_APPLICATION_CREDENTIALS
 * VAULT_TOKEN
 * AWS_ACCESS_KEY_ID
@@ -278,7 +278,7 @@ Exemple :
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# Gestion des credentials 
+# Gestion des credentials
 
 ## Utilisation de Vault
 
@@ -314,21 +314,21 @@ _Attention, les attributs retournés par un data source apparaissent dans le fic
 * La variable doit être définie "vide" dans le fichier de variable.
 
 Notes:
-Il y a plusieurs types de templating utilisable avec Terraform : Terragrunt ou Handlebars.  
+Il y a plusieurs types de templating utilisable avec Terraform : Terragrunt ou Handlebars.
 Terraform propose également son propre modèle de templating (c'est sur celui-ci que nous nous concentrerons)
 
 ##==##
 <!-- .slide: -->
 
 # Templating
-Bien que de nombreux modules soient disponibles dans le registry Terraform, certains peuvent ne pas être compatible avec ce que vous souhaitez déployer (ou trop générique).  
-Dans ce cas, il est recommandé de créer vos propres modules.  
+Bien que de nombreux modules soient disponibles dans le registry Terraform, certains peuvent ne pas être compatible avec ce que vous souhaitez déployer (ou trop générique).
+Dans ce cas, il est recommandé de créer vos propres modules.
 De plus, cela peut convenir a certaines bonnes pratiques telles que :
 - Le templating
 - Les dépendances implicites
 - Les **child-resources**
 
-Notes: 
+Notes:
 Les child resources sont des resources ayant besoin d'une autre ressource pour être déployées.
 
 ##==##
@@ -396,7 +396,7 @@ resource "google_sql_database" "database" {
 
 # Templating
 
-## TIPS 
+## TIPS
 
 * Ce type de template est utilisable depuis la version 0.11, la version 0.12 a introduit quelques nouveautés telles que les blocs dynamiques, les variables conditionnelles, for_each.
 * Vous pouvez enchainer les *objets* dans une seule variable sans pour autant créer des objets absoluments identiques.
@@ -502,7 +502,5 @@ resource "google_sql_database" "database" {
 <!-- .slide: class="exercice" -->
 
 # Création d’un registre de module dans gitlab
- 
+
 ## Atelier
-
-

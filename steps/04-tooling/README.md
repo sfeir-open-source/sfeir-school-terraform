@@ -42,7 +42,7 @@ You can use [terraform-docs](https://github.com/terraform-docs/terraform-docs) t
 
 #### Quick and dirty documentation generation
 
-With `terraform-docs md . > README.md`, you will create/update your documentation in a file named README.md. But if you manually modify README.md to add useful information to use your module, these modification will be overwritten with the next execution of the command. 
+With `terraform-docs md . > README.md`, you will create/update your documentation in a file named README.md. But if you manually modify README.md to add useful information to use your module, these modification will be overwritten with the next execution of the command.
 
 #### A better way to generate a (manually editable) documentation
 

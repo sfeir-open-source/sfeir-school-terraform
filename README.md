@@ -7,7 +7,7 @@ This repository help customers to use [HashiCorp Terraform](https://www.terrafor
 Each module can be run independently
 
 * Module 1 : Introduction of Terraform (no lab)
-* Module 2 : First step with Terraform 
+* Module 2 : First step with Terraform
   * (lab) Installation and Configuration
 * Module 3 : Langages and Interpolations
   * (lab) My First infrastructure deployment

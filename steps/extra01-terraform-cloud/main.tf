@@ -15,4 +15,3 @@ resource "null_resource" "foo" {
 output "bar" {
   value = null_resource.foo.triggers.foo
 }
-

@@ -16,7 +16,7 @@ run "invalid_prefix_with_number" {
   variables {
     bucket_prefix = "sfeir42"
     bucket_name = "test"
-  } 
+  }
 
   ...
 }
@@ -27,7 +27,7 @@ run "invalid_prefix_too_short" {
   variables {
     bucket_prefix = "xx"
     bucket_name = "test"
-  } 
+  }
 
   ...
 }
@@ -40,7 +40,7 @@ run "invalid_prefix_too_long" {
   variables {
     bucket_prefix = "toolongforaprefix"
     bucket_name = "test"
-  } 
+  }
 
   ...
 }

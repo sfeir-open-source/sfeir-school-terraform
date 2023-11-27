@@ -17,4 +17,3 @@ resource "google_dns_managed_zone" "private-zone" {
 
   depends_on = [google_project_service.dns]
 }
-

@@ -3,4 +3,3 @@ module "my-sql-instance" {
   source        = "git::https://gitlab.com/alex.dath/terraform-google-sql-instance?ref=v2.0.0"
   instance_name = "demo-instance"
 }
-
