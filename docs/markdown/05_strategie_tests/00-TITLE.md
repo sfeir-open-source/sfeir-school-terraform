@@ -5,21 +5,21 @@
 ##==##
 <!-- .slide:-->
 
-# Overview des différents outils de tests
+# Aperçu des différents outils de tests
 
 ![h-850](./assets/images/g418fd663c2_0_825.png)
 
 ##==##
 <!-- .slide: class="full-center" -->
 
-# Overview des différents outils de tests
+# Aperçu des différents outils de tests
 
 ![](./assets/images/tests.png)
 
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# Overview des différents outils de tests
+# Aperçu des différents outils de tests
 
 ## Tests unitaires
 
@@ -41,35 +41,26 @@ ${element("haha"=="haha" ? list("") : list(""), 0)}
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# Overview des différents outils de tests
+# Aperçu des différents outils de tests
 
 ## Tests intégration
 
 <img style="position:fixed;top:10px;right:30px" src="./assets/images/g418fd663c2_0_891.png">
 
 * Consiste à déployer l’infrastructure dans une sandbox
-* Utilisation 
-  * [Module Testing Experiment (experimental features)](https://www.terraform.io/docs/language/modules/testing-experiment.html)
-  * [kitchen-ci](https://kitchen.ci) et [kitchen-terraform](https://github.com/newcontext-oss/kitchen-terraform)
+* Outils existants : 
+  * [kitchen-ci](https://kitchen.ci) associé à [kitchen-terraform](https://github.com/newcontext-oss/kitchen-terraform)
   * [terratest](https://github.com/gruntwork-io/terratest) 
     <span style="color:green">pour automatiser la création et suppression</span>
+  * [Terraform Testing Framework](https://developer.hashicorp.com/terraform/language/tests)
 
-```bash
-$ kitchen test
------> Starting Kitchen (v2.2.5)
------> Cleaning up any prior instances of <default-terraform>
------> Creating <default-terraform>...
------> Converging <default-terraform>...
------> Setting up <default-terraform>...
------> Verifying <default-terraform>...
------> Destroying <default-terraform>...
------> Kitchen is finished. (0m10.13s)
-```
+* Outil déprécié :
+  * Module Testing Experiment (experimental features)
 
 ##==##
 <!-- .slide: class="two-column-layout"-->
 
-# Overview des différents outils de tests
+# Aperçu des différents outils de tests
 
 ## Tests fonctionnels
 
@@ -80,7 +71,7 @@ $ kitchen test
 
 * Eyeballing game VS Automated tests
 * L’objectif est de valider que le déploiement effectué correspond bien au besoin exprimé
-* Utilisation d’https://github.com/inspec/inspec-gcp  pour lire les ressources déployées
+* Utilisation d’[inspec-gcp](https://github.com/inspec/inspec-gcp) pour lire les ressources déployées
 
 <br/><br/>
 
@@ -112,16 +103,7 @@ end
 ##==##
 <!-- .slide:-->
 
-# L’exemple de terraform test
-
-![h-850 float-left](./assets/images/terraform_test_sample.png)
-
-![float-left](./assets/images/g418fd663c2_0_187.png)
-
-##==##
-<!-- .slide:-->
-
-# L’exemple de kitchen-inspec
+# L’exemple de KitchenCI + inspec
 
 
 <img style="position:fixed;top:5em;left:30px;height:50%" src="./assets/images/kitchen-sample.png">
@@ -135,11 +117,53 @@ end
 ##==##
 <!-- .slide:-->
 
-# L’exemple de terratest
+# L’exemple de Terratest
 
 ![h-650 float-left](./assets/images/terratest_sample.png)
 
 ![float-left](./assets/images/terratest_logo.png)
+
+##==##
+<!-- .slide:-->
+
+# L’exemple du Terraform Testing Framework
+
+Exemple de code Terraform :
+```(hcl-terraform)
+provider "aws" {
+    region = "eu-central-1"
+}
+
+variable "bucket_prefix" {
+  type = string
+}
+
+resource "aws_s3_bucket" "bucket" {
+  bucket = "${var.bucket_prefix}-bucket"
+}
+
+output "bucket_name" {
+  value = aws_s3_bucket.bucket.bucket
+}
+```
+
+Exemple de code de test: 
+```(hcl-terraform)
+variables {
+  bucket_prefix = "test"
+}
+
+run "valid_string_concat" {
+  command = plan
+
+  assert {
+    condition     = aws_s3_bucket.bucket.bucket == "test-bucket"
+    error_message = "S3 bucket name did not match expected"
+  }
+}
+```
+
+Disponible depuis la v1.6.0 de Terraform.
 
 ##==##
 <!-- .slide:-->

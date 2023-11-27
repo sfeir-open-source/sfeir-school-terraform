@@ -1,9 +1,4 @@
-resource "google_project_service" "dns" {
-  service            = "dns.googleapis.com"
-  disable_on_destroy = "false"
+resource "google_storage_bucket" "bucket" {
+  name     = # Concat the prefix and the name linked by a dash `-`
+  # ...
 }
-
-resource "google_dns_managed_zone" "private-zone" {
-  depends_on = [google_project_service.dns]
-}
-

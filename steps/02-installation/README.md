@@ -27,7 +27,7 @@ export TF_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraf
 echo $TF_VERSION
 ```
 
-And download the latest version using :
+And download the latest version using (must be at least 1.6.0):
 
 ```shell
 curl https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip -o /tmp/terraform_${TF_VERSION}_linux_amd64.zip
