@@ -128,7 +128,7 @@ end
 
 # L’exemple du Terraform Testing Framework
 
-Exemple de code Terraform :
+Exemple de code Terraform (`main.tf`) :
 ```(hcl-terraform)
 provider "aws" {
     region = "eu-central-1"
@@ -147,7 +147,7 @@ output "bucket_name" {
 }
 ```
 
-Exemple de code de test:
+Exemple de code de test (`main.tftest.hcl`) :
 ```(hcl-terraform)
 variables {
   bucket_prefix = "test"

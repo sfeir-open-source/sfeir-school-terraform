@@ -12,7 +12,7 @@ $ terraform version
 
 ### Create a simple terraform stack
 
-Create a GCS (Google Cloud Storage) bucket with these constraints ([See help about variable validation](https://developer.hashicorp.com/terraform/language/values/variables#custom-validation-rules)):
+Create a [GCS (Google Cloud Storage)](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket) bucket with these constraints ([See help about variable validation](https://developer.hashicorp.com/terraform/language/values/variables#custom-validation-rules)):
 
 - The name of the bucket will be composed of a prefix and a name like : <prefix>-<name>
 - The `prefix` and `name` must contains only letter (no number/symbole)
