@@ -1,4 +1,4 @@
-variable "bucket_name" {
+variable "name" {
   type        = string
   description = "Name of the GCS bucket"
 
@@ -11,7 +11,7 @@ variable "bucket_name" {
   }
 }
 
-variable "bucket_prefix" {
+variable "prefix" {
   type        = string
   description = "Prefix of the GCS bucket name"
 

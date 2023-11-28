@@ -1,13 +1,13 @@
 variables {
-  bucket_prefix = "sfeir"
-  bucket_name = "test"
+  prefix = "sfeir"
+  name = "test"
 }
 
 run "valid_string_concat" {
   command = plan
 
   assert {
-    condition     = google_storage_bucket.bucket.name == "${var.bucket_prefix}-${var.bucket_name}"
+    condition     = google_storage_bucket.bucket.name == "${var.prefix}-${var.name}"
     error_message = "GCS bucket name did not match expected"
   }
 }
@@ -16,22 +16,22 @@ run "valid_string_concat" {
 run "invalid_prefix_with_number" {
   command = plan
   variables {
-    bucket_prefix = "sfeir42"
-    bucket_name = "test"
+    prefix = "sfeir42"
+    name = "test"
   }
   expect_failures = [
-    var.bucket_prefix,
+    var.prefix,
   ]
 }
 
 run "invalid_prefix_too_short" {
   command = plan
   variables {
-    bucket_prefix = "xx"
-    bucket_name = "test"
+    prefix = "xx"
+    name = "test"
   }
   expect_failures = [
-    var.bucket_prefix,
+    var.prefix,
   ]
 }
 
@@ -40,11 +40,11 @@ run "invalid_prefix_too_short" {
 run "invalid_prefix_too_long" {
   command = plan
   variables {
-    bucket_prefix = "toolongforaprefix"
-    bucket_name = "test"
+    prefix = "toolongforaprefix"
+    name = "test"
   }
   expect_failures = [
-    var.bucket_prefix,
+    var.prefix,
   ]
 }
 
@@ -52,10 +52,10 @@ run "invalid_prefix_too_long" {
 run "invalid_name_with_numbers" {
   command = plan
   variables {
-    bucket_prefix = "sfeir"
-    bucket_name = "test42"
+    prefix = "sfeir"
+    name = "test42"
   }
   expect_failures = [
-    var.bucket_name
+    var.name
   ]
 }

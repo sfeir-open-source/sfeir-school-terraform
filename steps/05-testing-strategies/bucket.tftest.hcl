@@ -1,6 +1,6 @@
 variables {
-  bucket_prefix = ...
-  bucket_name = ...
+  prefix = ...
+  name = ...
 }
 
 run "valid_string_concat" {
@@ -14,8 +14,8 @@ run "invalid_prefix_with_number" {
   command = plan
 
   variables {
-    bucket_prefix = "sfeir42"
-    bucket_name = "test"
+    prefix = "sfeir42"
+    name = "test"
   }
 
   ...
@@ -25,8 +25,8 @@ run "invalid_prefix_too_short" {
   command = plan
 
   variables {
-    bucket_prefix = "xx"
-    bucket_name = "test"
+    prefix = "xx"
+    name = "test"
   }
 
   ...
@@ -38,8 +38,8 @@ run "invalid_prefix_too_long" {
   command = plan
 
   variables {
-    bucket_prefix = "toolongforaprefix"
-    bucket_name = "test"
+    prefix = "toolongforaprefix"
+    name = "test"
   }
 
   ...
@@ -50,8 +50,8 @@ run "invalid_name_with_numbers" {
   command = plan
 
   variables {
-    bucket_prefix = "sfeir"
-    bucket_name = "test42"
+    prefix = "sfeir"
+    name = "test42"
   }
 
   ...
