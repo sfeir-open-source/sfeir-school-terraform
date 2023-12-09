@@ -59,7 +59,7 @@ A module is a collection of resources defined by inputs (variables) and results 
 #### Create a new module to deploy a [Cloud SQL](https://cloud.google.com/sql) instance using Terraform
 
 * Go to the `modules/sql-database` directory
-* Deploy a Second-generation database (PostgreSQL 14) using [google_sql_database_instance](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance) resource
+* Deploy a MySQL 5.7 using [google_sql_database_instance](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance) resource
 * Create an SQL user using [google_sql_user](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_user)
 * Create a `random_password`, assign it to the SQL user, and save it on Vault (to be used latter by an Application deployment terraform configuration)
 

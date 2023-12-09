@@ -64,12 +64,12 @@ Deploy the same code in the `staging` workspace (instance name suffix will avoid
 
 Let Gitlab-CI deploy the production.
 
-If you are in a training session with a SFEIR trainer : 
+If you are in a training session with a SFEIR trainer :
 - Use the Gitlab.com repository provided by the SFEIR trainer.
 - Clone the repository `git clone git@gitlab.com:.../continuous-deployment`
 - Create your own branch `git checkout -b <your-name>`
 
-Else, if you do the lab autonomously, create a new Gitlab.com repository. 
+Else, if you do the lab autonomously, create a new Gitlab.com repository.
  - In Settings -> CI/CD, configure these variables :
   - `TF_VAR_application_name` with the desired application name (used to build the instance name, ex: `sfeir-mega-app`).
   - `TF_VAR_machine_type` with the desired machine type (ex: `f1-micro`).

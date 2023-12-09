@@ -23,4 +23,3 @@ resource "google_storage_bucket_object" "files_for_each" {
   content  = each.value
   bucket   = google_storage_bucket.store.name
 }
-

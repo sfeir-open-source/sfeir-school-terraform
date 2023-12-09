@@ -32,7 +32,7 @@ Raccourcis disponible pour taint lors du plan/apply avec l'option `-replace`
 ## Terraform import
 
 * Permet à l’utilisateur d’importer une ressource existante dans le fichier d’état
-* terraform import google_compute_project_metadata_item.default ssh-keys 
+* terraform import google_compute_project_metadata_item.default ssh-keys
 
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
@@ -55,23 +55,23 @@ resource "null_resource" "upper" {
 ##==##
 <!-- .slide:-->
 
-# null_resource et provisioners 
+# null_resource et provisioners
 
 ## provisioners
 
-Les provisioners permettent d’executer des scripts durant les phases de création et suppression. Il existe plusieurs type de provisioners comme : 
+Les provisioners permettent d’executer des scripts durant les phases de création et suppression. Il existe plusieurs type de provisioners comme :
 
 * local-exec et remote-exec pour un script local ou via SSH/RDP
 * Puppet / Chef / Habitat
 * Salt-masterless
 * file pour déposer un fichier
 * https://www.terraform.io/docs/provisioners/index.html
-* Un provisionner non officiel Ansible existe mais n'est pas référencé sur le site officiel (https://github.com/radekg/terraform-provisioner-ansible)  
+* Un provisionner non officiel Ansible existe mais n'est pas référencé sur le site officiel (https://github.com/radekg/terraform-provisioner-ansible)
 
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# null_resource et provisioners 
+# null_resource et provisioners
 
 ## provisioners
 
@@ -80,7 +80,7 @@ resource "null_resource" "register" {
  depends_on       = [google_compute_instance.inst]
 
  provisioner "local-exec" {
-   command = "register.sh ${google_compute_instance.inst.self_link}"   
+   command = "register.sh ${google_compute_instance.inst.self_link}"
  }
 }
 ```
@@ -103,12 +103,12 @@ Cas d’utilisations :
 ##==##
 <!-- .slide:-->
 
-# Déploiement continu 
+# Déploiement continu
 
 ##  Terraform workspace
 
 * $ terraform workspace new  name
-<br/><span style="color:green"># Créer un workspace</span> 
+<br/><span style="color:green"># Créer un workspace</span>
 
 * $ terraform workspace list
 <br/><span style="color:green"># Affiche la liste des workspaces</span>
@@ -125,7 +125,7 @@ Cas d’utilisations :
 ##==##
 <!-- .slide: class="two-column-layout"-->
 
-# Déploiement continu 
+# Déploiement continu
 
 ##--##
 <!-- .slide: class="with-code-bg-dark" -->
@@ -174,7 +174,7 @@ apply_production:
 
 <br/>
 
-Terraform propose un ensemble de variables d'environnements pour configurer le comportement des logs générés : 
+Terraform propose un ensemble de variables d'environnements pour configurer le comportement des logs générés :
 
 - `TF_LOG` : permet de définir la verbosité *TRACE, DEBUG, INFO, WARN, ERROR*
 - `TF_LOG_PATH` : permet de définir le fichier de sortie
@@ -189,18 +189,18 @@ Terraform propose un ensemble de variables d'environnements pour configurer le c
 ![](./assets/images/g419a1b557d_2_230.png)
 
 Notes:
-liste des features sur : 
+liste des features sur :
 https://www.hashicorp.com/products/terraform/offerings
 
 ##==##
 <!-- .slide:-->
 
-# Présentation de l’offre pour les entreprises Terraform Cloud 
+# Présentation de l’offre pour les entreprises Terraform Cloud
 
 <iframe src="https://drive.google.com/file/d/1EJYtycVmeLKITPD1y2oGp2pQX2TItfVH/preview" width="80%" height="80%"></iframe>
 
 Notes:
-liste des features sur : 
+liste des features sur :
 https://www.hashicorp.com/products/terraform/offerings
 
 
@@ -265,9 +265,9 @@ Cette fonctionalité est disponible dans le package **Terraform Cloud Team & Gov
 ![center](./assets/images/cost-estimation-run.png)
 
 ##==##
-<!-- .slide: --> 
+<!-- .slide: -->
 
-# Développement et utilisation de providers communautaires 
+# Développement et utilisation de providers communautaires
 
 <br/>
 
@@ -278,7 +278,7 @@ Il est possible de développer ses propres providers en Golang
 ##==##
 <!-- .slide:-->
 
-# Développement et utilisation de providers communautaires 
+# Développement et utilisation de providers communautaires
 
 https://www.terraform.io/docs/extend/writing-custom-providers.html
 
@@ -289,13 +289,13 @@ https://www.terraform.io/docs/extend/writing-custom-providers.html
 
 * resource_name.go : Implément _func resourceName() *schema.Resource_<br/>
     Définit la structure et les appels APIs à effectuer pour créer l’objet sur le provider
-    
+
 * data_source_name.go :  Un data source est une ressource qui n’implémente qu’une fonction READ
 
 ##==##
 <!-- .slide:-->
 
-# Développement et utilisation de providers communautaires 
+# Développement et utilisation de providers communautaires
 
 ## DeepDive du provider Google
 Magic-modules de Google est un projet qui consiste à générer automatiquement les ressources Terraform, inspec et ansible depuis le contrat d’API des ressources Google Cloud
@@ -312,7 +312,7 @@ Magic-modules de Google est un projet qui consiste à générer automatiquement 
 <!-- .slide:-->
 
 # Les "Best practices"
-Les *Best Pratices* relative à **Terraform** sont plus un condensé provenant de diverses sources telles que le site officiel d'**Hashicorp**, d'**AWS** ou d'**Azure** et recommandent les éléments suivants : 
+Les *Best Pratices* relative à **Terraform** sont plus un condensé provenant de diverses sources telles que le site officiel d'**Hashicorp**, d'**AWS** ou d'**Azure** et recommandent les éléments suivants :
 * Structurer la configuration
 * Backend S3
 * Vérouiller le fichier d'état
@@ -321,11 +321,11 @@ Les *Best Pratices* relative à **Terraform** sont plus un condensé provenant d
 * Produire du code humainement lisible
 * Extraire les métadatas
 * Préférer les chemins de fichiers au bloc *Inline*
-* Tagger les ressources 
+* Tagger les ressources
 * Limiter le nombre de ressources par déploiment
 
 Notes:
-Structurer la configuration à l'aide des fichiers main.tf (pour les appels de modules), variables.tf et outputs.tf.  
+Structurer la configuration à l'aide des fichiers main.tf (pour les appels de modules), variables.tf et outputs.tf.
 Backend S3, vérouillage du fichier d'état et Produire du code humainement lisible afin de ne rien stocker en local et faciliter la collaboration entre équipes.
 Démarrer Terraform avec l'option -var-file afin de détacher les variables.
 Chiffrer les identifiants afin d'élever le niveau de sécurité.
@@ -378,7 +378,7 @@ Tagger les ressources afin de les identifiers le plus facilement possible, dans 
 <br/>
 
 1. Supprimer le terraform.tfstate local puis redéployer dans le bon environnement
-2. Utiliser des buckets ou des préfixes différents 
+2. Utiliser des buckets ou des préfixes différents
 3. Ne pas utiliser de remote backend
 4. Utiliser Terraform Cloud
 
@@ -439,7 +439,7 @@ Tagger les ressources afin de les identifiers le plus facilement possible, dans 
 <!-- .slide: class="exercice" -->
 
 # Continuous Deployment via Terraform
- 
+
 ## Atelier
 
 ##==##
@@ -474,8 +474,3 @@ Tagger les ressources afin de les identifiers le plus facilement possible, dans 
 * Inspec-gcp : https://github.com/inspec/inspec-gcp
 * Inspec-iggy : https://github.com/mattray/inspec-iggy
 * Kitchen : https://kitchen.ci/
-
-
-
-
-

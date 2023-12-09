@@ -20,4 +20,3 @@ variable "database_version" {
   description = "The MySQL or PostgreSQL version to use."
   default     = "MYSQL_5_7"
 }
-

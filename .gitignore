@@ -4,7 +4,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
+**/export
 # Runtime data
 pids
 *.pid
@@ -71,4 +71,5 @@ docs/test.html
 .terraform/
 terraform.tfstate.d/
 terraform.tfstate
+terraform.tfstate.backup
 .terraform.lock.hcl

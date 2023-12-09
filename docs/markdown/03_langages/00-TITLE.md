@@ -15,13 +15,13 @@ Langage de configuration développé par HashiCorp et ré-utilisé dans ses diff
 
 
 ##==##
-<!-- .slide: -->  
+<!-- .slide: -->
 
 # HashiCorp Configuration Language (HCL)
 
 <br/>
 
-## Mots clefs pour Terraform : 
+## Mots clefs pour Terraform :
 * **provider, variable, resource, module, output, data**
 * Commentaires via # ou /* … */
 * Les valeurs sont assignées avec cette syntaxe : `key = value`
@@ -36,7 +36,7 @@ Langage de configuration développé par HashiCorp et ré-utilisé dans ses diff
 
 ## Type de variables
 
-HCL a de nombreux types de variable comme : 
+HCL a de nombreux types de variable comme :
 * String via “...”
 * Nombre
 * Booléen
@@ -87,7 +87,7 @@ resource "google_compute_instance" "instance" {
 
 Les variables permettent d’adapter les attributs en fonction de différents critères comme l’environnement, le type d’application, etc…
 
-Déclaration : 
+Déclaration :
 
 ```hcl-terraform
 variable "num_cpu" {
@@ -98,7 +98,7 @@ variable "num_cpu" {
 ```
 <!-- .element: class="big-code" -->
 
-Utilisation : 
+Utilisation :
 ```hcl-terraform
 num_cpu = var.num_cpu      // préconisé
 tags    = "tag:${var.tag}" // avec expansion
@@ -154,11 +154,11 @@ Les variables supportent les attributs suivant :
 
 <br/>
 
-## Variables locales 
+## Variables locales
 
 Une `local` est l'association d'une expression à une variable, afin d'être réutilisée plusieurs fois dans un module.
 
-Déclaration : 
+Déclaration :
 ```hcl-terraform
 locals {
   # Simple string
@@ -235,7 +235,7 @@ export GOOGLE_REGION="us-central1"
 <br/>
 
 ## Resource
-Les ressources sont les composantes de l’infrastructure. 
+Les ressources sont les composantes de l’infrastructure.
 Elles peuvent être une instance, un loadbalancer, une règle firewall, etc, …<br/>
 Elles doivent respecter la syntaxe : resource "TYPE" "NAME”
 
@@ -258,7 +258,7 @@ resource "google_compute_firewall" "default" {
 
 <br/>
 
-## Resource - Meta-arguments 
+## Resource - Meta-arguments
 
 * **count** : Permet de créer plusieurs fois la ressource. count.index permet de récupérer l’index courant
 * **for_each** : Pour créer plusieurs fois une ressource en utilisant une map ou une liste de strings (depuis 0.12 à privilégier par rapport à count)
@@ -286,7 +286,7 @@ provider : Permet de surcharger le provider de la ressource par exemple lors de 
 
 ## Output
 
-Les outputs sont affichés en surbrillance à la fin du déploiement Terraform. 
+Les outputs sont affichés en surbrillance à la fin du déploiement Terraform.
 
 Ils permettent aux utilisateurs d’afficher des attributs calculés ou retournés par le provider.
 <br/>
@@ -329,7 +329,7 @@ image = data.google_compute_image.my_image.self_link
 
 ## Module
 
-**Un module est un ensemble de ressources.**  
+**Un module est un ensemble de ressources.**
 Il permet d’abstraire un déploiement plus complexe et agit comme une boîte noire pour laquelle on utilisera des **variables** en entrée et des **outputs** en sortie.
 
 **Le module permet une réutilisation du code et peut être stocké dans un repository distant (ex: git)(privé ou publique).**
@@ -503,7 +503,7 @@ Values passed within definition files or with -var will take precedence over TF_
 <!-- .slide: class="exercice" -->
 
 # Premier déploiement d’infrastructure
- 
+
 ## Atelier
 
 ##==##
@@ -544,7 +544,7 @@ resource "aws_instance" "web" {
   instance_type    = "t2.micro"
   user_data_base64 = data.template_file.example.rendered
 }
-``` 
+```
 
 Il reste néanmoins possible (mais déprécié) d'utiliser l'ancien format via l'utilisation de `"${ ... }"`
 
@@ -585,7 +585,7 @@ Exemple d’utilisation :
   count     = length(var.shortnames)
   upper-foo = upper(var.foo)
   encoded   = base64encode(var.sensitive_content)
-```  
+```
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -778,5 +778,5 @@ Question : Comment obtenir un élément d’une liste ?
 <!-- .slide: class="exercice" -->
 
 # Utilisation avancée des interpolations
- 
+
 ## Atelier

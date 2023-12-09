@@ -7,4 +7,3 @@ variable "machine_type" {
   description = "GCE machine type"
   default     = "f1-micro"
 }
-

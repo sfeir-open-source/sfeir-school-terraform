@@ -35,4 +35,3 @@ resource "vault_generic_secret" "example" {
     password = random_password.password.result
   })
 }
-

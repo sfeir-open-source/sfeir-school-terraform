@@ -27,7 +27,7 @@ Le logiciel est sous la forme d’un binaire (pré-compilé pour différents OS)
 # Le choix de l'IDE
 <br/>
 
-Plusieurs IDE disponibles :  
+Plusieurs IDE disponibles :
 * Intellij
 * Atom
 * Visual Studio Code
@@ -45,10 +45,10 @@ Notes:
 # Le Hashicorp Configuration Language
 <br/>
 
-Le HCL est un langage déclaratif décrivant un état désiré (DSL) plutôt que les étapes de cet objectif.  
+Le HCL est un langage déclaratif décrivant un état désiré (DSL) plutôt que les étapes de cet objectif.
 
 Notes:
-- Langage de configuration développé par HashiCorp et ré-utilisé dans ses différents produits. Uniquement déclaratif, il est associé au HIL (HashiCorp Interpolation Language) lorsqu’il faut calculer des valeurs.  
+- Langage de configuration développé par HashiCorp et ré-utilisé dans ses différents produits. Uniquement déclaratif, il est associé au HIL (HashiCorp Interpolation Language) lorsqu’il faut calculer des valeurs.
 
 ##==##
 <!-- .slide: -->
@@ -80,13 +80,13 @@ Notes:
 
 <br/>
 
-Un provider correspond à un ensemble de ressources, chacune de ces ressources est définie par un ou plusieurs arguments et attributs.  
-Chaque provider fait appel à l'API correspondant à un service *cloud* ou *on-premise*.  
+Un provider correspond à un ensemble de ressources, chacune de ces ressources est définie par un ou plusieurs arguments et attributs.
+Chaque provider fait appel à l'API correspondant à un service *cloud* ou *on-premise*.
 
 Notes:
 * Certains providers ne sont pas officiellement supportés par **Hashicorp** mais sont tout de même utilisable avec **Terraformm**.
 * Les arguments du bloc provider diffèrent d'un provider à l'autre, certains sont similaire (AWS et AliCloud - par exemple).
-* Parmis les provider non supportés officiellement par hashicorp, on peut retrouver kubectl et Artifactory 
+* Parmis les provider non supportés officiellement par hashicorp, on peut retrouver kubectl et Artifactory
 
 ##==##
 
@@ -105,7 +105,7 @@ Notes:
 
 Cette commande permet d’initialiser le répertoire de travail courant.
 
-* Lit le fichier configuration personnel ~/.terraformrc si existant 
+* Lit le fichier configuration personnel ~/.terraformrc si existant
 * Télécharge les providers et provisioners nécessaires (officiels) sur https://registry.hashicorp.com/
 * Instancie le fichier d’état (local ou distant)
 * Effectue un “terraform get“ si nécessaire.
@@ -230,10 +230,10 @@ Terraform destroy décommissionne les ressources présentes (et uniquement) dans
 <br/>
 
 1. Impossible
-2. terraform fmt
-3. terraform init
+2. terraform fmt (to format the terraform code)
+3. terraform init (to initialize a terraform environment)
 4. **terraform plan**
-5. terraform show
+5. terraform show (to show the state as terraform code)
 
 ##==##
 <!-- .slide: -->
@@ -247,7 +247,7 @@ Terraform destroy décommissionne les ressources présentes (et uniquement) dans
 <br/>
 
 1. Un outil de provisionning d'infrastructure
-2. Un outil de gestion de configuration 
+2. Un outil de gestion de configuration
 
 ##==##
 <!-- .slide: -->
@@ -261,7 +261,7 @@ Terraform destroy décommissionne les ressources présentes (et uniquement) dans
 <br/>
 
 1. Un outil de provisionning d'infrastructure
-2. **Un outil de gestion de configuration** 
+2. **Un outil de gestion de configuration**
 
 ##==##
 <!-- .slide: -->
@@ -327,6 +327,5 @@ Terraform destroy décommissionne les ressources présentes (et uniquement) dans
 <!-- .slide: class="exercice" -->
 
 # Installation et configuration
- 
-## Atelier
 
+## Atelier

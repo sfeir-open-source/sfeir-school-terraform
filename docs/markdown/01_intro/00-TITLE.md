@@ -1,4 +1,4 @@
-<!-- .slide: class="transition"-->  
+<!-- .slide: class="transition"-->
 
 # Introduction à Terraform
 
@@ -63,7 +63,7 @@ Réduire les coûts => Dé-allouer sans risques les ressources inutiles, créer 
 Write, Plan, and Create Infrastructure as Code
 
 Notes:
-Infrastructure As Code : 
+Infrastructure As Code :
 
 L'infrastructure est décrite en texte
 
@@ -76,7 +76,7 @@ Terraform va convertir le texte en nombreux appels APIs vers la plateforme d’h
 
 ## Principaux avantages de l’Infra As Code
 
-* Le déploiement de l’infrastructure est automatisé : 
+* Le déploiement de l’infrastructure est automatisé :
   * le temps de déploiement est réduit
   * le risque d’erreur est réduit
   * un seul référentiel pour déployer de nombreux environnements
@@ -96,7 +96,7 @@ Terraform va convertir le texte en nombreux appels APIs vers la plateforme d’h
   * Testing
 
 Notes:
-Source Code Management : 
+Source Code Management :
 
 Re-usable : store on public hub, everyone can clone = easy to share !
 
@@ -174,7 +174,7 @@ Terraform est multi provider, il peut créer des ressources autant sur des plate
 # La théorie des graphes
 
 ![h-700](./assets/images/g418fd663c2_0_305.png)
-    
+
 Notes:
 Terraform analyse les ressources et dépendances puis construit un graphe puis provisionne les noeux des feuilles vers le sommet. Si l’arbre ne peut pas être construit, terraform retournera une erreur lors de l’analyse.
 
