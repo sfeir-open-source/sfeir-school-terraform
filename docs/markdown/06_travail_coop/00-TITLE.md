@@ -7,8 +7,6 @@
 
 # Modules
 
-<br/>
-
 * Les modules favorisent la réutilisation du code en fournissant aux développeurs une bibliothèque de déploiements pré-développés.
 * Un module est composé :
   * de variables en entrée
@@ -25,14 +23,11 @@
 ## Module Registry
 
 Il existe par défaut plusieurs plateformes permettant de publier des modules tel que github, gitlab, bitbucket, etc…
-<br/>
 https://www.terraform.io/docs/modules/sources.html
-<br/>
 
 Lorsque ceux-ci seront déclarés dans un fichier de configuration, Terraform les téléchargera à l’aide de la commande : **terraform init** ou **terraform get** et seront stockés localement dans le dossier **.terraform**.
-<br/>
+
 L’utilisation de **terraform init --upgrade** permet la mise à jours des modules existants.
-<br/>
 
 Hashicorp met à disposition un ensemble de modules officiels sur sa propre registry : https://registry.terraform.io/
 
@@ -41,8 +36,6 @@ Hashicorp met à disposition un ensemble de modules officiels sur sa propre regi
 <!-- .slide: class="with-code-bg-dark" -->
 
 # Modules
-
-<br/>
 
 => *cat gke.tf*
 
@@ -164,8 +157,7 @@ module "database" {
 <!-- .slide:-->
 
 # Gestion de la concurrence et de la persistance
-
-*Le fichier d’état “terraform.tfstate”*
+## Le fichier d’état “terraform.tfstate”
 
 <br/>
 
@@ -178,8 +170,7 @@ module "database" {
 <!-- .slide:-->
 
 # Gestion de la concurrence et de la persistance
-
-*Le fichier d’état “terraform.tfstate”*
+## Le fichier d’état “terraform.tfstate”
 
 Ce fichier est critique, en cas de perte, Terraform “oubliera” l’ensemble des ressources qu’il a créé.<br/>
 Il est conseillé de ne pas le stocker localement mais sur :
@@ -189,8 +180,7 @@ Il est conseillé de ne pas le stocker localement mais sur :
 ##==##
 <!-- .slide:-->
 # Gestion de la concurrence et de la persistance
-
-*Le fichier d’état “terraform.tfstate”*
+## Le fichier d’état “terraform.tfstate”
 
 Il existe plusieurs types de backends :
 - local (par défaut)
@@ -201,8 +191,7 @@ Il existe plusieurs types de backends :
 <!-- .slide: class="with-code-bg-dark"-->
 
 # Gestion de la concurrence et de la persistance
-
-*Le fichier d’état “terraform.tfstate”*
+## Le fichier d’état “terraform.tfstate”
 
 La configuration et le choix du backend se fait en le déclarant dans un fichier *.tf (exemple backend.tf).
 
@@ -223,9 +212,8 @@ terraform {
 ##==##
 <!-- .slide:-->
 
- # Gestion de la concurrence et de la persistance
-
-*Le fichier d’état “terraform.tfstate”*
+# Gestion de la concurrence et de la persistance
+## Le fichier d’état “terraform.tfstate”
 
 
 Il est possible de verrouiller le fichier pour éviter les appels concurrents depuis plusieurs sources (non supporté par tous les backend).
@@ -238,12 +226,9 @@ Terraform propose la commande **terraform force-unlock** si mon déploiement res
 <!-- .slide:-->
 
 # Manipulation du fichier d’état
-
-*“terraform.tfstate”*
+## “terraform.tfstate”
 
 Dans certains cas, il sera nécessaire de le modifier. Pour cela on utilisera la commande : **terraform state *verb* *resource-path***
-
-<br/>
 
 * terraform state list
 * terraform state show
@@ -283,8 +268,6 @@ Exemple :
 ## Utilisation de Vault
 
 <img style="position:fixed;top:10px;right:30px" src="./assets/images/g419a1b557d_2_152.png">
-
-<br/>
 
 ```hcl-terraform
 data "vault_generic_secret" "rundeck_auth" {

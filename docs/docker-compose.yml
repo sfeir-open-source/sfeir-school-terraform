@@ -1,7 +1,7 @@
 version: "3"
 services:
   npx:
-    image: node:12.18
+    image: node:16.17
     command: npx serve
     volumes:
     - .:/sources
