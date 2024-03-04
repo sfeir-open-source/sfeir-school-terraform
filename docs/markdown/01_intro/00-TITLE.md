@@ -127,8 +127,6 @@ Testing : chaque ressource est testée et correspond au besoin fonctionnel
 <!-- .slide:-->
 
 # Introduction à Terraform
-
-
 ![](./assets/images/g418fd663c2_0_203.png)
 
 Notes:
@@ -155,7 +153,6 @@ Produit OpenSouce développé en Go
 <!-- .slide: class="flex-row"-->
 
 # Terraform
-<br>
 Workflow agnostic != Cloud agnostic
 
 
