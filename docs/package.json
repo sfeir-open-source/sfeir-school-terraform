@@ -25,9 +25,6 @@
   },
   "homepage": "https://github.com/sfeir-open-source/sfeir-school-terraform",
   "dependencies": {
-    "highlight.js": "^9.15.6",
-    "lit-html": "^1.2.1",
-    "reveal.js": "^3.9.2",
     "sfeir-school-theme": "^3.1.0"
   },
   "devDependencies": {
