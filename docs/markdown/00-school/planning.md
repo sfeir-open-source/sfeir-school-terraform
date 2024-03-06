@@ -103,8 +103,8 @@ Jour 2 : Collaboration et production
 ## MODULE 7 : Utilisation en production
 * Remplacement de resources existantes
 * Utilisation des provisioners
-* Déploiement continu via Gitlab-ci
 * Debugging
+* Déploiement continu via Gitlab-ci
 * Présentation de l’offre pour les entreprises Terraform Cloud
 * Présentation de l'offre Terraform Enterprise
 * Développement et utilisation de providers communautaires
