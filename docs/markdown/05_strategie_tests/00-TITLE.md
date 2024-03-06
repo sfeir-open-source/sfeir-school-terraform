@@ -7,7 +7,7 @@
 
 # Aperçu des différents outils de tests
 
-![h-850](./assets/images/g418fd663c2_0_825.png)
+![h-850 center](./assets/images/g418fd663c2_0_825.png)
 
 ##==##
 <!-- .slide: class="full-center" -->
@@ -30,11 +30,11 @@
 terraform validate
 
 Error: data.null_data_source.foo: 2 error(s) occurred:
-
-* data.null_data_source.foo[0]: At column 11, line 1: conditional operator cannot be used with list values in:
-
+* data.null_data_source.foo[0]: At column 11, line 1: conditional operator 
+          cannot be used with list values in:
 ${element("haha"=="haha" ? list("") : list(""), 0)}
-* data.null_data_source.foo[1]: At column 11, line 1: conditional operator cannot be used with list values in:
+* data.null_data_source.foo[1]: At column 11, line 1: conditional operator 
+          cannot be used with list values in:
 ```
 <!-- .element class="big-code" -->
 
@@ -58,14 +58,11 @@ ${element("haha"=="haha" ? list("") : list(""), 0)}
   * Module Testing Experiment (experimental features)
 
 ##==##
-<!-- .slide: class="two-column-layout"-->
+<!-- .slide: class="two-column"-->
 
 # Aperçu des différents outils de tests
 
 ## Tests fonctionnels
-
-##--##
-<!-- .slide: -->
 
 <br/><br/>
 
@@ -106,14 +103,13 @@ end
 # L’exemple de KitchenCI + inspec
 
 
-<img style="position:fixed;top:5em;left:30px;height:50%" src="./assets/images/kitchen-sample.png">
+![float-left w-500](./assets/images/kitchen-sample.png)
 
-<img style="position:fixed;top:20em;left:30px:height:40%" src="./assets/images/inspec-sample.png">
+![float-right mt-200](./assets/images/g418fd663c2_0_890.png)
 
-<img style="position:fixed;top:8em;left:15em" src="./assets/images/g418fd663c2_0_891.png">
+![float-left mt-200](./assets/images/g418fd663c2_0_891.png)
 
-<img style="position:fixed;top:21em;left:20em" src="./assets/images/g418fd663c2_0_890.png">
-
+![float-right mt-200](./assets/images/inspec-sample.png)
 ##==##
 <!-- .slide:-->
 
@@ -127,7 +123,7 @@ end
 <!-- .slide:-->
 
 # L’exemple du Terraform Testing Framework
-
+##
 Exemple de code Terraform (`main.tf`) :
 ```(hcl-terraform)
 provider "aws" {

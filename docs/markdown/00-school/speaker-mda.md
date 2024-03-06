@@ -12,7 +12,7 @@
 <!-- .element: class="icon-rule icon-first" -->
 
 ### @mikamakusa
-<!-- .element: class="icon-twitter icon-second" -->
+<!-- .element: class="icon-second" -->
 
 ### dangleterre.m@sfeir.com
-<!-- .element: class="icon-mail icon-third" -->
+<!-- .element: class="icon-third" -->

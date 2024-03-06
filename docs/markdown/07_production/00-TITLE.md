@@ -209,8 +209,6 @@ https://www.hashicorp.com/products/terraform/offerings
 
 # Présentation des offres
 
-<br/>
-
 **Terraform Cloud** (Business tiers) fournit les fonctionnalités avancées suivantes :
 * plateforme multi-tenant SAAS
 * Gestion des Workspace, logs d'audit et des variables de manière sécurisée,
@@ -228,8 +226,6 @@ https://www.hashicorp.com/products/terraform/offerings
 <!-- .slide: -->
 
 # Sentinel
-
-<br/>
 
 Sentinel est une fonctionalité disponible à partir de **Terraform Cloud** (Team & Governance) qui permet d'imposer des contraintes d'urbanisation (appelées **policies**).
 
@@ -256,7 +252,6 @@ main = rule {
 ##==##
 
 # Cost Estimation
-<br/>
 
 Dans une approche FinOps, il est interessant lors de chaque déploiement d'estimer l'impact de l'opération avant son déploiement.
 
@@ -447,15 +442,11 @@ Tagger les ressources afin de les identifiers le plus facilement possible, dans 
 
 # HashiCorp Certified: Terraform Associate
 
-<br/>
-
 * Examen en ligne
 * Uniquement disponible en anglais
 * Durée de validité de 2 ans
 * Environ 75€
 
-<br/>
-<br/>
 
 [https://www.hashicorp.com/certification/terraform-associate](https://www.hashicorp.com/certification/terraform-associate)
 
@@ -464,8 +455,6 @@ Tagger les ressources afin de les identifiers le plus facilement possible, dans 
 <!-- .slide:-->
 
 # Ressources
-
-<br/>
 
 * Site Officiel : https://www.terraform.io/
 * Hashivim : https://github.com/hashivim

@@ -3,14 +3,11 @@
 # Configuration de l’environnement de développement
 
 ##==##
-<!-- .slide: -->
+<!-- .slide: class="two-column" -->
 
 # Configuration de l’environnement de développement
 
 ## Aides au développement
-
-<img style="position:fixed;top:15px;right:3px;height:700px" src="./assets/images/ide.png">
-
 
 * Mise en forme
 * Auto-completion
@@ -21,14 +18,13 @@ Liens :
 * [VScode : hashicorp.terraform](https://marketplace.visualstudio.com/items?itemName=hashicorp.terraform)
 * [Hashivim](https://github.com/hashivim/vim-terraform)
 * [Intellij : Terraform](https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support)
+##--##
+<img src="./assets/images/ide.png">
 
 ##==##
-<!--.slide: class="two-column-layout"-->
+<!--.slide: class="two-column"-->
 
-# Configuration de l’environnement de développement
-
-##--##
-<!-- .slide: class="with-code-bg-dark" -->
+## Configuration de l’environnement de développement
 
 <br/>
 
@@ -39,11 +35,9 @@ https://github.com/terraform-docs/terraform-docs
 ```bash
 terraform-docs md . > README.md
 ```
-<!-- .element: class="big-code" -->
-
+<!-- .element: class="consolas" -->
 
 ##--##
-<!-- .slide: class="center" -->
 
 ![float-center w-700](./assets/images/g418fd663c2_0_746.png)
 

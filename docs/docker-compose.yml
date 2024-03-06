@@ -1,10 +1,10 @@
 version: "3"
 services:
   npx:
-    image: node:12.18
-    command: npx serve
+    image: node:20.11
+    command: bash -c "npm install --ignore-scripts && npm start"
     volumes:
     - .:/sources
     working_dir: /sources
     ports:
-    - 5000:5000
+    - 4242:4242

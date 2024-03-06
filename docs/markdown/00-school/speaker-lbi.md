@@ -12,4 +12,4 @@
 <!-- .element: class="icon-rule icon-first" -->
 
 ### billiet.l@sfeir.com
-<!-- .element: class="icon-mail icon-third" -->
+<!-- .element: class="icon-third" -->

@@ -7,8 +7,6 @@
 
 # HashiCorp Configuration Language (HCL)
 
-<br/>
-
 https://github.com/hashicorp/hcl
 
 Langage de configuration développé par HashiCorp et ré-utilisé dans ses différents produits. Uniquement déclaratif, il est associé au HIL (HashiCorp Interpolation Language) lorsqu’il faut calculer des valeurs.
@@ -18,8 +16,6 @@ Langage de configuration développé par HashiCorp et ré-utilisé dans ses diff
 <!-- .slide: -->
 
 # HashiCorp Configuration Language (HCL)
-
-<br/>
 
 ## Mots clefs pour Terraform :
 * **provider, variable, resource, module, output, data**
@@ -31,8 +27,6 @@ Langage de configuration développé par HashiCorp et ré-utilisé dans ses diff
 <!-- .slide:-->
 
 # HashiCorp Configuration Language (HCL)
-
-<br/>
 
 ## Type de variables
 
@@ -52,8 +46,6 @@ Contrairement à la map, tous les champs d'un object sont de même type
 <!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
-
-<br/>
 
 ## Exemple
 
@@ -81,8 +73,6 @@ resource "google_compute_instance" "instance" {
 
 # HashiCorp Configuration Language (HCL)
 
-<br/>
-
 ## Variables
 
 Les variables permettent d’adapter les attributs en fonction de différents critères comme l’environnement, le type d’application, etc…
@@ -109,8 +99,6 @@ tags    = "tag:${var.tag}" // avec expansion
 
 # HashiCorp Configuration Language (HCL)
 
-<br/>
-
 ## Variables : Custom validation rules
 
 Le developpeur peut imposer aux utilisateurs des contraintes sur la valeur des variables, telles que :
@@ -136,8 +124,6 @@ variable "id" {
 <!-- .slide: class="with-code-bg-dark" -->
 # HashiCorp Configuration Language (HCL)
 
-<br/>
-
 ## Variables : le récap
 
 Les variables supportent les attributs suivant :
@@ -151,8 +137,6 @@ Les variables supportent les attributs suivant :
 <!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
-
-<br/>
 
 ## Variables locales
 
@@ -169,7 +153,6 @@ locals {
   instance_ids = concat(aws_instance.blue.*.id, aws_instance.green.*.id)
 }
 ```
-<!-- .element: class="big-code" -->
 
 Utilisation :
 ```hcl-terraform
@@ -177,14 +160,11 @@ resource "..." "..." {
   instance_names = [local.instance_names]
 }
 ```
-<!-- .element: class="big-code" -->
 
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
 
 # HashiCorp Configuration Language (HCL)
-
-<br/>
 
 ## Provider
 
@@ -199,8 +179,6 @@ Le provider fournit un ensemble de primitives permettant de lire, créer, modifi
 ##==##
 
 # HashiCorp Configuration Language (HCL)
-
-<br/>
 
 ## Provider
 
@@ -232,8 +210,6 @@ export GOOGLE_REGION="us-central1"
 
 # HashiCorp Configuration Language (HCL)
 
-<br/>
-
 ## Resource
 Les ressources sont les composantes de l’infrastructure.
 Elles peuvent être une instance, un loadbalancer, une règle firewall, etc, …<br/>
@@ -255,8 +231,6 @@ resource "google_compute_firewall" "default" {
 <!-- .slide:-->
 
 # HashiCorp Configuration Language (HCL)
-
-<br/>
 
 ## Resource - Meta-arguments
 
@@ -282,8 +256,6 @@ provider : Permet de surcharger le provider de la ressource par exemple lors de 
 
 # HashiCorp Configuration Language (HCL)
 
-<br/>
-
 ## Output
 
 Les outputs sont affichés en surbrillance à la fin du déploiement Terraform.
@@ -302,8 +274,6 @@ output "addresses" {
 <!-- .slide: class="with-code-bg-dark"-->
 
 # HashiCorp Configuration Language (HCL)
-
-<br/>
 
 ## Data source
 
@@ -324,8 +294,6 @@ image = data.google_compute_image.my_image.self_link
 <!-- .slide:-->
 
 # HashiCorp Configuration Language (HCL)
-
-<br/>
 
 ## Module
 
@@ -510,8 +478,8 @@ Values passed within definition files or with -var will take precedence over TF_
 <!-- .slide: class="with-code-bg-dark"-->
 
 # HCL-extended
-
-Avant le version 0.12, Terraform était composé de deux langages :
+##
+Avant la version 0.12, Terraform était composé de deux langages :
 * le **HCL** (HashiCorp Configuration Language) pour la déclaration des resources, les inputs, les outputs, ...
 * le **HIL** (HashiCorp Interpolation Language) pour permettre aux utilisateurs de manipuler la donnée (utilisation de variable, modification de la casse, création de liste, ..).
 
@@ -523,8 +491,7 @@ Depuis la version 0.12, HCL et HIL ont fusionné.
 <!-- .slide: class="with-code-bg-dark"-->
 
 # HCL-extended
-
-
+##
 Il est possible de manipuler des variables, récupérer des attributs d’autres ressources ou utiliser des fonctions native directement dans notre code :
 
 ```hcl-terraform
@@ -557,8 +524,6 @@ Par exemple : `"${data.template_file.example.rendered}"`
 
 # HCL extended (also known as HIL)
 
-<br/>
-
 ## Lier les attributs
 
 Il est possible de lire la valeur d’un attribut d’une ressource, d’une source de donnée, d’une variable, …
@@ -574,8 +539,6 @@ Cas d’une liste de resource : `resource_type.resource_name[<index>].attribut`
 <!-- .slide: class="with-code-bg-dark"-->
 
 # HCL extended (also known as HIL)
-
-<br/>
 
 Il existe de nombreuses fonctions [documentées en ligne](https://www.terraform.io/docs/language/functions/index.html).
 
@@ -593,8 +556,6 @@ Exemple d’utilisation :
 
 # HCL extended (also known as HIL)
 
-<br/>
-
 ## Boucles
 
 Terraform permet de déployer plusieurs ressources de même type via une unique déclaration en utilisant le “meta-argument" for_each(ou count).<br/>
@@ -605,8 +566,6 @@ Terraform permet de déployer plusieurs ressources de même type via une unique 
 <!-- .slide: class="with-code-bg-dark"-->
 
 # HCL extended (also known as HIL)
-
-<br/>
 
 ## Boucles
 
@@ -627,8 +586,6 @@ resource "vault_ldap_auth_backend_group" "group-users" {
 
 # HCL extended (also known as HIL)
 
-<br/>
-
 ## Conditions
 
 Les conditions permettent de définir des valeurs différentes en fonction des variables ou d’autres attributs.
@@ -643,8 +600,6 @@ resource "google_compute_instance" "web" {
 <!-- .slide: class="with-code-bg-dark"-->
 
 # HCL extended (also known as HIL)
-
-<br/>
 
 ## Dynamic blocks
 
@@ -676,8 +631,6 @@ Généralement, ces blocs peuvent être présent plusieurs fois dans une même r
 
 # HCL extended (also known as HIL)
 
-<br/>
-
 ## Dynamic blocks
 
 Pour générer dynamiquement ces blocs, vous aurez besoin d'écrire des "[Dynamic blocks](https://www.terraform.io/language/expressions/dynamic-blocks)" :
@@ -692,6 +645,13 @@ variable "lifecycle_rules" {
   )
 }
 ```
+<!-- .element class="big-code" -->
+##==##
+<!-- .slide: class="with-code-bg-dark"-->
+
+# HCL extended (also known as HIL)
+
+## Dynamic blocks (suite)
 
 ```hcl-terraform
 resource "google_storage_bucket" "auto-expire" {
@@ -712,7 +672,9 @@ resource "google_storage_bucket" "auto-expire" {
 }
 ```
 
-Contrairement à un *for_each* sur une resource, ici, la variable permettant d'accéder aux éléments est le nom du "dynamic block" par défaut (ici: *lifecycle_rule*). Vous pouvez spécifier un autre nom pour cette variable avec "iterator = *name*"
+Contrairement à un *for_each* sur une resource, ici, la variable permettant d'accéder aux éléments est le nom du "dynamic block" par défaut (ici: *lifecycle_rule*). 
+
+Vous pouvez spécifier un autre nom pour cette variable avec "iterator = *name*"
 
 ##==##
 <!-- .slide:-->
