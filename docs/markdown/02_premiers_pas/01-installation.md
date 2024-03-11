@@ -20,7 +20,6 @@ Le logiciel est sous la forme d’un binaire (pré-compilé pour différents OS)
 <!-- .slide: -->
 
 # Le choix de l'IDE
-<br/>
 
 Plusieurs IDE disponibles :
 * Intellij

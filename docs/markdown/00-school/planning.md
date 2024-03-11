@@ -46,13 +46,19 @@ Jour 2 : Collaboration et production
 # Déroulement de la formation
 <br>
 
-## MODULE 3 : Les langages
+## MODULE 3 : Langage HCL (HashiCorp Configuration Language)
 
-* 'HCL': HashiCorp Configuration Language
 * Variables, ressources, providers et outputs
 * Cycle de vie des ressources
 * Atelier: Premier déploiement d’infrastructure
-* 'HIL': HashiCorp Interpolation Language
+
+##==##
+<!-- .slide:  -->
+# Déroulement de la formation
+<br>
+
+## MODULE 4 : Langage HIL (HashiCorp Interpolation Language)
+
 * Expressions
 * Fonctions
 * Boucle et conditions
@@ -63,7 +69,7 @@ Jour 2 : Collaboration et production
 # Déroulement de la formation
 <br>
 
-## MODULE 4 : Configuration de l’environnement de développement
+## MODULE 5 : Configuration de l’environnement de développement
 
 * Mise en place d’aide au développement
 * Génération automatique de la documentation
@@ -76,7 +82,7 @@ Jour 2 : Collaboration et production
 # Déroulement de la formation
 <br>
 
-## MODULE 5 : Stratégie de tests
+## MODULE 6 : Stratégie de tests
 
 * Vue d’ensemble des différents outils de tests
 * L’exemple de inspec, inspec-iggy et kitchen-terrraform
@@ -87,7 +93,7 @@ Jour 2 : Collaboration et production
 # Déroulement de la formation
 <br>
 
-## MODULE 6 : Travail coopératif
+## MODULE 7 : Travail coopératif
 * Re-utilisation du code, découverte des modules
 * Gestion de la concurrence et de la persistance
 * Manipulation du fichier d’état
@@ -100,7 +106,7 @@ Jour 2 : Collaboration et production
 # Déroulement de la formation
 <br>
 
-## MODULE 7 : Utilisation en production
+## MODULE 8 : Utilisation en production
 * Remplacement de resources existantes
 * Utilisation des provisioners
 * Debugging
