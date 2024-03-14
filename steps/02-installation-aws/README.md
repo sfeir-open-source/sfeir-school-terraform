@@ -6,7 +6,7 @@
 
 #### Set up an AWS account
 
-Prior your training you should have configured yourself an AWS account : https://repost.aws/fr/knowledge-center/create-and-activate-aws-account
+Prior your training you should have [configured an AWS account](https://repost.aws/fr/knowledge-center/create-and-activate-aws-account)
 
 This account is necessary to complete the labs steps with Free Tier usage. 
 
@@ -18,7 +18,7 @@ These labs should not incur supplementary fees if you delete all the resources a
 
 Open the AWS Cloud Shell Console and wait a few seconds in order to have your environment set up. 
 
-Cloud Shell provides an integrated terminal where you can execute commands and persist files in the *$HOME* directory that will be kept between sessions.
+Cloud Shell provides an integrated terminal where you can execute commands and persist files in the *$HOME* directory that will be kept between sessions. You do not need to use Access Key / Secret Access Key as the CloudShell is running as your AWS Management Console user/role. 
 
 We will use tfenv, the terraform version manager to install the latest version of terraform in your home directory.
 
@@ -54,7 +54,7 @@ on linux_amd64
 
 #### Install on your own laptop
 
-If you prefer installing it manually on your own laptop, follow the instructions from HashiCorp website depending on your OS : https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+If you prefer installing it manually on your own laptop, follow [the instructions from HashiCorp website](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) depending on your OS
 
 To deploy resources on AWS, you will need to authenticate to the cloud provider using an AWS access key and a secret key. To set up those, go in your security credentials one logged in on the AWS UI by clicking on your username in the top right hand corner > Security Credentials.
 
