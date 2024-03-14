@@ -10,7 +10,7 @@ Prior your training you should have [configured an AWS account](https://repost.a
 
 This account is necessary to complete the labs steps with Free Tier usage. 
 
-These labs should not incur supplementary fees if you delete all the resources at each end of every workshop with the *terraform destroy* command. 
+:warning: These labs should not incur supplementary fees if you delete all the resources at each end of every workshop with the *terraform destroy* command. 
 
 ### Installation
 
