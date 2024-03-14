@@ -24,14 +24,14 @@ We will use tfenv, the terraform version manager to install the latest version o
 
 First, clone tfenv project and make a symlink to include the script bin in your *$PATH* :
 
-```shell
+```console
 $ git clone https://github.com/tfutils/tfenv.git ~/.tfenv
 $ mkdir ~/bin && ln -s ~/.tfenv/bin/* ~/bin/
 ```
 
 Then, install terraform latest version using *tfenv install* command :
 
-```shell
+```console
 $ tfenv install
 Installing Terraform v1.7.5
 Downloading release tarball from https://releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_linux_amd64.zip
@@ -62,7 +62,7 @@ Then, scroll down to Access keys and create and access key for your laptop.
 
 Set up these credentials as environment variables so that you can authenticate with :
 
-```shell
+```console
 $ export AWS_ACCESS_KEY_ID=YOURAWSACCESSKEYID
 $ export AWS_SECRET_ACCESS_KEY=YOURAWSSECRETACCESSKEY
 ```
@@ -75,7 +75,7 @@ For all the labs, the eu-west-1 region will be used. In AWS UI, choose  "EU (Ire
 
 In the Cloud Console or on your laptop, set the proper environment variable to configure the default region for your AWS CLI session :
 
-```shell
+```console
 $ export AWS_DEFAULT_REGION=eu-west-1
 ```
 
@@ -97,22 +97,22 @@ All configurations can be found on : [https://www.terraform.io/docs/commands/cli
 ### Verification
 
 Clone this repository on the Cloud Shell.
-```shell
-git clone https://github.com/sfeir-open-source/sfeir-school-terraform.git
+```console
+$ git clone https://github.com/sfeir-open-source/sfeir-school-terraform.git
 ```
 
 Go in `steps/02-installation-solution/`
 
 Initialize a new terraform environment and deploy the infrastructure :
 
-```shell
-terraform init
-terraform apply
+```console
+$ terraform init
+$ terraform apply
 ```
 
 Result should be
 
-```text
+```console
 null_resource.check-version: Creating...
 null_resource.check-version: Creation complete after 0s [id=3277091548522954865]
 
