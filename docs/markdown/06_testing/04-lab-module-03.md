@@ -1,5 +1,5 @@
 <!-- .slide: class="exercice" -->
 
-# Intégration continue avec Terraform
+# Terraform Testing
 
 ## Atelier
