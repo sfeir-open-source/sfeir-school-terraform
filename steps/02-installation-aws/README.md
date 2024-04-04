@@ -86,6 +86,7 @@ In the Cloud Console or on your laptop, set the proper environment variable to c
 ```console
 $ export AWS_DEFAULT_REGION=eu-west-1
 ```
+You can set the default region when you configure your credentials with `aws configure`
 
 #### Cache Terraform providers
 
