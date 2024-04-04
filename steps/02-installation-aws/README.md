@@ -66,6 +66,14 @@ Set up these credentials as environment variables so that you can authenticate w
 $ export AWS_ACCESS_KEY_ID=YOURAWSACCESSKEYID
 $ export AWS_SECRET_ACCESS_KEY=YOURAWSSECRETACCESSKEY
 ```
+Or you can use the AWS cli to configure your credentials.
+Prior to configure your credentials, you will have to install the [AWS cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+After the installation you can use
+```console
+aws configure
+```
+
+You will be prompted to fill out your Access Key ID and AWS Secret Access Key. You can also set the default AWS region.
 
 ### Configuration 
 
