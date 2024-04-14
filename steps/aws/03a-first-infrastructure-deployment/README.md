@@ -10,7 +10,7 @@ Depending on where you are running terraform, the provider needs AWS credentials
 
 ### Your first AWS EC2 instance
 
-Create a new AWS instance in a new subnet located in a new VPC (CIDR=10.0.0.0/16) using the following settings :
+Create a new AWS instance in a new subnet located in a new VPC (CIDR=10.0.0.0/16) named "Development", using the following settings :
 
 | Property | Value |
 | - | - |
@@ -22,7 +22,7 @@ Create a new AWS instance in a new subnet located in a new VPC (CIDR=10.0.0.0/16
 
 Tip : To configure the Amazon Machine Image on the instance, you will have to use a datasource object to get the AMI's id. You can search in the AWS console's AMI catalog to get the AMI name to configure the datasource.
 
-Instance name should be prompted to user using variable (see variables.tf). Please use your name as instance name to avoid name clash with other participants.
+VPC and Instance names should be prompted to user using variable (see variables.tf). Please use your name as instance name to avoid name clash with other participants.
 
 To find all resource attributes, you can search in the aws provider's documentation by following the link provided above.
 
