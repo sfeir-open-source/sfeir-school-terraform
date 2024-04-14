@@ -20,36 +20,32 @@ Open the AWS Cloud Shell Console and wait a few seconds in order to have your en
 
 Cloud Shell provides an integrated terminal where you can execute commands and persist files in the *$HOME* directory that will be kept between sessions. You do not need to use Access Key / Secret Access Key as the CloudShell is running as your AWS Management Console user/role. 
 
-We will use tfenv, the terraform version manager to install the latest version of terraform in your home directory.
+We will use tenv, the terraform version manager to install the latest version of terraform in your home directory.
 
 First, clone tfenv project and make a symlink to include the script bin in your *$PATH* :
 
 ```console
-$ git clone https://github.com/tfutils/tfenv.git ~/.tfenv
-$ mkdir ~/bin && ln -s ~/.tfenv/bin/* ~/bin/
+$  curl -L https://github.com/tofuutils/tenv/releases/download/v1.7.1/tenv_v1.7.1_386.rpm -o tenv_v1.7.1_386.rpm && sudo yum install tenv_v1.7.1_386.rpm -y && rm tenv_v1.7.1_386.rpm
 ```
 
-Then, install terraform latest version using *tfenv install* command :
+Then, install terraform latest version using *tenv install* command (tenv can also be used to install opentofu, the forked version of terraform):
 
 ```console
-$ tfenv install
-Installing Terraform v1.7.5
-Downloading release tarball from https://releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_linux_amd64.zip
-############################################################################################################################################################################################ 100.0%
-Downloading SHA hash file from https://releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_SHA256SUMS
-Not instructed to use Local PGP (/home/cloudshell-user/.tfenv/use-{gpgv,gnupg}) & No keybase install found, skipping OpenPGP signature verification
-terraform_1.7.5_linux_amd64.zip: OK
-Archive:  /tmp/tfenv_download.999R9s/terraform_1.7.5_linux_amd64.zip
-  inflating: /home/cloudshell-user/.tfenv/versions/1.7.5/terraform  
-Installation of terraform v1.7.5 successful. To make this your default version, run 'tfenv use 1.7.5'
-
-$ tfenv use 1.7.5
-Switching default version to v1.7.5
-Default version (when not overridden by .terraform-version or TFENV_TERRAFORM_VERSION) is now: 1.7.5
+$ tenv tf install
+No version files found for Terraform, fallback to latest strategy
+Fetching all releases information from https://releases.hashicorp.com/terraform/index.json
+Found compatible version remotely : 1.8.0
+Installing Terraform 1.8.0
+Fetching release information from https://releases.hashicorp.com/terraform/1.8.0/index.json
+Downloading https://releases.hashicorp.com/terraform/1.8.0/terraform_1.8.0_linux_386.zip
+Downloading https://releases.hashicorp.com/terraform/1.8.0/terraform_1.8.0_SHA256SUMS
+Downloading https://releases.hashicorp.com/terraform/1.8.0/terraform_1.8.0_SHA256SUMS.sig
+Downloading https://www.hashicorp.com/.well-known/pgp-key.txt
+Installation of Terraform 1.8.0 successful
 
 $ terraform -version
-Terraform v1.7.5
-on linux_amd64
+Terraform v1.8.0
+on linux_386
 ```
 
 #### Install on your own laptop
