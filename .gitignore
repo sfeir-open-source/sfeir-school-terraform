@@ -68,7 +68,7 @@ typings/
 
 #Dev
 docs/test.html
-.terraform/
+.terraform*
 terraform.tfstate.d/
 terraform.tfstate
 terraform.tfstate.backup
