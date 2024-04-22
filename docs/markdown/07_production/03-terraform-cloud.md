@@ -50,17 +50,17 @@ Exemple : interdire toute création d'un security group AWS permettant la sortie
 import "tfplan/v2" as tfplan
 
 security_groups = filter tfplan.resource_changes as _, rc {
- rc.mode is "managed" and
+  rc.mode is "managed" and
   rc.type is "aws_security_group" and
   rc.actions is not ["delete"]
 }
 
 main = rule {
- all security_groups as _, sg {
-  all sg.change.after.egress as egress {
-   egress.cidr_blocks not contains "0.0.0.0/0"
+  all security_groups as _, sg {
+    all sg.change.after.egress as egress {
+      egress.cidr_blocks not contains "0.0.0.0/0"
+    }
   }
- }
 }
 ```
 
