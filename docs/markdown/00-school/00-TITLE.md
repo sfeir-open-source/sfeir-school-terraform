@@ -10,7 +10,7 @@
 
 <br>
 
-### Wifi available 
+### Wifi available
 
 <br>
 
@@ -30,7 +30,7 @@ Credentials
 <!-- .slide:  -->
 # Déroulement de la formation
 
-<br/>
+<br>
 
 C'est quand la pause ?<br>
 Quand est-ce qu'on mange ?<br>

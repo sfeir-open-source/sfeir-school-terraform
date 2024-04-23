@@ -24,10 +24,10 @@ Learn to create development environments with Vagrant
 Learn to build automated machine images with Packer
 
 ##==##
-<!-- .slide: -->
 
 # Introduction à Terraform
-<br/>
+
+<br>
 
 * Enjeux de l’infrastructure
 * Automatisation de l’infrastructure
@@ -48,13 +48,12 @@ Multiples plateformes d’hébergements => Utiliser le meilleur de chaque cloud 
 Réduire les coûts => Dé-allouer sans risques les ressources inutiles, créer des environnements éphémères (build CI), ...
 
 ##==##
-<!-- .slide: -->
 
 # Introduction à Terraform
 
 ![h-500 float-left](./assets/images/g418fd663c2_0_187.png)
 
-<br/><br/><br/><br/>
+<br><br><br><br>
 Write, Plan, and Create Infrastructure as Code
 
 Notes:
