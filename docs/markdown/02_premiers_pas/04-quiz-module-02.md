@@ -74,7 +74,7 @@ _Question_ : Comment observer le déploiement d'une infrastructure sans l'exécu
 
 <br>
 
-_Question_ : Qu'est-ce que n'est pas terraform ?
+_Question_ : Qu'est-ce que **n'est pas** terraform ?
 
 <br>
 

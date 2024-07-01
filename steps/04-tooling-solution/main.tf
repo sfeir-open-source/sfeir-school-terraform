@@ -1,6 +1,6 @@
 resource "google_compute_firewall" "dns-ingress" {
-  project       = var.gcp_project
-  name          = "allow-dns"
+  # project       = var.gcp_project
+  name          = "allow-dns-solution"
   network       = "default"
   description   = "Allow Ingress DNS from all networks"
   target_tags   = ["dns-server"]
