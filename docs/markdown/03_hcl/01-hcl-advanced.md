@@ -34,7 +34,7 @@ resource "google_compute_instance" "instance" {
  name         = "demo"
  machine_type = "n1-standard-1"
  zone         = "europe-west1-a"
- tags = ["web"]
+ tags         = ["web"]
  boot_disk {
    initialize_params {
      image = "debian-cloud/debian-12"
