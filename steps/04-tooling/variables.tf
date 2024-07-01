@@ -1,5 +1,9 @@
 variable "allowed_config" {
-  type = list
+  type = list(object({
+    ports    = list(string)
+    protocol = string
+  }))
+
   default = [
     {
       ports    = ["53"]
