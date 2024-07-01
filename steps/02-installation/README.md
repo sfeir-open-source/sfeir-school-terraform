@@ -31,7 +31,8 @@ And download the latest version using (must be at least 1.6.0 for testing featur
 
 ```shell
 curl https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip -o /tmp/terraform_${TF_VERSION}_linux_amd64.zip
-sudo unzip /tmp/terraform_${TF_VERSION}_linux_amd64.zip -d /usr/bin/
+sudo unzip /tmp/terraform_${TF_VERSION}_linux_amd64.zip -d $HOME/bin
+bash -l
 ```
 
 ### Configuration
