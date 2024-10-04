@@ -1,9 +1,6 @@
-resource "aws_vpc" "my_vpc" {
-  # Configure your vpc
-}
 
-resource "aws_subnet" "my_subnet" {
-  # Configure your subnet
+terraform {
+  required_version = ">= 0.12"
 }
 
 resource "aws_instance" "my_instance" {

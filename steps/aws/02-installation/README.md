@@ -22,7 +22,7 @@ Cloud Shell provides an integrated terminal where you can execute commands and p
 
 We will use tenv, the terraform version manager to install the latest version of terraform in your home directory.
 
-First, clone tfenv project and make a symlink to include the script bin in your *$PATH* :
+First, clone tenv project and make a symlink to include the script bin in your *$PATH* :
 
 ```console
 $  curl -L https://github.com/tofuutils/tenv/releases/download/v1.7.1/tenv_v1.7.1_386.rpm -o tenv_v1.7.1_386.rpm && sudo yum install tenv_v1.7.1_386.rpm -y && rm tenv_v1.7.1_386.rpm
@@ -62,6 +62,7 @@ Set up these credentials as environment variables so that you can authenticate w
 $ export AWS_ACCESS_KEY_ID=YOURAWSACCESSKEYID
 $ export AWS_SECRET_ACCESS_KEY=YOURAWSSECRETACCESSKEY
 ```
+
 Or you can use the AWS cli to configure your credentials.
 Prior to configure your credentials, you will have to install the [AWS cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 After the installation you can use
@@ -106,7 +107,7 @@ Clone this repository on the Cloud Shell.
 $ git clone https://github.com/sfeir-open-source/sfeir-school-terraform.git
 ```
 
-Go in `steps/02-installation-solution/`
+Go in `steps/02-installation/`
 
 Initialize a new terraform environment and deploy the infrastructure :
 
