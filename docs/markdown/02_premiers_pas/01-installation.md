@@ -26,7 +26,7 @@ Plusieurs IDE disponibles :
 
 - Intellij
 - Atom
-- Visual Studio Code
+- Visual Studio Code (VSCode)
 - Sublime Text
 - VIM
 
