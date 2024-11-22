@@ -22,7 +22,7 @@ function configurationSlides() {
 }
 
 function strategieTestsSlides() {
-  return ['05_testing/00-TITLE.md', '05_testing/01-overview.md', '05_testing/02-examples-aws.md', '05_testing/03-quiz-module-05.md', '05_testing/04-lab-module-03.md'];
+  return ['05_testing/00-TITLE.md', '05_testing/01-overview.md', '05_testing/02-examples-aws.md', '05_testing/03-quiz-module-05.md', '05_testing/04-lab-module-05.md'];
 }
 
 function travailCoopSlides() {
