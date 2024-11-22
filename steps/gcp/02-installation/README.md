@@ -27,28 +27,12 @@ export TF_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraf
 echo $TF_VERSION
 ```
 
-And download the latest version using (must be at least 1.6.0):
+And download the latest version using (must be at least 1.6.0 for testing features):
 
 ```shell
 curl https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip -o /tmp/terraform_${TF_VERSION}_linux_amd64.zip
-sudo unzip /tmp/terraform_${TF_VERSION}_linux_amd64.zip -d /usr/bin/
-```
-
-Notes : It's recommended to keep old Terraform version because the version is saved in state file you will see later.
-You can keep multiples versions of terraform using different binaries with the suffix "version".
-
-Exemple :
-
-```shell
-$ ls -all /usr/local/bin/terraform*
-lrwxrwxrwx 1 root     root           17 mai   10 14:52 /usr/local/bin/terraform -> terraform_0.11.13
--rwxrwxr-x 1 jnahelou jnahelou 53293024 août  30  2017 /usr/local/bin/terraform_0.10.3
--rwxrwxr-x 1 jnahelou jnahelou 89397536 oct.  23  2018 /usr/local/bin/terraform_0.11.10
--rwxrwxr-x 1 jnahelou jnahelou 86015168 mars  12 19:37 /usr/local/bin/terraform_0.11.13
--rwxrwxr-x 1 jnahelou jnahelou 37858048 mai   16 22:43 /usr/local/bin/terraform_0.11.14
--rwxrwxr-x 1 jnahelou jnahelou 69233984 janv. 31  2018 /usr/local/bin/terraform_0.11.3
--rwxr-xr-x 1 jnahelou jnahelou 49191072 juin  24 22:10 /usr/local/bin/terraform_0.12.3
--rwxr-xr-x 1 jnahelou jnahelou 49007328 août  22 22:00 /usr/local/bin/terraform_0.12.7
+unzip /tmp/terraform_${TF_VERSION}_linux_amd64.zip -d $HOME/bin
+bash -l
 ```
 
 ### Configuration

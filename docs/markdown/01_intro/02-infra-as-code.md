@@ -1,4 +1,3 @@
-<!-- .slide: -->
 
 # Introduction à Terraform
 
@@ -13,11 +12,11 @@
   * mettre à jour massivement
 
 ##==##
-<!-- .slide: -->
 
 # Introduction à Terraform
 
 ## Principaux avantages de l’Infra As Code
+
 * Adoption des bonnes pratiques liées au monde du développement
   * Versioning (réutilisation et partage du code, gestion des versions, traçabilité, suivi des incidents, revue de code et backup)
   * Documentation
@@ -34,14 +33,11 @@ Traceability : Who did this modification ?!
 
 Backup : OMG I lost all of my changes...
 
-
-
 Documentation : Le code est lisible et commenté
 
 Testing : chaque ressource est testée et correspond au besoin fonctionnel
 
 ##==##
-<!-- .slide: -->
 
 # Introduction à Terraform
 
@@ -52,16 +48,15 @@ Testing : chaque ressource est testée et correspond au besoin fonctionnel
   * les templates ont été validés et respectent bien l’urbanisation de l’entreprise
 
 ##==##
-<!-- .slide:-->
 
 # Introduction à Terraform
+
 ![](./assets/images/g418fd663c2_0_203.png)
 
 Notes:
 Le développer a à sa disposition un ensemble de modules développés par les équipes d’infrastructure pour déployer ses environnements/applications tout en respectant les règles de sécurité et d’urbanisation
 
 ##==##
-<!-- .slide: -->
 
 # Terraform
 
@@ -69,20 +64,26 @@ Le développer a à sa disposition un ensemble de modules développés par les �
 
 ![float-left h-300](./assets/images/g418fd663c2_0_224.png)
 
-* https://github.com/hashicorp/terraform
+* <https://github.com/hashicorp/terraform>
 
-  * 32k+ stars
-  * 1600+ contributeurs
+  * 40k+ stars
+  * 1700+ contributeurs
+
+* Open source jusqu'en janvier 2024 puis sous licence BSL depuis
 
 Notes:
-Produit OpenSouce développé en Go
+Produit développé en Go.
+Open source jusqu'au 1er Janvier 2024 puis sous license BSL (Business Source License) depuis
+
+Suite à ce changement de licence, un fork a vu le jour : OpenTofu
 
 ##==##
+
 <!-- .slide: class="flex-row"-->
 
 # Terraform
-Workflow agnostic != Cloud agnostic
 
+Workflow agnostic != Cloud agnostic
 
 ![](./assets/images/g418fd663c2_0_213.png)
 
@@ -107,16 +108,19 @@ Terraform analyse les ressources et dépendances puis construit un graphe puis p
 <!-- .slide -->
 
 # Les versions
+
 <br>
 
 Pour nommer ses versions, Terraform utilise du semantic versioning (`x.y.z`)
-- x est le numéro de la version majeure
-- y est l'incrément de la version mineure
-- z est le niveau de correctif
+
+* x est le numéro de la version majeure
+* y est l'incrément de la version mineure
+* z est le niveau de correctif
 
 Il existe de nombreuses incompatibilités entre les versions (dans le code mais aussi dans le fonctionnement interne).
 
 Exemples :
+
 * une infrastructure déployée en Terraform 0.11 necessitera d'être raffraichi sur chaque version mineure pour pouvoir évoluer en Terraform 1.0.0<>
 * des évolutions sont ajoutées régulièrement dans le langage (types, boucles, ...), il n'est pas possible d'utiliser du code développé en 0.12 en 0.11
 
@@ -127,6 +131,7 @@ Expliquer l'historique des versions
 <!-- .slide -->
 
 # Pourquoi une 1.0.0 ?
+
 <br>
 
 Ce qu'il faut retenir de la version 1.0 :

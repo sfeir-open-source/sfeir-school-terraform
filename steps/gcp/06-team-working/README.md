@@ -9,10 +9,11 @@ If you are in a SFEIR training session, your trainer will give you information a
 If you do the lab autonomously, feel free to create your own Vault cluster with [HashiCorp Cloud Platform](https://www.hashicorp.com/cloud). HashiCorp give free credit (50$) that allow you to create a Vault cluster without a credit card.
 
 * Configure environment variables to use the cluser using vault CLI
-```
-export VAULT_ADDR=https://vault-cluster.vault.xxxx.aws.hashicorp.cloud:8200
-export VAULT_NAMESPACE=admin
-export VAULT_TOKEN=hvs.XXXXXXXXXXXXXXXXXXX
+
+```shell
+export VAULT_ADDR="https://vault-cluster.vault.xxxx.aws.hashicorp.cloud:8200"
+export VAULT_NAMESPACE="admin"
+export VAULT_TOKEN="hvs.XXXXXXXXXXXXXXXXXXX"
 ```
 
 ### Play with Vault CLI
@@ -23,8 +24,8 @@ Follow [Vault installation methods](https://www.vaultproject.io/downloads) or us
 
 ```shell
 export VAULT_VERSION=1.14.3
-wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
-sudo unzip vault_${VAULT_VERSION}_linux_amd64.zip -d /usr/bin/
+curl https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip -o /tmp/vault_${VAULT_VERSION}_linux_amd64.zip
+unzip /tmp/vault_${VAULT_VERSION}_linux_amd64.zip -d /home/bin
 ```
 
 On MacOS, you can use : `brew install vault`
@@ -32,9 +33,6 @@ On MacOS, you can use : `brew install vault`
 Usage example :
 
 ```shell
-# Login to the vault server
-export VAULT_TOKEN=hvs.XXXXXXXXXXXXXXXXXXX
-
 # Create a key-value secret
 vault kv put secret/<your_name> user=demo password=password
 
