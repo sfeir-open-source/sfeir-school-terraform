@@ -25,13 +25,13 @@
   },
   "homepage": "https://github.com/sfeir-open-source/sfeir-school-terraform",
   "dependencies": {
-    "sfeir-school-theme": "^3.1.0"
+    "sfeir-school-theme": "^3.2.0"
   },
   "devDependencies": {
     "chokidar-cli": "^3.0.0",
     "live-server": "^1.2.1",
     "parallelshell": "3.0.1",
-    "prettier": "^3.2.5", 
+    "prettier": "^3.2.5",
     "sass": "^1.75.0",
     "shelljs": "^0.8.5"
   },
