@@ -13,7 +13,7 @@ Langage de configuration développé par HashiCorp et ré-utilisé dans ses diff
 ## Mots clefs pour Terraform
 
 * **provider, variable, resource, module, output, data**
-* Commentaires via # ou /\* … \*/
+* Commentaires via # ou /\* … \*/ ou bien encore //
 * Les valeurs sont assignées avec cette syntaxe : `key = value`
 * Multi-line via <<EOF … EOF
 
@@ -34,7 +34,7 @@ resource "google_compute_instance" "instance" {
  name         = "demo"
  machine_type = "n1-standard-1"
  zone         = "europe-west1-a"
- tags = ["web"]
+ tags         = ["web"]
  boot_disk {
    initialize_params {
      image = "debian-cloud/debian-12"

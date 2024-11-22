@@ -11,7 +11,7 @@ Do it using :
 * the old way (using count terraform 0.11)
 * Using new terraform 0.12 for\_each way.
 
-*Hints* : Refer to `google_storage_bucket` and `google_storage_bucket_object` to create bucket and to put objects.
+*Hints* : Refer to `google_storage_bucket` ([doc](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket)) and `google_storage_bucket_object` ([doc](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_object)) to create bucket and to put objects.
 
 | Property | Value |
 | - | - |
