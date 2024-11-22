@@ -1,6 +1,6 @@
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HCL extended (also known as HIL)
+# HCL Extended
 
 ## Conditions
 

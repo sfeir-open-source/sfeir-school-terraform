@@ -7,7 +7,7 @@
 Cette commande permet d’initialiser le répertoire de travail courant.
 
 * Lit le fichier configuration personnel ~/.terraformrc si existant
-* Télécharge les providers et provisioners nécessaires (officiels) sur <https://registry.hashicorp.com/>
+* Télécharge les providers et provisioners nécessaires (officiels) sur <https://registry.terraform.io/>
 * Instancie le fichier d’état (local ou distant)
 * Effectue un “terraform get“ si nécessaire.
 * Un fichier *.terraform.lock.hcl* sera automatiquement créé pour garantir l'intégrité des dépendances
@@ -29,6 +29,7 @@ Cette commande est utilisée pour télécharger les modules hébergés hors du r
 <br>
 
 Les modules ainsi téléchargés seront stockés dans le dossier “.terraform” du répertoire courant (appelé root module).
+En général non utilisé car intégré à la commande terraform init
 
 ##==##
 
@@ -65,3 +66,6 @@ Lors de l'exécution de cette commande, terraform effectue les appels APIs sur l
 ## Terraform destroy
 
 Terraform destroy décommissionne les ressources présentes (et uniquement) dans le fichier d’état. Il ne modifie pas les ressources dont il n’a pas connaissance.
+
+Notes:
+Conseil : à chaque fois que l'on effectue des tests de déploiement sur un cloud public => bien penser à faire un destroy de l'infra

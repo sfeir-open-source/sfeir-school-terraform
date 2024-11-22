@@ -74,6 +74,6 @@ module "gke-regional" {
 Les modules peuvent être gérés comme des packages.
 
 - [semantic-release](https://semantic-release.gitbook.io/semantic-release/) : automatiser la gestion des versions (CHANGELOG, incréments, ...) et la publication des packages
-- [Dependabot](https://dependabot.com/terraform/) : gestion de l'obsolescence
+- [Dependabot](https://dependabot.com/terraform/) ou [renovatebot](https://github.com/renovatebot/renovate): gestion de l'obsolescence
 - terraform-docs (module-4) : générer la documentation
 - CODEOWNERS : identifier, notifier et autoriser uniquement les changements via les code owners

@@ -62,20 +62,22 @@ Le développer a à sa disposition un ensemble de modules développés par les �
 
 ## Produit Open-source
 
-![float-left h-300](./assets/images/g418fd663c2_0_224.png)
+![float-left h-200](./assets/images/g418fd663c2_0_224.png)
 
 * <https://github.com/hashicorp/terraform>
 
   * 40k+ stars
   * 1700+ contributeurs
+  * Open source jusqu'en janvier 2024 puis sous licence BSL depuis
 
-* Open source jusqu'en janvier 2024 puis sous licence BSL depuis
+* Suite à ce changement de licence, un fork sous licence MPLv2 vu le jour : [OpenTofu](https://opentofu.org)
+
 
 Notes:
 Produit développé en Go.
-Open source jusqu'au 1er Janvier 2024 puis sous license BSL (Business Source License) depuis
-
-Suite à ce changement de licence, un fork a vu le jour : OpenTofu
+Open source jusqu'au 1er Janvier 2024 puis sous license BSL (Business Source License) depuis. 
+En désaccord avec hashicorp, un fork opensource a été initié par la communauté : OpenTofu
+Même fonctionnalités / syntaxe que la version originale 
 
 ##==##
 

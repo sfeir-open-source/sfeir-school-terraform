@@ -1,6 +1,6 @@
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HCL extended (also known as HIL)
+# HCL Extended
 
 ## Dynamic blocks
 
@@ -24,14 +24,15 @@ resource "google_storage_bucket" "auto-expire" {
 
 Ce "lifecycle_rule" n'est pas pas un simple attribut qui accepte un map, mais c'est un "nested block".
 
+Notes:
 Généralement, ces blocs peuvent être présent plusieurs fois dans une même resource (pour définir plusieurs life_cycle_rule dans l'example).
 
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HCL extended (also known as HIL)
+# HCL Extended
 
-## Dynamic blocks
+## Dynamic blocks (suite)
 
 Pour générer dynamiquement ces blocs, vous aurez besoin d'écrire des "[Dynamic blocks](https://www.terraform.io/language/expressions/dynamic-blocks)" :
 
@@ -49,7 +50,7 @@ variable "lifecycle_rules" {
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HCL extended (also known as HIL)
+# HCL Extended
 
 ## Dynamic blocks (suite)
 
@@ -75,3 +76,6 @@ resource "google_storage_bucket" "auto-expire" {
 Contrairement à un *for_each* sur une resource, ici, la variable permettant d'accéder aux éléments est le nom du "dynamic block" par défaut (ici: *lifecycle_rule*).
 
 Vous pouvez spécifier un autre nom pour cette variable avec "iterator = *name*"
+
+Notes:
+Intéret = générer dynamiquement des nested-blocks à partir de variables, de datasources ou d'autres resources
