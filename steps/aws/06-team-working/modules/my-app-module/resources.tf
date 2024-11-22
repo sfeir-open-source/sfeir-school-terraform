@@ -3,5 +3,5 @@
 # }
 
 # Define the EC2 instance resources
-# resource "aws_instance" "myschoolapp_compute" {
+# resource "aws_instance" "myschoolapp_instance" {
 # }

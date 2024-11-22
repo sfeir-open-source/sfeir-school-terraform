@@ -6,6 +6,8 @@
 
 In this lab, you will have to build your first terraform module to deploy an entire environment for your app MySchoolApp. The application will use a configurable number (*instance_count*) of AWS EC2 instances, of class *ec2_instance_class*, that will need to access an AWS RDS database, with engine *rds_instance_engine* and version *rds_instance_version*. 
 
+![alt text](../../../docs/assets/images/aws_lab_6.drawio.png "AWS Lab 6 Schema")
+
 The module must be configurable through the following settings :
 | Property | Default Value | Configured Value |
 | - | - | - |
@@ -27,7 +29,9 @@ To simplify the module, the deployment will only use the default VPC of your AWS
 See main.tf to view how your module is expected to be used
 See variables.tf to configure your rds instance credentials
 
-Bonus : the prefered way to ssh connect to an EC2 instance is the EC2 Instance Connect Endpoint. Create the *aws_ec2_managed_prefix_list* datasource and the *aws_ec2_instance_connect_endpoint* resource to enable the secure connection through SSH by pluging the EICE feature to you VCP subnet.
+Bonus 1 : get and display the connection endpoint of your rds instance using module output
+
+Bonus 2 : the prefered way to ssh connect to an EC2 instance is the EC2 Instance Connect Endpoint. Create the *aws_ec2_managed_prefix_list* datasource and the *aws_ec2_instance_connect_endpoint* resource to enable the secure connection through SSH by pluging the EICE feature to you VCP subnet.
 
 ### Check
 

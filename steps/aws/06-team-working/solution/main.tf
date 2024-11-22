@@ -16,3 +16,7 @@ module my-app-instance {
     rds_instance_user = var.rds_dbuser
     rds_instance_password = var.rds_dbpassword
 }
+
+output "my-app-instance-db-connect" {
+  value = module.my-app-instance.myschoolapp_instance_dbendpoint
+}
