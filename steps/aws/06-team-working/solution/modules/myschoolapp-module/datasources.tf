@@ -10,3 +10,16 @@ data "aws_subnets" "default" {
     values = [data.aws_vpc.default.id]
   }
 }
+
+# Get EC2 instance connect prefix list
+data "aws_ec2_managed_prefix_list" "ec2_instance_connect" {
+  filter {
+    name   = "owner-id"
+    values = ["AWS"]
+  }
+
+  filter {
+    name   = "prefix-list-name"
+    values = ["com.amazonaws.eu-west-1.ec2-instance-connect"]
+  }
+}

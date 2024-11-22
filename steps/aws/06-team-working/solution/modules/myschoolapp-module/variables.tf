@@ -72,5 +72,5 @@ variable "ec2_instance_class" {
 variable "ec2_instance_ami_id" {
   type = string
   description = "The ID of the AMI to use for the EC2 instance"
-  default = "ami-046b5b8111c19b3ac"
+  default = "ami-0fcc0bef51bad3cb2"
 }
