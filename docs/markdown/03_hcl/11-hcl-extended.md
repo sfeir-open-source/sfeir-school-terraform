@@ -1,6 +1,6 @@
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HCL extended (also known as HIL)
+# HCL Extended
 
 Avant la version 0.12, Terraform était composé de deux langages :
 
@@ -12,39 +12,30 @@ Depuis la version 0.12, HCL et HIL ont fusionné.
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HCL extended (also known as HIL)
+# HCL Extended
 
 Il est possible de manipuler des variables, récupérer des attributs d’autres ressources ou utiliser des fonctions native directement dans notre code :
 
 ```hcl-terraform
-data "template_file" "example" {
- template = file("templates/greeting.tpl")
- vars {
-   hello = "goodnight"
-   world = "moon"
- }
+locals {
+  greeting_vars = {
+    hello = "goodnight"
+    world = "moon"
+  }
 }
-```
 
-Usage
-
-```hcl-terraform
 resource "aws_instance" "web" {
   ami              = "ami-d05e75b8"
   instance_type    = "t2.micro"
-  user_data_base64 = data.template_file.example.rendered
+  user_data_base64 = base64encode(templatefile("templates/greetings.tpl", local.greeting_vars))
 }
 ```
 
-Il reste néanmoins possible (mais déprécié) d'utiliser l'ancien format via l'utilisation de `"${ ... }"`
-
-Par exemple : `"${data.template_file.example.rendered}"`
-
 ##==##
 
-# HCL extended (also known as HIL)
+# HCL Extended
 
-## Lier les attributs
+## Lire les attributs
 
 Il est possible de lire la valeur d’un attribut d’une ressource, d’une source de donnée, d’une variable, …
 
@@ -58,7 +49,7 @@ Cas d’une liste de resource : `resource_type.resource_name[<index>].attribut`
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HCL extended (also known as HIL)
+# HCL Extended
 
 ## Fonctions
 
@@ -71,3 +62,5 @@ Exemple d’utilisation :
   upper-foo = upper(var.foo)
   encoded   = base64encode(var.sensitive_content)
 ```
+Notes:
+Certaines fonctions sont issues de providers basiques qui ont été intégrés en tant que fonction "builtin" (ex: templatefile)

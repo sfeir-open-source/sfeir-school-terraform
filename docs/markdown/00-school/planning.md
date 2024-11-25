@@ -90,6 +90,8 @@ Jour 2 : Collaboration et production
 
 ##==##
 
+<!-- .slide: data-type-show="gcp prez" -->
+
 # Déroulement de la formation
 
 <br>
@@ -102,6 +104,23 @@ Jour 2 : Collaboration et production
 - Gestion des credentials
 - Templating
 - Ateliers: Création d’un registre de modules dans gitlab
+
+##==##
+
+<!-- .slide: data-type-show="aws" -->
+
+# Déroulement de la formation
+
+<br>
+
+## MODULE 6 : Travail coopératif
+
+- Re-utilisation du code, découverte des modules
+- Gestion de la concurrence et de la persistance
+- Manipulation du fichier d’état
+- Gestion des credentials
+- Templating
+- Atelier: Développement d'un module de déploiement d'environnement sur AWS
 
 ##==##
 
@@ -123,6 +142,8 @@ Jour 2 : Collaboration et production
 
 ##==##
 
+<!-- .slide: data-type-show="gcp prez" -->
+
 # Déroulement de la formation
 
 <br>
@@ -136,4 +157,23 @@ Jour 2 : Collaboration et production
 <div class="flex-row">
 <img class="h-400" src="./assets/images/g418fd663c2_0_70.png">
 <img class="h-400" src="./assets/images/g418fd663c2_0_72.png">
+</div>
+
+##==##
+
+<!-- .slide: data-type-show="aws" -->
+
+# Déroulement de la formation
+
+<br>
+
+<https://github.com/sfeir-open-source/sfeir-school-terraform>
+
+<https://sfeir-open-source.github.io/sfeir-school-terraform>
+
+<https://console.aws.amazon.com/>
+
+<div class="flex-row">
+<img class="h-400" src="./assets/images/g418fd663c2_0_70.png">
+<img style="height: 300px" class="h-400" src="./assets/images/aws_logo.png">
 </div>
