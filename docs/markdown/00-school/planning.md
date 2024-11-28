@@ -90,7 +90,6 @@ Jour 2 : Collaboration et production
 
 ##==##
 
-<!-- .slide: data-type-show="gcp prez" -->
 
 # Déroulement de la formation
 
@@ -103,24 +102,7 @@ Jour 2 : Collaboration et production
 - Manipulation du fichier d’état
 - Gestion des credentials
 - Templating
-- Ateliers: Création d’un registre de modules dans gitlab
-
-##==##
-
-<!-- .slide: data-type-show="aws" -->
-
-# Déroulement de la formation
-
-<br>
-
-## MODULE 6 : Travail coopératif
-
-- Re-utilisation du code, découverte des modules
-- Gestion de la concurrence et de la persistance
-- Manipulation du fichier d’état
-- Gestion des credentials
-- Templating
-- Atelier: Développement d'un module de déploiement d'environnement sur AWS
+- Atelier: Développement d'un module de déploiement d'environnements
 
 ##==##
 
