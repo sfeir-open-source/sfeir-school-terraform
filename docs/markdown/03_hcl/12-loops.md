@@ -1,6 +1,6 @@
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HCL extended (also known as HIL)
+# HCL Extended
 
 ## Boucles
 
@@ -12,7 +12,7 @@ Terraform permet de déployer plusieurs ressources de même type via une unique 
 
 <!-- .slide: class="with-code-bg-dark"-->
 
-# HCL extended (also known as HIL)
+# HCL Extended
 
 ## Boucles
 
@@ -26,3 +26,5 @@ resource "vault_ldap_auth_backend_group" "group-users" {
   backend   = vault_ldap_auth_backend.ldap.path
 }
 ```
+Notes: 
+Idéalement, il faudrait créer une variable locale dédiée pour gérer les listes de policies pour chaque groupe => simplifier la lisibilité du code

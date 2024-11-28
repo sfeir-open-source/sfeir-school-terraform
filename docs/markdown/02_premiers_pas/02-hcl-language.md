@@ -8,7 +8,7 @@ Le HCL est un langage déclaratif décrivant un état désiré (DSL) plutôt que
 
 Notes:
 
-- Langage de configuration développé par HashiCorp et ré-utilisé dans ses différents produits. Uniquement déclaratif, il est associé au HIL (HashiCorp Interpolation Language) lorsqu’il faut calculer des valeurs.
+- Langage de configuration développé par HashiCorp et ré-utilisé dans ses différents produits. 
 
 ##==##
 
@@ -45,11 +45,14 @@ Notes:
 Un provider correspond à un ensemble de ressources, chacune de ces ressources est définie par un ou plusieurs arguments et attributs.
 Chaque provider fait appel à l'API correspondant à un service *cloud* ou *on-premise*.
 
+<https://registry.terraform.io/>
+
 Notes:
 
 - Certains providers ne sont pas officiellement supportés par **Hashicorp** mais sont tout de même utilisable avec **Terraformm**.
 - Les arguments du bloc provider diffèrent d'un provider à l'autre, certains sont similaire (AWS et AliCloud - par exemple).
 - Parmis les provider non supportés officiellement par hashicorp, on peut retrouver kubectl et Artifactory
+- Il est possible de développer son propre provider en suivant le schéma de définition des providers terraform
 
 ##==##
 
