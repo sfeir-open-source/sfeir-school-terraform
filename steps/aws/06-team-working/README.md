@@ -6,7 +6,26 @@
 
 In this lab, you will have to build your first terraform module to deploy an entire environment for your app MySchoolApp. The application will use a configurable number (*instance_count*) of AWS EC2 instances, of class *ec2_instance_class*, that will need to access an AWS RDS database, with engine *rds_instance_engine* and version *rds_instance_version*. 
 
-![alt text](../../../docs/assets/images/aws_lab_6.drawio.png "AWS Lab 6 Schema")
+```mermaid
+architecture-beta
+        group aws_cloud(logos:aws)[AWS Cloud]
+
+        group vpc_group(logos:aws-vpc)[VPC] in aws_cloud
+
+        service myschoolapp_instance1(logos:aws-ec2)[myschoolapp_instance1] in vpc_group
+        service myschoolapp_instance2(logos:aws-ec2)[myschoolapp_instance2] in vpc_group
+        service myschoolapp_db(logos:aws-rds)[myschoolapp_db] in vpc_group
+        junction junctionCenter
+        junction junctionTop
+        junction junctionBottom
+
+        myschoolapp_instance1:R -- L:junctionTop
+        myschoolapp_instance2:R -- L:junctionBottom
+        junctionTop:B -- T:junctionCenter
+        junctionBottom:T -- B:junctionCenter
+        junctionCenter:R --> L:myschoolapp_db
+
+```
 
 The module must be configurable through the following settings :
 | Property | Default Value | Configured Value |
