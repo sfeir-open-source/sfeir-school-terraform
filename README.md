@@ -41,7 +41,7 @@ Please follow [Google Cloud Platform Sfeir Institute](https://www.sfeir.com/form
 
 ### AWS 
 
-A set of labs have been developed in order to be deployed with an [Amazon Web Services Free tier](https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all) account. See the lab [aws/02-installation]() to configure your environment.
+A set of labs have been developed in order to be deployed with an [Amazon Web Services Free tier](https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all) account. See the lab [aws/02-installation](https://github.com/sfeir-open-source/sfeir-school-terraform/tree/main/steps/aws/02-installation) to configure your environment.
 ### Gitlab
 
 Module 6 and 7 use [Gitlab](https://about.gitlab.com/) to manage CI and CD pipelines.
