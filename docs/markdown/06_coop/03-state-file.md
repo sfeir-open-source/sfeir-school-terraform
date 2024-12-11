@@ -11,6 +11,9 @@
 - Format json
 - Automatiquement généré
 
+Notes:
+"backend" des resources au format json
+un fichier local par défaut
 ##==##
 
 # Gestion de la concurrence et de la persistance
@@ -71,6 +74,8 @@ Il est possible de verrouiller le fichier pour éviter les appels concurrents de
 
 Terraform propose la commande **terraform force-unlock** si mon déploiement reste verrouillé.
 
+Notes:
+Dans AWS le lock du tfstate est souvent géré dans DynamoDB lorsque le tfstate est stocké dans un bucket s3
 ##==##
 
 # Manipulation du fichier d’état

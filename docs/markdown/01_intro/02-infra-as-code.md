@@ -35,7 +35,8 @@ Backup : OMG I lost all of my changes...
 
 Documentation : Le code est lisible et commenté
 
-Testing : chaque ressource est testée et correspond au besoin fonctionnel
+Testing : chaque ressource est testée et correspond au besoin fonctionnel; framework de tests (unitaire + intégration) intégré au langage HCL depuis la v1.6
+
 
 ##==##
 
@@ -47,6 +48,8 @@ Testing : chaque ressource est testée et correspond au besoin fonctionnel
   * l’utilisateur peut déployer des modèles déjà existants
   * les templates ont été validés et respectent bien l’urbanisation de l’entreprise
 
+Notes:
+  Fournir aux équipes de dev dans l'entreprise des modèles de déploiement de composants en "self-service"
 ##==##
 
 # Introduction à Terraform
@@ -78,7 +81,7 @@ Produit développé en Go.
 Open source jusqu'au 1er Janvier 2024 puis sous license BSL (Business Source License) depuis. 
 En désaccord avec hashicorp, un fork opensource a été initié par la communauté : OpenTofu
 Même fonctionnalités / syntaxe que la version originale 
-
+Principales différences : évaluation anticipée des variables et chiffrement natif du tfstate
 ##==##
 
 <!-- .slide: class="flex-row"-->
@@ -105,6 +108,7 @@ Terraform est multi provider, il peut créer des ressources autant sur des plate
 
 Notes:
 Terraform analyse les ressources et dépendances puis construit un graphe puis provisionne les noeux des feuilles vers le sommet. Si l’arbre ne peut pas être construit, terraform retournera une erreur lors de l’analyse.
+On peut le visualiser via la commande terraform graph / ou en augmentant le niveau de log de terraform (TF_LOG=debug)
 
 ##==##
 <!-- .slide -->
@@ -129,6 +133,7 @@ Exemples :
 Notes:
 Expliquer l'historique des versions
 
+
 ##==##
 <!-- .slide -->
 
@@ -143,3 +148,7 @@ Ce qu'il faut retenir de la version 1.0 :
 * Les cas d'utilisation sont compris (1,500 contributions, 11,000 pull requests)
 * Une expérience utilisateur complète (documentation, formations, ...)
 * Architecture stable
+
+Notes:
+1.0 sortie en Juin 2021
+Version actuelle 1.10.1 (4 Decembre 2024)
