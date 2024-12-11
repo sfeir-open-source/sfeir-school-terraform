@@ -33,12 +33,15 @@ All code used are compatible with the [0.12 major version of Terraform](https://
 
 ### GCP
 
-This set of labs use [Google Cloud Platform](https://cloud.google.com/) resources.
+The initial set of labs use [Google Cloud Platform](https://cloud.google.com/) resources.
 An active GCP project is required, and specifics roles like `roles/compute.admin`, `roles/container.admin` may be necessary regarding resources used.
 
 **Disclaimer : This institute will not cover GCP services usage.**
 Please follow [Google Cloud Platform Sfeir Institute](https://www.sfeir.com/formation/institute/) if you want to learn more about GCP services
 
+### AWS 
+
+A set of labs have been developed in order to be deployed with an [Amazon Web Services Free tier](https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all) account. See the lab [aws/02-installation]() to configure your environment.
 ### Gitlab
 
 Module 6 and 7 use [Gitlab](https://about.gitlab.com/) to manage CI and CD pipelines.
@@ -53,6 +56,8 @@ All other components will be part as Open-Source projects and will be deployed o
 Slides are available here : https://sfeir-open-source.github.io/sfeir-school-terraform
 
 > Press 's' for shortcuts help
+> Press 'c' and use the type "gcp prez" to see the GCP slides version
+> or Press 'c' and use the type "aws" to see the AWS slides version
 
 ## How to use
 

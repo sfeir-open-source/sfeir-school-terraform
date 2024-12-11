@@ -16,11 +16,12 @@ Learn about automated infrastructure provisioning.
 
 (nomad)
 Learn how to deploy and manage any containerized, legacy, or batch application.
-
+Orchestrateur de jobs un peu similaire à Kube (master/workers), permet d'orchestrer des applications java, gcp nvidia, qemu...
+Intègre consul et vault
 (vagrant)
 Learn to create development environments with Vagrant
 
-(packer )
+(packer)
 Learn to build automated machine images with Packer
 
 ##==##
@@ -37,11 +38,13 @@ Learn to build automated machine images with Packer
 * Réduire les coûts
 
 Notes:
+/Principaux concepts
+
 Automatisation de l’infrastructure => Réduire les actions sans valeurs ajoutées
 
 Documentation => Maintenir une documentation des infrastructures déployées
 
-Multiples plateformes d’hébergements => Utiliser le meilleur de chaque cloud providers (prix, features, régions, …)
+Multiples plateformes d’hébergements => Utiliser le meilleur de chaque cloud providers (prix, features, régions, …); cloud-agnostic, plus de 4701 providers
 
 “PizzaTeam” (augmenter l’agilité et l’autonomie) => Avoir l’autonomie de déployer des templates validées par des outils de sécurités au lieu de passer par un ticket/change order
 

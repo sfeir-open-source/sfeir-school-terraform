@@ -25,7 +25,8 @@ L’utilisation de **terraform init --upgrade** permet la mise à jours des modu
 
 Hashicorp met à disposition un ensemble de modules officiels sur sa propre registry : https://registry.terraform.io/
 
-
+Notes: 
+Plus de 18000 modules actuellement disponibles sur la registry publique
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
 
