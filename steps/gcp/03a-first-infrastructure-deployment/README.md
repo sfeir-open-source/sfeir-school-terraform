@@ -51,7 +51,7 @@ Create the new following firewall rule to use [Cloud Identity-Aware Proxy TCP fo
 | protocol | tcp |
 | source_ranges | 35.235.240.0/20 |
 
-\* Add your name to avoid name clash with other participants.
+> Add your name to avoid name clash with other participants.
 
 Update the deployment and verify SSH access can be done from cloud shell using
 
