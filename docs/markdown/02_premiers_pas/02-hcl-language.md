@@ -8,7 +8,7 @@ Le HCL est un langage déclaratif décrivant un état désiré (DSL) plutôt que
 
 Notes:
 
-- Langage de configuration développé par HashiCorp et ré-utilisé dans ses différents produits. 
+- Langage de configuration développé par HashiCorp et ré-utilisé dans ses différents produits.
 
 ##==##
 
@@ -61,3 +61,9 @@ Notes:
 ## Workflow
 
 ![w-1000 center](./assets/images/workflow.png)
+
+Notes:
+* terraform init : initialise le projet, télécharge providers et modules.
+* Lecture des fichiers .tf et .tfvars pour définir la source d'infrastructure.
+* terraform plan : prépare les changements ; terraform apply : applique les changements ; terraform destroy : supprime les ressources.
+* Workflow simple et linéaire : init ➔ plan ➔ apply ➔ destroy.

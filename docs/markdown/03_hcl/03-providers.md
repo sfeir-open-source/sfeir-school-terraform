@@ -8,7 +8,7 @@ Le provider fournit un ensemble de primitives permettant de lire, créer, modifi
 * Chaque provider possède ses propres attributs
 * Il est possible d’utiliser plusieurs déclarations d’un même provider en utilisant l’attribut spécial “alias” (appelé meta-argument).
 * Les variables utilisées pour configurer les providers doivent être calculables avant un plan
-* Il est fortement conseillé d'utiliser des variables d'environnement pour configurer les providers
+* Il est fortement conseillé d'utiliser des variables d'environnement pour configurer l'authentification des providers
 
 ##==##
 <!-- .slide: class="with-code-bg-dark" -->
@@ -23,9 +23,13 @@ Il est possible de configurer le provider Google Cloud en utilisant du HCL ou de
 
 ```hcl-terraform
 provider "google" {
- credentials = file("account.json")
- project     = "my-project-id"
- region      = "us-central1"
+  credentials = file("account.json")
+  project     = "my-project-id"
+  region      = "us-central1"
+  default_labels = {
+    env = "dev"
+    support_team = "devops"
+  }
 }
 ```
 
