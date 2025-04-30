@@ -23,7 +23,7 @@ Else, if you do the lab autonomously :
 - Generate a json key
 - Store it in a GOOGLE_CREDENTIALS variable in your Gitlab CI/CD settings.
 
-### Writting the configuration
+### Writing the configuration
 
 You can now configure a deployment to use the bucket.
 

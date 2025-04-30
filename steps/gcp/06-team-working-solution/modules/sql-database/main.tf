@@ -27,10 +27,18 @@ resource "google_sql_user" "users" {
   password = random_password.password.result
 }
 
-resource "vault_generic_secret" "example" {
-  path = "secret/${var.instance_name}"
+resource "google_secret_manager_secret" "db" {
+  secret_id = var.instance_name
+  replication {
+    auto {
 
-  data_json = jsonencode({
+    }
+  }
+}
+
+resource "google_secret_manager_secret_version" "db" {
+  secret      = google_secret_manager_secret.db.id
+  secret_data = jsonencode({
     user     = google_sql_user.users.name
     password = random_password.password.result
   })
