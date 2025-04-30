@@ -33,12 +33,13 @@ Your Cloud SQL database module is now ready to be used in the parent resource ! 
 
 Local modules can't be shared or re-used between teams
 
-* Create a new repository on [Gitlab.com](https://gitlab.com) or your own [Github.com](https://github.com) and push your `sql-database` on it (if you are in a SFEIR training session, you can just use the Github repository `git::https://github.com/sfeir-open-source/sfeir-school-terraform//gcp/06-team-working/modules/sql-database/`).
+* Create a new repository on [Gitlab.com](https://gitlab.com) or your own [Github.com](https://github.com) and push your `sql-database` on it
+  * If you are in a SFEIR training session, you can just use the GitHub repository `git::https://github.com/Ameausoone/terraform-google-sql-instance-lab` with tag `v1.0.0`
 * Update the root `main.tf` to use the remote module.
 
   ```hcl
   module "my-sql-instance" {
-    source = "git::https://gitlab.com/.../terraform-google-sql-instance.git?ref=v2.0.0"
+    source = "git::https://gitlab.com/.../terraform-google-sql-instance.git?ref=v1.0.0"
     ...
   # See more examples here : https://www.terraform.io/docs/modules/sources.html
   ```

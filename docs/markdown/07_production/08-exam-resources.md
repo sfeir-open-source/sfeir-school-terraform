@@ -8,7 +8,7 @@
 - QCM
 - Uniquement disponible en anglais
 - Durée de validité de 2 ans
-- Environ 75€
+- $70.50 USD (pas de tentative d'examen supplémentaire)
 
 <br>
 <br>
@@ -25,7 +25,7 @@
 - 4 heures d'examen
 - Durée de validité de 2 ans
 - Prolonge la certification Associate
-- $295 USD
+- $295 USD (avec 1 tentative d'examen supplémentaire)
 
 <br>
 <br>
