@@ -3,6 +3,3 @@ terraform {
 
 }
 
-provider "google" {
-  project = "sfeir-school-terraform"
-}
