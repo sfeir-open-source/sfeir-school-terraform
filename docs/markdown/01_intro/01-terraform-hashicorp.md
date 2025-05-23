@@ -16,8 +16,9 @@ Learn about automated infrastructure provisioning.
 
 (nomad)
 Learn how to deploy and manage any containerized, legacy, or batch application.
-Orchestrateur de jobs un peu similaire à Kube (master/workers), permet d'orchestrer des applications java, gcp nvidia, qemu...
-Intègre consul et vault
+Job orchestrator similar to kubernetes, can schedule java apps, gpus, qemu...
+Integrates vault / consul
+
 (vagrant)
 Learn to create development environments with Vagrant
 
