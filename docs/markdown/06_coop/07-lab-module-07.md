@@ -10,7 +10,7 @@
 
 <!-- .slide: class="exercice" data-type-show="aws" -->
 
-# Création d’un registre de module dans git
+# Création d’un module de déploiement d'application
 
 ## Lab
 

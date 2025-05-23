@@ -35,7 +35,8 @@ Backup : OMG I lost all of my changes...
 
 Documentation : Le code est lisible et commenté
 
-Testing : chaque ressource est testée et correspond au besoin fonctionnel
+Testing : chaque ressource est testée et correspond au besoin fonctionnel; framework de tests (unitaire + intégration) intégré au langage HCL depuis la v1.6
+
 
 ##==##
 
@@ -47,6 +48,8 @@ Testing : chaque ressource est testée et correspond au besoin fonctionnel
   * l’utilisateur peut déployer des modèles déjà existants
   * les templates ont été validés et respectent bien l’urbanisation de l’entreprise
 
+Notes:
+  Fournir aux équipes de dev dans l'entreprise des modèles de déploiement de composants en "self-service"
 ##==##
 
 # Introduction à Terraform
@@ -77,7 +80,8 @@ Notes:
 Produit développé en Go.
 Open source jusqu'au 1er Janvier 2024 puis sous license BSL (Business Source License) depuis.
 En désaccord avec hashicorp, un fork opensource a été initié par la communauté : OpenTofu
-Même fonctionnalités / syntaxe que la version originale
+Même fonctionnalités / syntaxe que la version originale 
+Principales différences : évaluation anticipée des variables et chiffrement natif du tfstate
 
 ##==##
 
@@ -105,6 +109,7 @@ Terraform est multi provider, il peut créer des ressources autant sur des plate
 
 Notes:
 Terraform analyse les ressources et dépendances puis construit un graphe puis provisionne les noeux des feuilles vers le sommet. Si l’arbre ne peut pas être construit, terraform retournera une erreur lors de l’analyse.
+On peut le visualiser via la commande terraform graph / ou en augmentant le niveau de log de terraform (TF_LOG=debug)
 
 ##==##
 <!-- .slide -->
@@ -124,5 +129,29 @@ Terraform utilise le **semantic versioning** (`x.y.z`) :
 - Du code écrit pour **0.12** **n'est pas compatible** avec **0.11** (nouvelles fonctionnalités : types, boucles, etc.).
 
 Notes:
+
+Expliquer l'historique des versions
+
+
+##==##
+<!-- .slide -->
+
+# Pourquoi une 1.0.0 ?
+
+<br>
+
+Ce qu'il faut retenir de la version 1.0 :
+[Terraform 1.0 general availability](https://www.hashicorp.com/blog/announcing-hashicorp-terraform-1-0-general-availability)
+
+* Utilisation massive (de 100,000,000 de téléchargement)
+* Les cas d'utilisation sont compris (1,500 contributions, 11,000 pull requests)
+* Une expérience utilisateur complète (documentation, formations, ...)
+* Architecture stable
+
+Notes:
+1.0 sortie en Juin 2021
+Version actuelle 1.10.1 (4 Decembre 2024)
+=======
 - Expliquer rapidement l’historique des versions.
 - Mentionner la stabilité introduite à partir de **Terraform 1.0**.
+

@@ -4,10 +4,16 @@
 
 ## Boucles
 
-Terraform permet de déployer plusieurs ressources de même type via une unique déclaration en utilisant le “meta-argument" `for_each` (ou `count`).
-<br>
-
-![h-400 center](./assets/images/hil_boucle.png)
+Terraform permet de déployer plusieurs ressources de même type via une unique déclaration en utilisant le “meta-argument" for_each(ou count).<br>
+```hcl-terraform
+resource "google_compute_instance" "inst" {
+  count        = var.instance_count
+  name         = "server-${count.index}"
+  machine_type = "e2-micro"
+  zone         = "us-central1-a"
+}
+```
+![h-300 center](./assets/images/hil_boucle.png)
 
 ##==##
 
