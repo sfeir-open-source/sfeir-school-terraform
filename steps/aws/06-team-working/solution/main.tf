@@ -7,6 +7,7 @@ terraform {
   }
 }
 
+
 module "my-app-instance" {
   source                = "./modules/myschoolapp-module"
   my_app_env            = "development"
@@ -15,6 +16,7 @@ module "my-app-instance" {
   rds_instance_id       = "mysqldb"
   rds_instance_user     = var.rds_dbuser
   rds_instance_password = var.rds_dbpassword
+
 }
 
 output "my-app-instance-db-connect" {

@@ -4,6 +4,7 @@ locals {
 
 # Define a security group that allows inbound traffic on the database port
 resource "aws_security_group" "db_security_group" {
+
   name        = "db_security_group"
   description = "Allow inbound traffic on the database port"
   vpc_id      = data.aws_vpc.default.id

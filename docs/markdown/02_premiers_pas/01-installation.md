@@ -5,10 +5,10 @@
 - Gestionnaire de paquets disponibles sur le [site officiel]("https://developer.hashicorp.com/terraform/install") :
   - macOS : `brew`
   - Linux : `apt`, `yum`, `dnf`, `brew`
-- Alternatif :
-  - [tfenv](https://github.com/tfutils/tfenv), puis plus récement [tenv](https://github.com/tofuutils/tenv)
-  - Docker `alias tf="docker run --rm -it --env-file <(env | grep TF_) -w /source -v "$(pwd):/source" -v ${HOME}:/root/ hashicorp/terraform:1.0.5"`
-  - via [asdf](https://github.com/asdf-community/asdf-hashicorp)
+- Il existe aussi des gestionnaires de version :
+  - [tfenv](https://github.com/tfutils/tfenv)
+  - [tenv](https://github.com/tofuutils/tenv)
+  - [asdf](https://github.com/asdf-community/asdf-hashicorp)
 - Déjà pré-installé dans le Google Cloud Shell
 
 ![w-1000 center](./assets/images/g418fd663c2_0_272.png)

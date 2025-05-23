@@ -27,7 +27,7 @@ export TF_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraf
 echo $TF_VERSION
 ```
 
-And download the latest version using (must be at least 1.6.0 for testing features):
+And download the latest version using (must be at least 1.11.0 for testing features):
 
 ```shell
 curl https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip -o /tmp/terraform_${TF_VERSION}_linux_amd64.zip
@@ -39,13 +39,12 @@ bash -l
 
 #### Cache Terraform providers
 
-Create a `.terraformrc` in your home directory with the following content :
+Create a `.terraformrc` in your home directory with this command :
 
-```text
-plugin_cache_dir   = "$HOME/.terraform.d/plugin-cache"
+```shell
+mkdir -p "$HOME/.terraform.d/plugin-cache"
+echo 'plugin_cache_dir = "$HOME/.terraform.d/plugin-cache"' > "$HOME/.terraformrc"
 ```
-
-Don't forget to create the plugin-cache dir if necessary : `mkdir -p $HOME/.terraform.d/plugin-cache`
 
 Terraform will cache providers in a global directory instead of in each workspace.
 If Terraform can hit the plugin, it will link it instead of downloading it.
@@ -59,7 +58,7 @@ Clone this repository on the Cloud Shell.
 git clone https://github.com/sfeir-open-source/sfeir-school-terraform.git
 ```
 
-Go in `steps/02-installation-solution/`
+Go in `steps/gcp/02-installation-solution/`
 
 Initialize a new terraform environment and deploy the infrastructure :
 

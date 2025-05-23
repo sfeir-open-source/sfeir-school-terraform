@@ -34,14 +34,8 @@ Il n’y a pas de normes imposées par l’outil mais un ensemble de bonnes prat
 
 * La communauté utilise le snake_case
 * Il est important d’utiliser l’attribut description des variables
-* L’utilisation du HCL permet de créer des scripts/programmes permettant de générer automatiquement la déclaration des variables
-
-```bash
-alias terraform-genvar='(for i in $(egrep -oh '\''var\.\w+'\'' *.tf | sed -nr '\''s/var\.//p'\''); do echo "variable \"$i\" {}"; done;)'
-```
-
-
 * L’utilisation d’un .editorconfig permet aux développeurs d’utiliser un même format
+* Pour aller plus loin : [Style guide Hashicorp](https://developer.hashicorp.com/terraform/language/style)
 
 ##==##
 
@@ -51,7 +45,7 @@ alias terraform-genvar='(for i in $(egrep -oh '\''var\.\w+'\'' *.tf | sed -nr '\
 
 Il est possible de configurer certains comportements de Terraform de manière globale à l'aide d'un fichier *.terraformrc* ou *terraform.rc*.
 
-[*=> Documentation pour trouver la localisation du fichier par OS*](https://www.terraform.io/docs/cli/config/config-file.html) ou via la variable d'environnement *TF_CLI_CONFIG_FILE*
+[Config file par OS](https://www.terraform.io/docs/cli/config/config-file.html) ou via la variable d'environnement `TF_CLI_CONFIG_FILE`
 
 Cela permet par exemple de :
 

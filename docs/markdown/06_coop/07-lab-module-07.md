@@ -1,6 +1,6 @@
 <!-- .slide: class="exercice" data-type-show="gcp prez" -->
 
-# Création d’un registre de module dans gitlab
+# Création d’un registre de module dans git
 
 ## Lab
 

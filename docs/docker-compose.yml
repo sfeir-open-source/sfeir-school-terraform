@@ -1,4 +1,3 @@
-version: "3"
 services:
   npx:
     image: node:20.11
