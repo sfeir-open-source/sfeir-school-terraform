@@ -11,7 +11,7 @@ data "aws_ami" "ubuntu" {
     name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server*"]
   }
-} 
+}
 
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
@@ -32,9 +32,9 @@ resource "aws_instance" "my_instance" {
 
   associate_public_ip_address = true
 
-  key_name      = aws_key_pair.my_key_pair.key_name
+  key_name = aws_key_pair.my_key_pair.key_name
 
-  security_groups = [ aws_security_group.allow_ssh.name ]
+  security_groups = [aws_security_group.allow_ssh.name]
 
   tags = {
     Name = var.instance_name
@@ -53,7 +53,7 @@ resource "aws_key_pair" "my_key_pair" {
 }
 
 resource "local_file" "private_key_pem" {
-  filename = "${path.module}/private_key.pem"
-  content  = tls_private_key.my_private_key.private_key_pem
+  filename        = "${path.module}/private_key.pem"
+  content         = tls_private_key.my_private_key.private_key_pem
   file_permission = "0600"
 }
