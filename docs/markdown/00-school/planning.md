@@ -16,15 +16,6 @@
 
 <br>
 
-Jour 1 : Développement et bonnes pratiques<br><br>
-Jour 2 : Collaboration et production
-
-##==##
-
-# Déroulement de la formation
-
-<br>
-
 ## MODULE 1: Introduction à Terraform
 
 - HashiCorp et son écosystème de produits
@@ -106,29 +97,13 @@ Jour 2 : Collaboration et production
 
 ##==##
 
-# Déroulement de la formation
-
-<br>
-
-## MODULE 7 : Utilisation en production
-
-- Remplacement de resources existantes
-- Utilisation des provisioners
-- Debugging
-- Déploiement continu via Gitlab-ci
-- Présentation de l’offre pour les entreprises Terraform Cloud
-- Présentation de l'offre Terraform Enterprise
-- Développement et utilisation de providers communautaires
-- Best Practices
-- Atelier: Déploiement continu via Terraform
-
-##==##
-
 <!-- .slide: data-type-show="gcp prez" -->
 
 # Déroulement de la formation
 
 <br>
+
+TODO remplacer les liens et qr code pour access github
 
 <https://github.com/sfeir-open-source/sfeir-school-terraform>
 
@@ -139,23 +114,4 @@ Jour 2 : Collaboration et production
 <div class="flex-row">
 <img class="h-400" src="./assets/images/g418fd663c2_0_70.png">
 <img class="h-400" src="./assets/images/g418fd663c2_0_72.png">
-</div>
-
-##==##
-
-<!-- .slide: data-type-show="aws" -->
-
-# Déroulement de la formation
-
-<br>
-
-<https://github.com/sfeir-open-source/sfeir-school-terraform>
-
-<https://sfeir-open-source.github.io/sfeir-school-terraform>
-
-<https://console.aws.amazon.com/>
-
-<div class="flex-row">
-<img class="h-400" src="./assets/images/g418fd663c2_0_70.png">
-<img style="height: 300px" class="h-400" src="./assets/images/aws_logo.png">
 </div>

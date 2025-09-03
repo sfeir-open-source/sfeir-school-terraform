@@ -18,12 +18,6 @@ Each module can be run independently
   * (lab) Continuous Integration with Terraform
 * Module 6 : Team Working
   * (lab) Create you own module registry using [Gitlab](https://about.gitlab.com/)
-* Module 7 : Usage in production
-  * (lab) Continuous Deployment with Terraform
-* Module 8 : Custom Providers
-  * (lab) : Create your own Terraform provider
-* Module 9 : Terraform Cloud
-  * (lab) : Getting Started with Terraform Cloud
 
 ## Technical stack requirements
 

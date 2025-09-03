@@ -2,7 +2,7 @@ import { SfeirThemeInitializer } from '../web_modules/sfeir-school-theme/sfeir-s
 
 // One method per module
 function schoolSlides() {
-  return ['00-school/00-TITLE.md', '00-school/speaker-jna.md', '00-school/speaker-ame.md', '00-school/speaker-adh.md', '00-school/speaker-gar.md' , '00-school/speaker-cda.md' ,'00-school/speaker-bma.md' , '00-school/planning.md'];
+  return ['00-school/00-TITLE.md', '00-school/speaker-voi.md', '00-school/speaker-tge.md', '00-school/planning.md' ];
 }
 
 function introSlides() {
@@ -43,8 +43,7 @@ function formation() {
     ...languageHclSlides(),
     ...configurationSlides(),
     ...strategieTestsSlides(),
-    ...travailCoopSlides(),
-    ...productionSlides()
+    ...travailCoopSlides()
   ].map(slidePath => {
     return {path: slidePath};
   });

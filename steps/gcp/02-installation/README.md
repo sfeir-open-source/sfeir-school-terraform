@@ -55,7 +55,7 @@ All configurations can be found on : [https://www.terraform.io/docs/commands/cli
 
 Clone this repository on the Cloud Shell.
 ```shell
-git clone https://github.com/sfeir-open-source/sfeir-school-terraform.git
+git clone https://github.com/genezt/sfeir-school-terraform.git
 ```
 
 Go in `steps/gcp/02-installation-solution/`
