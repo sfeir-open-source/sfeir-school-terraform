@@ -53,7 +53,7 @@ Cas d’une liste de resource : `resource_type.resource_name[<index>].attribut`
 
 ## Fonctions
 
-Il existe de nombreuses fonctions pour manipuler les valeurs d'attributs [documentées en ligne](https://www.terraform.io/docs/language/functions/index.html).
+Il existe de nombreuses fonctions pour manipuler les valeurs d'attributs : [functions](https://www.terraform.io/docs/language/functions/index.html).
 
 Exemple d’utilisation :
 

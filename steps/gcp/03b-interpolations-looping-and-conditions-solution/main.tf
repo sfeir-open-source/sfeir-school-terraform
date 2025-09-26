@@ -1,7 +1,6 @@
 terraform {
-  required_version = ">= 0.12.0"
+  required_version = ">= 1.6.0"
 }
-
 
 resource "google_storage_bucket" "store" {
   name     = var.bucket_name

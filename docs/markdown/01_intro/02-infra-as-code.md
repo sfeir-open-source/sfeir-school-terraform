@@ -35,7 +35,8 @@ Backup : OMG I lost all of my changes...
 
 Documentation : Le code est lisible et commenté
 
-Testing : chaque ressource est testée et correspond au besoin fonctionnel
+Testing : chaque ressource est testée et correspond au besoin fonctionnel; framework de tests (unitaire + intégration) intégré au langage HCL depuis la v1.6
+
 
 ##==##
 
@@ -47,6 +48,8 @@ Testing : chaque ressource est testée et correspond au besoin fonctionnel
   * l’utilisateur peut déployer des modèles déjà existants
   * les templates ont été validés et respectent bien l’urbanisation de l’entreprise
 
+Notes:
+  Fournir aux équipes de dev dans l'entreprise des modèles de déploiement de composants en "self-service"
 ##==##
 
 # Introduction à Terraform
@@ -54,7 +57,7 @@ Testing : chaque ressource est testée et correspond au besoin fonctionnel
 ![](./assets/images/g418fd663c2_0_203.png)
 
 Notes:
-Le développer a à sa disposition un ensemble de modules développés par les équipes d’infrastructure pour déployer ses environnements/applications tout en respectant les règles de sécurité et d’urbanisation
+Le dévelopeur a, à sa disposition, un ensemble de modules développés par les équipes d’infrastructure pour déployer ses environnements/applications tout en respectant les règles de sécurité et d’urbanisation
 
 ##==##
 
@@ -66,8 +69,8 @@ Le développer a à sa disposition un ensemble de modules développés par les �
 
 * <https://github.com/hashicorp/terraform>
 
-  * 40k+ stars
-  * 1700+ contributeurs
+  * 45k+ stars
+  * 1800+ contributeurs
   * Open source jusqu'en janvier 2024 puis sous licence BSL depuis
 
 * Suite à ce changement de licence, un fork sous licence MPLv2 vu le jour : [OpenTofu](https://opentofu.org)
@@ -75,9 +78,10 @@ Le développer a à sa disposition un ensemble de modules développés par les �
 
 Notes:
 Produit développé en Go.
-Open source jusqu'au 1er Janvier 2024 puis sous license BSL (Business Source License) depuis. 
+Open source jusqu'au 1er Janvier 2024 puis sous license BSL (Business Source License) depuis.
 En désaccord avec hashicorp, un fork opensource a été initié par la communauté : OpenTofu
 Même fonctionnalités / syntaxe que la version originale 
+Principales différences : évaluation anticipée des variables et chiffrement natif du tfstate
 
 ##==##
 
@@ -105,29 +109,29 @@ Terraform est multi provider, il peut créer des ressources autant sur des plate
 
 Notes:
 Terraform analyse les ressources et dépendances puis construit un graphe puis provisionne les noeux des feuilles vers le sommet. Si l’arbre ne peut pas être construit, terraform retournera une erreur lors de l’analyse.
+On peut le visualiser via la commande terraform graph / ou en augmentant le niveau de log de terraform (TF_LOG=debug)
 
 ##==##
 <!-- .slide -->
 
-# Les versions
+# Gestion des versions dans Terraform
 
-<br>
+Terraform utilise le **semantic versioning** (`x.y.z`) :
 
-Pour nommer ses versions, Terraform utilise du semantic versioning (`x.y.z`)
+- **x** : version majeure (changements incompatibles)
+- **y** : version mineure (ajouts compatibles)
+- **z** : correctif (bugfixes)
 
-* x est le numéro de la version majeure
-* y est l'incrément de la version mineure
-* z est le niveau de correctif
+⚠️ De nombreuses incompatibilités existent entre les versions (langage et fonctionnement interne).
 
-Il existe de nombreuses incompatibilités entre les versions (dans le code mais aussi dans le fonctionnement interne).
-
-Exemples :
-
-* une infrastructure déployée en Terraform 0.11 necessitera d'être raffraichi sur chaque version mineure pour pouvoir évoluer en Terraform 1.0.0<>
-* des évolutions sont ajoutées régulièrement dans le langage (types, boucles, ...), il n'est pas possible d'utiliser du code développé en 0.12 en 0.11
+**Exemples :**
+- Une infrastructure en **Terraform 0.11** doit être **progressivement rafraîchie** pour migrer vers **1.0.0**.
+- Du code écrit pour **0.12** **n'est pas compatible** avec **0.11** (nouvelles fonctionnalités : types, boucles, etc.).
 
 Notes:
+
 Expliquer l'historique des versions
+
 
 ##==##
 <!-- .slide -->
@@ -143,3 +147,11 @@ Ce qu'il faut retenir de la version 1.0 :
 * Les cas d'utilisation sont compris (1,500 contributions, 11,000 pull requests)
 * Une expérience utilisateur complète (documentation, formations, ...)
 * Architecture stable
+
+Notes:
+1.0 sortie en Juin 2021
+Version actuelle 1.10.1 (4 Decembre 2024)
+=======
+- Expliquer rapidement l’historique des versions.
+- Mentionner la stabilité introduite à partir de **Terraform 1.0**.
+
