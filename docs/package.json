@@ -31,8 +31,8 @@
     "chokidar-cli": "^3.0.0",
     "live-server": "^1.2.1",
     "parallelshell": "3.0.1",
+    "sass": "^1.85.0",
     "prettier": "^3.5.2",
-    "sass": "^1.81.0",
     "shelljs": "^0.8.5"
   },
   "snowpack": {
