@@ -31,7 +31,7 @@
 <br>
 
 
-[https://www.hashicorp.com/certification/terraform-associate](https://www.hashicorp.com/certification/terraform-associate)
+[https://www.hashicorp.com/certification/terraform-professional](https://www.hashicorp.com/certification/terraform-associate)
 
 ##==##
 
@@ -40,9 +40,8 @@
 <br>
 
 - Site Officiel : https://www.terraform.io/
+- Documentation : https://developer.hashicorp.com/terraform
 - Hashivim : https://github.com/hashivim
-- Terraform-docs : https://github.com/segmentio/terraform-docs
-- Inspec : https://www.inspec.io/
-- Inspec-gcp : https://github.com/inspec/inspec-gcp
-- Inspec-iggy : https://github.com/mattray/inspec-iggy
-- Kitchen : https://kitchen.ci/
+- Terraform-docs : https://github.com/terraform-docs/terraform-docs (https://terraform-docs.io/)
+- Terraform Testing Framework : https://developer.hashicorp.com/terraform/language/tests
+- Terratest : https://github.com/gruntwork-io/terratest
