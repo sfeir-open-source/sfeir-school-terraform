@@ -10,7 +10,7 @@ If you are in a training session with a SFEIR trainer, you can use the bucket `s
 
 Else, if you do the lab autonomously, create a Google Cloud Storage bucket (directly on the Google Cloud console).
 
-More information about GCS Backend configuration in [official documentation](https://www.terraform.io/docs/backends/types/gcs.html).
+More information about GCS Backend configuration in [official documentation](https://developer.hashicorp.com/terraform/language/settings/backends/gcs).
 
 ### Service Account
 
@@ -72,7 +72,7 @@ If you are in a training session with a SFEIR trainer :
 Else, if you do the lab autonomously, create a new Gitlab.com repository.
  - In Settings -> CI/CD, configure these variables :
   - `TF_VAR_application_name` with the desired application name (used to build the instance name, ex: `sfeir-mega-app`).
-  - `TF_VAR_machine_type` with the desired machine type (ex: `f1-micro`).
+  - `TF_VAR_machine_type` with the desired machine type (ex: `e2-micro`).
   - `GOOGLE_CREDENTIALS` with the service account key content.
   - `GOOGLE_CLOUD_PROJECT` with the name of your Google Cloud project.
 
@@ -80,7 +80,7 @@ Else, if you do the lab autonomously, create a new Gitlab.com repository.
 
 ```yaml
 image:
-  name: "hashicorp/terraform"
+  name: "hashicorp/terraform:1.9"
   entrypoint:
   - '/usr/bin/env'
   - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
@@ -101,6 +101,7 @@ before_script:
 validate:
   stage: validate
   script:
+    - terraform fmt -check
     - terraform validate
 
 plan:
@@ -112,7 +113,7 @@ plan:
   script:
     - terraform workspace select production
     - terraform plan -input=false -out=production.tfplan
-  dependencies:
+  needs:
     - validate
 
 apply:
@@ -121,7 +122,7 @@ apply:
   script:
     - terraform workspace select production
     - terraform apply -auto-approve -input=false production.tfplan
-  dependencies:
+  needs:
     - plan
 ```
 
@@ -142,9 +143,9 @@ On your Cloud Shell, switch to `production` workspace (`terraform workspace sele
 On your Cloud Shell, run a "destroy" for each workspaces:
 
 ```shell
-TF_WORKSPACE=default terraform destroy -var=application_name=sfeir-mega-app -var=machine_type=f1-micro
-TF_WORKSPACE=staging terraform destroy -var=application_name=sfeir-mega-app -var=machine_type=f1-micro
-TF_WORKSPACE=production terraform destroy -var=application_name=sfeir-mega-app -var=machine_type=f1-micro
+TF_WORKSPACE=default terraform destroy -var=application_name=sfeir-mega-app -var=machine_type=e2-micro
+TF_WORKSPACE=staging terraform destroy -var=application_name=sfeir-mega-app -var=machine_type=e2-micro
+TF_WORKSPACE=production terraform destroy -var=application_name=sfeir-mega-app -var=machine_type=e2-micro
 ```
 
-If you are not in a SFEIR training session: emove the service account and the cloud storage bucket.
+If you are not in a SFEIR training session: remove the service account and the cloud storage bucket.

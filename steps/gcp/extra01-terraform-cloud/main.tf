@@ -2,16 +2,15 @@ variable "bar" {
   type = string
 }
 
-resource "null_resource" "foo" {
-  triggers = {
-    foo = var.bar
-  }
+resource "terraform_data" "foo" {
+  triggers_replace = var.bar
+
   provisioner "local-exec" {
     command = "python --version && python3 --version"
-    when    = "destroy"
+    when    = destroy
   }
 }
 
 output "bar" {
-  value = null_resource.foo.triggers.foo
+  value = terraform_data.foo.triggers_replace
 }
