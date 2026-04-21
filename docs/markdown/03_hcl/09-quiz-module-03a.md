@@ -37,6 +37,13 @@ Attention, l’ordre des variables à une importance. Les CLI sont toujours prio
 Notes:
 Values passed within definition files or with -var will take precedence over TF*VAR* environment variables, as environment variables are considered defaults.
 
+Ordre de priorite (du moins au plus prioritaire) :
+  1. Valeur par defaut dans variable {}
+  2. TF_VAR_* (variables d'environnement)
+  3. terraform.tfvars / *.auto.tfvars
+  4. -var-file
+  5. -var (CLI) -- toujours prioritaire
+
 ##==##
 
 <!-- .slide: class="exercice" -->

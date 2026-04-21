@@ -19,7 +19,7 @@ Liens :
 
 ##==##
 
-<!--.slide: class="two-column"-->
+<!--.slide: class="two-column with-code-bg-dark"-->
 
 ## Configuration de l’environnement de développement
 

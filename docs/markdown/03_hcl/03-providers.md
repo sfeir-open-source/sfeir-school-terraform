@@ -40,3 +40,6 @@ export GOOGLE_APPLICATION_CREDENTIALS="account.json"
 export GOOGLE_PROJECT="my-project-id"
 export GOOGLE_REGION="us-central1"
 ```
+
+Notes:
+On peut également mettre en place des .env pour cela.
