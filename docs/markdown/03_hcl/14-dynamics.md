@@ -63,10 +63,10 @@ resource "google_storage_bucket" "auto-expire" {
     for_each = var.lifecycle_rules
     content {
       condition {
-        age = lifecycle_rule.age
+        age = lifecycle_rule.value.age
       }
       action {
-        type = lifecycle_rule.type
+        type = lifecycle_rule.value.type
       }
     }
   }
