@@ -84,8 +84,7 @@ Jour 2 : Collaboration et production
 
 ## MODULE 5 : Stratégie de tests
 
-- Vue d’ensemble des différents outils de tests
-- L’exemple de inspec, inspec-iggy et kitchen-terrraform
+- Vue d’ensemble du Terraform Testing Framework
 - Atelier: Intégration continue avec Terraform
 
 ##==##
@@ -116,7 +115,7 @@ Jour 2 : Collaboration et production
 - Utilisation des provisioners
 - Debugging
 - Déploiement continu via Gitlab-ci
-- Présentation de l’offre pour les entreprises Terraform Cloud
+- Présentation de l’offre pour les entreprises HCP Terraform
 - Présentation de l'offre Terraform Enterprise
 - Développement et utilisation de providers communautaires
 - Best Practices
