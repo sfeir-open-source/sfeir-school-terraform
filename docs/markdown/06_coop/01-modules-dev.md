@@ -35,22 +35,24 @@ Plus de 18000 modules actuellement disponibles sur la registry publique
 => *cat gke.tf*
 
 ```hcl-terraform
-module "gke-regional" {
- source  = "woernfl/gke-regional/gcp"
- version = "2.0.1"
+module "gke" {
+ source  = "terraform-google-modules/kubernetes-engine/google"
+ version = "44.0.0"
 
- cluster_name                        = var.cluster_name
- logging_service                     = var.logging_service
- monitoring_service                  = var.monitoring_service
- region                              = var.region
- kube_version                        = var.kube_version
- daily_maintenance_window_start_time = var.daily_maintenance_window_start_time
- http_load_balancing                 = var.http_load_balancing
- horizontal_pod_autoscaling          = var.horizontal_pod_autoscaling
- kubernetes_dashboard                = var.kubernetes_dashboard
- node_pools                          = var.node_pools
+ project_id        = var.project_id
+ name              = var.cluster_name
+ region            = var.region
+ zones             = var.zones
+ network           = var.network
+ subnetwork        = var.subnetwork
+ ip_range_pods     = var.ip_range_pods
+ ip_range_services = var.ip_range_services
 }
 ```
+
+Notes:
+Module officiel Google Cloud (53M+ downloads, activement maintenu)
+Voir : https://registry.terraform.io/modules/terraform-google-modules/kubernetes-engine/google
 
 ##==##
 
@@ -75,6 +77,6 @@ module "gke-regional" {
 Les modules peuvent être gérés comme des packages.
 
 - [semantic-release](https://semantic-release.gitbook.io/semantic-release/) : automatiser la gestion des versions (CHANGELOG, incréments, ...) et la publication des packages
-- [Dependabot](https://dependabot.com/terraform/) ou [renovatebot](https://github.com/renovatebot/renovate): gestion de l'obsolescence
+- [Dependabot](https://docs.github.com/en/code-security/dependabot) ou [renovatebot](https://github.com/renovatebot/renovate): gestion de l'obsolescence
 - terraform-docs (module-4) : générer la documentation
 - CODEOWNERS : identifier, notifier et autoriser uniquement les changements via les code owners
