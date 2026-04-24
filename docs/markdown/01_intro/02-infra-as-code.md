@@ -175,6 +175,7 @@ Historique rapide des versions :
 - **1.8** (2024) : provider-defined functions
 - **1.10** (nov 2024) : ephemeral values (gestion des secrets dans le state)
 - **1.11+** (2025-2026) : stabilisation, améliorations incrémentales
-
+- **1.13** (aout 2025) : améliorations du framework de test, introduction de terraform stacks
+- **1.14** (nov. 2025) : améliorations du framework de test, introduction de terraform query
 La 1.0 marque le moment où HashiCorp considère le langage et le workflow comme stables. Avant, chaque version mineure pouvait casser la compatibilité.
 
