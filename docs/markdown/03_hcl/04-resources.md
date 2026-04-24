@@ -38,7 +38,7 @@ Example :
 
 **lifecycle** : Permet de modifier le cycle de vie de la ressource (créer la nouvelle avant de supprimer l’ancienne, ignorer les changements d’un attributs, ...)
 
-**depends_on** : Forcer une dépendance. Par défaut toute “variable interpolée” crée une dépendance implicite. Dans certains cas, il est necessaire d’expliciter la dépendance (exemple, créer une base de donnée avant le serveur d’application).
+**depends_on** : Forcer une dépendance. Par défaut toute “variable interpolée” créée une dépendance implicite. Dans certains cas, il est necessaire d’expliciter la dépendance (exemple, créer une base de données avant le serveur d’application).
 
 **provider** : Permet de surcharger le provider de la ressource par exemple lors de l’utilisation d’alias sur plusieurs providers.
 
