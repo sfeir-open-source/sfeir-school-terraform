@@ -114,3 +114,6 @@ resource "..." "..." {
   instance_names = [local.instance_names]
 }
 ```
+Notes:
+La local permet d’éviter les répétitions. On peut la mettre en place pour une valeur dont on sait que l’utilisateur n’aura pas à toucher.
+Elle permet de faire des compositions ou des expressions complexes.

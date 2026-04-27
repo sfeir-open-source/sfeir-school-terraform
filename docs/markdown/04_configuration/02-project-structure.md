@@ -1,4 +1,4 @@
-<!-- .slide: -->
+<!-- .slide: class="with-code-bg-dark" -->
 # Configuration de l’environnement de développement
 
 ## Gestion des fichiers et bonnes pratiques

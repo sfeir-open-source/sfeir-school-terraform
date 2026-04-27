@@ -74,3 +74,8 @@ terraform.tfstate
 terraform.tfstate.backup
 .terraform.lock.hcl
 .terraform.tfstate.lock.info
+
+# Claude Code local analysis/context files
+CLAUDE.md
+docs/CLAUDE.md
+docs/UPDATE.md

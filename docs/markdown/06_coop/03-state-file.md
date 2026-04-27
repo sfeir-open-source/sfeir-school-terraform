@@ -35,7 +35,7 @@ Il est conseillé de ne pas le stocker localement mais sur :
 Il existe plusieurs types de backends :
 
 - local (par défaut)
-- remote (nécessite Terraform Cloud)
+- remote (nécessite HCP Terraform)
 - s3, gcs, azurerm, http, consul, etcd, ...
 
 ##==##

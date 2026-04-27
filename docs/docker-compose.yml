@@ -1,6 +1,6 @@
 services:
   npx:
-    image: node:20.11
+    image: node:22
     command: bash -c "npm install --ignore-scripts && npm start"
     volumes:
     - .:/sources

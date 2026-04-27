@@ -44,3 +44,27 @@ bucket.tftest.hcl... pass
 
 Success! 5 passed, 0 failed.
 ```
+
+### Bonus : test en mode `apply` avec `mock_provider` (Terraform 1.7+)
+
+Le fichier `bucket_apply.tftest.hcl` propose un test **fonctionnel** (`command = apply`) qui utilise `mock_provider "google"` pour simuler la création du bucket sans avoir besoin de credentials GCP. Ce pattern est précieux en CI où l'on ne dispose pas toujours d'un compte de service GCP.
+
+Complétez les `defaults` du `mock_resource` et les deux `assert` pour valider :
+
+- `google_storage_bucket.bucket.name == "sfeir-mocked"`
+- `output.name == "sfeir-mocked"`
+
+Résultat attendu :
+
+```
+$ terraform test
+...
+bucket_apply.tftest.hcl... in progress
+  run "apply_creates_bucket_with_expected_name"... pass
+bucket_apply.tftest.hcl... tearing down
+bucket_apply.tftest.hcl... pass
+
+Success! 6 passed, 0 failed.
+```
+
+Référence : [Terraform Test — Mocking](https://developer.hashicorp.com/terraform/language/tests/mocking)

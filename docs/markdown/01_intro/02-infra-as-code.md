@@ -69,19 +69,26 @@ Le dévelopeur a, à sa disposition, un ensemble de modules développés par les
 
 * <https://github.com/hashicorp/terraform>
 
-  * 45k+ stars
-  * 1800+ contributeurs
-  * Open source jusqu'en janvier 2024 puis sous licence BSL depuis
+  * 48k+ stars
+  * 2300+ contributeurs
+  * Sous licence BSL (Business Source License) depuis août 2023
+  * HashiCorp acquis par IBM (27 février 2025)
 
-* Suite à ce changement de licence, un fork sous licence MPLv2 vu le jour : [OpenTofu](https://opentofu.org)
+* Suite au changement de licence, un fork sous licence MPLv2 a vu le jour : [OpenTofu](https://opentofu.org)
 
 
 Notes:
 Produit développé en Go.
-Open source jusqu'au 1er Janvier 2024 puis sous license BSL (Business Source License) depuis.
-En désaccord avec hashicorp, un fork opensource a été initié par la communauté : OpenTofu
-Même fonctionnalités / syntaxe que la version originale 
-Principales différences : évaluation anticipée des variables et chiffrement natif du tfstate
+Sous licence BSL (Business Source License) depuis août 2023.
+HashiCorp a été acquis par IBM le 27 février 2025 pour $6.4B — pas de reversion à open source prévue.
+En désaccord avec HashiCorp, un fork opensource a été initié par la communauté : OpenTofu (MPLv2)
+OpenTofu a divergé techniquement depuis avec des fonctionnalités propres :
+- Chiffrement natif du state (v1.7, mi-2024)
+- Support OCI registry (v1.10, sept 2025)
+- S3 locking sans DynamoDB (v1.10) — aussi dispo côté Terraform 1.10 via `use_lockfile`
+- Meta-argument `enabled` sur les ressources (v1.11)
+
+Note : les *ephemeral values/resources* ne sont pas propres à OpenTofu, elles ont été introduites côté Terraform (v1.10, nov 2024) et sont aussi disponibles dans OpenTofu.
 
 ##==##
 
@@ -105,7 +112,7 @@ Terraform est multi provider, il peut créer des ressources autant sur des plate
 
 # La théorie des graphes
 
-![h-700](./assets/images/g418fd663c2_0_305.png)
+![h-700](./assets/images/theorie-des-graphes.png)
 
 Notes:
 Terraform analyse les ressources et dépendances puis construit un graphe puis provisionne les noeux des feuilles vers le sommet. Si l’arbre ne peut pas être construit, terraform retournera une erreur lors de l’analyse.
@@ -149,9 +156,26 @@ Ce qu'il faut retenir de la version 1.0 :
 * Architecture stable
 
 Notes:
-1.0 sortie en Juin 2021
-Version actuelle 1.10.1 (4 Decembre 2024)
-=======
-- Expliquer rapidement l’historique des versions.
-- Mentionner la stabilité introduite à partir de **Terraform 1.0**.
+Version actuelle 1.14.8 (Mars 2026), 1.15.0-beta disponible
+
+Historique rapide des versions :
+- **0.1** (juil 2014) : première release
+- **0.7** (2016) : remote state, terraform import, state environments
+- **0.9** (2017) : remote backends (S3, GCS, etc.)
+- **0.11** (2017) : dernière version avant la réécriture du langage
+- **0.12** (mai 2019) : réécriture majeure du HCL (HCL2) — types riches, boucles for, expressions conditionnelles. Code 0.11 incompatible.
+- **0.13** (2020) : required_providers avec source, count/for_each sur les modules
+- **0.14** (déc 2020) : sensitive variables, lockfile des providers (.terraform.lock.hcl)
+- **0.15** (2021) : -replace (début de la deprecation de taint)
+- **1.0** (juin 2021) : garantie de stabilité et compatibilité. Essentiellement 0.15 stabilisé.
+- **1.1** (déc 2021) : moved blocks (refactoring sans destroy/recreate)
+- **1.5** (juin 2023) : import block déclaratif, check blocks
+- **1.6** (oct 2023) : terraform test (framework de tests natif)
+- **1.7** (mars 2024) : removed blocks, mock providers dans les tests
+- **1.8** (2024) : provider-defined functions
+- **1.10** (nov 2024) : ephemeral values (gestion des secrets dans le state)
+- **1.11+** (2025-2026) : stabilisation, améliorations incrémentales
+- **1.13** (aout 2025) : améliorations du framework de test, introduction de terraform stacks
+- **1.14** (nov. 2025) : améliorations du framework de test, introduction de terraform query
+La 1.0 marque le moment où HashiCorp considère le langage et le workflow comme stables. Avant, chaque version mineure pouvait casser la compatibilité.
 

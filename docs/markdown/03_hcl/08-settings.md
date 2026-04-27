@@ -8,12 +8,12 @@ Il existe un bloc hors de toute ressource pour définir le comportement du dépl
 * Configurer le backend
 * Activer des fonctionnalitées expérimentales
 
-```hcl-terrafom
+```hcl-terraform
 terraform {
   required_version = ">= 1.0"
   required_providers {
     aws = {
-      version = ">= 2.7.0"
+      version = ">= 6.0"
       source = "hashicorp/aws"
     }
   }
@@ -26,3 +26,7 @@ terraform {
   experiments = [something]
 }
 ```
+
+Notes:
+reparler de l’exemple de la data source pour le state dans le bucket
+Attention : AWS provider v6.0 (juin 2025) introduit des breaking changes — consulter le guide de migration avant de passer d’une v5 à une v6 sur un projet existant.

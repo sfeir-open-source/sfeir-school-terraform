@@ -5,5 +5,5 @@ variable "application_name" {
 variable "machine_type" {
   type        = string
   description = "GCE machine type"
-  default     = "f1-micro"
+  default     = "e2-micro"
 }

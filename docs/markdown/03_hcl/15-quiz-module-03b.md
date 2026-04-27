@@ -85,7 +85,7 @@ _Question_ : Comment obtenir un élément d’une liste ?
 
 <br>
 
-Question : Comment obtenir un élément d’une liste ?
+_Question_ : Comment obtenir un élément d’une liste ?
 
 <br>
 

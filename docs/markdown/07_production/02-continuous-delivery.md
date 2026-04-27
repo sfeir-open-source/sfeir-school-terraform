@@ -54,6 +54,7 @@ plan_production:
     expire_in: 1 week
   script:
     - terraform init
+    - terraform fmt -check
     - terraform workspace select prod
     - terraform plan -input=false -out=prod.tfplan
 ```

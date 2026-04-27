@@ -1,10 +1,8 @@
-resource "null_resource" "check-version" {
-  triggers = {
-    message = "Hello World"
-  }
+resource "terraform_data" "check-version" {
+  triggers_replace = "Hello World"
 }
 
 output "message" {
   description = "A message to display"
-  value       = null_resource.check-version.triggers.message
+  value       = terraform_data.check-version.triggers_replace
 }

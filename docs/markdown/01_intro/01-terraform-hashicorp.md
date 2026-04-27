@@ -2,28 +2,37 @@
 
 # Introduction à Terraform
 
-![h-800](./assets/images/g418fd663c2_0_148.png)
+## La suite HashiCorp (IBM)
+
+| Produit | Domaine | Statut |
+|---------|---------|--------|
+| **Terraform** | Infrastructure as Code | Actif |
+| **Vault** | Gestion des secrets et chiffrement | Actif |
+| **Consul** | Service mesh et service discovery | Actif |
+| **Nomad** | Orchestration de workloads | Actif |
+| **Packer** | Construction d'images machine | Actif (maintenance) |
+| **Boundary** | Accès distant zero-trust | Actif |
+| **Vagrant** | Environnements de dev locaux | Maintenance limitee |
+| **Waypoint** | Deploiement applicatif | Arrete (open source) |
 
 Notes:
-(vault)
-Learn about secrets management and data protection.
+IBM a finalise l'acquisition de HashiCorp en fevrier 2025 pour $6.4B. HashiCorp opere comme division IBM Software.
 
-(consul)
-Learn how to run service discovery and a service mesh with Consul.
+**Terraform** -- Provisionnement automatise d'infrastructure multi-cloud. Produit phare, integration avec Ansible (IBM) en cours.
 
-(terraform)
-Learn about automated infrastructure provisioning.
+**Vault** -- Gestion des secrets, chiffrement, identites machines (SPIFFE). Centralise les credentials, certificats et cles de chiffrement.
 
-(nomad)
-Learn how to deploy and manage any containerized, legacy, or batch application.
-Job orchestrator similar to kubernetes, can schedule java apps, gpus, qemu...
-Integrates vault / consul
+**Consul** -- Service discovery et service mesh. Gere la communication entre microservices (proxies, gateways, intentions).
 
-(vagrant)
-Learn to create development environments with Vagrant
+**Nomad** -- Orchestrateur de workloads (containers, VMs, Java, batch). Alternative a Kubernetes, plus simple. S'integre avec Vault et Consul.
 
-(packer)
-Learn to build automated machine images with Packer
+**Packer** -- Creation d'images machine (AMI, GCE images, Docker). Toujours maintenu mais moins mis en avant.
+
+**Boundary** -- Acces distant securise base sur l'identite (remplace les VPN/bastions). Passwordless, session recording.
+
+**Vagrant** -- Environnements de developpement locaux via VMs. En maintenance limitee, peu de nouveautes.
+
+**Waypoint** -- Etait un outil de deploiement applicatif. Version open source arretee (aout 2023), remplacee par HCP Waypoint (SaaS).
 
 ##==##
 
@@ -45,7 +54,7 @@ Automatisation de l’infrastructure => Réduire les actions sans valeurs ajout�
 
 Documentation => Maintenir une documentation des infrastructures déployées
 
-Multiples plateformes d’hébergements => Utiliser le meilleur de chaque cloud providers (prix, features, régions, …); cloud-agnostic, plus de 4701 providers
+Multiples plateformes d’hébergements => Utiliser le meilleur de chaque cloud providers (prix, features, régions, …); cloud-agnostic, plus de 6300 providers
 
 “PizzaTeam” (augmenter l’agilité et l’autonomie) => Avoir l’autonomie de déployer des templates validées par des outils de sécurités au lieu de passer par un ticket/change order
 

@@ -1,14 +1,22 @@
 <!-- .slide: -->
 
-# Le Hashicorp Configuration Language
+# Le HashiCorp Configuration Language
 
 <br>
 
-Le HCL est un langage déclaratif décrivant un état désiré (DSL) plutôt que les étapes de cet objectif.
+**HCL** est le langage utilisé pour écrire les fichiers `.tf`.
+
+* Langage **déclaratif** : on décrit l'état désiré, pas les étapes pour y arriver
+* Conçu pour être **lisible** par les humains et parsable par les machines
+* Utilisé par plusieurs produits HashiCorp : Terraform, Vault, Nomad, Packer
+* Alternative au JSON (Terraform accepte aussi le `.tf.json`)
 
 Notes:
 
-- Langage de configuration développé par HashiCorp et ré-utilisé dans ses différents produits.
+HCL = HashiCorp Configuration Language, développé en Go.
+C'est un DSL (Domain Specific Language) : contrairement à un langage impératif (Python, Bash) où on écrit des étapes ("crée ceci, puis cela"), en HCL on décrit le résultat attendu et Terraform se charge de déterminer les actions nécessaires.
+Exemple : on déclare "je veux 3 instances" et Terraform calcule s'il faut en créer, modifier ou supprimer.
+HCL est volontairement plus lisible que JSON/YAML pour faciliter la revue de code et la collaboration.
 
 ##==##
 
