@@ -3,7 +3,7 @@ package hello
 import (
 	"log"
 
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
 func resourceHelloFile() *schema.Resource {
@@ -14,11 +14,11 @@ func resourceHelloFile() *schema.Resource {
 		Update: resourceHelloFileUpdate,
 
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			// Add a "path" required attribute where type is string
+			// Add a "path" required attribute where type is string (a new path must recreate the file)
 		},
 	}
 }
@@ -32,7 +32,7 @@ func resourceHelloFileCreate(d *schema.ResourceData, meta interface{}) error {
 	// Do job
 	content := generateContent(d, meta)
 
-	// Create file
+	// Create file (see os.WriteFile)
 	//
 	//
 	//
@@ -47,30 +47,30 @@ func resourceHelloFileCreate(d *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceHelloFileDelete(d *schema.ResourceData, meta interface{}) error {
-	log.Printf("[DEBUG] %s: Reading the required network block", resourceHelloFileIDString(d))
+	log.Printf("[DEBUG] %s: Beginning hello deletion", resourceHelloFileIDString(d))
 
 	// Get arguments
 	path := d.Get("path").(string)
 
-	// Delete resource
+	// Delete resource (see os.Remove)
 	//
 	//
 
 	//Remove tfstate
 	d.SetId("")
 
-	log.Printf("[DEBUG] %s: Completed reading network block", resourceHelloFileIDString(d))
+	log.Printf("[DEBUG] %s: Deletion of hello complete", resourceHelloFileIDString(d))
 	return nil
 }
 
 func resourceHelloFileRead(d *schema.ResourceData, meta interface{}) error {
-	log.Printf("[DEBUG] %s: Reading the required network block", resourceHelloFileIDString(d))
+	log.Printf("[DEBUG] %s: Reading hello file", resourceHelloFileIDString(d))
 
 	// Get arguments
 	path := d.Get("path").(string)
 
-	// Read resource
-	//
+	// Read resource (see os.ReadFile)
+	// If the file does not exist anymore, remove it from the state with d.SetId("")
 	//
 	//
 
@@ -81,7 +81,7 @@ func resourceHelloFileRead(d *schema.ResourceData, meta interface{}) error {
 
 	d.Set("name" /* name value here */)
 
-	log.Printf("[DEBUG] %s: Completed reading network block", resourceHelloFileIDString(d))
+	log.Printf("[DEBUG] %s: Completed reading hello file", resourceHelloFileIDString(d))
 	return nil
 }
 
@@ -91,10 +91,10 @@ func resourceHelloFileUpdate(d *schema.ResourceData, meta interface{}) error {
 
 	content := generateContent(d, meta)
 
-	// Update the file is a value change (erase all file content)
+	// Update the file if a value changes (erase all file content)
 	//
 	//
 	//
 
-	return nil
+	return resourceHelloFileRead(d, meta)
 }

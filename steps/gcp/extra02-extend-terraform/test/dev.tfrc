@@ -1,0 +1,8 @@
+# Usage: export TF_CLI_CONFIG_FILE=$PWD/dev.tfrc
+# Replace the path with the absolute path of the directory containing the compiled binary
+provider_installation {
+  dev_overrides {
+    "registry.terraform.io/sfeir/hello" = "/home/<user>/sfeir-school-terraform/steps/gcp/extra02-extend-terraform/terraform-provider-hello"
+  }
+  direct {}
+}

@@ -37,19 +37,40 @@ And the result produce a file in `path = /tmp/foo` with the content `Hello <name
 
 ### How to build
 
-- Verify you have go 1.13 or upper :
+The provider uses the [Terraform Plugin SDK v2](https://developer.hashicorp.com/terraform/plugin/sdkv2).
+
+- Verify you have Go 1.21 or upper (Go downloads the toolchain required by `go.mod` automatically) :
 
   ```shell
-  $ go version
-  go version go1.13.3
+  go version
   ```
 
-- If not install or update it from [https://golang.org/dl/](https://golang.org/dl/)
+- If not install or update it from [https://go.dev/dl/](https://go.dev/dl/)
 - Compile the provider :
 
   ```shell
-  cd src/terraform-provider-hello/
+  cd terraform-provider-hello/
   go build
   ```
 
-Put the binary generated in the `test` directory and run `terraform init`.
+### How to test
+
+Terraform must use your local binary instead of downloading the provider from the registry. Use [`dev_overrides`](https://developer.hashicorp.com/terraform/cli/config/config-file#development-overrides-for-provider-developers) :
+
+- Edit `test/dev.tfrc` and set the absolute path of the `terraform-provider-hello` directory (`pwd` in this directory).
+- In the `test` directory, complete `main.tf` then run :
+
+  ```shell
+  export TF_CLI_CONFIG_FILE=$PWD/dev.tfrc
+  terraform plan
+  terraform apply
+  cat /tmp/foo
+  ```
+
+`terraform init` is not required : with `dev_overrides`, Terraform uses the local binary directly (a warning reminds you of it).
+
+Then :
+
+- Change `name` and apply again : the file is updated in place.
+- Change `path` : the resource is replaced (`ForceNew`).
+- Delete `/tmp/foo` manually and run `terraform plan` : the `Read` function detects the drift.

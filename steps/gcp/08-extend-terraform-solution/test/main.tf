@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    hello = {
+      source = "sfeir/hello"
+    }
+  }
+}
+
 provider "hello" {
   nickname = "jnu"
 }
