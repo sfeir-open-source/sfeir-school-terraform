@@ -18,5 +18,5 @@ variable "region" {
 variable "database_version" {
   type        = string
   description = "The MySQL or PostgreSQL version to use."
-  default     = "MYSQL_5_7"
+  default     = "MYSQL_8_4"
 }

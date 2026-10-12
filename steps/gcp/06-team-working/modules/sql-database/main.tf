@@ -7,7 +7,8 @@ resource "google_sql_database_instance" "main" {
 
   // We allow internet access only for lab purpose
   settings {
-    tier = "db-f1-micro"
+    tier    = "db-f1-micro"
+    edition = "ENTERPRISE" # MySQL 8.4 defaults to ENTERPRISE_PLUS, which has no shared-core tiers
     ip_configuration {
       ipv4_enabled = true
       authorized_networks {
