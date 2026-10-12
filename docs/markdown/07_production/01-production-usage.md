@@ -37,12 +37,24 @@ import {
   id = "ssh-keys"
   to = google_compute_project_metadata_item.default
 }
+
+resource "google_compute_project_metadata_item" "default" {
+  key   = "ssh-keys"
+  value = "user:ssh-ed25519 AAAA... user"
+}
 ```
 
 Notes:
 Le bloc import {} est recommandé depuis v1.5 — plus maintenable, versionnable dans le code
+Le bloc import seul ne suffit pas : la ressource cible (to) doit exister dans le code, sinon erreur au plan
+terraform plan -generate-config-out=generated.tf génère le bloc resource à partir de l'existant (à relire)
 Depuis v1.7 : support de for_each pour importer plusieurs ressources d’un coup
+Import vs data :
+- import : Terraform prend la gestion de la ressource. Elle entre dans le state, il peut la modifier et la détruire (terraform destroy la supprime)
+- data : lecture seule. Terraform lit la ressource à chaque plan pour utiliser ses attributs, sans jamais la modifier ni la détruire
+- Règle : import si la ressource doit être gérée par ce code, data si elle appartient à une autre équipe ou un autre state
 Voir : https://developer.hashicorp.com/terraform/language/import
+
 
 ##==##
 
@@ -52,7 +64,7 @@ Voir : https://developer.hashicorp.com/terraform/language/import
 
 ## terraform_data (depuis v1.4)
 
-Ressource native (sans provider) qui permet de manipuler des attributs, convertir des formats, lancer des scripts via les provisioners.
+Ressource native (sans provider) qui stocke une valeur dans le state, déclenche le remplacement d'autres ressources et porte des provisioners.
 
 Remplace `null_resource` (soft-deprecated).
 
@@ -60,12 +72,25 @@ Remplace `null_resource` (soft-deprecated).
 resource "terraform_data" "upper" {
   triggers_replace = var.name == "" ? local.default_name : upper(var.name)
 }
+
+resource "terraform_data" "app_version" {
+  input = var.app_version
+}
+
+resource "google_compute_instance" "app" {
+  # ...
+  lifecycle {
+    replace_triggered_by = [terraform_data.app_version]
+  }
+}
 ```
 
 Notes:
-terraform_data remplace null_resource depuis v1.4 — pas besoin du provider null
-triggers devient triggers_replace
-terraform_data dispose aussi d'attributs input/output pour passer des données
+- Remplace null_resource depuis v1.4, sans provider. triggers devient triggers_replace
+- Exemple upper : c'est la fonction upper() qui transforme la valeur, terraform_data la stocke dans le state. Si la valeur change, la ressource est remplacée
+- input : valeur stockée dans le state, relue via l'attribut output
+- Exemple app_version : replace_triggered_by n'accepte que des références à des ressources, pas une variable. terraform_data sert d'intermédiaire : changer var.app_version modifie terraform_data.app_version, ce qui force le remplacement de l'instance
+Voir : https://developer.hashicorp.com/terraform/language/resources/terraform-data
 
 
 
