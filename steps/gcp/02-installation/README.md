@@ -27,7 +27,7 @@ export TF_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraf
 echo $TF_VERSION
 ```
 
-And download the latest version using (must be at least 1.11.0 for testing features):
+And download the latest version using (must be at least 1.7.0 for testing features, `mock_provider` is used in module 05):
 
 ```shell
 curl https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip -o /tmp/terraform_${TF_VERSION}_linux_amd64.zip
@@ -58,7 +58,7 @@ Clone this repository on the Cloud Shell.
 git clone https://github.com/sfeir-open-source/sfeir-school-terraform.git
 ```
 
-Go in `steps/gcp/02-installation-solution/`
+Go in `steps/gcp/02-installation/`
 
 Initialize a new terraform environment and deploy the infrastructure :
 
@@ -70,8 +70,8 @@ terraform apply
 Result should be
 
 ```text
-null_resource.check-version: Creating...
-null_resource.check-version: Creation complete after 0s [id=3277091548522954865]
+terraform_data.check-version: Creating...
+terraform_data.check-version: Creation complete after 0s [id=43673389-0875-d88e-b091-547c99e6eca3]
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
