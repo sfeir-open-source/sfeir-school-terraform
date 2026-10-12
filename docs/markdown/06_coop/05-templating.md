@@ -11,8 +11,11 @@
 * La variable doit être définie "vide" dans le fichier de variable.
 
 Notes:
-Il y a plusieurs types de templating utilisable avec Terraform : Terragrunt ou Handlebars.
-Terraform propose également son propre modèle de templating (c'est sur celui-ci que nous nous concentrerons)
+Attention au mot "templating", il recouvre deux choses distinctes :
+- ici : paramétrer un module via des variables structurées et des fichiers `.tfvars`
+- la fonction `templatefile()` (module 3) : rendre un fichier non-Terraform (script, config) en y injectant des valeurs
+Ce module traite le premier cas.
+Il existe aussi des outils externes de templating autour de Terraform : Terragrunt, Handlebars.
 
 ##==##
 
@@ -34,17 +37,16 @@ Les child resources sont des resources ayant besoin d'une autre ressource pour �
 
 # Templating
 
-=> *cat cloud_sql/vars.tf*
+=> *cat cloud_sql/variables.tf*
 
 ```hcl-terraform
 variable "databases" {
-  type = list(
-    object({
-      name      = string
-      charset   = string
-      collation = string
-    })
-  )
+  type = map(object({
+    name      = string
+    charset   = string
+    collation = string
+    user      = string
+  }))
 }
 variable "instance_name" {}
 variable "project" {}
@@ -55,24 +57,29 @@ variable "project" {}
 
 # Templating
 
-=> *cat cloud_sql/vars.tfvars*
+=> *cat cloud_sql/terraform.tfvars*
 
-```json
-databases = [
-    {
-        name        = "db_1"
-        charset     = "utf8"
-        collation   = "utf8_unicode_ci"
-        user        = "root"
-    },
-    {
-        name        = "db_2"
-        charset     = "latin1"
-        collation   = "latin1_swedish_ci"
-        user        = "my_app"
-    }
-]
+```hcl-terraform
+databases = {
+  db_1 = {
+    name      = "db_1"
+    charset   = "utf8"
+    collation = "utf8_unicode_ci"
+    user      = "root"
+  }
+  db_2 = {
+    name      = "db_2"
+    charset   = "latin1"
+    collation = "latin1_swedish_ci"
+    user      = "my_app"
+  }
+}
 ```
+
+Notes:
+`for_each` n'accepte qu'une **map** ou un **set of strings**, jamais une liste. D'où le typage en `map(object({...}))`.
+Avec une liste en entrée, il faut la convertir : `for_each = { for db in var.databases : db.name => db }`.
+Une map a un autre avantage : les clés sont stables. Avec une liste, supprimer le premier élément décale tous les index et Terraform recrée les ressources suivantes.
 
 ##==##
 <!-- .slide: class="with-code-bg-dark"-->
@@ -83,7 +90,7 @@ databases = [
 
 ```hcl-terraform
 resource "google_sql_database" "database" {
-  for_each = var.databases
+  for_each  = var.databases
   name      = each.value.name
   instance  = var.instance_name
   project   = var.project
@@ -98,7 +105,7 @@ resource "google_sql_database" "database" {
 
 ## TIPS
 
-* Ce type de template est utilisable depuis la version 0.11, la version 0.12 a introduit quelques nouveautés telles que les blocs dynamiques, les variables conditionnelles, for_each.
-* Vous pouvez enchainer les *objets* dans une seule variable sans pour autant créer des objets absoluments identiques.
+* Les fichiers `.tfvars` existent depuis la 0.11. La 0.12 a introduit les types structurés (`object`), les blocs dynamiques et `for_each` — c’est elle qui rend ce pattern utilisable.
+* Vous pouvez enchaîner les *objets* dans une seule variable sans pour autant créer des objets absolument identiques.
 * Vous pouvez lier la création de modules à l'aide des dépendances implicites et des ID des objets.
 * Les variables sont surchargeables.
