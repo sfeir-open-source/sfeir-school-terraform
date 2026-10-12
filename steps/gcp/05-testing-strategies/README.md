@@ -4,7 +4,7 @@
 
 ### Using the Terraform Test Framework
 
-You must have the version 1.6 at least since it's the first release to include the Terraform Test Framework
+You must have the version 1.7 at least (1.6 introduced the Terraform Test Framework, 1.7 adds `mock_provider` used in the bonus)
 
 ```
 $ terraform version

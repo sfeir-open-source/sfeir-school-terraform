@@ -10,7 +10,8 @@ resource "google_sql_database_instance" "main" {
   deletion_protection = false
 
   settings {
-    tier = "db-f1-micro"
+    tier    = "db-f1-micro"
+    edition = "ENTERPRISE" # MySQL 8.4 defaults to ENTERPRISE_PLUS, which has no shared-core tiers
     ip_configuration {
       ipv4_enabled = true
       authorized_networks {
@@ -37,7 +38,7 @@ resource "google_secret_manager_secret" "db" {
 }
 
 resource "google_secret_manager_secret_version" "db" {
-  secret      = google_secret_manager_secret.db.id
+  secret = google_secret_manager_secret.db.id
   secret_data = jsonencode({
     user     = google_sql_user.users.name
     password = random_password.password.result

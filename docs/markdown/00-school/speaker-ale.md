@@ -7,6 +7,7 @@
 
 ![badge first-badge](./assets/images/gcp_cloud_archi.png)
 ![badge second-badge](./assets/images/new_terraform_badge.png)
+![badge third-badge](./assets/images/claude_architect_foundations.png)
 
 <h2> Antoine <span>LEMAITRE</span></h2>
 

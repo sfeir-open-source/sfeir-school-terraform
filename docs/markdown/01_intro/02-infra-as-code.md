@@ -116,7 +116,7 @@ Terraform est multi provider, il peut créer des ressources autant sur des plate
 
 Notes:
 Terraform analyse les ressources et dépendances puis construit un graphe puis provisionne les noeux des feuilles vers le sommet. Si l’arbre ne peut pas être construit, terraform retournera une erreur lors de l’analyse.
-On peut le visualiser via la commande terraform graph / ou en augmentant le niveau de log de terraform (TF_LOG=debug)
+On peut le visualiser via la commande terraform graph / ou en augmentant le niveau de log de terraform (TF_LOG=debug).
 
 ##==##
 <!-- .slide -->

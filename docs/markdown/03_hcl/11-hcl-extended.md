@@ -33,6 +33,65 @@ resource "aws_instance" "web" {
 
 ##==##
 
+<!--.slide: class="two-column with-code-bg-dark"-->
+
+# HCL Extended
+
+## `templatefile()` : le fichier et son rendu
+
+=> *cat templates/greetings.tpl*
+
+```bash
+#!/bin/bash
+echo "${hello} ${world}"
+```
+
+##--##
+
+<br><br><br>
+
+=> ce que la ressource reçoit
+
+```bash
+#!/bin/bash
+echo "goodnight moon"
+```
+
+Notes:
+Le template est un vrai fichier bash : éditable, colorisé, testable seul. Terraform ne fait que remplacer les placeholders.
+Attention : dans le template on écrit `${hello}`, pas `${local.greeting_vars.hello}`. Le template ne voit que la map passée en second argument.
+Usage typique : sortir du HCL un artefact non-Terraform (script de démarrage, config nginx, cloud-init, policy JSON) tout en y injectant des valeurs calculées.
+
+##==##
+<!-- .slide: class="with-code-bg-dark"-->
+
+# HCL Extended
+
+## Directives de template
+
+Le second argument accepte tous les types, pas seulement des chaînes :
+
+```bash
+upstream app {
+%{ for ip in backend_ips ~}
+  server ${ip}:8080;
+%{ endfor ~}
+}
+```
+
+```hcl-terraform
+content = templatefile("${path.module}/backends.conf.tftpl", {
+  backend_ips = google_compute_instance.app[*].network_interface[0].network_ip
+})
+```
+
+Notes:
+`%{ for }` / `%{ if }` sont des directives de template, à ne pas confondre avec l'interpolation `${ }`.
+Le `~` supprime le retour à la ligne qui suit la directive, sinon le rendu est criblé de lignes vides.
+C'est ce que l'ancien data source `template_file` ne savait pas faire : il n'acceptait que des variables de type string.
+
+##==##
+
 # HCL Extended
 
 ## Lire les attributs
@@ -63,4 +122,13 @@ Exemple d’utilisation :
   encoded   = base64encode(var.sensitive_content)
 ```
 Notes:
-Certaines fonctions sont issues de providers basiques qui ont été intégrés en tant que fonction "builtin" (ex: templatefile)
+Trois notions à ne pas confondre :
+- **interpolation** : la syntaxe `${ ... }` qui insère une expression dans une chaîne (et `%{if}` / `%{for}` pour les directives)
+- **fonction** : `upper()`, `templatefile()`, … intégrées au langage
+- **template** : un fichier ou une chaîne à placeholders, rendu par une fonction
+
+`templatefile()` n’est pas de l’interpolation : c’est la fonction qui l’applique à un fichier.
+
+Historique : avant 0.12, pas de fonction de template (il fallait le data source `template_file`, provider aujourd’hui déprécié) et le `${}` était obligatoire partout. Depuis HCL2, les expressions sont natives et `${}` ne sert plus qu’à interpoler dans une chaîne.
+
+Piège : `file()` n’interpole pas, elle retourne le contenu brut.

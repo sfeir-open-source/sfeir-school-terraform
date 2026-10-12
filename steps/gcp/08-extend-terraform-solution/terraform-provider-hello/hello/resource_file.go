@@ -1,12 +1,12 @@
 package hello
 
 import (
-	"io/ioutil"
+	"fmt"
 	"log"
 	"os"
 	"regexp"
 
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
 func resourceHelloFile() *schema.Resource {
@@ -17,11 +17,11 @@ func resourceHelloFile() *schema.Resource {
 		Update: resourceHelloFileUpdate,
 
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"path": &schema.Schema{
+			"path": {
 				Type:     schema.TypeString,
 				Required: true,
 				ForceNew: true,
@@ -40,14 +40,7 @@ func resourceHelloFileCreate(d *schema.ResourceData, meta interface{}) error {
 	content := generateContent(d, meta)
 
 	// Create file
-	f, err := os.Create(path)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-
-	_, err = f.Write([]byte(content))
-	if err != nil {
+	if err := os.WriteFile(path, []byte(content), 0644); err != nil {
 		return err
 	}
 
@@ -61,31 +54,35 @@ func resourceHelloFileCreate(d *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceHelloFileDelete(d *schema.ResourceData, meta interface{}) error {
-	log.Printf("[DEBUG] %s: Reading the required network block", resourceHelloFileIDString(d))
+	log.Printf("[DEBUG] %s: Beginning hello deletion", resourceHelloFileIDString(d))
 
 	// Get arguments
 	path := d.Get("path").(string)
 
 	// Delete resource
-	err := os.Remove(path)
-	if err != nil {
+	if err := os.Remove(path); err != nil && !os.IsNotExist(err) {
 		return err
 	}
 
 	//Remove tfstate
 	d.SetId("")
-	log.Printf("[DEBUG] %s: Completed reading network block", resourceHelloFileIDString(d))
+	log.Printf("[DEBUG] %s: Deletion of hello complete", resourceHelloFileIDString(d))
 	return nil
 }
 
 func resourceHelloFileRead(d *schema.ResourceData, meta interface{}) error {
-	log.Printf("[DEBUG] %s: Reading the required network block", resourceHelloFileIDString(d))
+	log.Printf("[DEBUG] %s: Reading hello file", resourceHelloFileIDString(d))
 
 	// Get arguments
 	path := d.Get("path").(string)
 
 	// Read resource
-	content, err := ioutil.ReadFile(path)
+	content, err := os.ReadFile(path)
+	if os.IsNotExist(err) {
+		// File deleted outside of Terraform: remove it from the state to recreate it
+		d.SetId("")
+		return nil
+	}
 	if err != nil {
 		return err
 	}
@@ -93,9 +90,12 @@ func resourceHelloFileRead(d *schema.ResourceData, meta interface{}) error {
 	//Set all HelloFile object properties in the tfstate
 	re := regexp.MustCompile(`^Hello (\w+)`)
 	name := re.FindStringSubmatch(string(content))
+	if name == nil {
+		return fmt.Errorf("unexpected content in %s", path)
+	}
 	d.Set("name", name[1])
 
-	log.Printf("[DEBUG] %s: Completed reading network block", resourceHelloFileIDString(d))
+	log.Printf("[DEBUG] %s: Completed reading hello file", resourceHelloFileIDString(d))
 	return nil
 }
 
@@ -106,17 +106,9 @@ func resourceHelloFileUpdate(d *schema.ResourceData, meta interface{}) error {
 	// Update content
 	content := generateContent(d, meta)
 
-	f, err := os.OpenFile(path, os.O_WRONLY, 0644)
-	if err != nil {
+	if err := os.WriteFile(path, []byte(content), 0644); err != nil {
 		return err
 	}
 
-	f.Truncate(0)
-	f.Seek(0, 0)
-	_, err = f.Write([]byte(content))
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return resourceHelloFileRead(d, meta)
 }

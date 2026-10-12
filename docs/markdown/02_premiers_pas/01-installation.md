@@ -28,7 +28,7 @@ Plusieurs IDE disponibles :
 - Atom
 - Visual Studio Code (VSCode)
 - Sublime Text
-- VIM
+- <span style="position:relative;display:inline-block;margin-top:60px">VIM<img style="position:absolute;left:50%;bottom:-10px;width:360px;max-width:none;max-height:none;margin:0;transform:translateX(-50%);pointer-events:none" src="./assets/images/vim_confetti.gif"></span>
 
 Notes:
 

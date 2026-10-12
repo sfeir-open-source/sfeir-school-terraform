@@ -1,19 +1,17 @@
 package hello
 
 import (
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/terraform"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
-func Provider() terraform.ResourceProvider {
+func Provider() *schema.Provider {
 	return &schema.Provider{
 		Schema: map[string]*schema.Schema{
-			"nickname": &schema.Schema{
-				Type:     schema.TypeString,
-				Required: true,
-				DefaultFunc: schema.MultiEnvDefaultFunc([]string{
-					"NICKNAME",
-				}, ""),
+			"nickname": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				DefaultFunc: schema.EnvDefaultFunc("NICKNAME", nil),
+				Description: "Surnom affiché dans le fichier. Défaut : variable d'environnement NICKNAME.",
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
@@ -31,7 +29,7 @@ type identity struct {
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	nickname := d.Get("nickname").(string)
 
-	// Add a property hostname on the provider attributes
+	// Add a property hostname on the provider attributes (see os.Hostname)
 
 	return &identity{Nickname: nickname, Hostname: hostname}, err
 }

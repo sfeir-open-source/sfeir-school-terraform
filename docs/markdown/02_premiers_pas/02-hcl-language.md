@@ -41,7 +41,8 @@ resource "aws_instance" "web"{
 
 Notes:
 
-- **Attention** : Certaines ressources ont des relations particulières et nécessite le déploiement d'une ou plusieurs ressources. Dans ce cas, nous avons recours au *meta-argument* **depends_on**
+- **Attention** : Certaines ressources ont des relations particulières et nécessitent le déploiement d'une ou plusieurs autres ressources. Lorsque la dépendance n'est pas déductible du code, nous avons recours au *meta-argument* **depends_on**
+- Les autres *meta-arguments* courants : **count**, **for_each** (multiplicité), **lifecycle**, **provider**
 - Les dépendances entre ressources peuvent être établies de deux manières différentes : implicites ou explicites.
 
 ##==##
@@ -74,4 +75,4 @@ Notes:
 * terraform init : initialise le projet, télécharge providers et modules.
 * Lecture des fichiers .tf et .tfvars pour définir la source d'infrastructure.
 * terraform plan : prépare les changements ; terraform apply : applique les changements ; terraform destroy : supprime les ressources.
-* Workflow simple et linéaire : init ➔ plan ➔ apply ➔ destroy.
+* Workflow simple et linéaire : init ➔ plan ➔ apply ➔ destroy. (on peut ajouter un validate)

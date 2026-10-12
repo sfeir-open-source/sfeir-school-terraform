@@ -6,6 +6,13 @@
 
 ![float-left](./assets/images/terratest_logo.png)
 
+Notes:
+Terratest teste l'infra déployée (boîte noire via les outputs), terraform test teste surtout le contrat du module.
+Ce que Terratest permet en plus de terraform test :
+- Exécuter du code arbitraire (Go) : SSH sur une VM, commande dans un conteneur, appel SDK cloud
+- Logique procédurale : boucles, attente d'un état, scénarios en plusieurs étapes
+- Tester autre chose que Terraform : Packer, Docker, Helm, Kubernetes
+
 ##==##
 
 <!-- .slide: class="with-code-bg-dark"-->
@@ -112,4 +119,21 @@ Notes:
 mock_provider simule la création : Terraform exécute le cycle complet plan + apply, mais aucune API cloud n'est appelée.
 Les attributs computed (arn, id, ...) sont renseignés via `defaults` ou générés par Terraform (known after apply).
 Parfait complément du mode `plan` avec `expect_failures` : on couvre unitaire + fonctionnel sans jamais toucher au cloud.
+
+On peut également surcharger ponctuellement une ressource, une data source ou un module :
+  override_resource {
+    target = aws_s3_bucket.bucket
+    values = { arn = "arn:aws:s3:::fake-bucket" }
+  }
+
+  override_data {
+    target = data.aws_caller_identity.current
+    values = { account_id = "123456789012" }
+  }
+
+  override_module {
+    target  = module.network
+    outputs = { vpc_id = "vpc-fake" }
+  }
+
 Voir : https://developer.hashicorp.com/terraform/language/tests/mocking
