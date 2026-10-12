@@ -1,6 +1,6 @@
 # Sfeir Institute Terraform
 
-## Module-5 : Testing strategies
+## Extra 03 : Testing strategies with Kitchen-CI
 
 ### Install tools using Bundler
 
